@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Garde anti-débordement horizontal (n'affecte pas position: sticky). */
+    overflow-x: clip;
+  }
+  body {
+    margin: 0;
+    background: #0A1A2F;
+    overflow-x: clip;
+  }
+}
+
+/* Bandeaux défilants (marquee) — le contenu est dupliqué, -50% = une copie pleine. */
+@keyframes wahm-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes wahm-marquee-rev {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wahm-marquee-track { animation: none !important; }
+}
