@@ -4,8 +4,8 @@ import { Label, Action, CornerTicks } from '../components/ui/Frame'
 export default function NotFound() {
   return (
     <Page title="Page introuvable — WAHM" description="La page demandée n'existe pas.">
-      <section className="flex min-h-[78vh] items-center border-b border-white/[0.08] bg-wahm-navy px-5 pb-24 pt-[120px] md:pt-[150px]">
-        <div className="mx-auto w-full max-w-[1240px] px-0 md:px-10">
+      <section className="flex min-h-[78vh] items-center bg-wahm-navy px-5 pb-24 pt-[120px] md:pt-[150px]">
+        <div className="mx-auto w-full max-w-[1440px] px-0 md:px-10">
           <div className="relative border border-white/[0.1] bg-wahm-navyDark px-7 py-16 md:px-16 md:py-24">
             <CornerTicks />
             <Label>Erreur 404</Label>

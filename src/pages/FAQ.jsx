@@ -72,8 +72,8 @@ const FAQ_ITEMS = [
   },
 ]
 
-const SECTION = 'border-b border-white/[0.08] bg-wahm-navy'
-const WRAP = 'mx-auto max-w-[1240px] px-5 md:px-10'
+const SECTION = 'bg-wahm-navy'
+const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 
 export default function FAQ() {
   const meta = getRouteConfig('/faq')
@@ -109,7 +109,7 @@ export default function FAQ() {
               return (
                 <li
                   key={item.question}
-                  className={`relative border-b border-white/[0.08] ${isOpen ? 'bg-wahm-navyDark' : ''}`}
+                  className={`relative ${isOpen ? 'bg-wahm-navyDark' : ''}`}
                 >
                   {isOpen && <CornerTicks className="text-wahm-orange/70" />}
                   <h3 className="m-0">
@@ -122,7 +122,7 @@ export default function FAQ() {
                       className="flex w-full items-start justify-between gap-5 px-1 py-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight md:gap-8 md:py-7"
                     >
                       <span className="flex items-start gap-4 md:gap-6">
-                        <span className="mt-[3px] shrink-0 font-mono text-[12px] text-wahm-orange">
+                        <span className="mt-[3px] shrink-0 font-mono text-[12px] text-wahm-goldLight">
                           {String(i + 1).padStart(2, '0')}
                         </span>
                         <span className="font-display text-[16px] font-bold uppercase leading-[1.25] tracking-[-0.005em] text-white md:text-[18px]">
@@ -131,7 +131,7 @@ export default function FAQ() {
                       </span>
                       <Plus
                         className={`mt-[2px] h-6 w-6 shrink-0 transition-transform duration-300 ${
-                          isOpen ? 'rotate-45 text-wahm-orange' : 'text-[#7f93a8]'
+                          isOpen ? 'rotate-45 text-wahm-goldLight' : 'text-[#7f93a8]'
                         }`}
                         strokeWidth={2.4}
                         aria-hidden="true"

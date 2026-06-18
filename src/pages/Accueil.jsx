@@ -1,36 +1,39 @@
-import { Dumbbell, HeartPulse, Activity, Wind, Brain, Target, Check, Award, Sparkles, Languages, Globe2, Users } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { Dumbbell, HeartPulse, Activity, Wind, Brain, Target, Check, Award, Sparkles, Languages, Globe2, Users, BadgeCheck, FlaskConical, Layers } from 'lucide-react'
 import Page from '../components/Page'
 import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
 import HomeHero from '../components/sections/HomeHero'
 import { GhostNumber } from '../components/ui/Kinetic'
-import { Label, SectionHead, Action, Framed, CornerTicks, Motif, Shot, TiltCard, GridPattern } from '../components/ui/Frame'
+import { Label, SectionHead, Action, Framed, CornerTicks, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
 import { ExpandingCards } from '../components/ui/ExpandingCards'
+import SectionOutro from '../components/SectionOutro'
 import { WorldMap } from '../components/ui/WorldMap'
 import { getRouteConfig } from '../lib/site'
 
 const POURQUOI_CARDS = [
   { id: 'experts', title: 'Experts mondiaux', description: 'Experts renommés à travers le monde en sciences du mouvement, performance et santé.', imgSrc: '/assets/media/pq-experts.webp', icon: <Award size={24} strokeWidth={2} aria-hidden="true" /> },
   { id: 'exclusifs', title: 'Contenus exclusifs', description: 'Formations originales et introuvables ailleurs.', imgSrc: '/assets/media/pq-exclusifs.webp', icon: <Sparkles size={24} strokeWidth={2} aria-hidden="true" /> },
-  { id: 'multilingue', title: 'Multilingue', description: 'Traduction vocale instantanée conservant la voix originale, dans plusieurs langues.', imgSrc: '/assets/media/pq-multilingue.webp', icon: <Languages size={24} strokeWidth={2} aria-hidden="true" /> },
+  { id: 'multilingue', title: 'Multilingue', description: 'Traduction vocale instantanée offrant automatiquement une version doublée en conservant la voix originale, dans plusieurs langues.', imgSrc: '/assets/media/pq-multilingue.webp', icon: <Languages size={24} strokeWidth={2} aria-hidden="true" /> },
   { id: 'acces', title: 'Accès mondial', description: "Un accès immédiat depuis n'importe quel pays et sur tous supports.", imgSrc: '/assets/media/pq-acces.webp', icon: <Globe2 size={24} strokeWidth={2} aria-hidden="true" /> },
-  { id: 'communaute', title: 'Communauté', description: 'Une communauté de coachs, thérapeutes et passionnés partageant les mêmes valeurs.', imgSrc: '/assets/media/pq-communaute.webp', icon: <Users size={24} strokeWidth={2} aria-hidden="true" /> },
+  { id: 'communaute', title: 'Communauté', description: 'Une communauté de coachs, thérapeutes et passionnés partageant les mêmes valeurs : progression, excellence, impact.', imgSrc: '/assets/media/pq-communaute.webp', icon: <Users size={24} strokeWidth={2} aria-hidden="true" /> },
 ]
 
 const PROMESSE = [
-  'Certifiantes ou reconnues dans leur domaine',
-  'Créées par des leaders internationaux (préparation physique, santé, Pilates, yoga, neurotraining…)',
-  'Pédagogiques, pratiques et immédiatement applicables',
-  'Mises à jour régulièrement selon les dernières recherches scientifiques',
-  'Adaptées tous niveaux : débutants, confirmés, experts',
+  { Icon: BadgeCheck, title: 'Certifiées & reconnues', text: 'Certifiantes ou reconnues dans leur domaine', img: '/assets/media/prom-certif.webp' },
+  { Icon: Globe2, title: 'Référents mondiaux', text: 'Créées par des leaders internationaux (préparation physique, santé, Pilates, yoga, neurotraining, bien-être…)', img: '/assets/media/prom-monde.webp' },
+  { Icon: Target, title: 'Immédiatement applicables', text: 'Pédagogiques, pratiques et immédiatement applicables', img: '/assets/media/prom-applic.webp' },
+  { Icon: FlaskConical, title: 'Toujours à jour', text: 'Mises à jour régulièrement selon les dernières recherches scientifiques', img: '/assets/media/prom-science.webp' },
+  { Icon: Layers, title: 'Pour tous les niveaux', text: 'Adaptées tous niveaux : débutants, confirmés, experts', img: '/assets/media/prom-niveaux.webp' },
 ]
 
 const CATEGORIES = [
-  { Icon: Dumbbell, title: 'Coaching sportif & Personal Training', desc: 'Méthodologies modernes, planification, gestion clients, business du coaching.' },
-  { Icon: HeartPulse, title: 'Santé & Rééducation – biomécanique', desc: 'Réhabilitation, biomécanique, mouvement fonctionnel, réathlétisation.' },
-  { Icon: Activity, title: 'Préparation physique multisports', desc: 'Sports spécifiques, performance, puissance, vitesse, prévention des blessures.' },
-  { Icon: Wind, title: 'Yoga & Pilates – Zen training', desc: 'Flow, mobilité, respiration, optimisation du mouvement.' },
-  { Icon: Brain, title: 'Neurotraining & sciences du mouvement', desc: 'Réflexes archaïques, préférences motrices, boucle sensorimotrice.' },
-  { Icon: Target, title: 'Développement personnel & Mental Coaching', desc: 'Imagerie mentale, mindset, motivation, gestion du stress.' },
+  { Icon: Dumbbell, title: 'Coaching sportif & Personal Training', desc: 'Méthodologies modernes, planification, gestion clients, business du coaching.', img: '/assets/media/cat-coaching.webp' },
+  { Icon: HeartPulse, title: 'Santé & Rééducation – biomécanique', desc: 'Réhabilitation, biomécanique, mouvement fonctionnel, réathlétisation.', img: '/assets/media/cat-sante.webp' },
+  { Icon: Activity, title: 'Préparation physique multisports', desc: 'Sports spécifiques, performance, puissance, vitesse, prévention des blessures.', img: '/assets/media/cat-prepa.webp' },
+  { Icon: Wind, title: 'Yoga & Pilates – Zen training', desc: 'Flow, mobilité, respiration, optimisation du mouvement.', img: '/assets/media/cat-yoga.webp' },
+  { Icon: Brain, title: 'Neurotraining & sciences du mouvement', desc: 'Réflexes archaïques, préférences motrices, boucle sensorimotrice.', img: '/assets/media/cat-neuro.webp' },
+  { Icon: Target, title: 'Développement personnel & Mental Coaching', desc: 'Imagerie mentale, mindset, motivation, gestion du stress.', img: '/assets/media/cat-mental.webp' },
 ]
 
 // Bento « plateforme » : tuiles asymétriques (image plein cadre + accent orange).
@@ -43,13 +46,14 @@ const PLATEFORME = [
 ]
 
 // Arcs du réseau mondial (Paris → grandes villes) pour la carte communauté.
+const PARIS = { lat: 48.8566, lng: 2.3522, label: 'Paris' }
 const COMMUNAUTE_DOTS = [
-  { start: { lat: 48.8566, lng: 2.3522 }, end: { lat: 40.7128, lng: -74.006 } },
-  { start: { lat: 48.8566, lng: 2.3522 }, end: { lat: -23.5505, lng: -46.6333 } },
-  { start: { lat: 48.8566, lng: 2.3522 }, end: { lat: 35.6762, lng: 139.6503 } },
-  { start: { lat: 48.8566, lng: 2.3522 }, end: { lat: -33.8688, lng: 151.2093 } },
-  { start: { lat: 48.8566, lng: 2.3522 }, end: { lat: -1.2921, lng: 36.8219 } },
-  { start: { lat: 48.8566, lng: 2.3522 }, end: { lat: 25.2048, lng: 55.2708 } },
+  { start: PARIS, end: { lat: 40.7128, lng: -74.006, label: 'New York' } },
+  { start: PARIS, end: { lat: -23.5505, lng: -46.6333, label: 'São Paulo' } },
+  { start: PARIS, end: { lat: 35.6762, lng: 139.6503, label: 'Tokyo' } },
+  { start: PARIS, end: { lat: -33.8688, lng: 151.2093, label: 'Sydney' } },
+  { start: PARIS, end: { lat: -1.2921, lng: 36.8219, label: 'Nairobi' } },
+  { start: PARIS, end: { lat: 25.2048, lng: 55.2708, label: 'Dubaï' } },
 ]
 
 // Frise « trajectoire » de la communauté (titre court + détail).
@@ -68,8 +72,100 @@ const STATS = [
   { value: '100', suffix: '%', label: 'Formations vérifiées' },
 ]
 
-const SECTION = 'border-b border-white/[0.08] bg-wahm-navy'
-const WRAP = 'mx-auto max-w-[1240px] px-5 md:px-10'
+const SECTION = 'bg-wahm-navy'
+const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
+
+// Spotlight « Notre promesse » : un grand panneau qui défile automatiquement
+// entre les engagements, piloté par des onglets + une barre de progression.
+const SPOTLIGHT_MS = 4800
+function PromesseSpotlight({ items }) {
+  const [active, setActive] = useState(0)
+  const reduce = useReducedMotion()
+
+  useEffect(() => {
+    if (reduce) return undefined
+    const t = setTimeout(() => setActive((a) => (a + 1) % items.length), SPOTLIGHT_MS)
+    return () => clearTimeout(t)
+  }, [active, items.length, reduce])
+
+  const cur = items[active]
+  const CurIcon = cur.Icon
+
+  return (
+    <div className="mt-12">
+      {/* Panneau vedette */}
+      <div className="relative min-h-[300px] overflow-hidden border border-white/[0.1] bg-wahm-navyDark md:min-h-[340px]">
+        <GridPattern />
+        <CornerTicks />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={reduce ? false : { opacity: 0, y: 18, filter: 'blur(7px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            exit={reduce ? undefined : { opacity: 0, y: -14, filter: 'blur(7px)' }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-[1] grid h-full items-center gap-8 p-8 md:grid-cols-[1fr_minmax(0,0.82fr)] md:gap-10 md:p-10 lg:gap-12 lg:p-12"
+          >
+            {/* Contenu */}
+            <div>
+              <div className="flex items-center gap-5">
+                <span aria-hidden="true" className="font-display text-[64px] font-black leading-[0.8] text-wahm-goldLight md:text-[92px]">{String(active + 1).padStart(2, '0')}</span>
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center border border-wahm-orange/30 bg-wahm-orange/10 text-wahm-goldLight">
+                  <CurIcon className="h-[24px] w-[24px]" strokeWidth={1.85} aria-hidden="true" />
+                </span>
+              </div>
+              <h3 className="mt-6 font-display text-[24px] font-extrabold uppercase leading-[1.05] tracking-[-0.01em] text-white sm:text-[30px] md:text-[34px]">
+                {cur.title}<span className="text-wahm-orange">.</span>
+              </h3>
+              <p className="mt-4 max-w-[520px] font-sans text-[16px] leading-[1.7] text-[#aebccd] md:text-[17px]">{cur.text}</p>
+            </div>
+
+            {/* Image cadrée (équerres dorées, façon hero) */}
+            <div className="relative">
+              <span aria-hidden="true" className="pointer-events-none absolute left-3 top-3 z-[2] h-8 w-8 border-l-2 border-t-2 border-wahm-goldLight" />
+              <span aria-hidden="true" className="pointer-events-none absolute bottom-3 right-3 z-[2] h-8 w-8 border-b-2 border-r-2 border-wahm-goldLight" />
+              <div className="relative h-[210px] w-full overflow-hidden border border-white/10 sm:h-[240px] md:h-[260px] lg:h-[280px]">
+                <img src={cur.img} alt={cur.title} className="h-full w-full object-cover grayscale-[30%]" />
+                <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(10,26,47,0.18) 0%, rgba(10,26,47,0.52) 100%)' }} />
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Onglets + barre de progression */}
+      <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+        {items.map((p, i) => {
+          const on = i === active
+          return (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setActive(i)}
+              aria-pressed={on}
+              className={`group relative overflow-hidden border p-4 text-left transition-colors duration-200 ${on ? 'border-wahm-orange/50 bg-wahm-navyDark' : 'border-white/[0.08] hover:bg-wahm-navyDark/60'}`}
+            >
+              <span className={`font-mono text-[11px] tracking-[0.12em] ${on ? 'text-wahm-goldLight' : 'text-[#7f93a8]'}`}>{String(i + 1).padStart(2, '0')}</span>
+              <span className={`mt-1.5 block font-display text-[13px] font-bold uppercase leading-[1.15] tracking-[0.01em] ${on ? 'text-white' : 'text-[#9fb1c6]'}`}>{p.title}</span>
+              <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-white/[0.06]" />
+              {on && !reduce && (
+                <motion.span
+                  key={active}
+                  aria-hidden="true"
+                  className="absolute bottom-0 left-0 h-[2px] bg-wahm-orange"
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: SPOTLIGHT_MS / 1000, ease: 'linear' }}
+                />
+              )}
+              {on && reduce && <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-wahm-orange" />}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
 
 export default function Accueil() {
   const meta = getRouteConfig('/')
@@ -86,8 +182,8 @@ export default function Accueil() {
             {STATS.map((s, i) => (
               <RevealItem as="div" key={s.label} className="relative border-b border-r border-white/[0.08] p-7 md:p-8">
                 <CornerTicks />
-                <span className="font-mono text-[11px] text-wahm-orange">{String(i + 1).padStart(2, '0')}</span>
-                <div className="mt-3 font-display text-[44px] font-black leading-none text-white md:text-[56px]">{s.value}<span className="text-wahm-orange">{s.suffix}</span></div>
+                <span className="font-mono text-[11px] text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
+                <div className="mt-3 font-display text-[44px] font-black leading-none text-white md:text-[56px]">{s.value}<span className="text-wahm-goldLight">{s.suffix}</span></div>
                 <div className="mt-2 font-mono text-[11.5px] uppercase tracking-[0.14em] text-[#9fb1c6]">{s.label}</div>
               </RevealItem>
             ))}
@@ -101,36 +197,28 @@ export default function Accueil() {
           <SectionHead label="Pourquoi WAHM ?" action={<Action to="#marketplace" variant="pill" size="sm" arrow>Découvrir</Action>}>
             L'excellence mondiale, accessible à tous
           </SectionHead>
-          <p className="mt-6 max-w-[680px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">
-            WAHM n'est pas une marketplace comme les autres : c'est le point de convergence international du savoir vérifié, structuré et pensé pour votre évolution professionnelle.
+          <p className="mt-6 max-w-[760px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">
+            Chez World Academy of Human Movement, nous sélectionnons uniquement les formations qui ont déjà transformé des milliers de professionnels à travers le monde. WAHM n'est pas une marketplace comme les autres : c'est le point de convergence international entre :
           </p>
           <ExpandingCards items={POURQUOI_CARDS} className="mt-12" />
-          <p className="mt-8 font-display text-[16px] font-bold italic text-wahm-goldLight">« La connaissance n'a plus de frontières. Votre expertise non plus. »</p>
+          <p className="mt-10 max-w-[760px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">
+            WAHM vous ouvre les portes du savoir mondial, structuré, vérifié et pensé pour votre évolution professionnelle.
+          </p>
+          <SectionOutro>La connaissance n'a plus de frontières. Votre expertise non plus.</SectionOutro>
         </div>
       </Reveal>
 
-      {/* ===== NOTRE PROMESSE ===== */}
+      <ChevronDivider className="py-2" />
+
+      {/* ===== NOTRE PROMESSE (spotlight auto-rotatif) ===== */}
       <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
         <div className={WRAP}>
           <SectionHead label="Notre promesse">Vous former au meilleur, sans frontières</SectionHead>
-          <p className="mt-6 font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">Nous nous engageons à proposer des formations :</p>
-          <div className="mt-10 grid grid-cols-1 border-l border-t border-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
-            {PROMESSE.map((txt, i) => (
-              <TiltCard key={i} className="border-b border-r border-white/[0.08] p-7 md:p-8">
-                <GridPattern />
-                <div className="relative z-[1] flex items-start gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-wahm-orange/30 bg-wahm-orange/10 text-wahm-orange"><Check className="h-[20px] w-[20px]" strokeWidth={2.6} aria-hidden="true" /></span>
-                  <span className="self-center font-sans text-[15px] leading-[1.55] text-[#cdd8e4]">{txt}</span>
-                </div>
-              </TiltCard>
-            ))}
-            <TiltCard className="border-b border-r border-white/[0.08] bg-wahm-navyDark p-7 md:p-8">
-              <GridPattern variant="orange" />
-              <div className="relative z-[1] flex h-full items-center justify-center">
-                <p className="m-0 text-center font-display text-[18px] font-bold uppercase leading-[1.2] tracking-[0.02em] text-white">Votre progression<br />devient illimitée<span className="text-wahm-orange">.</span></p>
-              </div>
-            </TiltCard>
-          </div>
+          <p className="mt-6 max-w-[560px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">Nous nous engageons à proposer des formations :</p>
+
+          <PromesseSpotlight items={PROMESSE} />
+
+          <SectionOutro>Votre progression devient illimitée.</SectionOutro>
         </div>
       </Reveal>
 
@@ -141,45 +229,65 @@ export default function Accueil() {
             label="Trouvez votre formation idéale"
             action={<Action to="#marketplace" variant="pill" size="sm" arrow>Tout explorer</Action>}
           >
-            Des catégories pensées pour vous guider
+            Des catégories claires, pensées pour vous guider
           </SectionHead>
           <div className="mt-12 grid grid-cols-1 border-l border-t border-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
             {CATEGORIES.map((cat, i) => (
               <TiltCard key={cat.title} href="#marketplace" className="block border-b border-r border-white/[0.08] no-underline transition-colors duration-200 hover:bg-wahm-navyDark" max={5}>
+                {/* Visuel : image plein cadre + zoom au survol + dégradé navy */}
                 <div className="relative">
-                  <Shot src={`/assets/media/formation-${i + 1}.webp`} alt={cat.title} className="h-[160px] w-full" />
-                  <span className="absolute right-4 top-4 font-mono text-[11px] tracking-[0.1em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="absolute -bottom-6 left-6 flex h-12 w-12 items-center justify-center border border-white/15 bg-wahm-navy text-wahm-orange transition-colors group-hover:border-wahm-orange"><cat.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" /></span>
+                  <div className="relative h-[208px] w-full overflow-hidden">
+                    <img src={cat.img} alt={cat.title} loading="lazy" className="h-full w-full object-cover grayscale-[25%] transition-transform duration-700 ease-out group-hover:scale-[1.06]" />
+                    <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,26,47,0.96) 0%, rgba(10,26,47,0.30) 55%, rgba(10,26,47,0.05) 100%)' }} />
+                  </div>
+                  {/* Accent orange qui se déploie au survol */}
+                  <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                  {/* Numéro */}
+                  <span className="absolute right-4 top-4 font-mono text-[12px] font-semibold tracking-[0.1em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
+                  {/* Pastille icône, chevauchant le bas du visuel */}
+                  <span className="absolute -bottom-6 left-6 flex h-12 w-12 items-center justify-center border border-white/15 bg-wahm-navy text-wahm-goldLight transition-colors duration-200 group-hover:border-wahm-orange"><cat.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" /></span>
                 </div>
                 <div className="p-7 pt-10 md:px-8 md:pb-8">
                   <h3 className="font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white">{cat.title}</h3>
                   <p className="mt-3 font-sans text-[14px] leading-[1.6] text-[#9fb1c6]">{cat.desc}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-wahm-orange">Explorer <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
+                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-wahm-goldLight">Explorer <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
                 </div>
               </TiltCard>
             ))}
           </div>
-          <p className="mt-8 font-mono text-[12px] uppercase tracking-[0.1em] text-[#7f93a8]">Chaque formation est un investissement sécurisé dans votre expertise.</p>
+          <SectionOutro>Chaque formation est un investissement sécurisé dans votre expertise.</SectionOutro>
         </div>
       </Reveal>
 
-      {/* ===== BANNIERE CITATION ===== */}
+      {/* ===== BANNIERE CITATION (photo plein cadre + fondu navy) ===== */}
       <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
         <div className={WRAP}>
-          <Framed className="relative bg-wahm-navyDark px-6 py-16 md:px-16 md:py-24">
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-              <GhostNumber className="absolute -right-4 bottom-0 text-[120px] md:text-[200px]" stroke="rgba(255,123,44,0.1)">WAHM</GhostNumber>
-            </div>
-            <Motif color="rgba(255,123,44,0.9)" cols={8} rows={4} className="pointer-events-none absolute right-10 top-10 hidden w-[300px] md:grid" />
-            <div className="relative max-w-[760px]">
+          <Framed ticks={false} className="relative bg-wahm-navyDark">
+            {/* Photo de fond, déborde à droite, en N&B */}
+            <img
+              src="/assets/media/conviction.webp"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover object-[68%_center] grayscale"
+            />
+            {/* Fondu navy : opaque à gauche → transparent à droite (lisibilité du texte) */}
+            <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #0A1A2F 0%, #0A1A2F 26%, rgba(10,26,47,0.72) 52%, rgba(10,26,47,0.30) 80%, rgba(10,26,47,0.12) 100%)' }} />
+            <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgba(6,18,31,0.55) 0%, transparent 42%)' }} />
+
+            {/* Contenu */}
+            <div className="relative z-10 max-w-[620px] px-6 py-16 md:px-14 md:py-28">
               <Label>Notre conviction</Label>
-              <p className="mt-6 font-display text-[28px] font-extrabold uppercase leading-[1.05] tracking-[-0.015em] text-white sm:text-[40px] md:text-[48px]">
+              <p className="mt-6 font-display text-[30px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[42px] md:text-[52px]">
                 Ne vous formez plus seul.<br />Avancez avec les meilleurs<span className="text-wahm-orange">.</span>
               </p>
               <div className="mt-9">
                 <Action to="#marketplace" variant="filled" arrow>Explorer les formations</Action>
               </div>
             </div>
+
+            {/* Marques d'angle WAHM, au-dessus de la photo */}
+            <CornerTicks className="pointer-events-none absolute inset-0 z-20 text-wahm-orange" />
           </Framed>
         </div>
       </Reveal>
@@ -198,7 +306,7 @@ export default function Accueil() {
                 <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,26,47,0.96), rgba(10,26,47,0.55) 48%, rgba(10,26,47,0.12))' }} />
                 <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-hover:scale-x-100" />
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-wahm-orange">{String(i + 1).padStart(2, '0')} · {f.tag}</span>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')} · {f.tag}</span>
                   <h3 className="mt-2 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[21px]">{f.title}</h3>
                   <p className="mt-1.5 max-w-[440px] font-sans text-[13.5px] leading-[1.5] text-[#cdd8e4]">{f.desc}</p>
                 </div>
@@ -206,16 +314,18 @@ export default function Accueil() {
             ))}
           </div>
 
-          <p className="mt-12 font-display text-[16px] font-bold uppercase tracking-[0.02em] text-white">Vous choisissez où, quand et comment vous formez.</p>
+          <SectionOutro>Vous choisissez où, quand et comment vous formez.</SectionOutro>
         </div>
       </Reveal>
+
+      <ChevronDivider className="py-2" />
 
       {/* ===== COMMUNAUTE (frise « trajectoire ») ===== */}
       <Reveal as="section" id="communaute" className={`scroll-mt-[80px] ${SECTION} py-16 md:py-[88px]`}>
         <div className={`${WRAP} max-w-[760px]`}>
           <Label>Communauté WAHM</Label>
-          <h2 className="mt-5 font-display text-[28px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[38px]">La seule communauté mondiale dédiée au mouvement humain<span className="text-wahm-orange">.</span></h2>
-          <p className="mt-6 font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">En devenant membre, vous rejoignez un écosystème mondial pensé pour avancer ensemble — de la première formation à votre place parmi les meilleurs.</p>
+          <h2 className="mt-5 font-display text-[28px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[38px]">Rejoignez la seule communauté mondiale dédiée au mouvement humain<span className="text-wahm-orange">.</span></h2>
+          <p className="mt-6 font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">En devenant membre, vous accédez à :</p>
         </div>
 
         {/* Carte du monde : le réseau international WAHM */}
@@ -225,15 +335,15 @@ export default function Accueil() {
 
         {/* Bénéfices + CTA */}
         <div className={`${WRAP} mt-12`}>
-          <div className="grid grid-cols-1 gap-x-8 gap-y-7 border-t border-white/[0.08] pt-10 sm:grid-cols-2 lg:grid-cols-5">
+          <RevealStagger className="grid grid-cols-1 border-l border-t border-white/[0.08] sm:grid-cols-2 lg:grid-cols-5" stagger={0.09}>
             {COMMUNAUTE.map((item, i) => (
-              <div key={item.title}>
-                <span className="font-mono text-[11px] text-wahm-orange">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="mt-2 font-display text-[14.5px] font-extrabold uppercase leading-[1.2] tracking-[-0.005em] text-white">{item.title}</h3>
-                <p className="mt-1.5 font-sans text-[13.5px] leading-[1.5] text-[#9fb1c6]">{item.desc}</p>
-              </div>
+              <RevealItem as="div" key={item.title} className="group relative border-b border-r border-white/[0.08] p-6 transition-colors duration-200 hover:bg-wahm-navyDark md:p-7">
+                <div aria-hidden="true" className="font-display text-[56px] font-black leading-[0.82] tracking-[-0.02em] text-wahm-goldLight md:text-[72px] lg:text-[80px]">{String(i + 1).padStart(2, '0')}</div>
+                <h3 className="mt-3 font-display text-[14.5px] font-extrabold uppercase leading-[1.18] tracking-[-0.005em] text-white">{item.title}<span className="text-wahm-orange">.</span></h3>
+                <p className="mt-2 font-sans text-[13.5px] leading-[1.5] text-[#9fb1c6]">{item.desc}</p>
+              </RevealItem>
             ))}
-          </div>
+          </RevealStagger>
           <div className="mt-12">
             <Action to="#marketplace" variant="filled" arrow>Rejoindre la communauté WAHM</Action>
           </div>
@@ -241,7 +351,7 @@ export default function Accueil() {
       </Reveal>
 
       {/* ===== CTA FINAL (bloc accent) ===== */}
-      <section className="border-b border-white/[0.08] bg-wahm-navy py-16 md:py-[88px]">
+      <section className="bg-wahm-navy py-16 md:py-[88px]">
         <div className={WRAP}>
           <Reveal className="relative grid grid-cols-1 overflow-hidden bg-wahm-orange md:grid-cols-[1.4fr_1fr]">
             <div className="px-7 py-12 md:px-12 md:py-16">
@@ -251,8 +361,8 @@ export default function Accueil() {
               </h2>
               <p className="mt-5 max-w-[440px] font-sans text-[15.5px] leading-[1.6] text-wahm-navy/85">Les meilleurs experts du monde vous attendent. Devenez un professionnel recherché et reconnu.</p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Action to="#marketplace" variant="dark" arrow>Explorer les formations</Action>
-                <Action to="/devenir-formateur" variant="outlineDark">Devenir formateur</Action>
+                <Action to="#marketplace" variant="dark" arrow>Explorez les formations</Action>
+                <Action to="#communaute" variant="outlineDark">Rejoignez la communauté WAHM</Action>
               </div>
             </div>
             <div className="relative hidden items-center justify-center border-l border-wahm-navy/15 p-10 md:flex">

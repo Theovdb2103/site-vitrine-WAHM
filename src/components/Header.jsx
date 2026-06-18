@@ -52,8 +52,8 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-[200] bg-[rgba(10,26,47,0.88)] backdrop-blur-[12px]">
       {/* Bandeau supérieur technique */}
-      <div className="hidden border-b border-white/[0.08] md:block">
-        <div className="mx-auto flex h-9 max-w-[1240px] items-center justify-between px-10 font-mono text-[11px] uppercase tracking-[0.18em] text-[#7f93a8]">
+      <div className="hidden md:block">
+        <div className="mx-auto flex h-9 max-w-[1440px] items-center justify-between px-10 font-mono text-[11px] uppercase tracking-[0.18em] text-[#7f93a8]">
           <span className="flex items-center gap-2"><span className="h-[6px] w-[6px] bg-wahm-orange" aria-hidden="true" />World Academy of Human Movement</span>
           <span>Santé · Sport · Performance · Bien-être</span>
         </div>
@@ -61,7 +61,7 @@ export default function Header() {
 
       {/* Barre principale */}
       <div className="border-b border-white/[0.1]">
-        <div className="mx-auto flex h-[64px] max-w-[1240px] items-center justify-between gap-3 px-5 md:px-10">
+        <div className="mx-auto flex h-[64px] max-w-[1440px] items-center justify-between gap-3 px-5 md:px-10">
           <Link to="/" className="flex shrink-0 items-center" aria-label="Accueil WAHM">
             <img src="/assets/wahm-logo.png" alt="WAHM" className="block h-[30px] w-auto shrink-0 md:h-[34px]" />
           </Link>

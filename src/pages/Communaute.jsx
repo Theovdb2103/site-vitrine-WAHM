@@ -2,6 +2,7 @@ import { Globe2, PlayCircle, Percent, Users, Sparkles } from 'lucide-react'
 import Page from '../components/Page'
 import Reveal from '../components/Reveal'
 import { Label, SectionHead, Action, Framed, CornerTicks, Motif, Shot, TiltCard } from '../components/ui/Frame'
+import SectionOutro from '../components/SectionOutro'
 import { getRouteConfig } from '../lib/site'
 
 const AVANTAGES = [
@@ -32,8 +33,8 @@ const AVANTAGES = [
   },
 ]
 
-const SECTION = 'border-b border-white/[0.08] bg-wahm-navy'
-const WRAP = 'mx-auto max-w-[1240px] px-5 md:px-10'
+const SECTION = 'bg-wahm-navy'
+const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 
 export default function Communaute() {
   const meta = getRouteConfig('/communaute')
@@ -67,7 +68,7 @@ export default function Communaute() {
             <Label>Un écosystème mondial</Label>
             <h2 className="mt-5 font-display text-[28px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[36px]">Un réseau international, uni par les mêmes valeurs<span className="text-wahm-orange">.</span></h2>
             <p className="mt-6 max-w-[560px] font-sans text-[15.5px] leading-[1.7] text-[#9fb1c6]">WAHM fédère coachs sportifs, thérapeutes, préparateurs physiques, instructeurs Pilates &amp; Yoga, étudiants en sciences du sport et experts du développement humain. Tous animés par une même ambition : progresser, transmettre, exceller.</p>
-            <p className="mt-7 font-display text-[16px] font-bold uppercase tracking-[0.02em] text-wahm-goldLight">Le savoir international, enfin accessible.</p>
+            <SectionOutro className="mt-8">Le savoir international, enfin accessible.</SectionOutro>
           </div>
         </div>
       </Reveal>
@@ -79,7 +80,7 @@ export default function Communaute() {
           <div className="mt-12 grid grid-cols-1 border-l border-t border-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
             {AVANTAGES.map((a) => (
               <TiltCard key={a.title} className="border-b border-r border-white/[0.08] p-7 md:p-8">
-                <span className="flex h-12 w-12 items-center justify-center border border-white/[0.12] text-wahm-orange"><a.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" /></span>
+                <span className="flex h-12 w-12 items-center justify-center border border-white/[0.12] text-wahm-goldLight"><a.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" /></span>
                 <h3 className="mt-6 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white">{a.title}</h3>
                 <p className="mt-3 font-sans text-[14px] leading-[1.6] text-[#9fb1c6]">{a.desc}</p>
               </TiltCard>
@@ -93,7 +94,7 @@ export default function Communaute() {
       </Reveal>
 
       {/* ===== CTA ADHESION (bloc accent) ===== */}
-      <section id="adhesion" className="scroll-mt-[80px] border-b border-white/[0.08] bg-wahm-navy py-16 md:py-[88px]">
+      <section id="adhesion" className="scroll-mt-[80px] bg-wahm-navy py-16 md:py-[88px]">
         <div className={WRAP}>
           <div className="relative grid grid-cols-1 overflow-hidden bg-wahm-orange md:grid-cols-[1.4fr_1fr]">
             <div className="px-7 py-12 md:px-12 md:py-16">

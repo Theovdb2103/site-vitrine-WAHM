@@ -5,8 +5,8 @@ import Reveal from '../components/Reveal'
 import { Label, SectionHead, Action, Framed, CornerTicks, Motif } from '../components/ui/Frame'
 import { getRouteConfig } from '../lib/site'
 
-const SECTION = 'border-b border-white/[0.08] bg-wahm-navy'
-const WRAP = 'mx-auto max-w-[1240px] px-5 md:px-10'
+const SECTION = 'bg-wahm-navy'
+const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 
 // Style des champs — bord fin, coins carrés, focus orange (langage « technical / severe »).
 const inputClass =
@@ -117,7 +117,7 @@ export default function Contact() {
               <div className="flex flex-col gap-5">
                 {COORDONNEES.map((c) => (
                   <div key={c.title} className="flex items-start gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/[0.12] text-wahm-orange">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/[0.12] text-wahm-goldLight">
                       <c.Icon className="h-5 w-5" strokeWidth={1.9} aria-hidden="true" />
                     </span>
                     <div className="min-w-0">

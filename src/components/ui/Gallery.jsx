@@ -30,7 +30,7 @@ export function Gallery({ label, heading, items = [] }) {
   return (
     <div>
       {/* En-tête + navigation */}
-      <div className="mx-auto flex max-w-[1240px] flex-col justify-between gap-6 px-5 md:flex-row md:items-end md:px-10">
+      <div className="mx-auto flex max-w-[1440px] flex-col justify-between gap-6 px-5 md:flex-row md:items-end md:px-10">
         <div>
           {label && <Label className="mb-4">{label}</Label>}
           <h2 className="m-0 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-white sm:text-[36px] md:text-[44px]">
@@ -58,7 +58,7 @@ export function Gallery({ label, heading, items = [] }) {
                   <span aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg,rgba(10,26,47,0.06),rgba(10,26,47,0.45))' }} />
                 </div>
                 <h3 className="mt-5 flex items-center gap-2.5 font-display text-[18px] font-extrabold uppercase leading-[1.15] tracking-[-0.005em] text-white md:text-[20px]">
-                  <Check className="h-[18px] w-[18px] shrink-0 text-wahm-orange" strokeWidth={3} aria-hidden="true" />
+                  <Check className="h-[18px] w-[18px] shrink-0 text-wahm-goldLight" strokeWidth={3} aria-hidden="true" />
                   {item.title}
                 </h3>
                 <p className="mt-2 font-sans text-[14.5px] leading-[1.55] text-[#9fb1c6]">{item.summary}</p>

@@ -6,6 +6,7 @@ import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
 import { Label, SectionHead, Action, Framed, CornerTicks, Shot, Motif, TiltCard } from '../components/ui/Frame'
 import { Marquee } from '../components/ui/Marquee'
 import { Gallery } from '../components/ui/Gallery'
+import SectionOutro from '../components/SectionOutro'
 import { getRouteConfig } from '../lib/site'
 
 // ===== Données « Pourquoi nous rejoindre » =====
@@ -23,7 +24,7 @@ const AVANTAGES = [
   {
     Icon: Star,
     title: 'Renforcez votre notoriété',
-    desc: 'Être sélectionné par WAHM est un gage de prestige. Votre crédibilité augmente, votre visibilité explose.',
+    desc: 'Être sélectionné par WAHM est un gage de prestige. Votre crédibilité augmente. Votre visibilité explose.',
   },
   {
     Icon: Settings,
@@ -32,7 +33,7 @@ const AVANTAGES = [
   },
   {
     Icon: Users,
-    title: "Intégrez un collectif d'experts",
+    title: "Intégrez un collectif d'experts internationaux",
     desc: 'Rejoignez une élite pédagogique partageant les mêmes valeurs : excellence, innovation, transmission.',
   },
 ]
@@ -46,16 +47,16 @@ const DISCIPLINES = [
   'Neurosciences appliquées au mouvement',
   'Préférences motrices, méthodes innovantes',
   'Bien-être, respiration, récupération',
-  'Coaching mental & préparation psychologique',
+  'Coaching mental et préparation psychologique',
 ]
 
 // ===== Critères de sélection (carousel) =====
 const CRITERES = [
-  { id: 'experts', title: 'Experts reconnus', summary: 'Des formateurs légitimes, référents reconnus dans leur domaine.', image: '/assets/media/crit-experts.webp' },
-  { id: 'pedagogie', title: 'Pédagogie impactante', summary: 'Des contenus clairs, structurés et pensés pour transmettre efficacement.', image: '/assets/media/crit-pedagogie.webp' },
-  { id: 'valeur', title: 'Réelle valeur ajoutée', summary: 'Des formations qui font concrètement progresser les apprenants.', image: '/assets/media/crit-valeur.webp' },
-  { id: 'science', title: 'Justifié scientifiquement', summary: 'Un contenu unique, fondé sur les données et la recherche.', image: '/assets/media/crit-science.webp' },
-  { id: 'international', title: 'Vision internationale', summary: 'Motivés pour transmettre leur expertise au-delà des frontières.', image: '/assets/media/crit-transmettre.webp' },
+  { id: 'experts', title: 'Experts reconnus', summary: 'Des formateurs experts, reconnus dans leur domaine.', image: '/assets/media/crit-experts.webp' },
+  { id: 'pedagogie', title: 'Pédagogie impactante', summary: 'Une pédagogie claire, structurée et impactante.', image: '/assets/media/crit-pedagogie.webp' },
+  { id: 'valeur', title: 'Réelle valeur ajoutée', summary: "Capables d'apporter une réelle valeur ajoutée.", image: '/assets/media/crit-valeur.webp' },
+  { id: 'science', title: 'Justifié scientifiquement', summary: 'Un contenu unique, scientifiquement justifié.', image: '/assets/media/crit-science.webp' },
+  { id: 'international', title: 'Vision internationale', summary: 'Motivés pour transmettre au niveau international.', image: '/assets/media/crit-transmettre.webp' },
 ]
 
 // ===== Les cinq étapes =====
@@ -82,8 +83,8 @@ const ETAPES = [
   },
 ]
 
-const SECTION = 'border-b border-white/[0.08] bg-wahm-navy'
-const WRAP = 'mx-auto max-w-[1240px] px-5 md:px-10'
+const SECTION = 'bg-wahm-navy'
+const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 
 // Style d'input « technical / severe » : coins carrés, focus orange.
 const INPUT_CLASS =
@@ -93,8 +94,8 @@ const LABEL_CLASS = 'font-mono text-[11px] uppercase tracking-[0.14em] text-[#cd
 
 // Variante claire (panneau crème du formulaire candidature) : inputs blancs, focus orange.
 const INPUT_LIGHT =
-  'w-full rounded-lg border border-[#d9d8cf] bg-white px-4 py-3 font-sans text-[15px] text-wahm-navy placeholder:text-[#9aa6b2] outline-none transition-colors focus:border-wahm-orange focus:ring-2 focus:ring-wahm-orange/25'
-const LABEL_LIGHT = 'mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-[#5a6a7e]'
+  'w-full rounded-lg border border-[#dcd6c8] bg-[#fdfcf9] px-4 py-3 font-sans text-[15px] text-wahm-navy placeholder:text-[#a7a395] outline-none transition-colors focus:border-wahm-orange focus:bg-white focus:ring-2 focus:ring-wahm-orange/20'
+const LABEL_LIGHT = 'mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-[#7a7263]'
 
 export default function DevenirFormateur() {
   const meta = getRouteConfig('/devenir-formateur')
@@ -191,7 +192,7 @@ export default function DevenirFormateur() {
           <div className="mt-12 grid grid-cols-1 border-l border-t border-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
             {AVANTAGES.map((a) => (
               <TiltCard key={a.title} className="border-b border-r border-white/[0.08] p-7 md:p-8">
-                <span className="flex h-12 w-12 items-center justify-center border border-white/[0.12] text-wahm-orange">
+                <span className="flex h-12 w-12 items-center justify-center border border-white/[0.12] text-wahm-goldLight">
                   <a.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" />
                 </span>
                 <h3 className="mt-6 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white">{a.title}</h3>
@@ -222,7 +223,7 @@ export default function DevenirFormateur() {
             Disciplines recherchées<span className="text-wahm-orange">.</span>
           </h2>
           <p className="mt-5 max-w-[640px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">
-            Si vous faites évoluer votre discipline, WAHM veut travailler avec vous.
+            Nous sélectionnons des formateurs reconnus dans les domaines suivants :
           </p>
         </div>
 
@@ -240,6 +241,10 @@ export default function DevenirFormateur() {
               ))}
             </Marquee>
           ))}
+        </div>
+
+        <div className={WRAP}>
+          <SectionOutro>Si vous faites évoluer votre discipline, WAHM veut travailler avec vous.</SectionOutro>
         </div>
       </Reveal>
 
@@ -265,9 +270,9 @@ export default function DevenirFormateur() {
 
             <RevealStagger as="ol" className="relative m-0 list-none p-0">
               {ETAPES.map((step, i) => (
-                <RevealItem as="li" key={step.title} className="relative flex gap-5 pb-10 last:pb-0 md:gap-8">
+                <RevealItem as="li" key={step.title} className="relative flex gap-5 pb-12 last:pb-0 md:gap-8 md:pb-[68px]">
                   {/* Nœud numéroté */}
-                  <span className="relative z-[1] flex h-[44px] w-[44px] shrink-0 items-center justify-center border border-wahm-orange/40 bg-wahm-navy font-display text-[15px] font-black text-wahm-orange md:h-[52px] md:w-[52px] md:text-[18px]">
+                  <span className="relative z-[1] flex h-[44px] w-[44px] shrink-0 items-center justify-center border border-wahm-orange/40 bg-wahm-navy font-display text-[15px] font-black text-wahm-goldLight md:h-[52px] md:w-[52px] md:text-[18px]">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div className="pt-1.5 md:pt-2.5">
@@ -278,12 +283,16 @@ export default function DevenirFormateur() {
               ))}
             </RevealStagger>
           </div>
-            {/* Visuel : studio d'enregistrement (comble l'espace à droite) */}
-            <Framed className="relative hidden bg-wahm-navyDark lg:block">
-              <Shot src="/assets/media/etapes-visual.webp" alt="L'expertise du mouvement et de la performance" className="h-full min-h-[460px] w-full" position="top" corners />
-            </Framed>
+            {/* Visuel : épouse exactement la hauteur des étapes (image en absolu). */}
+            <div className="relative hidden lg:block">
+              <div className="absolute inset-0">
+                <Framed className="h-full bg-wahm-navyDark">
+                  <Shot src="/assets/media/etapes-visual.webp" alt="L'expertise du mouvement et de la performance" className="h-full w-full" position="50% 46%" corners />
+                </Framed>
+              </div>
+            </div>
           </div>
-          <p className="mt-12 font-display text-[16px] font-bold uppercase tracking-[0.02em] text-white">Accompagnés de bout en bout, sans plafond de revenus<span className="text-wahm-orange">.</span></p>
+          <SectionOutro>Accompagnés de bout en bout, sans plafond de revenus.</SectionOutro>
         </div>
       </Reveal>
 
@@ -307,7 +316,7 @@ export default function DevenirFormateur() {
                 <ul className="mt-9 space-y-4">
                   {['Une audience internationale', 'Des revenus récurrents', 'Un accompagnement complet'].map((b) => (
                     <li key={b} className="flex items-center gap-3">
-                      <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center border border-wahm-orange/40 bg-wahm-orange/10 text-wahm-orange"><Check className="h-[14px] w-[14px]" strokeWidth={3} /></span>
+                      <span aria-hidden="true" className="flex h-6 w-6 shrink-0 items-center justify-center border border-wahm-orange/40 bg-wahm-orange/10 text-wahm-goldLight"><Check className="h-[14px] w-[14px]" strokeWidth={3} /></span>
                       <span className="font-display text-[13.5px] font-bold uppercase tracking-[0.01em] text-white">{b}</span>
                     </li>
                   ))}

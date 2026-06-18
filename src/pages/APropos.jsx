@@ -51,8 +51,8 @@ const POURQUOI = [
   'Mieux que des plateformes sans exigence',
 ]
 
-const SECTION = 'border-b border-white/[0.08] bg-wahm-navy'
-const WRAP = 'mx-auto max-w-[1240px] px-5 md:px-10'
+const SECTION = 'bg-wahm-navy'
+const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 
 export default function APropos() {
   const meta = getRouteConfig('/a-propos')
@@ -60,7 +60,7 @@ export default function APropos() {
     <Page title={meta.title} description={meta.description} path="/a-propos">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" className="border-b border-white/[0.08] bg-wahm-navy pt-[120px] md:pt-[150px]">
+      <Reveal as="section" className="bg-wahm-navy pt-[120px] md:pt-[150px]">
         <div className={WRAP}>
           <div className="relative grid border-l border-t border-white/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
             <div className="relative border-b border-r border-white/[0.08] p-7 py-12 md:p-12 md:py-16">
@@ -138,7 +138,7 @@ export default function APropos() {
           <div className="grid grid-cols-1 border-l border-t border-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
             {CRITERES.map((c) => (
               <TiltCard key={c} className="flex items-start gap-4 border-b border-r border-white/[0.08] p-7 md:p-8">
-                <span className="mt-[2px] flex h-7 w-7 shrink-0 items-center justify-center bg-wahm-orange/15 text-wahm-orange"><Check className="h-[16px] w-[16px]" strokeWidth={2.6} aria-hidden="true" /></span>
+                <span className="mt-[2px] flex h-7 w-7 shrink-0 items-center justify-center bg-wahm-orange/15 text-wahm-goldLight"><Check className="h-[16px] w-[16px]" strokeWidth={2.6} aria-hidden="true" /></span>
                 <span className="font-sans text-[15px] leading-[1.55] text-[#cdd8e4]">{c}</span>
               </TiltCard>
             ))}
@@ -164,7 +164,7 @@ export default function APropos() {
               <TiltCard key={profil.label} className="group border-b border-r border-white/[0.08]">
                 <Shot src={profil.img} alt={profil.label} className="h-[200px] w-full" position="top" />
                 <div className="flex items-center gap-3 p-6">
-                  <span className="font-mono text-[11px] text-wahm-orange">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-mono text-[11px] text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
                   <p className="font-display text-[15px] font-semibold uppercase leading-[1.3] tracking-[-0.005em] text-white">{profil.label}</p>
                 </div>
               </TiltCard>
@@ -183,8 +183,8 @@ export default function APropos() {
           <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_0.5fr] lg:gap-16">
             <div className="border-t border-white/[0.08]">
               {ENGAGEMENTS.map((txt, i) => (
-                <div key={i} className="flex items-start gap-5 border-b border-white/[0.08] py-5 md:gap-7">
-                  <span className="min-w-[34px] font-display text-[15px] font-black text-wahm-orange">{String(i + 1).padStart(2, '0')}</span>
+                <div key={i} className="flex items-start gap-5 py-5 md:gap-7">
+                  <span className="min-w-[34px] font-display text-[15px] font-black text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
                   <span className="font-sans text-[16px] leading-[1.5] text-[#cdd8e4] md:text-[16.5px]">{txt}</span>
                 </div>
               ))}
@@ -206,7 +206,7 @@ export default function APropos() {
             {POURQUOI.map((txt, i) => (
               <TiltCard key={txt} className="border-b border-r border-white/[0.08] p-7 md:p-8">
                 <GhostNumber className="text-[40px]" stroke="rgba(255,123,44,0.28)">{String(i + 1).padStart(2, '0')}</GhostNumber>
-                <p className="mt-5 font-display text-[17px] font-extrabold uppercase leading-[1.2] tracking-[-0.005em] text-wahm-orange">{txt}</p>
+                <p className="mt-5 font-display text-[17px] font-extrabold uppercase leading-[1.2] tracking-[-0.005em] text-wahm-goldLight">{txt}</p>
               </TiltCard>
             ))}
           </div>
@@ -217,7 +217,7 @@ export default function APropos() {
       </Reveal>
 
       {/* ===== CTA FINAL (bloc accent) ===== */}
-      <section className="border-b border-white/[0.08] bg-wahm-navy py-16 md:py-[88px]">
+      <section className="bg-wahm-navy py-16 md:py-[88px]">
         <div className={WRAP}>
           <div className="relative grid grid-cols-1 overflow-hidden bg-wahm-orange md:grid-cols-[1.4fr_1fr]">
             <div className="px-7 py-12 md:px-12 md:py-16">

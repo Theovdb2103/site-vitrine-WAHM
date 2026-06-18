@@ -3,8 +3,8 @@ import Reveal from '../components/Reveal'
 import { Label, Action, Framed, Motif } from '../components/ui/Frame'
 import { getRouteConfig } from '../lib/site'
 
-const SECTION = 'border-b border-white/[0.08] bg-wahm-navy'
-const WRAP = 'mx-auto max-w-[1240px] px-5 md:px-10'
+const SECTION = 'bg-wahm-navy'
+const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 
 // Sommaire (table des matières) — navigation interne vers chaque section légale.
 const SECTIONS = [
@@ -19,7 +19,7 @@ const SECTIONS = [
 function H2({ index, children }) {
   return (
     <div className="mb-7">
-      {index && <span className="font-mono text-[12px] tracking-[0.2em] text-wahm-orange">{index}</span>}
+      {index && <span className="font-mono text-[12px] tracking-[0.2em] text-wahm-goldLight">{index}</span>}
       <h2 className="m-0 mt-3 font-display text-[26px] font-extrabold uppercase leading-[1.06] tracking-[-0.01em] text-white md:text-[30px]">
         {children}<span className="text-wahm-orange">.</span>
       </h2>
@@ -84,7 +84,7 @@ export default function MentionsLegales() {
                       href={`#${s.id}`}
                       className="flex items-baseline gap-3 py-[7px] font-mono text-[12px] uppercase tracking-[0.12em] text-[#9fb1c6] no-underline transition-colors hover:text-wahm-goldLight"
                     >
-                      <span className="text-wahm-orange">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
                       <span>{s.label}</span>
                     </a>
                   </li>

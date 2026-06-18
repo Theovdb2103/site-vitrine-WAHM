@@ -49,7 +49,7 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="relative border-t border-wahm-orange/60 bg-wahm-navyDark">
-      <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-12 px-5 py-[72px] sm:grid-cols-2 md:px-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-5 py-[72px] sm:grid-cols-2 md:px-10 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div>
           <img src="/assets/wahm-logo.png" alt="WAHM" className="block h-[48px] w-auto" />
           <p className="mt-6 max-w-[300px] font-display text-[18px] font-extrabold uppercase leading-[1.15] tracking-[-0.01em] text-white">
@@ -82,7 +82,7 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-[14px] border-t border-white/[0.08] px-5 py-6 md:px-10">
+      <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-[14px] border-t border-white/[0.08] px-5 py-6 md:px-10">
         <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#6f8197]">© 2026 World Academy of Human Movement — WAHM</span>
         <a href="mailto:contact@wahm.com" className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#9fb1c6] no-underline transition-colors hover:text-wahm-goldLight">contact@wahm.com</a>
       </div>

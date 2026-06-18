@@ -1,15 +1,14 @@
-import { Label, Action, Framed, CornerTicks } from '../ui/Frame'
+import { Label, Action, Framed } from '../ui/Frame'
 import { RevealStagger, RevealItem } from '../Reveal'
 
 const CHIPS = ['Coaching sportif', 'Santé & Rééducation', 'Préparation physique', 'Yoga & Pilates', 'Neurotraining', 'Mental Coaching']
 
 export default function HomeHero() {
   return (
-    <section id="top" className="relative border-b border-white/[0.08] bg-wahm-navy pt-[104px] md:pt-[120px]">
-      <RevealStagger className="mx-auto grid max-w-[1240px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-[1.06fr_0.94fr]">
+    <section id="top" className="relative bg-wahm-navy pt-[104px] md:pt-[120px]">
+      <RevealStagger className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2">
         {/* Colonne texte */}
-        <div className="relative flex flex-col justify-center border-white/[0.08] py-12 lg:border-r lg:py-20 lg:pr-12">
-          <CornerTicks />
+        <div className="relative flex flex-col justify-start border-white/[0.08] py-12 lg:border-r lg:py-16 lg:pr-12">
           <RevealItem><Label>La plateforme mondiale du mouvement humain</Label></RevealItem>
           <RevealItem as="h1" className="mt-7 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[54px] lg:text-[64px]">
             Formez-vous<br />auprès des<br />meilleurs<span className="text-wahm-orange">.</span>
@@ -22,7 +21,7 @@ export default function HomeHero() {
           </RevealItem>
           <RevealItem as="div" className="mt-9 flex flex-wrap items-center gap-3">
             <Action to="#marketplace" variant="filled" arrow>Découvrir les formations</Action>
-            <Action to="#communaute" variant="outline">Rejoindre la communauté</Action>
+            <Action to="#communaute" variant="outline">Rejoindre la communauté WAHM</Action>
           </RevealItem>
           <RevealItem as="div" className="mt-10 flex flex-wrap gap-2 border-t border-white/[0.08] pt-7">
             {CHIPS.map((c) => (
@@ -32,9 +31,9 @@ export default function HomeHero() {
         </div>
 
         {/* Colonne image encadrée */}
-        <RevealItem as="div" className="relative flex items-stretch py-12 lg:py-20 lg:pl-12">
+        <RevealItem as="div" className="relative flex items-stretch pb-12 lg:pb-0 lg:pl-0 lg:pt-8">
           <Framed className="relative w-full">
-            <div className="relative h-[320px] overflow-hidden sm:h-[420px] lg:h-full lg:min-h-[440px]">
+            <div className="relative h-[380px] overflow-hidden sm:h-[480px] lg:h-full lg:min-h-[580px]">
               <img src="/assets/hero-home.jpg" alt="" aria-hidden="true" className="h-full w-full object-cover object-[60%_center] grayscale-[35%]" />
               <span className="pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg,rgba(10,26,47,0.15),rgba(10,26,47,0.55))' }} />
               <span aria-hidden="true" className="pointer-events-none absolute left-3 top-3 h-8 w-8 border-l-2 border-t-2 border-wahm-goldLight" />

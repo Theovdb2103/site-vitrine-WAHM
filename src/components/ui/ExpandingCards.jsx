@@ -54,7 +54,7 @@ export function ExpandingCards({ items, defaultActiveIndex = 0, className = '' }
             <h3 className="hidden origin-left translate-y-[-4px] rotate-90 whitespace-nowrap font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 transition-opacity duration-300 ease-out md:block group-data-[active=true]:opacity-0">
               {item.title}
             </h3>
-            <div className="text-wahm-orange opacity-0 transition-all delay-75 duration-300 ease-out group-data-[active=true]:opacity-100">
+            <div className="text-wahm-goldLight opacity-0 transition-all delay-75 duration-300 ease-out group-data-[active=true]:opacity-100">
               {item.icon}
             </div>
             <h3 className="font-display text-[20px] font-extrabold uppercase leading-[1.1] tracking-[-0.005em] text-white opacity-0 transition-all delay-150 duration-300 ease-out group-data-[active=true]:opacity-100">

@@ -24,6 +24,18 @@ export function WorldMap({ dots = [], lineColor = '#FF7B2C', animationDuration =
   const pauseTime = 2
   const fullCycleDuration = totalAnimationTime + pauseTime
 
+  // Points uniques (origine + destinations) avec leur libellé de ville.
+  const seen = new Set()
+  const points = []
+  dots.forEach((dot) => {
+    ;[{ p: dot.start, origin: true }, { p: dot.end, origin: false }].forEach(({ p, origin }) => {
+      const key = `${p.lat},${p.lng}`
+      if (seen.has(key)) return
+      seen.add(key)
+      points.push({ ...projectPoint(p.lat, p.lng), label: p.label, origin })
+    })
+  })
+
   return (
     <div className="relative aspect-[2/1] w-full overflow-hidden">
       <img
@@ -77,17 +89,32 @@ export function WorldMap({ dots = [], lineColor = '#FF7B2C', animationDuration =
           )
         })}
 
-        {dots.map((dot, i) => {
-          const pts = [projectPoint(dot.start.lat, dot.start.lng), projectPoint(dot.end.lat, dot.end.lng)]
-          return pts.map((p, j) => (
-            <g key={`pt-${i}-${j}`}>
-              <circle cx={p.x} cy={p.y} r="3" fill={lineColor} />
-              <circle cx={p.x} cy={p.y} r="3" fill={lineColor} opacity="0.5">
-                <animate attributeName="r" from="3" to="12" dur="2s" begin={`${j * 0.5}s`} repeatCount="indefinite" />
-                <animate attributeName="opacity" from="0.6" to="0" dur="2s" begin={`${j * 0.5}s`} repeatCount="indefinite" />
+        {points.map((p, i) => {
+          const r = p.origin ? 4 : 3
+          const labelRight = p.x < 660
+          return (
+            <g key={`pt-${i}`}>
+              <circle cx={p.x} cy={p.y} r={r} fill={lineColor} />
+              <circle cx={p.x} cy={p.y} r={r} fill={lineColor} opacity="0.5">
+                <animate attributeName="r" from={r} to={p.origin ? 18 : 12} dur="2.4s" begin={`${(i % 3) * 0.4}s`} repeatCount="indefinite" />
+                <animate attributeName="opacity" from="0.6" to="0" dur="2.4s" begin={`${(i % 3) * 0.4}s`} repeatCount="indefinite" />
               </circle>
+              {p.label && (
+                <text
+                  x={labelRight ? p.x + 9 : p.x - 9}
+                  y={p.y - 8}
+                  textAnchor={labelRight ? 'start' : 'end'}
+                  fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
+                  fontSize={p.origin ? 11 : 9.5}
+                  fontWeight={p.origin ? 700 : 500}
+                  letterSpacing="0.6"
+                  fill={p.origin ? '#FF7B2C' : '#E9B14A'}
+                >
+                  {p.label.toUpperCase()}
+                </text>
+              )}
             </g>
-          ))
+          )
         })}
       </svg>
     </div>

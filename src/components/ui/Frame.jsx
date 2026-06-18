@@ -152,12 +152,11 @@ export function Action({ to, onClick, type = 'button', variant = 'filled', size 
   )
   const inner = (
     <>
-      <span className={`inline-flex h-full translate-y-0 items-center justify-center gap-2 whitespace-nowrap transition duration-500 group-hover:-translate-y-[150%] ${s.px} ${v.rest}`}>
+      <span className={`inline-flex h-full w-full translate-y-0 items-center justify-center gap-2 whitespace-nowrap transition duration-500 group-hover:-translate-y-[150%] ${s.px} ${v.rest}`}>
         {content}
       </span>
-      <span aria-hidden="true" className={`absolute inline-flex h-full w-full translate-y-[100%] items-center justify-center gap-2 whitespace-nowrap transition duration-500 group-hover:translate-y-0 ${v.revText}`}>
-        <span className={`absolute h-full w-full translate-y-full skew-y-12 scale-y-0 transition duration-500 group-hover:translate-y-0 group-hover:scale-[3] ${v.revBg}`} />
-        <span className="z-10 inline-flex items-center gap-2">{content}</span>
+      <span aria-hidden="true" className={`absolute inset-0 inline-flex h-full w-full translate-y-[105%] items-center justify-center gap-2 whitespace-nowrap transition duration-500 ease-out group-hover:translate-y-0 ${s.px} ${v.revBg} ${v.revText}`}>
+        {content}
       </span>
     </>
   )
@@ -200,6 +199,18 @@ export function Motif({ className = '', color = 'rgba(10,26,47,0.22)', cols = 7,
     >
       {cells.map((_, i) => (
         <ChevronRight key={i} className="w-full" strokeWidth={3.25} style={{ height: size }} />
+      ))}
+    </div>
+  )
+}
+
+// Séparateur décoratif : rangée de chevrons WAHM centrée, pour rythmer les
+// transitions entre sections (remplace les fins traits horizontaux).
+export function ChevronDivider({ className = '', count = 7, color = 'rgba(255,123,44,0.5)', size = 15 }) {
+  return (
+    <div aria-hidden="true" className={`flex items-center justify-center bg-wahm-navy ${className}`} style={{ color, gap: 6 }}>
+      {Array.from({ length: count }).map((_, i) => (
+        <ChevronRight key={i} strokeWidth={3.25} style={{ height: size, width: size }} />
       ))}
     </div>
   )
