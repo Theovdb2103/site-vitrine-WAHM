@@ -82,9 +82,9 @@ export default function Contact() {
       {/* ===== HERO ===== */}
       <Reveal as="section" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
         <div className={`${WRAP} relative py-12 md:py-16`}>
-          <Motif color="rgba(255,123,44,0.9)" cols={6} rows={5} className="pointer-events-none absolute right-5 top-1/2 hidden w-[210px] -translate-y-1/2 md:right-10 lg:grid" />
+          <Motif color="#D4A018" cols={6} rows={5} className="pointer-events-none absolute right-5 top-1/2 hidden w-[210px] -translate-y-1/2 md:right-10 lg:grid" />
           <Label>Contact</Label>
-          <h1 className="mt-7 max-w-[620px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[54px] lg:text-[62px]">
+          <h1 className="mt-7 max-w-[620px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[54px] lg:text-[58px]">
             Parlons de votre projet<span className="text-wahm-orange">.</span>
           </h1>
           <p className="mt-6 max-w-[560px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">
@@ -94,7 +94,7 @@ export default function Contact() {
       </Reveal>
 
       {/* ===== CONTACT (info + formulaire) ===== */}
-      <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={`${WRAP} grid grid-cols-1 items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14`}>
 
           {/* ----- Colonne info / coordonnées ----- */}

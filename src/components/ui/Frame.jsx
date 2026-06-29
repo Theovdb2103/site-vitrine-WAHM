@@ -1,7 +1,32 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
-import { ArrowRight, ChevronRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+
+// Glyphe chevron « ❯ » signature WAHM : caractère Unicode U+276F (HEAVY RIGHT-POINTING
+// ANGLE QUOTATION MARK ORNAMENT), exactement la forme voulue. `size` pilote la taille
+// (font-size en px), `currentColor` la teinte.
+function ChevronGlyph({ className = '', size = 20, weight = 0.07, style }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={className}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        lineHeight: 1,
+        fontSize: size,
+        fontWeight: 900,
+        // Contour assorti à la teinte → épaissit le trait du glyphe, proportionnel à la taille.
+        WebkitTextStroke: `${weight}em currentColor`,
+        ...style,
+      }}
+    >
+      ❯
+    </span>
+  )
+}
 
 // === Vocabulaire visuel « technical / severe » (inspiration sport editorial) ===
 // Base sombre plate, fines bordures formant une grille, croix de repère « + » aux
@@ -99,10 +124,9 @@ export function GridPattern({ variant = 'light', className = '' }) {
 // Libellé technique : petit carré orange + texte tracé majuscule (mono).
 export function Label({ children, className = '' }) {
   return (
-    <div className={`flex items-center gap-[10px] font-mono text-[11px] uppercase tracking-[0.22em] text-wahm-goldLight ${className}`}>
-      <span aria-hidden="true" className="h-[7px] w-[7px] shrink-0 bg-wahm-orange" />
-      <span className="min-w-0">{children}</span>
-    </div>
+    <span className={`inline-flex w-fit items-center bg-wahm-gold/15 px-3.5 py-1.5 font-grotesk text-[11.5px] font-semibold uppercase tracking-[0.14em] text-wahm-gold ${className}`}>
+      {children}
+    </span>
   )
 }
 
@@ -185,20 +209,28 @@ export function Shot({ src, alt = '', className = '', imgClassName = '', overlay
   )
 }
 
-// Motif signature WAHM : grille de chevrons « › » (avance / mouvement / progression)
-// répétés. Remplace la grille de croix. Glyphe assuré par l'icône lucide ChevronRight
-// pour un rendu net et cohérent avec le reste de l'iconographie. `color` pilote la
-// teinte (currentColor → stroke). cols/rows ajustent la densité.
-export function Motif({ className = '', color = 'rgba(10,26,47,0.22)', cols = 7, rows = 8, size = 26, gap = 14 }) {
+// Motif signature WAHM : grille de chevrons « ❯ » (avance / mouvement / progression)
+// répétés. Glyphe assuré par ChevronGlyph. `color` pilote la teinte. cols/rows ajustent
+// la densité. Deux modes :
+//   • fill (défaut) : colonnes en 1fr → la grille remplit la largeur du conteneur
+//     (usage décoratif en fond, positionné en absolu avec une largeur fixe).
+//   • fill=false : colonnes de largeur fixe = size → grille parfaitement carrée et
+//     régulière (espacement égal H/V), centrée. Pour les blocs CTA façon « damier ».
+export function Motif({ className = '', color = 'rgba(10,26,47,0.22)', cols = 7, rows = 8, size = 40, gap = 8, fill = true }) {
   const cells = Array.from({ length: cols * rows })
   return (
     <div
       aria-hidden="true"
       className={`grid ${className}`}
-      style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`, color, gap }}
+      style={{
+        gridTemplateColumns: fill ? `repeat(${cols}, minmax(0, 1fr))` : `repeat(${cols}, ${size}px)`,
+        justifyContent: fill ? undefined : 'center',
+        color,
+        gap,
+      }}
     >
       {cells.map((_, i) => (
-        <ChevronRight key={i} className="w-full" strokeWidth={3.25} style={{ height: size }} />
+        <ChevronGlyph key={i} className="w-full" size={size} />
       ))}
     </div>
   )
@@ -206,11 +238,11 @@ export function Motif({ className = '', color = 'rgba(10,26,47,0.22)', cols = 7,
 
 // Séparateur décoratif : rangée de chevrons WAHM centrée, pour rythmer les
 // transitions entre sections (remplace les fins traits horizontaux).
-export function ChevronDivider({ className = '', count = 7, color = 'rgba(255,123,44,0.5)', size = 15 }) {
+export function ChevronDivider({ className = '', count = 7, color = '#D4A018', size = 26 }) {
   return (
-    <div aria-hidden="true" className={`flex items-center justify-center bg-wahm-navy ${className}`} style={{ color, gap: 6 }}>
+    <div aria-hidden="true" className={`flex items-center justify-center bg-wahm-navy ${className}`} style={{ color, gap: 7 }}>
       {Array.from({ length: count }).map((_, i) => (
-        <ChevronRight key={i} strokeWidth={3.25} style={{ height: size, width: size }} />
+        <ChevronGlyph key={i} size={size} />
       ))}
     </div>
   )

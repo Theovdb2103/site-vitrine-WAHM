@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { Plus } from 'lucide-react'
 import Page from '../components/Page'
 import Reveal from '../components/Reveal'
-import { Label, Action, CornerTicks, Motif } from '../components/ui/Frame'
+import { Label, Action, Motif } from '../components/ui/Frame'
 import { getRouteConfig } from '../lib/site'
 
 const FAQ_ITEMS = [
@@ -84,34 +83,37 @@ export default function FAQ() {
   return (
     <Page title={meta.title} description={meta.description} path="/faq">
 
-      {/* ===== HERO ===== */}
-      <Reveal as="section" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
-        <div className={`${WRAP} relative py-12 md:py-20`}>
-          <Motif color="rgba(255,123,44,0.9)" cols={6} rows={5} className="pointer-events-none absolute right-5 top-1/2 hidden w-[210px] -translate-y-1/2 md:right-10 lg:grid" />
+      {/* ===== HERO — image plein écran + texte par-dessus ===== */}
+      <section className="relative isolate flex min-h-[580px] items-end overflow-hidden bg-wahm-navy md:min-h-[720px]">
+        <img
+          src="https://images.unsplash.com/photo-1604233098531-90b71b1b17a6?w=2200&h=1240&fit=crop&q=80&auto=format"
+          alt="L'expertise et l'engagement, au cœur de WAHM"
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-center grayscale-[15%]"
+        />
+        {/* Voiles navy : assombrit la gauche (lisibilité du texte) + le bas */}
+        <span aria-hidden="true" className="absolute inset-0 -z-10" style={{ background: 'linear-gradient(90deg, rgba(6,18,31,0.92) 0%, rgba(8,20,33,0.72) 48%, rgba(10,26,47,0.35) 100%)' }} />
+        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-2/3" style={{ background: 'linear-gradient(180deg, rgba(6,18,31,0) 0%, rgba(6,18,31,0.85) 100%)' }} />
+        <div className={`${WRAP} relative w-full pb-14 pt-[150px] md:pb-20 md:pt-[200px]`}>
           <Label>FAQ Formateurs</Label>
-          <h1 className="mt-7 max-w-[640px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[54px] lg:text-[60px]">
-            Toutes les réponses<br />pour devenir formateur<span className="text-wahm-orange">.</span>
+          <h1 className="mt-7 max-w-[1000px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[54px] lg:text-[58px]">
+            Toutes les réponses pour devenir formateur<span className="text-wahm-orange">.</span>
           </h1>
-          <p className="mt-6 max-w-[560px] font-sans text-[15.5px] leading-[1.65] text-[#aebccd]">
+          <p className="mt-6 max-w-[720px] font-sans text-[16px] leading-[1.7] text-[#cdd8e4]">
             Candidature, sélection, langues, rémunération, délais… Tout ce que vous devez savoir avant de rejoindre WAHM.
           </p>
         </div>
-      </Reveal>
+      </section>
 
       {/* ===== ACCORDÉON ===== */}
-      <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
-          <ul className="m-0 list-none border-t border-white/[0.08] p-0">
+          <ul className="m-0 mx-auto max-w-[940px] list-none border-t border-white/[0.1] p-0">
             {FAQ_ITEMS.map((item, i) => {
               const isOpen = openIndex === i
               const panelId = `faq-panel-${i}`
               const btnId = `faq-button-${i}`
               return (
-                <li
-                  key={item.question}
-                  className={`relative ${isOpen ? 'bg-wahm-navyDark' : ''}`}
-                >
-                  {isOpen && <CornerTicks className="text-wahm-orange/70" />}
+                <li key={item.question} className="group border-b border-white/[0.1]">
                   <h3 className="m-0">
                     <button
                       type="button"
@@ -119,35 +121,31 @@ export default function FAQ() {
                       aria-expanded={isOpen}
                       aria-controls={panelId}
                       onClick={() => toggle(i)}
-                      className="flex w-full items-start justify-between gap-5 px-1 py-6 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight md:gap-8 md:py-7"
+                      className="flex w-full items-center justify-between gap-6 py-7 text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-wahm-goldLight/50 md:gap-10 md:py-8"
                     >
-                      <span className="flex items-start gap-4 md:gap-6">
-                        <span className="mt-[3px] shrink-0 font-mono text-[12px] text-wahm-goldLight">
+                      <span className="flex items-baseline gap-5 md:gap-7">
+                        <span className={`shrink-0 font-mono text-[12px] tracking-[0.12em] tabular-nums transition-colors duration-300 ${isOpen ? 'text-wahm-goldLight' : 'text-wahm-goldLight/55'}`}>
                           {String(i + 1).padStart(2, '0')}
                         </span>
-                        <span className="font-display text-[16px] font-bold uppercase leading-[1.25] tracking-[-0.005em] text-white md:text-[18px]">
+                        <span className={`font-display text-[16px] font-bold uppercase leading-[1.3] tracking-[-0.005em] transition-colors duration-300 md:text-[18px] ${isOpen ? 'text-white' : 'text-[#dbe4ee] group-hover:text-white'}`}>
                           {item.question}
                         </span>
                       </span>
-                      <Plus
-                        className={`mt-[2px] h-6 w-6 shrink-0 transition-transform duration-300 ${
-                          isOpen ? 'rotate-45 text-wahm-goldLight' : 'text-[#7f93a8]'
-                        }`}
-                        strokeWidth={2.4}
-                        aria-hidden="true"
-                      />
+                      {/* Toggle minimaliste : + qui se mue en − dans un cercle fin */}
+                      <span className={`relative flex h-9 w-9 shrink-0 items-center justify-center border transition-colors duration-300 ${isOpen ? 'border-wahm-orange/70 text-wahm-orange' : 'border-white/15 text-[#8499ab] group-hover:border-white/35 group-hover:text-white'}`}>
+                        <span aria-hidden="true" className="absolute h-px w-[13px] bg-current" />
+                        <span aria-hidden="true" className={`absolute h-[13px] w-px bg-current transition-transform duration-300 ${isOpen ? 'scale-y-0' : 'scale-y-100'}`} />
+                      </span>
                     </button>
                   </h3>
                   <div
                     id={panelId}
                     role="region"
                     aria-labelledby={btnId}
-                    className={`grid transition-all duration-300 ease-in-out ${
-                      isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                    }`}
+                    className={`grid transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                   >
                     <div className="overflow-hidden">
-                      <p className="m-0 whitespace-pre-line pb-7 pl-[36px] pr-1 font-sans text-[15px] leading-[1.7] text-[#9fb1c6] md:pl-[52px]">
+                      <p className="m-0 max-w-[760px] whitespace-pre-line pb-8 pl-[33px] pr-1 font-sans text-[15px] leading-[1.75] text-[#9fb1c6] md:pl-[52px]">
                         {item.answer}
                       </p>
                     </div>
@@ -160,7 +158,7 @@ export default function FAQ() {
       </Reveal>
 
       {/* ===== CTA FINAL (bloc accent) ===== */}
-      <section className={`${SECTION} py-16 md:py-[88px]`}>
+      <section className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <div className="relative grid grid-cols-1 overflow-hidden bg-wahm-orange md:grid-cols-[1.4fr_1fr]">
             <div className="px-7 py-12 md:px-12 md:py-16">
@@ -177,7 +175,7 @@ export default function FAQ() {
               </div>
             </div>
             <div className="relative hidden items-center justify-center border-l border-wahm-navy/15 p-10 md:flex">
-              <Motif color="#0A1A2F" />
+              <Motif color="#0A1A2F" fill={false} cols={8} rows={8} size={40} gap={18} />
             </div>
           </div>
         </div>

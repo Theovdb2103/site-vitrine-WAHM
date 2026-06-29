@@ -19,6 +19,7 @@ export default {
       fontFamily: {
         display: ['Montserrat', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        grotesk: ['General Sans', 'Montserrat', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'orange-glow': '0 16px 34px -12px rgba(255,123,44,.65)',

@@ -8,7 +8,7 @@ import { GhostNumber } from '../components/ui/Kinetic'
 import { Label, SectionHead, Action, Framed, CornerTicks, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
 import { ExpandingCards } from '../components/ui/ExpandingCards'
 import SectionOutro from '../components/SectionOutro'
-import { WorldMap } from '../components/ui/WorldMap'
+import Globe from '../components/Globe'
 import { getRouteConfig } from '../lib/site'
 
 const POURQUOI_CARDS = [
@@ -45,24 +45,14 @@ const PLATEFORME = [
   { id: '247', tag: 'Disponibilité', title: 'Une accessibilité 24/7', desc: 'Apprenez quand vous voulez, où vous voulez.', img: '/assets/media/plat-247.webp', span: 'lg:col-span-2', h: 'min-h-[240px]' },
 ]
 
-// Arcs du réseau mondial (Paris → grandes villes) pour la carte communauté.
-const PARIS = { lat: 48.8566, lng: 2.3522, label: 'Paris' }
-const COMMUNAUTE_DOTS = [
-  { start: PARIS, end: { lat: 40.7128, lng: -74.006, label: 'New York' } },
-  { start: PARIS, end: { lat: -23.5505, lng: -46.6333, label: 'São Paulo' } },
-  { start: PARIS, end: { lat: 35.6762, lng: 139.6503, label: 'Tokyo' } },
-  { start: PARIS, end: { lat: -33.8688, lng: 151.2093, label: 'Sydney' } },
-  { start: PARIS, end: { lat: -1.2921, lng: 36.8219, label: 'Nairobi' } },
-  { start: PARIS, end: { lat: 25.2048, lng: 55.2708, label: 'Dubaï' } },
-]
-
 // Frise « trajectoire » de la communauté (titre court + détail).
+// Avantages membres — contenu de référence du site, verbatim.
 const COMMUNAUTE = [
-  { title: 'Réseau international', desc: 'Coachs, thérapeutes, préparateurs physiques et instructeurs.' },
-  { title: 'Webinaires exclusifs', desc: 'Des sessions privées avec les meilleurs experts.' },
-  { title: 'Réductions', desc: 'Des tarifs avantageux sur les formations.' },
-  { title: "Groupes d'échange", desc: 'Des espaces privés dédiés entre membres.' },
-  { title: 'Veille scientifique', desc: 'Une mise à jour continue des connaissances.' },
+  'Un réseau international de coachs, thérapeutes, préparateurs physiques et instructeurs',
+  'Des webinaires exclusifs avec les meilleurs experts',
+  'Des réductions sur des formations',
+  "Des groupes d'échange privés",
+  'Une veille scientifique continue',
 ]
 
 const STATS = [
@@ -176,7 +166,7 @@ export default function Accueil() {
       <HomeHero />
 
       {/* ===== STATS ===== */}
-      <section className={SECTION}>
+      <section className={`${SECTION} pb-20 md:pb-[120px]`}>
         <div className={WRAP}>
           <RevealStagger className="grid grid-cols-2 border-l border-t border-white/[0.08] lg:grid-cols-4" stagger={0.12}>
             {STATS.map((s, i) => (
@@ -192,7 +182,7 @@ export default function Accueil() {
       </section>
 
       {/* ===== POURQUOI WAHM (grands numéros) ===== */}
-      <Reveal as="section" id="pourquoi" className={`scroll-mt-[80px] ${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" id="pourquoi" className={`scroll-mt-[80px] ${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead label="Pourquoi WAHM ?" action={<Action to="#marketplace" variant="pill" size="sm" arrow>Découvrir</Action>}>
             L'excellence mondiale, accessible à tous
@@ -201,17 +191,14 @@ export default function Accueil() {
             Chez World Academy of Human Movement, nous sélectionnons uniquement les formations qui ont déjà transformé des milliers de professionnels à travers le monde. WAHM n'est pas une marketplace comme les autres : c'est le point de convergence international entre :
           </p>
           <ExpandingCards items={POURQUOI_CARDS} className="mt-12" />
-          <p className="mt-10 max-w-[760px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">
-            WAHM vous ouvre les portes du savoir mondial, structuré, vérifié et pensé pour votre évolution professionnelle.
-          </p>
-          <SectionOutro>La connaissance n'a plus de frontières. Votre expertise non plus.</SectionOutro>
+          <SectionOutro>WAHM vous ouvre les portes du savoir mondial, structuré, vérifié et pensé pour votre évolution professionnelle.</SectionOutro>
         </div>
       </Reveal>
 
       <ChevronDivider className="py-2" />
 
       {/* ===== NOTRE PROMESSE (spotlight auto-rotatif) ===== */}
-      <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead label="Notre promesse">Vous former au meilleur, sans frontières</SectionHead>
           <p className="mt-6 max-w-[560px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">Nous nous engageons à proposer des formations :</p>
@@ -223,7 +210,7 @@ export default function Accueil() {
       </Reveal>
 
       {/* ===== CATEGORIES ===== */}
-      <Reveal as="section" id="categories" className={`scroll-mt-[80px] ${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" id="categories" className={`scroll-mt-[80px] ${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead
             label="Trouvez votre formation idéale"
@@ -245,10 +232,10 @@ export default function Accueil() {
                   {/* Numéro */}
                   <span className="absolute right-4 top-4 font-mono text-[12px] font-semibold tracking-[0.1em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
                   {/* Pastille icône, chevauchant le bas du visuel */}
-                  <span className="absolute -bottom-6 left-6 flex h-12 w-12 items-center justify-center border border-white/15 bg-wahm-navy text-wahm-goldLight transition-colors duration-200 group-hover:border-wahm-orange"><cat.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" /></span>
+                  <span className="absolute -bottom-6 left-6 flex h-12 w-12 items-center justify-center border border-white/15 bg-wahm-navy text-wahm-goldLight"><cat.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" /></span>
                 </div>
                 <div className="p-7 pt-10 md:px-8 md:pb-8">
-                  <h3 className="font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white">{cat.title}</h3>
+                  <h3 className="font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[20px]">{cat.title}</h3>
                   <p className="mt-3 font-sans text-[14px] leading-[1.6] text-[#9fb1c6]">{cat.desc}</p>
                   <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-wahm-goldLight">Explorer <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
                 </div>
@@ -260,7 +247,7 @@ export default function Accueil() {
       </Reveal>
 
       {/* ===== BANNIERE CITATION (photo plein cadre + fondu navy) ===== */}
-      <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <Framed ticks={false} className="relative bg-wahm-navyDark">
             {/* Photo de fond, déborde à droite, en N&B */}
@@ -279,7 +266,7 @@ export default function Accueil() {
             <div className="relative z-10 max-w-[620px] px-6 py-16 md:px-14 md:py-28">
               <Label>Notre conviction</Label>
               <p className="mt-6 font-display text-[30px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[42px] md:text-[52px]">
-                Ne vous formez plus seul.<br />Avancez avec les meilleurs<span className="text-wahm-orange">.</span>
+                WAHM n'est pas une<br />marketplace comme les autres<span className="text-wahm-orange">.</span>
               </p>
               <div className="mt-9">
                 <Action to="#marketplace" variant="filled" arrow>Explorer les formations</Action>
@@ -293,21 +280,21 @@ export default function Accueil() {
       </Reveal>
 
       {/* ===== PLATEFORME INTERNATIONALE ===== */}
-      <Reveal as="section" id="plateforme" className={`scroll-mt-[80px] ${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" id="plateforme" className={`scroll-mt-[80px] ${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <Label>Pensée pour l'international</Label>
-          <h2 className="mt-5 max-w-[760px] font-display text-[28px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[38px]">Apprenez dans votre langue. À votre rythme. Partout<span className="text-wahm-orange">.</span></h2>
+          <h2 className="mt-5 max-w-[760px] font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-white sm:text-[36px] md:text-[44px]">Apprenez dans votre langue. À votre rythme. Partout<span className="text-wahm-orange">.</span></h2>
 
           {/* Bento : tuiles asymétriques, images plein cadre */}
           <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-6">
             {PLATEFORME.map((f, i) => (
-              <div key={f.id} className={`group relative overflow-hidden border border-white/[0.1] bg-wahm-navyDark transition-colors duration-300 hover:border-wahm-orange/40 ${f.span} ${f.h}`}>
+              <div key={f.id} className={`group relative overflow-hidden border border-white/[0.1] bg-wahm-navyDark ${f.span} ${f.h}`}>
                 <img src={f.img} alt={f.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale-[20%] transition-transform duration-700 ease-out group-hover:scale-105" />
                 <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,26,47,0.96), rgba(10,26,47,0.55) 48%, rgba(10,26,47,0.12))' }} />
                 <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-hover:scale-x-100" />
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
                   <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')} · {f.tag}</span>
-                  <h3 className="mt-2 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[21px]">{f.title}</h3>
+                  <h3 className="mt-2 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[20px]">{f.title}</h3>
                   <p className="mt-1.5 max-w-[440px] font-sans text-[13.5px] leading-[1.5] text-[#cdd8e4]">{f.desc}</p>
                 </div>
               </div>
@@ -321,37 +308,38 @@ export default function Accueil() {
       <ChevronDivider className="py-2" />
 
       {/* ===== COMMUNAUTE (frise « trajectoire ») ===== */}
-      <Reveal as="section" id="communaute" className={`scroll-mt-[80px] ${SECTION} py-16 md:py-[88px]`}>
-        <div className={`${WRAP} max-w-[760px]`}>
-          <Label>Communauté WAHM</Label>
-          <h2 className="mt-5 font-display text-[28px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[38px]">Rejoignez la seule communauté mondiale dédiée au mouvement humain<span className="text-wahm-orange">.</span></h2>
-          <p className="mt-6 font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">En devenant membre, vous accédez à :</p>
-        </div>
-
-        {/* Carte du monde : le réseau international WAHM */}
-        <div className={`${WRAP} mt-10`}>
-          <WorldMap dots={COMMUNAUTE_DOTS} />
-        </div>
-
-        {/* Bénéfices + CTA */}
-        <div className={`${WRAP} mt-12`}>
-          <RevealStagger className="grid grid-cols-1 border-l border-t border-white/[0.08] sm:grid-cols-2 lg:grid-cols-5" stagger={0.09}>
-            {COMMUNAUTE.map((item, i) => (
-              <RevealItem as="div" key={item.title} className="group relative border-b border-r border-white/[0.08] p-6 transition-colors duration-200 hover:bg-wahm-navyDark md:p-7">
-                <div aria-hidden="true" className="font-display text-[56px] font-black leading-[0.82] tracking-[-0.02em] text-wahm-goldLight md:text-[72px] lg:text-[80px]">{String(i + 1).padStart(2, '0')}</div>
-                <h3 className="mt-3 font-display text-[14.5px] font-extrabold uppercase leading-[1.18] tracking-[-0.005em] text-white">{item.title}<span className="text-wahm-orange">.</span></h3>
-                <p className="mt-2 font-sans text-[13.5px] leading-[1.5] text-[#9fb1c6]">{item.desc}</p>
-              </RevealItem>
-            ))}
-          </RevealStagger>
-          <div className="mt-12">
-            <Action to="#marketplace" variant="filled" arrow>Rejoindre la communauté WAHM</Action>
+      <Reveal as="section" id="communaute" className={`scroll-mt-[80px] ${SECTION} py-20 md:py-[120px]`}>
+        {/* Panneau arrondi · texte à gauche, globe qui déborde du coin (cf. Featured_05) */}
+        <div className={WRAP}>
+          <div className="relative mx-auto w-full overflow-hidden border border-white/[0.08] bg-wahm-navyDark px-6 py-16 shadow-md md:px-16 md:py-20">
+            <div className="flex flex-col-reverse items-center justify-between gap-10 md:flex-row">
+              <div className="z-10 max-w-xl text-left">
+                <Label>Communauté WAHM</Label>
+                <h2 className="mt-5 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-white sm:text-[36px] md:text-[44px]">Rejoignez la seule communauté mondiale dédiée au mouvement humain<span className="text-wahm-orange">.</span></h2>
+                <p className="mt-6 font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">En devenant membre, vous accédez à :</p>
+                <ul className="mt-5 space-y-3">
+                  {COMMUNAUTE.map((item) => (
+                    <li key={item} className="flex items-start gap-3 font-sans text-[15px] leading-[1.6] text-[#cdd8e4]">
+                      <span aria-hidden="true" className="mt-[9px] h-[6px] w-[6px] shrink-0 bg-wahm-orange" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 font-sans text-[15.5px] font-semibold leading-[1.6] text-wahm-goldLight">Ne vous formez plus seul. Avancez avec les meilleurs.</p>
+                <div className="mt-8">
+                  <Action to="#marketplace" variant="filled" arrow>Rejoindre la communauté WAHM</Action>
+                </div>
+              </div>
+              <div className="relative h-[180px] w-full max-w-xl">
+                <Globe className="absolute -bottom-20 -right-40 scale-150" />
+              </div>
+            </div>
           </div>
         </div>
       </Reveal>
 
       {/* ===== CTA FINAL (bloc accent) ===== */}
-      <section className="bg-wahm-navy py-16 md:py-[88px]">
+      <section className="bg-wahm-navy py-20 md:py-[120px]">
         <div className={WRAP}>
           <Reveal className="relative grid grid-cols-1 overflow-hidden bg-wahm-orange md:grid-cols-[1.4fr_1fr]">
             <div className="px-7 py-12 md:px-12 md:py-16">
@@ -366,7 +354,7 @@ export default function Accueil() {
               </div>
             </div>
             <div className="relative hidden items-center justify-center border-l border-wahm-navy/15 p-10 md:flex">
-              <Motif color="#0A1A2F" />
+              <Motif color="#0A1A2F" fill={false} cols={8} rows={8} size={40} gap={18} />
             </div>
           </Reveal>
         </div>

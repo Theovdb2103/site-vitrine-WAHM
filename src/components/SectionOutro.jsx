@@ -11,12 +11,12 @@ export default function SectionOutro({ children, className = '' }) {
 
   return (
     <div ref={ref} className={`mt-12 ${className}`}>
-      <span aria-hidden="true" className="mb-5 block h-[2px] w-10 bg-wahm-orange" />
+      <span aria-hidden="true" className="mb-3 block h-px w-7 bg-wahm-orange/70" />
       <TextScramble
         as="p"
         trigger={inView}
         speed={0.028}
-        className="m-0 inline-block max-w-[820px] bg-gradient-to-r from-white via-wahm-goldLight to-wahm-gold bg-clip-text font-display text-[20px] font-bold uppercase leading-[1.22] tracking-[-0.01em] text-transparent sm:text-[23px] md:text-[27px]"
+        className="m-0 inline-block max-w-[760px] font-display text-[11px] font-semibold uppercase leading-[1.4] tracking-[0.01em] text-[#9fb1c6] sm:text-[11.5px] md:text-[12.5px]"
       >
         {children}
       </TextScramble>

@@ -58,9 +58,9 @@ export default function MentionsLegales() {
       {/* ===== HERO ===== */}
       <Reveal as="section" className={`${SECTION} pb-14 pt-[120px] md:pt-[150px]`}>
         <div className={`${WRAP} relative`}>
-          <Motif color="rgba(255,123,44,0.9)" cols={5} rows={4} className="pointer-events-none absolute right-5 top-1/2 hidden w-[180px] -translate-y-1/2 md:right-10 lg:grid" />
+          <Motif color="#D4A018" cols={5} rows={4} className="pointer-events-none absolute right-5 top-1/2 hidden w-[180px] -translate-y-1/2 md:right-10 lg:grid" />
           <Label>Informations légales</Label>
-          <h1 className="m-0 mt-5 font-display text-[32px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[40px] md:text-[48px]">
+          <h1 className="m-0 mt-5 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[54px] lg:text-[58px]">
             Mentions légales<span className="text-wahm-orange">.</span>
           </h1>
           <p className="mt-5 max-w-[680px] font-sans text-[15px] italic leading-relaxed text-[#7f93a8]">
@@ -70,7 +70,7 @@ export default function MentionsLegales() {
       </Reveal>
 
       {/* ===== CORPS ===== */}
-      <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={`${WRAP} grid grid-cols-1 items-start gap-12 lg:grid-cols-[280px_1fr] lg:gap-16`}>
 
           {/* SOMMAIRE */}

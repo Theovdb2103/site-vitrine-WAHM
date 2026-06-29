@@ -1,7 +1,6 @@
 import { Label, Action, Framed } from '../ui/Frame'
 import { RevealStagger, RevealItem } from '../Reveal'
 
-const CHIPS = ['Coaching sportif', 'Santé & Rééducation', 'Préparation physique', 'Yoga & Pilates', 'Neurotraining', 'Mental Coaching']
 
 export default function HomeHero() {
   return (
@@ -10,23 +9,18 @@ export default function HomeHero() {
         {/* Colonne texte */}
         <div className="relative flex flex-col justify-start border-white/[0.08] py-12 lg:border-r lg:py-16 lg:pr-12">
           <RevealItem><Label>La plateforme mondiale du mouvement humain</Label></RevealItem>
-          <RevealItem as="h1" className="mt-7 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[54px] lg:text-[64px]">
+          <RevealItem as="h1" className="mt-7 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[54px] lg:text-[58px]">
             Formez-vous<br />auprès des<br />meilleurs<span className="text-wahm-orange">.</span>
           </RevealItem>
           <RevealItem as="p" className="mt-6 max-w-[440px] font-display text-[17px] font-semibold uppercase tracking-[0.01em] text-wahm-goldLight sm:text-[19px]">
             Depuis n'importe où. Dans la langue de votre choix.
           </RevealItem>
-          <RevealItem as="p" className="mt-6 max-w-[470px] font-sans text-[15.5px] leading-[1.65] text-[#aebccd]">
+          <RevealItem as="p" className="mt-6 max-w-[470px] font-sans text-[16px] leading-[1.7] text-[#aebccd]">
             Accédez aux formations les plus innovantes du monde en coaching sportif, santé, rééducation, Pilates, yoga et performance humaine. Une seule plateforme. Une qualité d'expertise unique. Une communauté mondiale de passionnés.
           </RevealItem>
           <RevealItem as="div" className="mt-9 flex flex-wrap items-center gap-3">
             <Action to="#marketplace" variant="filled" arrow>Découvrir les formations</Action>
             <Action to="#communaute" variant="outline">Rejoindre la communauté WAHM</Action>
-          </RevealItem>
-          <RevealItem as="div" className="mt-10 flex flex-wrap gap-2 border-t border-white/[0.08] pt-7">
-            {CHIPS.map((c) => (
-              <span key={c} className="border border-white/[0.14] px-3 py-[7px] font-mono text-[11px] uppercase tracking-[0.12em] text-[#cdd8e4]">{c}</span>
-            ))}
           </RevealItem>
         </div>
 
@@ -38,9 +32,6 @@ export default function HomeHero() {
               <span className="pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg,rgba(10,26,47,0.15),rgba(10,26,47,0.55))' }} />
               <span aria-hidden="true" className="pointer-events-none absolute left-3 top-3 h-8 w-8 border-l-2 border-t-2 border-wahm-goldLight" />
               <span aria-hidden="true" className="pointer-events-none absolute right-3 top-3 h-8 w-8 border-r-2 border-t-2 border-wahm-goldLight" />
-              <div className="absolute bottom-0 left-0 right-0 flex items-center border-t border-white/15 bg-wahm-navy/80 px-5 py-3 backdrop-blur-sm">
-                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-wahm-goldLight">Performance · Santé · Mouvement</span>
-              </div>
             </div>
           </Framed>
         </RevealItem>

@@ -4,8 +4,7 @@ import { Globe, Coins, Star, Settings, Users, Check } from 'lucide-react'
 import Page from '../components/Page'
 import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
 import { Label, SectionHead, Action, Framed, CornerTicks, Shot, Motif, TiltCard } from '../components/ui/Frame'
-import { Marquee } from '../components/ui/Marquee'
-import { Gallery } from '../components/ui/Gallery'
+import { DisciplinesCarousel } from '../components/ui/DisciplinesCarousel'
 import SectionOutro from '../components/SectionOutro'
 import { getRouteConfig } from '../lib/site'
 
@@ -39,24 +38,28 @@ const AVANTAGES = [
 ]
 
 // ===== Disciplines recherchées =====
+// Photos Unsplash (nouvelles, hors bibliothèque) choisies selon chaque discipline.
+const UN = (id) => `https://images.unsplash.com/${id}?w=560&h=740&fit=crop&q=80&auto=format`
 const DISCIPLINES = [
-  'Préparation physique & performance sportive',
-  'Coaching sportif & personal training',
-  'Yoga, Pilates, mobilité',
-  'Santé, rééducation, biomécanique',
-  'Neurosciences appliquées au mouvement',
-  'Préférences motrices, méthodes innovantes',
-  'Bien-être, respiration, récupération',
-  'Coaching mental et préparation psychologique',
+  { name: 'Préparation physique & performance sportive', tag: 'Force & performance', img: UN('photo-1591741543032-bf439b4fd46c'), pos: '50% 40%' },
+  { name: 'Coaching sportif & personal training', tag: 'Accompagnement individuel', img: UN('photo-1616279969722-d81a5a3944ef'), pos: '50% 28%' },
+  { name: 'Yoga, Pilates, mobilité', tag: 'Mobilité & souffle', img: UN('photo-1767611094402-2b28863b834f'), pos: '50% 55%' },
+  { name: 'Santé, rééducation, biomécanique', tag: 'Réathlétisation', img: UN('photo-1649751361457-01d3a696c7e6'), pos: '55% 35%' },
+  { name: 'Neurosciences appliquées au mouvement', tag: 'Sciences du mouvement', img: UN('photo-1547941126-3d5322b218b0'), pos: '50% 45%' },
+  { name: 'Préférences motrices, méthodes innovantes', tag: 'Méthodes innovantes', img: UN('photo-1727463389191-22d60aa1f1ca'), pos: '50% 28%' },
+  { name: 'Bien-être, respiration, récupération', tag: 'Récupération', img: UN('photo-1461468611824-46457c0e11fd'), pos: '62% 45%' },
+  { name: 'Coaching mental et préparation psychologique', tag: 'Préparation mentale', img: UN('photo-1577344718665-3e7c0c1ecf6b'), pos: '50% 22%' },
 ]
 
-// ===== Critères de sélection (carousel) =====
+// ===== Critères de sélection (contenu de référence, verbatim) =====
+// Photo Unsplash (nouvelle, hors bibliothèque) illustrant l'évaluation des candidats.
+const CRIT_IMAGE = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1000&h=1000&fit=crop&q=80&auto=format'
 const CRITERES = [
-  { id: 'experts', title: 'Experts reconnus', summary: 'Des formateurs experts, reconnus dans leur domaine.', image: '/assets/media/crit-experts.webp' },
-  { id: 'pedagogie', title: 'Pédagogie impactante', summary: 'Une pédagogie claire, structurée et impactante.', image: '/assets/media/crit-pedagogie.webp' },
-  { id: 'valeur', title: 'Réelle valeur ajoutée', summary: "Capables d'apporter une réelle valeur ajoutée.", image: '/assets/media/crit-valeur.webp' },
-  { id: 'science', title: 'Justifié scientifiquement', summary: 'Un contenu unique, scientifiquement justifié.', image: '/assets/media/crit-science.webp' },
-  { id: 'international', title: 'Vision internationale', summary: 'Motivés pour transmettre au niveau international.', image: '/assets/media/crit-transmettre.webp' },
+  'Experts dans leur domaine',
+  'Avec une pédagogie claire, structurée et impactante',
+  "Capables d'apporter une réelle valeur ajoutée",
+  'Proposant un contenu unique, scientifiquement justifié',
+  'Motivés pour transmettre au niveau international',
 ]
 
 // ===== Les cinq étapes =====
@@ -92,10 +95,10 @@ const INPUT_CLASS =
 
 const LABEL_CLASS = 'font-mono text-[11px] uppercase tracking-[0.14em] text-[#cdd8e4] mb-2 block'
 
-// Variante claire (panneau crème du formulaire candidature) : inputs blancs, focus orange.
+// Variante claire (panneau crème du formulaire candidature) : inputs blancs, focus jaune WAHM.
 const INPUT_LIGHT =
-  'w-full rounded-lg border border-[#dcd6c8] bg-[#fdfcf9] px-4 py-3 font-sans text-[15px] text-wahm-navy placeholder:text-[#a7a395] outline-none transition-colors focus:border-wahm-orange focus:bg-white focus:ring-2 focus:ring-wahm-orange/20'
-const LABEL_LIGHT = 'mb-2 block font-mono text-[11px] uppercase tracking-[0.14em] text-[#7a7263]'
+  'w-full rounded-lg border-[1.5px] border-[#c9c2ae] bg-white px-4 py-3 font-sans text-[15px] text-wahm-navy placeholder:text-[#8a8475] outline-none transition-colors focus:border-wahm-gold focus:bg-white focus:ring-2 focus:ring-wahm-gold/25'
+const LABEL_LIGHT = 'mb-2 block font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#5c5546]'
 
 export default function DevenirFormateur() {
   const meta = getRouteConfig('/devenir-formateur')
@@ -174,14 +177,14 @@ export default function DevenirFormateur() {
             <div className="relative border-b border-r border-white/[0.08]">
               <CornerTicks />
               <Shot src="/assets/media/formateur-portrait.webp" alt="Devenez formateur WAHM" className="h-full min-h-[280px] w-full" position="top" corners />
-              <Motif color="rgba(255,123,44,0.95)" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
+              <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
             </div>
           </div>
         </div>
       </Reveal>
 
       {/* ===== POURQUOI NOUS REJOINDRE ===== */}
-      <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead label="Pourquoi nous rejoindre">
             Devenez un acteur clé d'une plateforme mondiale
@@ -195,7 +198,7 @@ export default function DevenirFormateur() {
                 <span className="flex h-12 w-12 items-center justify-center border border-white/[0.12] text-wahm-goldLight">
                   <a.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" />
                 </span>
-                <h3 className="mt-6 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white">{a.title}</h3>
+                <h3 className="mt-6 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[20px]">{a.title}</h3>
                 <p className="mt-3 font-sans text-[14px] leading-[1.6] text-[#9fb1c6]">{a.desc}</p>
               </TiltCard>
             ))}
@@ -215,46 +218,75 @@ export default function DevenirFormateur() {
         </div>
       </Reveal>
 
-      {/* ===== DISCIPLINES (marquee) ===== */}
-      <Reveal as="section" className={`${SECTION} overflow-hidden py-16 md:py-[88px]`}>
+      {/* ===== DISCIPLINES (grille) ===== */}
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <Label>À qui s'adresse WAHM</Label>
-          <h2 className="mt-5 font-display text-[28px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[38px]">
+          <h2 className="mt-5 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-white sm:text-[36px] md:text-[44px]">
             Disciplines recherchées<span className="text-wahm-orange">.</span>
           </h2>
           <p className="mt-5 max-w-[640px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">
             Nous sélectionnons des formateurs reconnus dans les domaines suivants :
           </p>
-        </div>
 
-        {/* Bandeaux défilants (sens opposés) — pause au survol */}
-        <div className="relative mt-12 flex flex-col gap-3">
-          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[12%] bg-gradient-to-r from-wahm-navy to-transparent" />
-          <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[12%] bg-gradient-to-l from-wahm-navy to-transparent" />
-          {[false, true].map((rev) => (
-            <Marquee key={rev ? 'r' : 'n'} reverse={rev} duration={rev ? 42 : 36}>
-              {DISCIPLINES.map((d) => (
-                <span key={d} className="flex items-center gap-3 whitespace-nowrap border border-white/[0.14] bg-wahm-navyDark px-5 py-3 font-display text-[15px] font-bold uppercase tracking-[-0.005em] text-white transition-colors duration-300 hover:border-wahm-orange/50 md:text-[17px]">
-                  <span className="h-[7px] w-[7px] shrink-0 bg-wahm-orange" aria-hidden="true" />
-                  {d}
-                </span>
-              ))}
-            </Marquee>
-          ))}
-        </div>
+          {/* Carrousel de cartes verticales (3 visibles) — flèches latérales */}
+          <div className="mt-12 md:mt-14">
+            <DisciplinesCarousel items={DISCIPLINES} />
+          </div>
 
-        <div className={WRAP}>
           <SectionOutro>Si vous faites évoluer votre discipline, WAHM veut travailler avec vous.</SectionOutro>
         </div>
       </Reveal>
 
-      {/* ===== CRITERES (carousel) ===== */}
-      <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
-        <Gallery label="Nos critères de sélection" heading="Pour garantir l'excellence" items={CRITERES} />
+      {/* ===== CRITERES (image + fiche d'évaluation façon feuille) ===== */}
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
+        <div className={WRAP}>
+          <SectionHead label="Nos critères de sélection">Pour garantir l'excellence</SectionHead>
+          <p className="mt-6 max-w-[640px] font-sans text-[16px] leading-[1.7] text-[#9fb1c6]">
+            Nous choisissons des formateurs :
+          </p>
+
+          <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1fr] lg:items-center lg:gap-16 md:mt-14">
+            {/* Image */}
+            <div className="relative border border-white/[0.08]">
+              <CornerTicks />
+              <Shot src={CRIT_IMAGE} alt="Évaluation d'un candidat formateur par l'équipe WAHM" className="aspect-square w-full" position="50% 30%" corners />
+            </div>
+
+            {/* Fiche d'évaluation — effet feuille posée, légèrement inclinée */}
+            <div className="relative mx-auto w-full max-w-[540px] -rotate-1 bg-wahm-cream p-10 shadow-2xl shadow-black/50 md:p-12">
+              <span aria-hidden="true" className="absolute right-0 top-0 border-b-[34px] border-l-[34px] border-b-transparent border-l-[#e7e1d2]" />
+              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-wahm-gold via-wahm-orange to-wahm-gold" />
+
+              <div className="flex items-start justify-between gap-4">
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-wahm-goldDark">WAHM · Fiche d'évaluation</span>
+                <span className="shrink-0 -rotate-6 border-[1.5px] border-wahm-orange/70 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-wahm-orange">
+                  Validé
+                </span>
+              </div>
+
+              <h3 className="mt-4 font-display text-[26px] font-extrabold uppercase leading-[1.05] tracking-[-0.01em] text-wahm-navy md:text-[30px]">
+                Critères de sélection
+              </h3>
+              <span aria-hidden="true" className="mt-4 block h-px w-full bg-[#dcd6c8]" />
+
+              <ul className="mt-7 space-y-5">
+                {CRITERES.map((c) => (
+                  <li key={c} className="flex items-start gap-4 border-b border-dashed border-[#dcd6c8] pb-5 last:border-b-0 last:pb-0">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center bg-wahm-goldDark text-white">
+                      <Check className="h-4 w-4" strokeWidth={3} aria-hidden="true" />
+                    </span>
+                    <span className="font-sans text-[16px] font-semibold leading-[1.45] text-wahm-navy md:text-[16.5px]">{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </Reveal>
 
       {/* ===== CINQ ETAPES ===== */}
-      <Reveal as="section" className={`${SECTION} py-16 md:py-[88px]`}>
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead label="Comment ça fonctionne">
             Cinq étapes, accompagnées de bout en bout
@@ -276,7 +308,7 @@ export default function DevenirFormateur() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div className="pt-1.5 md:pt-2.5">
-                    <h3 className="font-display text-[18px] font-extrabold uppercase leading-[1.15] tracking-[-0.005em] text-white md:text-[22px]">{step.title}</h3>
+                    <h3 className="font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[20px]">{step.title}</h3>
                     <p className="mt-2 max-w-[620px] font-sans text-[15px] leading-[1.6] text-[#9fb1c6]">{step.desc}</p>
                   </div>
                 </RevealItem>
@@ -297,7 +329,7 @@ export default function DevenirFormateur() {
       </Reveal>
 
       {/* ===== CANDIDATURE — FORMULAIRE (2 colonnes) ===== */}
-      <section id="candidature" className={`${SECTION} scroll-mt-[80px] py-16 md:py-[88px]`}>
+      <section id="candidature" className={`${SECTION} scroll-mt-[80px] py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <div className="relative grid grid-cols-1 overflow-hidden border border-white/[0.08] lg:grid-cols-2">
             <CornerTicks className="pointer-events-none absolute inset-0 z-20" />
@@ -307,7 +339,7 @@ export default function DevenirFormateur() {
               <span aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-wahm-orange/20 blur-3xl" />
               <div className="relative">
                 <Label>Candidature formateur</Label>
-                <h2 className="mt-7 font-display text-[34px] font-extrabold uppercase leading-[1.03] tracking-[-0.02em] text-white sm:text-[42px] lg:text-[46px]">
+                <h2 className="mt-7 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-white sm:text-[36px] md:text-[44px]">
                   Votre expertise mérite une audience mondiale<span className="text-wahm-orange">.</span>
                 </h2>
                 <p className="mt-6 max-w-[420px] font-sans text-[15.5px] leading-[1.7] text-[#aebccd]">
