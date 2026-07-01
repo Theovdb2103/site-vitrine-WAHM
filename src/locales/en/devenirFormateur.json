@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "title": "Become a Trainer — WAHM",
+    "description": "Share your expertise with the world. Join WAHM: international audience, recurring revenue, full support. Submit your application."
+  },
+  "hero": {
+    "label": "Become a WAHM trainer",
+    "title": "Share your expertise with the world",
+    "subtitle": "Let's give online training a new dimension together. Your knowledge deserves a worldwide audience.",
+    "ctaApply": "Submit my application",
+    "ctaContact": "Talk to a partnership manager",
+    "imageAlt": "Become a WAHM trainer"
+  },
+  "avantages": {
+    "label": "Why join us",
+    "title": "Become a key player in a global platform",
+    "intro": "By joining World Academy of Human Movement, you become a key player in a global platform bringing together the best trainers in health, wellness, coaching and performance. WAHM lets you:",
+    "items": [
+      {
+        "title": "Reach an international audience",
+        "desc": "Your course becomes accessible in several languages to thousands of learners in over 50 countries."
+      },
+      {
+        "title": "Generate recurring revenue",
+        "desc": "Each course becomes a digital asset that earns you money every month, with no geographic limit."
+      },
+      {
+        "title": "Strengthen your reputation",
+        "desc": "Being selected by WAHM is a mark of prestige. Your credibility increases. Your visibility skyrockets."
+      },
+      {
+        "title": "Create without technical constraints",
+        "desc": "You provide the content. We handle hosting, worldwide distribution, translation and subtitles, marketing, and pedagogical support."
+      },
+      {
+        "title": "Join a collective of international experts",
+        "desc": "Join a teaching elite who share the same values: excellence, innovation, transmission."
+      }
+    ],
+    "highlight": {
+      "title": "Teach the whole world. Leave a lasting mark.",
+      "text1": "WAHM is not just a platform: it's an ecosystem of experts where the best share their knowledge with the greatest number.",
+      "text2": "Do you have unique knowledge? Give it the reach it deserves."
+    }
+  },
+  "disciplines": {
+    "label": "Who WAHM is for",
+    "title": "Disciplines we're looking for",
+    "subtitle": "We select recognized trainers in the following fields:",
+    "outro": "If you're pushing your discipline forward, WAHM wants to work with you.",
+    "items": [
+      { "name": "Physical preparation & athletic performance", "tag": "Strength & performance" },
+      { "name": "Sports coaching & personal training", "tag": "One-on-one coaching" },
+      { "name": "Yoga, Pilates, mobility", "tag": "Mobility & breathing" },
+      { "name": "Health, rehabilitation, biomechanics", "tag": "Re-athletization" },
+      { "name": "Neuroscience applied to movement", "tag": "Movement science" },
+      { "name": "Motor preferences, innovative methods", "tag": "Innovative methods" },
+      { "name": "Wellness, breathing, recovery", "tag": "Recovery" },
+      { "name": "Mental coaching and psychological preparation", "tag": "Mental preparation" }
+    ]
+  },
+  "criteres": {
+    "label": "Our selection criteria",
+    "title": "Ensuring excellence",
+    "subtitle": "We choose trainers who are:",
+    "imageAlt": "WAHM team evaluating a trainer candidate",
+    "cardKicker": "WAHM · Evaluation sheet",
+    "cardBadge": "Approved",
+    "cardTitle": "Selection criteria",
+    "items": [
+      "Experts in their field",
+      "With clear, structured and impactful teaching skills",
+      "Able to bring real added value",
+      "Offering unique, scientifically grounded content",
+      "Motivated to share knowledge internationally"
+    ]
+  },
+  "etapes": {
+    "label": "How it works",
+    "title": "Five steps, supported from start to finish",
+    "outro": "Supported from start to finish, with no revenue cap.",
+    "imageAlt": "Expertise in movement and performance",
+    "items": [
+      {
+        "title": "You submit your application",
+        "desc": "Introduction, expertise, topic, sample content."
+      },
+      {
+        "title": "Our committee evaluates your proposal",
+        "desc": "Teaching quality, relevance, originality, added value."
+      },
+      {
+        "title": "We help you structure the course",
+        "desc": "Storyboard, modules, materials, filming if needed."
+      },
+      {
+        "title": "WAHM takes care of everything",
+        "desc": "Publishing, marketing, worldwide distribution, user support."
+      },
+      {
+        "title": "You get paid every month",
+        "desc": "Transparent, growing revenue, with no cap."
+      }
+    ]
+  },
+  "candidature": {
+    "label": "Trainer application",
+    "title": "Your expertise deserves a worldwide audience",
+    "text": "Join the best experts in human movement. International audience, recurring revenue, full support.",
+    "benefits": [
+      "An international audience",
+      "Recurring revenue",
+      "Full support"
+    ],
+    "formTitle": "Submit your application",
+    "formSubtitle": "We review your profile and get back to you within 7 days.",
+    "success": {
+      "title": "Application sent!",
+      "text": "Thank you. Our committee is reviewing your profile and will get back to you within 7 days at the address provided."
+    },
+    "form": {
+      "fields": {
+        "nom": "Full name *",
+        "email": "Email *",
+        "domaine": "Field of expertise *",
+        "theme": "Course topic",
+        "echantillon": "Link to a content sample",
+        "refs": "Social media / references",
+        "bio": "Introduction (CV / bio)"
+      },
+      "placeholders": {
+        "nom": "John Smith",
+        "email": "john@example.com",
+        "domaine": "Physical preparation, Pilates…",
+        "theme": "E.g.: Knee re-athletization",
+        "echantillon": "https://…  (video, PDF, channel…)",
+        "refs": "Instagram, LinkedIn, website…",
+        "bio": "A few lines about your background and approach…"
+      },
+      "submit": "Submit my application",
+      "submitting": "Sending…",
+      "consent": "By submitting, you agree to be contacted by the WAHM team.",
+      "errors": {
+        "invalid": "Please fill in at least your name, a valid email and your field of expertise.",
+        "failed": "Sending failed. Please try again later or write to us directly.",
+        "network": "Sending failed. Check your connection and try again."
+      }
+    }
+  }
+}

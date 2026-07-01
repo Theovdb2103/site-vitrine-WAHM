@@ -1,0 +1,63 @@
+{
+  "skipToContent": "Skip to content",
+  "nav": {
+    "formations": "Courses",
+    "devenir-formateur": "Become a trainer",
+    "comment-ca-marche": "How it works",
+    "communaute": "Community",
+    "a-propos": "About",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "cta": {
+    "discover": "Discover our courses",
+    "apply": "Submit my application",
+    "join": "Join WAHM"
+  },
+  "header": {
+    "homeAriaLabel": "WAHM home",
+    "languageAriaLabel": "Change language",
+    "menu": {
+      "open": "Open menu",
+      "close": "Close menu"
+    },
+    "theme": {
+      "toggleToDark": "Switch to dark mode",
+      "toggleToLight": "Switch to light mode"
+    },
+    "faqMenu": {
+      "label": "FAQ",
+      "learner": "Learner",
+      "trainer": "Trainer"
+    }
+  },
+  "languageOverlay": {
+    "ariaLabel": "Choose your language",
+    "title": "Choose your language",
+    "subtitle": "Select your language to continue",
+    "hint": "You can change the language at any time from the menu."
+  },
+  "footer": {
+    "tagline": "Follow the movement.",
+    "columns": [
+      {
+        "title": "Platform",
+        "links": ["Courses", "How it works", "Community"]
+      },
+      {
+        "title": "Company",
+        "links": ["About", "Become a trainer", "Trainer FAQ"]
+      },
+      {
+        "title": "Legal",
+        "links": ["Legal notice", "Terms & Conditions", "Privacy", "Cookies"]
+      },
+      {
+        "title": "Contact",
+        "links": ["contact@wahm.com", "Contact us", "24/7 international support"]
+      }
+    ],
+    "copyright": "© 2026 World Academy of Human Movement — WAHM",
+    "credit": "Built by"
+  }
+}

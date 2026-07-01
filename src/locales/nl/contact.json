@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Contact — WAHM",
+    "description": "Een vraag, een project, een samenwerking? Neem contact op met het team van World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Contact",
+    "title": "Laten we praten over jouw project",
+    "subtitle": "Een vraag, een samenwerking, een traineraanmelding? Ons team neemt binnen 48 uur contact met je op."
+  },
+  "info": {
+    "writeToUs": "Schrijf ons",
+    "responseNote": "We antwoorden doorgaans binnen 48 werkuren.",
+    "partnership": {
+      "title": "Spreek met een partnershipmanager",
+      "text": "Ben je een trainer, school of instelling? Laten we samen jouw aanwezigheid op WAHM opbouwen.",
+      "cta": "Trainer worden"
+    }
+  },
+  "coordonnees": [
+    {
+      "title": "Schrijf ons",
+      "value": "contact@wahm.com",
+      "desc": "We antwoorden doorgaans binnen 48 werkuren."
+    },
+    {
+      "title": "Reactietijd",
+      "value": "Binnen 48 werkuren",
+      "desc": "Ons team behandelt elk verzoek met zorg."
+    }
+  ],
+  "form": {
+    "label": "Formulier",
+    "title": "Stuur ons een bericht",
+    "fields": {
+      "nom": "Volledige naam *",
+      "email": "E-mail *",
+      "sujet": "Onderwerp",
+      "message": "Bericht *"
+    },
+    "placeholders": {
+      "nom": "Jan de Vries",
+      "email": "jan@voorbeeld.nl",
+      "sujet": "Onderwerp van jouw bericht",
+      "message": "Jouw bericht…"
+    },
+    "submit": "Bericht verzenden",
+    "submitting": "Verzenden…",
+    "consent": "Door dit bericht te verzenden, ga je akkoord dat jouw gegevens worden gebruikt om jouw verzoek te verwerken.",
+    "errors": {
+      "invalid": "Vul je naam, een geldig e-mailadres en jouw bericht in.",
+      "failed": "Verzenden mislukt. Probeer het later opnieuw.",
+      "network": "Verzenden mislukt. Controleer je verbinding en probeer opnieuw."
+    },
+    "success": {
+      "title": "Bericht verzonden",
+      "text": "Bedankt voor jouw bericht. Ons team neemt binnen 48 werkuren contact met je op."
+    }
+  }
+}

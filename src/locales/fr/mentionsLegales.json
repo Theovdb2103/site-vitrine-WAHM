@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Mentions légales — WAHM",
+    "description": "Mentions légales, CGU, CGV, politique de confidentialité (RGPD) et cookies de World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Informations légales",
+    "title": "Mentions légales",
+    "subtitle": "Version modèle — à valider juridiquement. Les mentions « à compléter » doivent être renseignées avant mise en ligne."
+  },
+  "sommaire": {
+    "ariaLabel": "Sommaire",
+    "label": "Sommaire"
+  },
+  "sections": [
+    { "label": "Mentions légales" },
+    { "label": "Conditions d'utilisation" },
+    { "label": "Conditions de vente" },
+    { "label": "Confidentialité (RGPD)" },
+    { "label": "Cookies" }
+  ],
+  "mentions": {
+    "title": "Mentions légales",
+    "editeur": {
+      "title": "Éditeur du site",
+      "formeJuridiqueLabel": "Forme juridique :",
+      "formeJuridiqueTbd": "à préciser (ex. SRL / SAS / LTD)",
+      "siegeSocialLabel": "Siège social :",
+      "siegeSocialTbd": "adresse à compléter",
+      "numeroEntrepriseLabel": "Numéro d'entreprise / RCS / BCE :",
+      "numeroEntrepriseTbd": "à compléter",
+      "tvaLabel": "TVA intracommunautaire :",
+      "tvaTbd": "à compléter",
+      "emailLabel": "Email :",
+      "responsablePublicationLabel": "Responsable de la publication :",
+      "responsablePublicationTbd": "nom du fondateur ou directeur légal"
+    },
+    "hebergement": {
+      "title": "Hébergement",
+      "hebergeurLabel": "Le site est hébergé par :",
+      "hebergeurTbd": "nom de l'hébergeur (ex. AWS, OVH, Cloudflare…)",
+      "adresseLabel": "Adresse :",
+      "adresseTbd": "à compléter",
+      "siteWebLabel": "Site web :",
+      "siteWebTbd": "URL de l'hébergeur"
+    },
+    "propriete": {
+      "title": "Propriété intellectuelle",
+      "text": "L'ensemble du contenu du site (textes, vidéos, images, logos, formations, documents) est protégé par le droit d'auteur et reste la propriété de WAHM ou des formateurs partenaires. Toute reproduction, diffusion ou exploitation sans autorisation est strictement interdite."
+    }
+  },
+  "cgu": {
+    "title": "Conditions Générales d'Utilisation (CGU)",
+    "articles": [
+      {
+        "title": "Article 1 — Objet du site",
+        "text": "WAHM est une plateforme e-learning permettant d'acheter et suivre des formations en ligne, de proposer des formations en tant que formateur, d'accéder à des ressources pédagogiques et d'interagir avec la communauté WAHM."
+      },
+      {
+        "title": "Article 2 — Création de compte",
+        "text": "Pour accéder aux formations, l'utilisateur doit créer un compte avec des informations exactes. L'utilisateur est responsable de la confidentialité de ses identifiants."
+      },
+      {
+        "title": "Article 3 — Utilisation de la plateforme",
+        "text": "Il est interdit de copier, transférer ou revendre une formation, de partager un accès personnel, de télécharger illégalement les contenus, ou de détourner la plateforme à des fins commerciales non autorisées. WAHM peut suspendre un compte en cas de non-respect."
+      },
+      {
+        "title": "Article 4 — Certifications",
+        "text": "Les certificats délivrés par WAHM attestent d'un suivi, mais ne remplacent aucune certification professionnelle officielle, sauf cas mentionné."
+      },
+      {
+        "title": "Article 5 — Responsabilités",
+        "text": "WAHM ne garantit pas la réussite professionnelle de l'utilisateur, l'exactitude absolue des contenus des formateurs partenaires, ni l'absence d'interruption temporaire de service. WAHM met tout en œuvre pour assurer la qualité du service."
+      }
+    ]
+  },
+  "cgv": {
+    "title": "Conditions Générales de Vente (CGV)",
+    "articles": [
+      {
+        "title": "Article 1 — Prix",
+        "text": "Les prix sont indiqués en € TTC, sauf indication contraire. WAHM se réserve le droit de modifier les tarifs."
+      },
+      {
+        "title": "Article 2 — Paiement",
+        "text": "Les paiements sont sécurisés via Stripe, PayPal ou tout autre prestataire. Aucun numéro de carte n'est stocké par WAHM."
+      },
+      {
+        "title": "Article 3 — Accès aux formations",
+        "text": "L'accès est immédiat après paiement, personnel et non cessible, illimité dans le temps sauf indication contraire."
+      },
+      {
+        "title": "Article 4 — Politique de remboursement",
+        "text": "Conformément à la loi sur les contenus numériques, le droit de rétractation ne s'applique plus après l'accès au contenu. WAHM peut proposer un remboursement exceptionnel au cas par cas."
+      },
+      {
+        "title": "Article 5 — Responsabilités du formateur",
+        "text": "Les formateurs garantissent l'originalité de leurs contenus, le respect de la loi, et l'absence de plagiat ou d'informations dangereuses."
+      },
+      {
+        "title": "Article 6 — Résiliation",
+        "text": "WAHM peut suspendre un compte en cas d'usage frauduleux, de non-respect des CGU, ou de comportement contraire à l'intérêt de la plateforme."
+      },
+      {
+        "title": "Article 7 — Loi applicable",
+        "textPrefix": "Les présentes conditions sont soumises au droit du pays où la société est enregistrée (",
+        "tbd": "à compléter",
+        "textSuffix": ")."
+      }
+    ]
+  },
+  "confidentialite": {
+    "title": "Politique de confidentialité (RGPD)",
+    "paragraphe1": "WAHM collecte uniquement les données nécessaires : nom et prénom, email, informations de paiement, historique d'achat, progression pédagogique.",
+    "paragraphe2": "Ces données sont utilisées pour gérer votre compte, suivre vos formations, assurer le support, envoyer des communications liées à vos achats et améliorer le service.",
+    "paragraphe3Prefix": "Conformément au RGPD, vous pouvez demander l'accès, la modification ou la suppression de vos données, la portabilité et la limitation du traitement. Demande :",
+    "emailLink": "privacy@wahm.com"
+  },
+  "cookies": {
+    "title": "Cookies",
+    "paragraphe1": "Le site utilise des cookies pour améliorer votre expérience, mémoriser vos préférences (dont la langue) et analyser l'audience. Vous pouvez accepter ou refuser les cookies non essentiels lors de votre première visite, et modifier votre choix à tout moment.",
+    "paragraphe2Prefix": "Pour toute question relative aux cookies ou à vos données :",
+    "emailLink": "privacy@wahm.com"
+  },
+  "retour": "Retour à l'accueil"
+}

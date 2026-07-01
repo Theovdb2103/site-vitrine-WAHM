@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "Hoe het werkt — WAHM",
+    "description": "Het leertraject van een WAHM-cursist, stap voor stap: van het ontdekken van cursussen tot je plek in een wereldwijd ecosysteem."
+  },
+  "hero": {
+    "label": "Hoe het werkt · Cursisten",
+    "title": "Jouw expertise, versterkt in een paar klikken",
+    "subtitle": "Van jouw taal tot het WAHM-certificaat: een vlot, helder traject ontworpen voor jouw groei.",
+    "ctaDiscoverParcours": "Ontdek het traject",
+    "ctaExploreFormations": "Verken cursussen",
+    "imageAlt": "Een cursist die een WAHM-sportcursus volgt op video"
+  },
+  "parcours": {
+    "label": "Het cursisttraject",
+    "title": "Een vlot traject, stap voor stap",
+    "cta": "Begin nu",
+    "stepLabel": "Stap"
+  },
+  "domaines": [
+    "Sportcoaching & Personal Training",
+    "Gezondheid & Revalidatie – biomechanica",
+    "Multisport fysieke voorbereiding",
+    "Yoga & Pilates – Zen training",
+    "Neurotraining & bewegingswetenschap",
+    "Persoonlijke ontwikkeling & Mentale coaching"
+  ],
+  "etapes": [
+    {
+      "title": "Kies je taal",
+      "intro": "Voor elke cursus kun je kiezen:",
+      "points": ["De originele taal van de trainer", "Beschikbare ondertitels", "Vertaalde versies"],
+      "note": "Jouw leerervaring past zich aan jou aan, niet andersom."
+    },
+    {
+      "title": "Kies je vakgebied",
+      "intro": "WAHM brengt 's werelds beste cursussen samen in:",
+      "note": "Een slim zoekmachine helpt je de cursus te vinden die past bij jouw niveau en doelen."
+    },
+    {
+      "title": "Toegang tot je cursus met één klik",
+      "intro": "Na veilige betaling krijg je:",
+      "points": ["Directe toegang", "Levenslange toegang (tenzij anders vermeld)", "Op al je apparaten (mobiel, tablet, computer)"],
+      "note": "Als je onderbroken wordt, ga je precies verder waar je gebleven was."
+    },
+    {
+      "title": "Leer op jouw tempo",
+      "intro": "Elke cursus is opgedeeld in korte, praktische modules die je meteen kunt toepassen. Je kunt:",
+      "points": ["Pauzeren", "Een module opnieuw bekijken", "PDF-werkbladen downloaden", "Notities maken vanuit je dashboard"],
+      "note": "Leren wordt vlot, helder en effectief."
+    },
+    {
+      "title": "Geniet van premium content",
+      "intro": "Al onze cursussen voldoen aan WAHM-normen:",
+      "points": ["HD-video's", "Praktische demonstraties", "Gemeten voortgang", "Content geschreven door internationale experts", "Regelmatig bijgewerkt op basis van wetenschappelijke ontwikkelingen"]
+    },
+    {
+      "title": "Verdien je WAHM-certificaat",
+      "intro": "Aan het einde van bepaalde cursussen ontvang je een:",
+      "points": ["Digitaal certificaat", "Erkend op het WAHM-platform", "Het vermelden waard op je cv en sociale media", "Bewijs van je vaardighedenontwikkeling"]
+    },
+    {
+      "title": "Word lid van de wereldwijde WAHM-gemeenschap",
+      "intro": "Door cursist te worden, krijg je toegang tot:",
+      "points": ["Privé-discussiegroepen", "Exclusieve conferenties", "Adviezen van experts", "Internationale netwerkmogelijkheden"],
+      "note": "Je leert niet langer alleen: je wordt deel van een wereldwijd ecosysteem."
+    },
+    {
+      "title": "Blijf groeien met ons",
+      "intro": "WAHM beveelt automatisch aan:",
+      "points": ["Aanvullende cursussen", "Gepersonaliseerde leertrajecten", "Nieuwe content afgestemd op jouw voortgang"],
+      "note": "Jouw leerervaring wordt continu, gestructureerd en slim."
+    }
+  ],
+  "cta": {
+    "kicker": "Klaar om te beginnen?",
+    "title": "Klaar om te beginnen",
+    "text": "Verken cursussen en ontketen je potentieel.",
+    "ctaExploreFormations": "Verken cursussen",
+    "ctaJoinCommunity": "Word lid van de WAHM-gemeenschap"
+  }
+}

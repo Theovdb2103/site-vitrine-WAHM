@@ -16,7 +16,7 @@ export default function SectionOutro({ children, className = '' }) {
         as="p"
         trigger={inView}
         speed={0.028}
-        className="m-0 inline-block max-w-[760px] font-display text-[11px] font-semibold uppercase leading-[1.4] tracking-[0.01em] text-[#9fb1c6] sm:text-[11.5px] md:text-[12.5px]"
+        className="m-0 inline-block max-w-[760px] font-display text-[11px] font-semibold uppercase leading-[1.4] tracking-[0.01em] text-muted sm:text-[11.5px] md:text-[12.5px]"
       >
         {children}
       </TextScramble>

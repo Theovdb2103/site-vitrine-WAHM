@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "Comment ça marche — WAHM",
+    "description": "Le parcours apprenant WAHM, étape par étape : de la découverte des formations à votre place dans un écosystème mondial."
+  },
+  "hero": {
+    "label": "Comment ça marche · Apprenants",
+    "title": "Votre expertise, décuplée en quelques clics",
+    "subtitle": "De votre langue au certificat WAHM : un parcours fluide, clair et pensé pour votre progression.",
+    "ctaDiscoverParcours": "Découvrir le parcours",
+    "ctaExploreFormations": "Explorer les formations",
+    "imageAlt": "Un apprenant suit une formation sportive WAHM en vidéo"
+  },
+  "parcours": {
+    "label": "Le parcours apprenant",
+    "title": "Un parcours fluide, étape par étape",
+    "cta": "Commencer",
+    "stepLabel": "Étape"
+  },
+  "domaines": [
+    "Coaching sportif & Personal Training",
+    "Santé & Rééducation – biomécanique",
+    "Préparation Physique multisports",
+    "Yoga & Pilates – Zen training",
+    "Neurotraining & sciences du mouvement",
+    "Développement personnel & Mental Coaching"
+  ],
+  "etapes": [
+    {
+      "title": "Choisissez votre langue",
+      "intro": "Pour chaque formation, vous pouvez sélectionner :",
+      "points": ["La langue d'origine du formateur", "Les sous-titres disponibles", "Les versions traduites"],
+      "note": "Votre apprentissage s'adapte à vous, pas l'inverse."
+    },
+    {
+      "title": "Choisissez votre domaine",
+      "intro": "WAHM regroupe les meilleures formations du monde dans :",
+      "note": "Un moteur de recherche intelligent vous aide à trouver la formation adaptée à votre niveau et à vos objectifs."
+    },
+    {
+      "title": "Accédez à votre formation en un clic",
+      "intro": "Après paiement sécurisé, vous avez :",
+      "points": ["Un accès immédiat", "À vie (sauf cas particuliers)", "Sur tous vos appareils (mobile, tablette, ordinateur)"],
+      "note": "Si vous êtes interrompu, vous reprenez exactement là où vous étiez."
+    },
+    {
+      "title": "Apprenez à votre rythme",
+      "intro": "Chaque formation est découpée en modules courts, pratiques et applicables immédiatement. Vous pouvez :",
+      "points": ["Mettre en pause", "Revenir sur un module", "Télécharger des fiches PDF", "Prendre des notes directement depuis votre espace"],
+      "note": "L'apprentissage devient fluide, clair et efficace."
+    },
+    {
+      "title": "Profitez de contenus premium",
+      "intro": "Toutes nos formations respectent les standards WAHM :",
+      "points": ["Vidéos HD", "Démonstrations pratiques", "Progrès mesurés", "Contenus rédigés par des experts internationaux", "Mise à jour régulière selon les avancées scientifiques"]
+    },
+    {
+      "title": "Obtenez votre certificat WAHM",
+      "intro": "À la fin de certaines formations, vous recevez un :",
+      "points": ["Certificat digital", "Reconnu sur la plateforme WAHM", "Valorisable sur votre CV et vos réseaux sociaux", "Preuve de votre montée en compétence"]
+    },
+    {
+      "title": "Rejoignez la communauté mondiale WAHM",
+      "intro": "En devenant apprenant, vous accédez à :",
+      "points": ["Des groupes d'échange privés", "Des conférences exclusives", "Des conseils d'experts", "Des opportunités de networking international"],
+      "note": "Vous n'apprenez plus seul : vous devenez membre d'un écosystème mondial."
+    },
+    {
+      "title": "Continuez à évoluer avec nous",
+      "intro": "WAHM vous recommande automatiquement :",
+      "points": ["Formations complémentaires", "Parcours personnalisés", "Nouveaux contenus adaptés à votre progression"],
+      "note": "Votre apprentissage devient continu, structuré et intelligent."
+    }
+  ],
+  "cta": {
+    "kicker": "Prêt à commencer ?",
+    "title": "Prêt à commencer",
+    "text": "Explorez les formations et débloquez votre potentiel.",
+    "ctaExploreFormations": "Explorer les formations",
+    "ctaJoinCommunity": "Rejoindre la communauté WAHM"
+  }
+}

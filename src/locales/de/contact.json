@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Kontakt — WAHM",
+    "description": "Eine Frage, ein Projekt, eine Partnerschaft? Kontaktiere das Team der World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Kontakt",
+    "title": "Lass uns über dein Projekt sprechen",
+    "subtitle": "Eine Frage, eine Partnerschaft, eine Trainer-Bewerbung? Unser Team meldet sich bei dir."
+  },
+  "info": {
+    "writeToUs": "Schreib uns",
+    "responseNote": "Wir antworten in der Regel innerhalb von 48 Werktagen.",
+    "partnership": {
+      "title": "Sprich mit einem Partnership-Manager",
+      "text": "Bist du Trainer, Schule oder Institution? Lass uns gemeinsam deine Präsenz auf WAHM aufbauen.",
+      "cta": "Trainer werden"
+    }
+  },
+  "coordonnees": [
+    {
+      "title": "Schreib uns",
+      "value": "contact@wahm.com",
+      "desc": "Wir antworten in der Regel innerhalb von 48 Werktagen."
+    },
+    {
+      "title": "Antwortzeit",
+      "value": "Innerhalb von 48 Werktagen",
+      "desc": "Unser Team bearbeitet jede Anfrage sorgfältig."
+    }
+  ],
+  "form": {
+    "label": "Formular",
+    "title": "Sende uns eine Nachricht",
+    "fields": {
+      "nom": "Vollständiger Name *",
+      "email": "E-Mail *",
+      "sujet": "Betreff",
+      "message": "Nachricht *"
+    },
+    "placeholders": {
+      "nom": "Max Mustermann",
+      "email": "max@beispiel.de",
+      "sujet": "Betreff deiner Nachricht",
+      "message": "Deine Nachricht…"
+    },
+    "submit": "Nachricht senden",
+    "submitting": "Wird gesendet…",
+    "consent": "Durch das Senden dieser Nachricht stimmst du zu, dass deine Daten zur Bearbeitung deiner Anfrage verwendet werden dürfen.",
+    "errors": {
+      "invalid": "Bitte gib deinen Namen, eine gültige E-Mail-Adresse und deine Nachricht ein.",
+      "failed": "Senden fehlgeschlagen. Bitte versuche es später erneut.",
+      "network": "Senden fehlgeschlagen. Überprüfe deine Verbindung und versuche es erneut."
+    },
+    "success": {
+      "title": "Nachricht gesendet",
+      "text": "Danke für deine Nachricht. Unser Team meldet sich innerhalb von 48 Werktagen bei dir."
+    }
+  }
+}

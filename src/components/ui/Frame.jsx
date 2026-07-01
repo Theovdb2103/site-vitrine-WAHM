@@ -53,7 +53,7 @@ export function CornerTicks({ className = '' }) {
 // Boîte encadrée à liseré fin + croix d'angle.
 export function Framed({ as: Tag = 'div', className = '', ticks = true, tickColor, children, ...rest }) {
   return (
-    <Tag className={`relative border border-white/[0.1] ${className}`} {...rest}>
+    <Tag className={`relative border border-line/[0.1] ${className}`} {...rest}>
       {ticks && <CornerTicks className={tickColor || 'text-wahm-orange/60'} />}
       {children}
     </Tag>
@@ -116,7 +116,7 @@ export function GridPattern({ variant = 'light', className = '' }) {
   return (
     <span aria-hidden="true" className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}>
       <span className={`absolute inset-0 ${pattern} bg-[length:42px_42px]`} />
-      <span className="absolute inset-0 bg-gradient-to-tr from-wahm-navy via-wahm-navy/65 to-transparent" />
+      <span className="absolute inset-0 bg-gradient-to-tr from-surface via-surface/65 to-transparent" />
     </span>
   )
 }
@@ -137,7 +137,7 @@ export function SectionHead({ label, children, action, align = 'between', classN
     <div className={`flex flex-wrap items-end gap-5 ${isCenter ? 'flex-col items-center text-center' : 'justify-between'} ${className}`}>
       <div className={isCenter ? 'flex flex-col items-center' : ''}>
         {label && <Label className={`mb-4 ${isCenter ? 'justify-center' : ''}`}>{label}</Label>}
-        <h2 className="m-0 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-white sm:text-[36px] md:text-[44px]">
+        <h2 className="m-0 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-fg sm:text-[36px] md:text-[44px]">
           {children}<span className="text-wahm-orange">.</span>
         </h2>
       </div>
@@ -152,9 +152,9 @@ export function SectionHead({ label, children, action, align = 'between', classN
 // border = liseré ; rest = état repos (fond+texte) ; revBg/revText = balayage révélé.
 const VARIANTS = {
   filled: { border: 'border-wahm-orange', rest: 'bg-wahm-orange text-white', revBg: 'bg-wahm-navy', revText: 'text-white' },
-  outline: { border: 'border-white/30', rest: 'bg-transparent text-white', revBg: 'bg-wahm-orange', revText: 'text-white' },
+  outline: { border: 'border-line/30', rest: 'bg-transparent text-fg', revBg: 'bg-wahm-orange', revText: 'text-white' },
   outlineDark: { border: 'border-wahm-navy/45', rest: 'bg-transparent text-wahm-navy', revBg: 'bg-wahm-navy', revText: 'text-white' },
-  pill: { border: 'border-white/20', rest: 'bg-transparent text-wahm-goldLight', revBg: 'bg-wahm-orange', revText: 'text-white' },
+  pill: { border: 'border-line/20', rest: 'bg-transparent text-gold', revBg: 'bg-wahm-orange', revText: 'text-white' },
   dark: { border: 'border-wahm-navy', rest: 'bg-wahm-navy text-white', revBg: 'bg-wahm-goldLight', revText: 'text-wahm-navy' },
 }
 const ACT_SIZE = {
@@ -185,7 +185,11 @@ export function Action({ to, onClick, type = 'button', variant = 'filled', size 
     </>
   )
 
-  if (to && to.startsWith('#')) return <a href={to} onClick={onClick} className={base} {...rest}>{inner}</a>
+  // Lien externe http(s) → nouvel onglet (ne quitte jamais le site vitrine, évite
+  // la perte d'état du thème au retour en arrière). Ancre interne / mailto / tel → <a>
+  // même onglet. Route interne → <Link>.
+  if (to && /^https?:/.test(to)) return <a href={to} onClick={onClick} target="_blank" rel="noopener noreferrer" className={base} {...rest}>{inner}</a>
+  if (to && /^(mailto:|tel:|#)/.test(to)) return <a href={to} onClick={onClick} className={base} {...rest}>{inner}</a>
   if (to) return <Link to={to} onClick={onClick} className={base} {...rest}>{inner}</Link>
   return <button type={type} onClick={onClick} className={base} {...rest}>{inner}</button>
 }
@@ -195,9 +199,9 @@ export function Action({ to, onClick, type = 'button', variant = 'filled', size 
 // marques d'angle) — le `overflow-hidden` interne ne rogne donc pas les marques.
 export function Shot({ src, alt = '', className = '', imgClassName = '', overlay = true, position = 'center', corners = false }) {
   return (
-    <div className={`relative overflow-hidden bg-wahm-navyDark ${className}`}>
+    <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
       <img src={src} alt={alt} loading="lazy" className={`h-full w-full object-cover grayscale-[18%] ${imgClassName}`} style={{ objectPosition: position }} />
-      {overlay && <span aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg,rgba(10,26,47,0.08),rgba(10,26,47,0.42))' }} />}
+      {overlay && <span aria-hidden="true" className="img-fade pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg,rgb(var(--c-surface) / 0.08),rgb(var(--c-surface) / 0.42))' }} />}
       {/* Équerres dorées (jaune WAHM) — accent autour des images seules */}
       {corners && (
         <>
@@ -240,7 +244,7 @@ export function Motif({ className = '', color = 'rgba(10,26,47,0.22)', cols = 7,
 // transitions entre sections (remplace les fins traits horizontaux).
 export function ChevronDivider({ className = '', count = 7, color = '#D4A018', size = 26 }) {
   return (
-    <div aria-hidden="true" className={`flex items-center justify-center bg-wahm-navy ${className}`} style={{ color, gap: 7 }}>
+    <div aria-hidden="true" className={`flex items-center justify-center bg-surface ${className}`} style={{ color, gap: 7 }}>
       {Array.from({ length: count }).map((_, i) => (
         <ChevronGlyph key={i} size={size} />
       ))}

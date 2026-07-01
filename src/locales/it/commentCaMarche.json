@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "Come funziona — WAHM",
+    "description": "Il percorso dello studente WAHM, passo dopo passo: dalla scoperta dei corsi al tuo posto in un ecosistema mondiale."
+  },
+  "hero": {
+    "label": "Come funziona · Studenti",
+    "title": "La tua expertise, amplificata in pochi clic",
+    "subtitle": "Dalla tua lingua al certificato WAHM: un percorso fluido e chiaro pensato per il tuo progresso.",
+    "ctaDiscoverParcours": "Scopri il percorso",
+    "ctaExploreFormations": "Esplora i corsi",
+    "imageAlt": "Uno studente che segue un corso sportivo WAHM in video"
+  },
+  "parcours": {
+    "label": "Il percorso dello studente",
+    "title": "Un percorso fluido, passo dopo passo",
+    "cta": "Inizia ora",
+    "stepLabel": "Passo"
+  },
+  "domaines": [
+    "Coaching sportivo e Personal Training",
+    "Salute e Riabilitazione – biomeccanica",
+    "Preparazione fisica multisport",
+    "Yoga e Pilates – Zen training",
+    "Neurotraining e scienze del movimento",
+    "Sviluppo personale e Mental Coaching"
+  ],
+  "etapes": [
+    {
+      "title": "Scegli la tua lingua",
+      "intro": "Per ogni corso, puoi selezionare:",
+      "points": ["La lingua originale del formatore", "I sottotitoli disponibili", "Le versioni tradotte"],
+      "note": "Il tuo apprendimento si adatta a te, non il contrario."
+    },
+    {
+      "title": "Scegli il tuo campo",
+      "intro": "WAHM riunisce i migliori corsi al mondo in:",
+      "note": "Un motore di ricerca intelligente ti aiuta a trovare il corso adatto al tuo livello e ai tuoi obiettivi."
+    },
+    {
+      "title": "Accedi al tuo corso con un clic",
+      "intro": "Dopo il pagamento sicuro, ottieni:",
+      "points": ["Accesso immediato", "Accesso a vita (salvo casi particolari)", "Su tutti i tuoi dispositivi (smartphone, tablet, computer)"],
+      "note": "Se vieni interrotto, riprendi esattamente da dove ti eri fermato."
+    },
+    {
+      "title": "Impara al tuo ritmo",
+      "intro": "Ogni corso è suddiviso in moduli brevi e pratici che puoi applicare subito. Puoi:",
+      "points": ["Mettere in pausa", "Rivedere un modulo", "Scaricare schede in PDF", "Prendere appunti direttamente dalla tua dashboard"],
+      "note": "L'apprendimento diventa fluido, chiaro ed efficace."
+    },
+    {
+      "title": "Goditi i contenuti premium",
+      "intro": "Tutti i nostri corsi soddisfano gli standard WAHM:",
+      "points": ["Video HD", "Dimostrazioni pratiche", "Progresso misurato", "Contenuti scritti da esperti internazionali", "Aggiornati regolarmente per riflettere i progressi scientifici"]
+    },
+    {
+      "title": "Ottieni il tuo certificato WAHM",
+      "intro": "Al termine di alcuni corsi, ricevi:",
+      "points": ["Un certificato digitale", "Riconosciuto sulla piattaforma WAHM", "Da valorizzare nel tuo CV e sui social media", "Prova dello sviluppo delle tue competenze"]
+    },
+    {
+      "title": "Unisciti alla community mondiale WAHM",
+      "intro": "Diventando studente, accedi a:",
+      "points": ["Gruppi di discussione privati", "Conferenze esclusive", "Consigli di esperti", "Opportunità di networking internazionale"],
+      "note": "Non impari più da solo: entri a far parte di un ecosistema mondiale."
+    },
+    {
+      "title": "Continua a crescere con noi",
+      "intro": "WAHM raccomanda automaticamente:",
+      "points": ["Corsi complementari", "Percorsi di apprendimento personalizzati", "Nuovi contenuti adattati ai tuoi progressi"],
+      "note": "Il tuo apprendimento diventa continuo, strutturato e intelligente."
+    }
+  ],
+  "cta": {
+    "kicker": "Pronto per iniziare?",
+    "title": "Pronto per iniziare",
+    "text": "Esplora i corsi e sblocca il tuo potenziale.",
+    "ctaExploreFormations": "Esplora i corsi",
+    "ctaJoinCommunity": "Unisciti alla community WAHM"
+  }
+}

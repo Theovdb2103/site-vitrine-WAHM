@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Impressum — WAHM",
+    "description": "Impressum, Nutzungsbedingungen, Verkaufsbedingungen, Datenschutzrichtlinie (DSGVO) und Cookies der World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Rechtliche Informationen",
+    "title": "Impressum",
+    "subtitle": "Vorlagenversion — ausstehende rechtliche Prüfung. Mit 'auszufüllen' gekennzeichnete Angaben müssen vor dem Livegang vervollständigt werden."
+  },
+  "sommaire": {
+    "ariaLabel": "Inhaltsverzeichnis",
+    "label": "Inhaltsverzeichnis"
+  },
+  "sections": [
+    { "label": "Impressum" },
+    { "label": "Nutzungsbedingungen" },
+    { "label": "Verkaufsbedingungen" },
+    { "label": "Datenschutz (DSGVO)" },
+    { "label": "Cookies" }
+  ],
+  "mentions": {
+    "title": "Impressum",
+    "editeur": {
+      "title": "Website-Herausgeber",
+      "formeJuridiqueLabel": "Rechtsform:",
+      "formeJuridiqueTbd": "auszufüllen (z. B. GmbH / AG / UG)",
+      "siegeSocialLabel": "Gesellschaftssitz:",
+      "siegeSocialTbd": "Adresse auszufüllen",
+      "numeroEntrepriseLabel": "Handelsregisternummer / HRB:",
+      "numeroEntrepriseTbd": "auszufüllen",
+      "tvaLabel": "USt-IdNr.:",
+      "tvaTbd": "auszufüllen",
+      "emailLabel": "E-Mail:",
+      "responsablePublicationLabel": "Verantwortlicher für den Inhalt:",
+      "responsablePublicationTbd": "Name des Gründers oder rechtlichen Direktors"
+    },
+    "hebergement": {
+      "title": "Hosting",
+      "hebergeurLabel": "Die Website wird gehostet von:",
+      "hebergeurTbd": "Name des Hosters (z. B. AWS, OVH, Cloudflare…)",
+      "adresseLabel": "Adresse:",
+      "adresseTbd": "auszufüllen",
+      "siteWebLabel": "Website:",
+      "siteWebTbd": "URL des Hosters"
+    },
+    "propriete": {
+      "title": "Geistiges Eigentum",
+      "text": "Alle Inhalte der Website (Texte, Videos, Bilder, Logos, Kurse, Dokumente) sind urheberrechtlich geschützt und bleiben Eigentum von WAHM oder seiner Trainer-Partner. Jede Reproduktion, Verbreitung oder Nutzung ohne Genehmigung ist streng verboten."
+    }
+  },
+  "cgu": {
+    "title": "Nutzungsbedingungen (AGB)",
+    "articles": [
+      {
+        "title": "Artikel 1 — Zweck der Website",
+        "text": "WAHM ist eine E-Learning-Plattform, die es Nutzern ermöglicht, Online-Kurse zu kaufen und zu belegen, Kurse als Trainer anzubieten, auf Bildungsressourcen zuzugreifen und mit der WAHM-Community zu interagieren."
+      },
+      {
+        "title": "Artikel 2 — Kontoerstellung",
+        "text": "Um auf die Kurse zugreifen zu können, muss der Nutzer ein Konto mit korrekten Angaben erstellen. Der Nutzer ist für die Vertraulichkeit seiner Zugangsdaten verantwortlich."
+      },
+      {
+        "title": "Artikel 3 — Nutzung der Plattform",
+        "text": "Es ist verboten, einen Kurs zu kopieren, zu übertragen oder weiterzuverkaufen, persönliche Zugangsdaten zu teilen, Inhalte illegal herunterzuladen oder die Plattform für nicht autorisierte kommerzielle Zwecke zu missbrauchen. WAHM kann ein Konto bei Nichteinhaltung sperren."
+      },
+      {
+        "title": "Artikel 4 — Zertifizierungen",
+        "text": "Von WAHM ausgestellte Zertifikate bestätigen den Abschluss eines Kurses, ersetzen jedoch keine offizielle Berufszertifizierung, sofern nicht anders angegeben."
+      },
+      {
+        "title": "Artikel 5 — Haftung",
+        "text": "WAHM garantiert nicht den beruflichen Erfolg des Nutzers, die absolute Richtigkeit der Inhalte von Partner-Trainern oder die Abwesenheit vorübergehender Dienstunterbrechungen. WAHM bemüht sich nach besten Kräften, die Qualität des Dienstes sicherzustellen."
+      }
+    ]
+  },
+  "cgv": {
+    "title": "Verkaufsbedingungen (AGB-V)",
+    "articles": [
+      {
+        "title": "Artikel 1 — Preise",
+        "text": "Preise werden in € inkl. aller Steuern angegeben, sofern nicht anders angegeben. WAHM behält sich das Recht vor, seine Preise zu ändern."
+      },
+      {
+        "title": "Artikel 2 — Zahlung",
+        "text": "Zahlungen werden über Stripe, PayPal oder einen anderen Anbieter gesichert. Von WAHM werden keine Kartennummern gespeichert."
+      },
+      {
+        "title": "Artikel 3 — Zugang zu Kursen",
+        "text": "Der Zugang wird unmittelbar nach der Zahlung gewährt, ist persönlich und nicht übertragbar und zeitlich unbegrenzt, sofern nicht anders angegeben."
+      },
+      {
+        "title": "Artikel 4 — Rückerstattungsrichtlinie",
+        "text": "Gemäß dem Gesetz über digitale Inhalte gilt das Widerrufsrecht nicht mehr, sobald der Zugang zu den Inhalten gewährt wurde. WAHM kann in Ausnahmefällen eine Rückerstattung anbieten."
+      },
+      {
+        "title": "Artikel 5 — Haftung der Trainer",
+        "text": "Trainer garantieren die Originalität ihrer Inhalte, die Einhaltung der Gesetze und die Abwesenheit von Plagiaten oder gefährlichen Informationen."
+      },
+      {
+        "title": "Artikel 6 — Kündigung",
+        "text": "WAHM kann ein Konto bei betrügerischer Nutzung, Nichteinhaltung der Nutzungsbedingungen oder einem Verhalten, das den Interessen der Plattform zuwiderläuft, sperren."
+      },
+      {
+        "title": "Artikel 7 — Anwendbares Recht",
+        "textPrefix": "Diese Bedingungen unterliegen dem Recht des Landes, in dem das Unternehmen eingetragen ist (",
+        "tbd": "auszufüllen",
+        "textSuffix": ")."
+      }
+    ]
+  },
+  "confidentialite": {
+    "title": "Datenschutzrichtlinie (DSGVO)",
+    "paragraphe1": "WAHM erfasst nur die notwendigen Daten: Vor- und Nachname, E-Mail, Zahlungsinformationen, Kaufhistorie, Lernfortschritt.",
+    "paragraphe2": "Diese Daten werden verwendet, um dein Konto zu verwalten, deine Kurse zu verfolgen, Support zu bieten, kursbezogene Mitteilungen zu senden und den Service zu verbessern.",
+    "paragraphe3Prefix": "Gemäß der DSGVO kannst du den Zugang zu, die Berichtigung oder Löschung deiner Daten sowie die Datenübertragbarkeit und Einschränkung der Verarbeitung beantragen. Anfrage:",
+    "emailLink": "privacy@wahm.com"
+  },
+  "cookies": {
+    "title": "Cookies",
+    "paragraphe1": "Die Website verwendet Cookies, um dein Erlebnis zu verbessern, deine Präferenzen (einschließlich Sprache) zu speichern und den Datenverkehr zu analysieren. Du kannst nicht wesentliche Cookies bei deinem ersten Besuch akzeptieren oder ablehnen und deine Wahl jederzeit ändern.",
+    "paragraphe2Prefix": "Bei Fragen zu Cookies oder deinen Daten:",
+    "emailLink": "privacy@wahm.com"
+  },
+  "retour": "Zurück zur Startseite"
+}

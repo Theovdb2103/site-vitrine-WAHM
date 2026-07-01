@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 // === Identité « Kinetic / Athletic » ===
 // Quelques primitives de mouvement réutilisables (chiffres filigranes, arc qui se
@@ -43,19 +43,5 @@ export function MotionArc({ className = '', thin = 4, glow = 16 }) {
       <path d="M16 384 A368 368 0 0 1 384 16" stroke="#FF7B2C" strokeWidth={glow} strokeLinecap="round" opacity="0.12" />
       <motion.path d="M16 384 A368 368 0 0 1 384 16" stroke="#FF7B2C" strokeWidth={thin} strokeLinecap="round" {...draw} />
     </svg>
-  )
-}
-
-// Barre de progression de lecture, site-wide, en dégradé de marque orange→or.
-// Pinnée en haut : à chaque scroll, le « mouvement » de WAHM est rappelé.
-export function ScrollProgress() {
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 28, restDelta: 0.001 })
-  return (
-    <motion.div
-      aria-hidden="true"
-      style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[300] h-[3px] origin-left bg-gradient-to-r from-wahm-orange via-wahm-goldLight to-wahm-gold shadow-[0_0_12px_rgba(255,123,44,0.55)]"
-    />
   )
 }

@@ -76,11 +76,20 @@ export default function Globe({ className = '', config = WAHM_GLOBE }) {
       onRender,
     })
 
+    // Le rendu WebGL tourne en continu à 60fps tant qu'il n'est pas mis en pause :
+    // on le coupe quand le globe sort de l'écran pour ne pas grignoter le budget
+    // de fluidité du scroll ailleurs sur la page (aucun changement visuel).
+    const io = new IntersectionObserver(([entry]) => {
+      globe.toggle(entry.isIntersecting)
+    })
+    if (canvasRef.current) io.observe(canvasRef.current)
+
     const t = setTimeout(() => {
       if (canvasRef.current) canvasRef.current.style.opacity = '1'
     })
     return () => {
       clearTimeout(t)
+      io.disconnect()
       globe.destroy()
       window.removeEventListener('resize', onResize)
     }

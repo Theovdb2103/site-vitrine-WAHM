@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "title": "WAHM — Learn from the best",
+    "description": "World Academy of Human Movement: the global marketplace for training in health, sport, wellness and performance, in the language of your choice."
+  },
+  "hero": {
+    "label": "The global platform for human movement",
+    "title1": "Learn from",
+    "title2": "the world's",
+    "title3": "best",
+    "tagline": "From anywhere. In the language of your choice.",
+    "text": "Access the world's most innovative courses in sports coaching, health, rehabilitation, Pilates, yoga and human performance. One platform. One standard of expertise. A global community of passionate professionals.",
+    "ctaDiscover": "Discover our courses",
+    "ctaCommunity": "Join the WAHM community"
+  },
+  "pourquoiCards": [
+    {
+      "title": "World-class experts",
+      "description": "Renowned experts from around the world in movement science, performance and health."
+    },
+    {
+      "title": "Exclusive content",
+      "description": "Original training you won't find anywhere else."
+    },
+    {
+      "title": "Multilingual",
+      "description": "Instant voice translation that automatically delivers a dubbed version while keeping the original voice, in multiple languages."
+    },
+    {
+      "title": "Global access",
+      "description": "Immediate access from any country and on any device."
+    },
+    {
+      "title": "Community",
+      "description": "A community of coaches, therapists and enthusiasts who share the same values: progress, excellence, impact."
+    }
+  ],
+  "promesse": [
+    {
+      "title": "Certified & recognized",
+      "text": "Certifying or recognized in their field"
+    },
+    {
+      "title": "Global benchmarks",
+      "text": "Created by international leaders (physical preparation, health, Pilates, yoga, neurotraining, wellness…)"
+    },
+    {
+      "title": "Immediately applicable",
+      "text": "Pedagogical, practical and immediately applicable"
+    },
+    {
+      "title": "Always up to date",
+      "text": "Regularly updated according to the latest scientific research"
+    },
+    {
+      "title": "For all levels",
+      "text": "Suited to all levels: beginners, advanced, experts"
+    }
+  ],
+  "categories": [
+    {
+      "title": "Sports coaching & Personal training",
+      "desc": "Modern methodologies, planning, client management, coaching business."
+    },
+    {
+      "title": "Health & Rehabilitation – biomechanics",
+      "desc": "Rehabilitation, biomechanics, functional movement, return to sport."
+    },
+    {
+      "title": "Multisport physical preparation",
+      "desc": "Sport-specific training, performance, power, speed, injury prevention."
+    },
+    {
+      "title": "Yoga & Pilates – Zen training",
+      "desc": "Flow, mobility, breathing, movement optimization."
+    },
+    {
+      "title": "Neurotraining & movement science",
+      "desc": "Archaic reflexes, motor preferences, sensorimotor loop."
+    },
+    {
+      "title": "Personal development & Mental coaching",
+      "desc": "Mental imagery, mindset, motivation, stress management."
+    }
+  ],
+  "plateforme": [
+    {
+      "tag": "Video",
+      "title": "Multilingual HD videos",
+      "desc": "Courses filmed in high definition, dubbed in multiple languages."
+    },
+    {
+      "tag": "Tracking",
+      "title": "A personal space",
+      "desc": "Your dashboard: courses, certificates and progress at a glance."
+    },
+    {
+      "tag": "Languages",
+      "title": "Smart subtitles",
+      "desc": "Synced in FR / EN / ES and more."
+    },
+    {
+      "tag": "Resources",
+      "title": "Downloadable resources",
+      "desc": "Sheets, PDFs and resources to take anywhere."
+    },
+    {
+      "tag": "Availability",
+      "title": "24/7 access",
+      "desc": "Learn whenever you want, wherever you want."
+    }
+  ],
+  "communaute": [
+    "An international network of coaches, therapists, physical trainers and instructors",
+    "Exclusive webinars with the best experts",
+    "Discounts on training courses",
+    "Private discussion groups",
+    "Continuous scientific monitoring"
+  ],
+  "stats": [
+    { "label": "Languages available" },
+    { "label": "Unlimited access" },
+    { "label": "Areas of expertise" },
+    { "label": "Verified courses" }
+  ],
+  "pourquoi": {
+    "label": "Why WAHM?",
+    "discover": "Discover",
+    "title": "Global excellence, accessible to everyone",
+    "intro": "At World Academy of Human Movement, we only select courses that have already transformed thousands of professionals around the world. WAHM is not a marketplace like the others: it is the international meeting point between:",
+    "outro": "WAHM opens the doors to global knowledge, structured, verified and designed for your professional growth."
+  },
+  "promesseSection": {
+    "label": "Our promise",
+    "title": "Train with the best, without borders",
+    "intro": "We are committed to offering courses that are:",
+    "outro": "Your progress becomes limitless."
+  },
+  "categoriesSection": {
+    "label": "Find your ideal course",
+    "explore": "Explore all",
+    "title": "Clear categories, designed to guide you",
+    "exploreCard": "Explore",
+    "outro": "Every course is a secure investment in your expertise."
+  },
+  "conviction": {
+    "label": "Our conviction",
+    "title1": "WAHM is not a",
+    "title2": "marketplace like the others",
+    "cta": "Explore the courses"
+  },
+  "plateformeSection": {
+    "label": "Designed for the world",
+    "title1": "Learn in your language. At your own pace. Anywhere",
+    "outro": "You choose where, when and how you train."
+  },
+  "communauteSection": {
+    "label": "WAHM Community",
+    "title": "Join the only global community dedicated to human movement",
+    "intro": "As a member, you get access to:",
+    "tagline": "Stop training alone. Move forward with the best.",
+    "cta": "Join the WAHM community"
+  },
+  "ctaFinal": {
+    "eyebrow": "Final call to action",
+    "title1": "Your growth starts now",
+    "text": "The world's best experts are waiting for you. Become a sought-after, recognized professional.",
+    "exploreCta": "Explore the courses",
+    "joinCta": "Join the WAHM community"
+  }
+}

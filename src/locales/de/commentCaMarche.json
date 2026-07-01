@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "So funktioniert es — WAHM",
+    "description": "Der WAHM-Lernweg Schritt für Schritt: vom Entdecken der Kurse bis zu deinem Platz in einem weltweiten Ökosystem."
+  },
+  "hero": {
+    "label": "So funktioniert es · Lernende",
+    "title": "Deine Expertise, in wenigen Klicks verstärkt",
+    "subtitle": "Von deiner Sprache bis zum WAHM-Zertifikat: ein reibungsloser, klarer Weg für deinen Fortschritt.",
+    "ctaDiscoverParcours": "Den Lernweg entdecken",
+    "ctaExploreFormations": "Kurse erkunden",
+    "imageAlt": "Ein Lernender, der einen WAHM-Sportkurs per Video verfolgt"
+  },
+  "parcours": {
+    "label": "Der Lernweg",
+    "title": "Ein reibungsloser Weg, Schritt für Schritt",
+    "cta": "Jetzt starten",
+    "stepLabel": "Schritt"
+  },
+  "domaines": [
+    "Sportcoaching & Personal Training",
+    "Gesundheit & Rehabilitation – Biomechanik",
+    "Multisport-Konditionstraining",
+    "Yoga & Pilates – Zen-Training",
+    "Neurotraining & Bewegungswissenschaft",
+    "Persönlichkeitsentwicklung & Mental Coaching"
+  ],
+  "etapes": [
+    {
+      "title": "Wähle deine Sprache",
+      "intro": "Für jeden Kurs kannst du wählen:",
+      "points": ["Die Originalsprache des Trainers", "Verfügbare Untertitel", "Übersetzte Versionen"],
+      "note": "Dein Lernen passt sich dir an, nicht umgekehrt."
+    },
+    {
+      "title": "Wähle dein Fachgebiet",
+      "intro": "WAHM vereint die besten Kurse der Welt in:",
+      "note": "Eine intelligente Suchmaschine hilft dir, den Kurs zu finden, der zu deinem Niveau und deinen Zielen passt."
+    },
+    {
+      "title": "Zugang zu deinem Kurs mit einem Klick",
+      "intro": "Nach sicherer Bezahlung erhältst du:",
+      "points": ["Sofortigen Zugang", "Lebenslangen Zugang (sofern nicht anders angegeben)", "Auf allen deinen Geräten (Handy, Tablet, Computer)"],
+      "note": "Wenn du unterbrochen wirst, machst du genau dort weiter, wo du aufgehört hast."
+    },
+    {
+      "title": "Lerne in deinem eigenen Tempo",
+      "intro": "Jeder Kurs ist in kurze, praktische Module aufgeteilt, die du sofort anwenden kannst. Du kannst:",
+      "points": ["Pausieren", "Ein Modul erneut ansehen", "PDF-Arbeitsblätter herunterladen", "Notizen direkt aus deinem Dashboard machen"],
+      "note": "Lernen wird reibungslos, klar und effektiv."
+    },
+    {
+      "title": "Genieße Premium-Inhalte",
+      "intro": "Alle unsere Kurse erfüllen WAHM-Standards:",
+      "points": ["HD-Videos", "Praktische Demonstrationen", "Gemessener Fortschritt", "Von internationalen Experten erstellte Inhalte", "Regelmäßig aktualisiert entsprechend wissenschaftlicher Entwicklungen"]
+    },
+    {
+      "title": "Verdiene dein WAHM-Zertifikat",
+      "intro": "Am Ende bestimmter Kurse erhältst du:",
+      "points": ["Ein digitales Zertifikat", "Auf der WAHM-Plattform anerkannt", "Wertvoll für deinen Lebenslauf und soziale Medien", "Nachweis deiner Kompetenzentwicklung"]
+    },
+    {
+      "title": "Tritt der weltweiten WAHM-Community bei",
+      "intro": "Als Lernender erhältst du Zugang zu:",
+      "points": ["Privaten Diskussionsgruppen", "Exklusiven Konferenzen", "Expertenrat", "Internationalen Networking-Möglichkeiten"],
+      "note": "Du lernst nicht mehr allein: Du wirst Teil eines weltweiten Ökosystems."
+    },
+    {
+      "title": "Wachse weiter mit uns",
+      "intro": "WAHM empfiehlt automatisch:",
+      "points": ["Ergänzende Kurse", "Personalisierte Lernwege", "Neue Inhalte, abgestimmt auf deinen Fortschritt"],
+      "note": "Dein Lernen wird kontinuierlich, strukturiert und intelligent."
+    }
+  ],
+  "cta": {
+    "kicker": "Bereit loszulegen?",
+    "title": "Bereit loszulegen",
+    "text": "Erkunde Kurse und entfalte dein Potenzial.",
+    "ctaExploreFormations": "Kurse erkunden",
+    "ctaJoinCommunity": "Der WAHM-Community beitreten"
+  }
+}

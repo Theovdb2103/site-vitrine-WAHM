@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "title": "Trainer worden — WAHM",
+    "description": "Deel je expertise met de wereld. Word trainer bij WAHM: internationaal publiek, terugkerende inkomsten, volledige ondersteuning. Dien je aanmelding in."
+  },
+  "hero": {
+    "label": "WAHM-trainer worden",
+    "title": "Deel je expertise met de wereld",
+    "subtitle": "Laten we samen online training naar een nieuw niveau tillen. Jouw kennis verdient een wereldwijd publiek.",
+    "ctaApply": "Mijn aanmelding indienen",
+    "ctaContact": "Spreek met een partnershipmanager",
+    "imageAlt": "WAHM-trainer worden"
+  },
+  "avantages": {
+    "label": "Waarom lid worden",
+    "title": "Word een sleutelfiguur in een wereldwijd platform",
+    "intro": "Door lid te worden van World Academy of Human Movement, word je een sleutelfiguur in een wereldwijd platform dat de beste trainers in gezondheid, welzijn, coaching en prestaties samenbrengt. WAHM stelt je in staat om:",
+    "items": [
+      {
+        "title": "Een internationaal publiek bereiken",
+        "desc": "Jouw cursus wordt in meerdere talen toegankelijk voor duizenden cursisten in meer dan 50 landen."
+      },
+      {
+        "title": "Terugkerende inkomsten genereren",
+        "desc": "Elke cursus wordt een digitaal bezit dat je maandelijks geld oplevert, zonder geografische beperking."
+      },
+      {
+        "title": "Je reputatie versterken",
+        "desc": "Geselecteerd worden door WAHM is een teken van prestige. Je geloofwaardigheid neemt toe. Je zichtbaarheid schiet omhoog."
+      },
+      {
+        "title": "Creëren zonder technische beperkingen",
+        "desc": "Jij levert de content. Wij regelen de hosting, wereldwijde distributie, vertaling en ondertiteling, marketing en pedagogische ondersteuning."
+      },
+      {
+        "title": "Word lid van een collectief van internationale experts",
+        "desc": "Sluit je aan bij een onderwijselite die dezelfde waarden deelt: excellentie, innovatie, kennisoverdracht."
+      }
+    ],
+    "highlight": {
+      "title": "Onderwijs de hele wereld. Laat een blijvende indruk achter.",
+      "text1": "WAHM is niet alleen een platform: het is een ecosysteem van experts waar de besten hun kennis delen met het grootste publiek.",
+      "text2": "Heb je unieke kennis? Geef het de reikwijdte die het verdient."
+    }
+  },
+  "disciplines": {
+    "label": "Voor wie is WAHM",
+    "title": "Disciplines waar we naar op zoek zijn",
+    "subtitle": "We selecteren erkende trainers in de volgende vakgebieden:",
+    "outro": "Als je jouw discipline vooruithelpt, wil WAHM met je samenwerken.",
+    "items": [
+      { "name": "Fysieke voorbereiding & sportprestaties", "tag": "Kracht & prestaties" },
+      { "name": "Sportcoaching & personal training", "tag": "Individuele coaching" },
+      { "name": "Yoga, Pilates, mobiliteit", "tag": "Mobiliteit & ademhaling" },
+      { "name": "Gezondheid, revalidatie, biomechanica", "tag": "Terugkeer naar sport" },
+      { "name": "Neurowetenschap toegepast op beweging", "tag": "Bewegingswetenschap" },
+      { "name": "Motorische voorkeuren, innovatieve methoden", "tag": "Innovatieve methoden" },
+      { "name": "Welzijn, ademhaling, herstel", "tag": "Herstel" },
+      { "name": "Mentale coaching en psychologische voorbereiding", "tag": "Mentale voorbereiding" }
+    ]
+  },
+  "criteres": {
+    "label": "Onze selectiecriteria",
+    "title": "Excellentie waarborgen",
+    "subtitle": "We kiezen trainers die:",
+    "imageAlt": "WAHM-team evalueert een trainerkandiaat",
+    "cardKicker": "WAHM · Evaluatieformulier",
+    "cardBadge": "Goedgekeurd",
+    "cardTitle": "Selectiecriteria",
+    "items": [
+      "Experts zijn in hun vakgebied",
+      "Beschikken over duidelijke, gestructureerde en impactvolle onderwijsvaardigheden",
+      "Echte meerwaarde kunnen bieden",
+      "Unieke, wetenschappelijk onderbouwde content aanbieden",
+      "Gemotiveerd zijn om kennis internationaal te delen"
+    ]
+  },
+  "etapes": {
+    "label": "Hoe het werkt",
+    "title": "Vijf stappen, van begin tot eind begeleid",
+    "outro": "Van begin tot eind begeleid, zonder inkomstenlimiet.",
+    "imageAlt": "Expertise in beweging en prestaties",
+    "items": [
+      {
+        "title": "Je dient je aanmelding in",
+        "desc": "Introductie, expertise, onderwerp, voorbeeldcontent."
+      },
+      {
+        "title": "Ons comité evalueert je voorstel",
+        "desc": "Onderwijskwaliteit, relevantie, originaliteit, meerwaarde."
+      },
+      {
+        "title": "We helpen je de cursus te structureren",
+        "desc": "Storyboard, modules, materialen, filmopnames indien nodig."
+      },
+      {
+        "title": "WAHM regelt alles",
+        "desc": "Publicatie, marketing, wereldwijde distributie, gebruikersondersteuning."
+      },
+      {
+        "title": "Je wordt maandelijks betaald",
+        "desc": "Transparante, groeiende inkomsten, zonder limiet."
+      }
+    ]
+  },
+  "candidature": {
+    "label": "Traineraanmelding",
+    "title": "Jouw expertise verdient een wereldwijd publiek",
+    "text": "Word lid van de beste experts in menselijke beweging. Internationaal publiek, terugkerende inkomsten, volledige ondersteuning.",
+    "benefits": [
+      "Een internationaal publiek",
+      "Terugkerende inkomsten",
+      "Volledige ondersteuning"
+    ],
+    "formTitle": "Dien je aanmelding in",
+    "formSubtitle": "We beoordelen je profiel en nemen binnen 7 dagen contact met je op.",
+    "success": {
+      "title": "Aanmelding verzonden!",
+      "text": "Bedankt. Ons comité beoordeelt je profiel en neemt binnen 7 dagen contact met je op via het opgegeven adres."
+    },
+    "form": {
+      "fields": {
+        "nom": "Volledige naam *",
+        "email": "E-mail *",
+        "domaine": "Expertisegebied *",
+        "theme": "Cursusonderwerp",
+        "echantillon": "Link naar een contentvoorbeeld",
+        "refs": "Sociale media / referenties",
+        "bio": "Introductie (cv / bio)"
+      },
+      "placeholders": {
+        "nom": "Jan de Vries",
+        "email": "jan@voorbeeld.nl",
+        "domaine": "Fysieke voorbereiding, Pilates…",
+        "theme": "Bijv.: Knierevalidatie",
+        "echantillon": "https://…  (video, PDF, kanaal…)",
+        "refs": "Instagram, LinkedIn, website…",
+        "bio": "Een paar regels over je achtergrond en aanpak…"
+      },
+      "submit": "Mijn aanmelding indienen",
+      "submitting": "Verzenden…",
+      "consent": "Door in te dienen, ga je akkoord dat het WAHM-team contact met je opneemt.",
+      "errors": {
+        "invalid": "Vul minimaal je naam, een geldig e-mailadres en je expertisegebied in.",
+        "failed": "Verzenden mislukt. Probeer het later opnieuw of schrijf ons direct.",
+        "network": "Verzenden mislukt. Controleer je verbinding en probeer opnieuw."
+      }
+    }
+  }
+}

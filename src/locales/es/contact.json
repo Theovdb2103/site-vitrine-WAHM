@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Contacto — WAHM",
+    "description": "¿Una pregunta, un proyecto, una colaboración? Contacta con el equipo de World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Contacto",
+    "title": "Hablemos de tu proyecto",
+    "subtitle": "¿Una pregunta, una colaboración, una solicitud de formador? Nuestro equipo te responderá."
+  },
+  "info": {
+    "writeToUs": "Escríbenos",
+    "responseNote": "Solemos responder en un plazo de 48 horas laborables.",
+    "partnership": {
+      "title": "Habla con un responsable de alianzas",
+      "text": "¿Eres formador, escuela o institución? Construyamos juntos tu presencia en WAHM.",
+      "cta": "Convertirse en formador"
+    }
+  },
+  "coordonnees": [
+    {
+      "title": "Escríbenos",
+      "value": "contact@wahm.com",
+      "desc": "Solemos responder en un plazo de 48 horas laborables."
+    },
+    {
+      "title": "Tiempo de respuesta",
+      "value": "En 48 horas laborables",
+      "desc": "Nuestro equipo gestiona cada solicitud con cuidado."
+    }
+  ],
+  "form": {
+    "label": "Formulario",
+    "title": "Envíanos un mensaje",
+    "fields": {
+      "nom": "Nombre completo *",
+      "email": "Correo electrónico *",
+      "sujet": "Asunto",
+      "message": "Mensaje *"
+    },
+    "placeholders": {
+      "nom": "Juan García",
+      "email": "juan@ejemplo.es",
+      "sujet": "Asunto de tu mensaje",
+      "message": "Tu mensaje…"
+    },
+    "submit": "Enviar mensaje",
+    "submitting": "Enviando…",
+    "consent": "Al enviar este mensaje, aceptas que tus datos puedan utilizarse para gestionar tu solicitud.",
+    "errors": {
+      "invalid": "Por favor, introduce tu nombre, un correo electrónico válido y tu mensaje.",
+      "failed": "Error al enviar. Por favor, inténtalo de nuevo más tarde.",
+      "network": "Error al enviar. Comprueba tu conexión e inténtalo de nuevo."
+    },
+    "success": {
+      "title": "Mensaje enviado",
+      "text": "Gracias por contactarnos. Nuestro equipo te responderá en un plazo de 48 horas laborables."
+    }
+  }
+}

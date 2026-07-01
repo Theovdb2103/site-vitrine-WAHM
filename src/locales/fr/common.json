@@ -1,0 +1,63 @@
+{
+  "skipToContent": "Aller au contenu",
+  "nav": {
+    "formations": "Formations",
+    "devenir-formateur": "Devenir formateur",
+    "comment-ca-marche": "Comment ça marche",
+    "communaute": "Communauté",
+    "a-propos": "À propos",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "cta": {
+    "discover": "Découvrir les formations",
+    "apply": "Déposer ma candidature",
+    "join": "Rejoindre WAHM"
+  },
+  "header": {
+    "homeAriaLabel": "Accueil WAHM",
+    "languageAriaLabel": "Changer de langue",
+    "menu": {
+      "open": "Ouvrir le menu",
+      "close": "Fermer le menu"
+    },
+    "theme": {
+      "toggleToDark": "Activer le mode sombre",
+      "toggleToLight": "Activer le mode clair"
+    },
+    "faqMenu": {
+      "label": "FAQ",
+      "learner": "Apprenant",
+      "trainer": "Formateur"
+    }
+  },
+  "languageOverlay": {
+    "ariaLabel": "Choisissez votre langue",
+    "title": "Choisissez votre langue",
+    "subtitle": "Select your language to continue",
+    "hint": "Vous pourrez changer de langue à tout moment depuis le menu."
+  },
+  "footer": {
+    "tagline": "Suivez le mouvement.",
+    "columns": [
+      {
+        "title": "Plateforme",
+        "links": ["Formations", "Comment ça marche", "Communauté"]
+      },
+      {
+        "title": "Entreprise",
+        "links": ["À propos", "Devenir formateur", "FAQ formateurs"]
+      },
+      {
+        "title": "Légal",
+        "links": ["Mentions légales", "CGU & CGV", "Confidentialité", "Cookies"]
+      },
+      {
+        "title": "Contact",
+        "links": ["contact@wahm.com", "Nous contacter", "Support international 24/7"]
+      }
+    ],
+    "copyright": "© 2026 World Academy of Human Movement — WAHM",
+    "credit": "Conçu par"
+  }
+}

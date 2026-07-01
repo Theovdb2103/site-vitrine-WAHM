@@ -4,6 +4,21 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Tokens sémantiques de thème (pilotés par les variables CSS de index.css).
+        // Le triplet RGB + <alpha-value> permet bg-surface/80, border-line/[0.08], etc.
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        'surface-2': 'rgb(var(--c-surface-2) / <alpha-value>)',
+        'surface-3': 'rgb(var(--c-surface-3) / <alpha-value>)',
+        fg: 'rgb(var(--c-fg) / <alpha-value>)',
+        'fg-soft': 'rgb(var(--c-fg-soft) / <alpha-value>)',
+        muted: 'rgb(var(--c-muted) / <alpha-value>)',
+        subtle: 'rgb(var(--c-subtle) / <alpha-value>)',
+        line: 'rgb(var(--c-line) / <alpha-value>)',
+        accent: 'rgb(var(--c-accent) / <alpha-value>)',
+        'accent-fg': 'rgb(var(--c-accent-fg) / <alpha-value>)',
+        gold: 'rgb(var(--c-gold) / <alpha-value>)',
+        scrim: 'rgb(var(--c-scrim) / <alpha-value>)',
+        // Tokens de marque (accents constants — inchangés selon le thème).
         wahm: {
           navy: '#0A1A2F',
           navyDark: '#06121f',

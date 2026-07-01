@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "title": "Trainer werden — WAHM",
+    "description": "Teile deine Expertise mit der Welt. Werde WAHM-Trainer: internationales Publikum, wiederkehrende Einnahmen, vollständige Unterstützung. Bewerbung einreichen."
+  },
+  "hero": {
+    "label": "WAHM-Trainer werden",
+    "title": "Teile deine Expertise mit der Welt",
+    "subtitle": "Lass uns gemeinsam Online-Training auf eine neue Ebene heben. Dein Wissen verdient ein weltweites Publikum.",
+    "ctaApply": "Meine Bewerbung einreichen",
+    "ctaContact": "Mit einem Partnership-Manager sprechen",
+    "imageAlt": "WAHM-Trainer werden"
+  },
+  "avantages": {
+    "label": "Warum mitmachen",
+    "title": "Werde ein Schlüsselakteur auf einer globalen Plattform",
+    "intro": "Indem du der World Academy of Human Movement beitrittst, wirst du ein Schlüsselakteur auf einer globalen Plattform, die die besten Trainer in Gesundheit, Wohlbefinden, Coaching und Leistung zusammenbringt. WAHM ermöglicht dir:",
+    "items": [
+      {
+        "title": "Ein internationales Publikum erreichen",
+        "desc": "Dein Kurs wird in mehreren Sprachen für Tausende von Lernenden in über 50 Ländern zugänglich."
+      },
+      {
+        "title": "Wiederkehrende Einnahmen generieren",
+        "desc": "Jeder Kurs wird zu einem digitalen Asset, das dir monatlich Geld einbringt, ohne geografische Einschränkung."
+      },
+      {
+        "title": "Deine Reputation stärken",
+        "desc": "Von WAHM ausgewählt zu werden, ist ein Zeichen von Prestige. Deine Glaubwürdigkeit steigt. Deine Sichtbarkeit explodiert."
+      },
+      {
+        "title": "Ohne technische Einschränkungen erstellen",
+        "desc": "Du lieferst den Inhalt. Wir kümmern uns um Hosting, weltweite Distribution, Übersetzung und Untertitel, Marketing und pädagogische Unterstützung."
+      },
+      {
+        "title": "Teil eines Kollektivs internationaler Experten werden",
+        "desc": "Schließ dich einer Lehr-Elite an, die dieselben Werte teilt: Exzellenz, Innovation, Wissensvermittlung."
+      }
+    ],
+    "highlight": {
+      "title": "Unterrichte die ganze Welt. Hinterlasse einen bleibenden Eindruck.",
+      "text1": "WAHM ist nicht nur eine Plattform: Es ist ein Ökosystem von Experten, in dem die Besten ihr Wissen mit möglichst vielen Menschen teilen.",
+      "text2": "Hast du einzigartiges Wissen? Gib ihm die Reichweite, die es verdient."
+    }
+  },
+  "disciplines": {
+    "label": "Für wen ist WAHM",
+    "title": "Disziplinen, die wir suchen",
+    "subtitle": "Wir wählen anerkannte Trainer in folgenden Bereichen aus:",
+    "outro": "Wenn du deine Disziplin voranbringst, möchte WAHM mit dir zusammenarbeiten.",
+    "items": [
+      { "name": "Körperliche Vorbereitung & sportliche Leistung", "tag": "Kraft & Leistung" },
+      { "name": "Sportcoaching & Personal Training", "tag": "Einzelcoaching" },
+      { "name": "Yoga, Pilates, Mobilität", "tag": "Mobilität & Atmung" },
+      { "name": "Gesundheit, Rehabilitation, Biomechanik", "tag": "Rückkehr zum Sport" },
+      { "name": "Neurowissenschaften angewandt auf Bewegung", "tag": "Bewegungswissenschaft" },
+      { "name": "Motorische Präferenzen, innovative Methoden", "tag": "Innovative Methoden" },
+      { "name": "Wohlbefinden, Atmung, Erholung", "tag": "Erholung" },
+      { "name": "Mental Coaching und psychologische Vorbereitung", "tag": "Mentale Vorbereitung" }
+    ]
+  },
+  "criteres": {
+    "label": "Unsere Auswahlkriterien",
+    "title": "Exzellenz sicherstellen",
+    "subtitle": "Wir wählen Trainer aus, die:",
+    "imageAlt": "WAHM-Team bewertet einen Trainer-Kandidaten",
+    "cardKicker": "WAHM · Bewertungsbogen",
+    "cardBadge": "Genehmigt",
+    "cardTitle": "Auswahlkriterien",
+    "items": [
+      "Experten in ihrem Fachgebiet sind",
+      "Über klare, strukturierte und wirkungsvolle Lehrkompetenz verfügen",
+      "Echten Mehrwert bieten können",
+      "Einzigartige, wissenschaftlich fundierte Inhalte anbieten",
+      "Motiviert sind, Wissen international zu teilen"
+    ]
+  },
+  "etapes": {
+    "label": "So funktioniert es",
+    "title": "Fünf Schritte, von Anfang bis Ende begleitet",
+    "outro": "Von Anfang bis Ende begleitet, ohne Einkommenslimit.",
+    "imageAlt": "Expertise in Bewegung und Leistung",
+    "items": [
+      {
+        "title": "Du reichst deine Bewerbung ein",
+        "desc": "Vorstellung, Expertise, Thema, Beispielinhalte."
+      },
+      {
+        "title": "Unser Komitee bewertet deinen Vorschlag",
+        "desc": "Lehrqualität, Relevanz, Originalität, Mehrwert."
+      },
+      {
+        "title": "Wir helfen dir, den Kurs zu strukturieren",
+        "desc": "Storyboard, Module, Materialien, Filmaufnahmen bei Bedarf."
+      },
+      {
+        "title": "WAHM kümmert sich um alles",
+        "desc": "Veröffentlichung, Marketing, weltweite Distribution, Nutzer-Support."
+      },
+      {
+        "title": "Du wirst monatlich bezahlt",
+        "desc": "Transparente, wachsende Einnahmen, ohne Limit."
+      }
+    ]
+  },
+  "candidature": {
+    "label": "Trainer-Bewerbung",
+    "title": "Deine Expertise verdient ein weltweites Publikum",
+    "text": "Schließ dich den besten Experten für menschliche Bewegung an. Internationales Publikum, wiederkehrende Einnahmen, vollständige Unterstützung.",
+    "benefits": [
+      "Ein internationales Publikum",
+      "Wiederkehrende Einnahmen",
+      "Vollständige Unterstützung"
+    ],
+    "formTitle": "Bewerbung einreichen",
+    "formSubtitle": "Wir prüfen dein Profil und melden uns innerhalb von 7 Tagen bei dir.",
+    "success": {
+      "title": "Bewerbung gesendet!",
+      "text": "Danke. Unser Komitee prüft dein Profil und meldet sich innerhalb von 7 Tagen unter der angegebenen Adresse bei dir."
+    },
+    "form": {
+      "fields": {
+        "nom": "Vollständiger Name *",
+        "email": "E-Mail *",
+        "domaine": "Fachgebiet *",
+        "theme": "Kursthema",
+        "echantillon": "Link zu einem Inhaltsbeispiel",
+        "refs": "Soziale Medien / Referenzen",
+        "bio": "Vorstellung (Lebenslauf / Bio)"
+      },
+      "placeholders": {
+        "nom": "Max Mustermann",
+        "email": "max@beispiel.de",
+        "domaine": "Konditionstraining, Pilates…",
+        "theme": "Z. B.: Knie-Rehabilitation",
+        "echantillon": "https://…  (Video, PDF, Kanal…)",
+        "refs": "Instagram, LinkedIn, Website…",
+        "bio": "Ein paar Zeilen über deinen Werdegang und deinen Ansatz…"
+      },
+      "submit": "Meine Bewerbung einreichen",
+      "submitting": "Wird gesendet…",
+      "consent": "Durch das Einreichen stimmst du zu, vom WAHM-Team kontaktiert zu werden.",
+      "errors": {
+        "invalid": "Bitte gib mindestens deinen Namen, eine gültige E-Mail-Adresse und dein Fachgebiet ein.",
+        "failed": "Senden fehlgeschlagen. Bitte versuche es später erneut oder schreib uns direkt.",
+        "network": "Senden fehlgeschlagen. Überprüfe deine Verbindung und versuche es erneut."
+      }
+    }
+  }
+}

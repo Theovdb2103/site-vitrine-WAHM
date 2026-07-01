@@ -1,0 +1,63 @@
+{
+  "skipToContent": "Naar inhoud",
+  "nav": {
+    "formations": "Cursussen",
+    "devenir-formateur": "Trainer worden",
+    "comment-ca-marche": "Hoe het werkt",
+    "communaute": "Gemeenschap",
+    "a-propos": "Over ons",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "cta": {
+    "discover": "Ontdek onze cursussen",
+    "apply": "Mijn aanmelding indienen",
+    "join": "Word lid van WAHM"
+  },
+  "header": {
+    "homeAriaLabel": "WAHM startpagina",
+    "languageAriaLabel": "Taal wijzigen",
+    "menu": {
+      "open": "Menu openen",
+      "close": "Menu sluiten"
+    },
+    "theme": {
+      "toggleToDark": "Schakel over naar donkere modus",
+      "toggleToLight": "Schakel over naar lichte modus"
+    },
+    "faqMenu": {
+      "label": "FAQ",
+      "learner": "Cursist",
+      "trainer": "Trainer"
+    }
+  },
+  "languageOverlay": {
+    "ariaLabel": "Kies je taal",
+    "title": "Kies je taal",
+    "subtitle": "Selecteer je taal om verder te gaan",
+    "hint": "Je kunt de taal op elk moment wijzigen via het menu."
+  },
+  "footer": {
+    "tagline": "Volg de beweging.",
+    "columns": [
+      {
+        "title": "Platform",
+        "links": ["Cursussen", "Hoe het werkt", "Gemeenschap"]
+      },
+      {
+        "title": "Bedrijf",
+        "links": ["Over ons", "Trainer worden", "Trainer FAQ"]
+      },
+      {
+        "title": "Juridisch",
+        "links": ["Juridische informatie", "Gebruiksvoorwaarden", "Privacy", "Cookies"]
+      },
+      {
+        "title": "Contact",
+        "links": ["contact@wahm.com", "Neem contact op", "Internationale 24/7 ondersteuning"]
+      }
+    ],
+    "copyright": "© 2026 World Academy of Human Movement — WAHM",
+    "credit": "Gebouwd door"
+  }
+}

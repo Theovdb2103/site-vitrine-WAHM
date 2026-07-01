@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "title": "WAHM — Impara dai migliori",
+    "description": "World Academy of Human Movement: il marketplace mondiale di formazione in salute, sport, benessere e performance, nella tua lingua."
+  },
+  "hero": {
+    "label": "La piattaforma mondiale del movimento umano",
+    "title1": "Impara dai",
+    "title2": "migliori",
+    "title3": "formatori",
+    "tagline": "Da qualsiasi luogo. Nella lingua di tua scelta.",
+    "text": "Accedi ai corsi più innovativi al mondo in coaching sportivo, salute, riabilitazione, Pilates, yoga e performance umana. Una piattaforma. Uno standard di eccellenza. Una comunità mondiale di professionisti appassionati.",
+    "ctaDiscover": "Scopri i nostri corsi",
+    "ctaCommunity": "Unisciti alla community WAHM"
+  },
+  "pourquoiCards": [
+    {
+      "title": "Esperti di livello mondiale",
+      "description": "Esperti rinomati in tutto il mondo in scienze del movimento, performance e salute."
+    },
+    {
+      "title": "Contenuti esclusivi",
+      "description": "Formazioni originali che non troverai da nessun'altra parte."
+    },
+    {
+      "title": "Multilingue",
+      "description": "Traduzione vocale istantanea che offre automaticamente una versione doppiata mantenendo la voce originale, in più lingue."
+    },
+    {
+      "title": "Accesso mondiale",
+      "description": "Accesso immediato da qualsiasi paese e su qualsiasi dispositivo."
+    },
+    {
+      "title": "Community",
+      "description": "Una comunità di coach, terapeuti e appassionati che condividono gli stessi valori: progresso, eccellenza, impatto."
+    }
+  ],
+  "promesse": [
+    {
+      "title": "Certificate e riconosciute",
+      "text": "Certificanti o riconosciute nel loro campo"
+    },
+    {
+      "title": "Riferimenti mondiali",
+      "text": "Create da leader internazionali (preparazione fisica, salute, Pilates, yoga, neurotraining, benessere…)"
+    },
+    {
+      "title": "Immediatamente applicabili",
+      "text": "Pedagogiche, pratiche e immediatamente applicabili"
+    },
+    {
+      "title": "Sempre aggiornate",
+      "text": "Aggiornate regolarmente secondo le ultime ricerche scientifiche"
+    },
+    {
+      "title": "Per tutti i livelli",
+      "text": "Adatte a tutti i livelli: principianti, intermedi, esperti"
+    }
+  ],
+  "categories": [
+    {
+      "title": "Coaching sportivo e Personal Training",
+      "desc": "Metodologie moderne, pianificazione, gestione clienti, business del coaching."
+    },
+    {
+      "title": "Salute e Riabilitazione – biomeccanica",
+      "desc": "Riabilitazione, biomeccanica, movimento funzionale, ritorno allo sport."
+    },
+    {
+      "title": "Preparazione fisica multisport",
+      "desc": "Allenamento specifico per sport, performance, potenza, velocità, prevenzione infortuni."
+    },
+    {
+      "title": "Yoga e Pilates – Zen training",
+      "desc": "Flow, mobilità, respirazione, ottimizzazione del movimento."
+    },
+    {
+      "title": "Neurotraining e scienze del movimento",
+      "desc": "Riflessi arcaici, preferenze motorie, circuito sensomotorio."
+    },
+    {
+      "title": "Sviluppo personale e Mental Coaching",
+      "desc": "Visualizzazione mentale, mindset, motivazione, gestione dello stress."
+    }
+  ],
+  "plateforme": [
+    {
+      "tag": "Video",
+      "title": "Video HD multilingue",
+      "desc": "Corsi filmati in alta definizione, doppiati in più lingue."
+    },
+    {
+      "tag": "Progresso",
+      "title": "Uno spazio personale",
+      "desc": "La tua dashboard: corsi, certificati e progressi a colpo d'occhio."
+    },
+    {
+      "tag": "Lingue",
+      "title": "Sottotitoli intelligenti",
+      "desc": "Sincronizzati in IT / EN / FR / ES e altro ancora."
+    },
+    {
+      "tag": "Risorse",
+      "title": "Materiali scaricabili",
+      "desc": "Schede, PDF e risorse da portare ovunque."
+    },
+    {
+      "tag": "Disponibilità",
+      "title": "Accesso 24/7",
+      "desc": "Impara quando vuoi, dove vuoi."
+    }
+  ],
+  "communaute": [
+    "Una rete internazionale di coach, terapisti, preparatori atletici e istruttori",
+    "Webinar esclusivi con i migliori esperti",
+    "Sconti sui corsi",
+    "Gruppi di discussione privati",
+    "Monitoraggio scientifico continuo"
+  ],
+  "stats": [
+    { "label": "Lingue disponibili" },
+    { "label": "Accesso illimitato" },
+    { "label": "Aree di competenza" },
+    { "label": "Corsi verificati" }
+  ],
+  "pourquoi": {
+    "label": "Perché WAHM?",
+    "discover": "Scoprire",
+    "title": "Eccellenza mondiale, accessibile a tutti",
+    "intro": "Presso World Academy of Human Movement, selezioniamo esclusivamente corsi che hanno già trasformato migliaia di professionisti in tutto il mondo. WAHM non è un marketplace come gli altri: è il punto di convergenza internazionale tra:",
+    "outro": "WAHM ti apre le porte alla conoscenza mondiale, strutturata, verificata e pensata per la tua evoluzione professionale."
+  },
+  "promesseSection": {
+    "label": "La nostra promessa",
+    "title": "Formarti con i migliori, senza confini",
+    "intro": "Ci impegniamo a offrire corsi che siano:",
+    "outro": "Il tuo progresso diventa illimitato."
+  },
+  "categoriesSection": {
+    "label": "Trova il tuo corso ideale",
+    "explore": "Esplora tutto",
+    "title": "Categorie chiare, pensate per guidarti",
+    "exploreCard": "Esplorare",
+    "outro": "Ogni corso è un investimento sicuro nella tua expertise."
+  },
+  "conviction": {
+    "label": "La nostra convinzione",
+    "title1": "WAHM non è un",
+    "title2": "marketplace come gli altri",
+    "cta": "Esplora i corsi"
+  },
+  "plateformeSection": {
+    "label": "Pensata per il mondo",
+    "title1": "Impara nella tua lingua. Al tuo ritmo. Ovunque",
+    "outro": "Sei tu a scegliere dove, quando e come formarti."
+  },
+  "communauteSection": {
+    "label": "Community WAHM",
+    "title": "Unisciti all'unica community mondiale dedicata al movimento umano",
+    "intro": "Diventando membro, accedi a:",
+    "tagline": "Smetti di formarti da solo. Avanza con i migliori.",
+    "cta": "Unisciti alla community WAHM"
+  },
+  "ctaFinal": {
+    "eyebrow": "Ultima chiamata all'azione",
+    "title1": "La tua evoluzione inizia ora",
+    "text": "I migliori esperti del mondo ti aspettano. Diventa un professionista ricercato e riconosciuto.",
+    "exploreCta": "Esplora i corsi",
+    "joinCta": "Unisciti alla community WAHM"
+  }
+}

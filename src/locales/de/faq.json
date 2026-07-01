@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "Trainer FAQ — WAHM",
+    "description": "Alle Antworten auf die Fragen von WAHM-Trainern: Bewerbung, Vergütung, Produktion, Exklusivität, Zeitpläne."
+  },
+  "hero": {
+    "label": "Trainer FAQ",
+    "title": "Alle Antworten, um Trainer zu werden",
+    "subtitle": "Bewerbung, Auswahl, Sprachen, Vergütung, Zeitpläne… Alles, was du wissen musst, bevor du WAHM beitrittst."
+  },
+  "faqItems": [
+    {
+      "question": "Wer kann Trainer bei WAHM werden?",
+      "answer": "WAHM wählt anerkannte Experten in den Bereichen Sportcoaching, Gesundheit, Rehabilitation, Pilates, Yoga, körperliche Vorbereitung, Neurotraining, menschliche Leistung und Wohlbefinden aus.\nWenn du über fundiertes Fachwissen, klare Lehrfähigkeiten und einzigartige Inhalte verfügst, kannst du dich bewerben."
+    },
+    {
+      "question": "Wie reiche ich meine Bewerbung ein?",
+      "answer": "Fülle einfach das Online-Bewerbungsformular aus. Wir bitten dich um:\n•  Deinen Lebenslauf oder deine berufliche Biografie\n•  Eine Beschreibung deines Kurses oder Konzepts\n•  Ein Beispiel für Video- oder Bildungsinhalte\n•  Deine sozialen Medien oder Referenzen"
+    },
+    {
+      "question": "Was sind eure Auswahlkriterien?",
+      "answer": "WAHM bewertet:\n•  Die Glaubwürdigkeit und Erfahrung des Trainers\n•  Die wissenschaftliche oder methodologische Relevanz\n•  Die Lehrqualität\n•  Die Originalität der Inhalte\n•  Die Eignung für E-Learning\n•  Die internationale Attraktivität des Themas"
+    },
+    {
+      "question": "Muss ich den gesamten Kurs selbst erstellen?",
+      "answer": "Nein. Du kannst einen vollständigen Kurs ODER eine strukturierte Idee vorschlagen. WAHM kann dich bei der Strukturierung der Module, der Optimierung des pädagogischen Ansatzes, der Verbesserung der Lernprogression sowie beim Filmen und Schneiden deiner Videos bei Bedarf unterstützen."
+    },
+    {
+      "question": "In welchen Sprachen werden Kurse angeboten?",
+      "answer": "Du kannst in deiner eigenen Sprache aufnehmen. WAHM kümmert sich um die Übersetzung, Untertitel, Übersetzung deiner PDF-Dateien und Anpassung an den internationalen Markt. Dein Kurs wird sofort weltweit zugänglich."
+    },
+    {
+      "question": "Wie viel kann ich als Trainer verdienen?",
+      "answer": "Die Einnahmen variieren je nach Anzahl der Verkäufe, deiner Bekanntheit, dem Thema und der Marketing-Förderung. Das Modell ist transparent und basiert auf Royalties: Du verdienst monatlich an allen Verkäufen, ohne Limit."
+    },
+    {
+      "question": "Wer legt den Preis des Kurses fest?",
+      "answer": "Der Preis wird gemeinsam festgelegt: Du schlägst einen Zielpreis vor, WAHM analysiert den internationalen Markt, und dann passen wir ihn gemeinsam an, um deine Einnahmen zu maximieren."
+    },
+    {
+      "question": "Kann ich meinen Kurs auch anderweitig anbieten?",
+      "answer": "Ja, es sei denn, du wählst das exklusive WAHM-Programm, das bestimmten Trainern vorbehalten ist (mit höherer Vergütung und Premium-Marketing)."
+    },
+    {
+      "question": "Wer kümmert sich um die technischen, administrativen und Marketing-Aspekte?",
+      "answer": "WAHM kümmert sich um alles: Hosting, E-Learning-Interface, Sicherheit, Zahlungen, Kundensupport, internationales Marketing, Trainer-Promotion. Du kannst dich auf das Wichtigste konzentrieren: deine Expertise."
+    },
+    {
+      "question": "Wie lange dauert es, bis mein Kurs online ist?",
+      "answer": "Im Durchschnitt 2 bis 6 Wochen, wenn der Kurs fertig ist."
+    },
+    {
+      "question": "Kann ich meinen Kurs aktualisieren?",
+      "answer": "Ja. Du kannst Videos hinzufügen, Module auffrischen, Dateien integrieren, Boni hinzufügen. WAHM unterstützt dich bei Updates, wann immer es nötig ist."
+    },
+    {
+      "question": "Wie kann ich meine Verkäufe maximieren?",
+      "answer": "WAHM berät dich zum optimalen Format für deinen Kurs, Storytelling und Positionierung, besten Filmaufnahme-Praktiken, Aufbau eines Publikums und Marketingstrategien. Je mehr du involviert bist, desto mehr wachsen deine Einnahmen."
+    },
+    {
+      "question": "Wie fange ich an?",
+      "answer": "Ganz einfach: Reiche deine Bewerbung ein, wir prüfen dein Profil und melden uns innerhalb von 7 Tagen bei dir."
+    }
+  ],
+  "cta": {
+    "label": "Eine unbeantwortete Frage?",
+    "title": "Lass uns über dein Projekt sprechen",
+    "text": "Reiche deine Bewerbung ein oder sprich mit einem Partnership-Manager. Wir melden uns innerhalb von 7 Tagen.",
+    "apply": "Meine Bewerbung einreichen",
+    "discuss": "Mit einem Partnership-Manager sprechen"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "meta": {
+    "title": "Diventare formatore — WAHM",
+    "description": "Condividi la tua expertise con il mondo. Diventa formatore WAHM: pubblico internazionale, entrate ricorrenti, supporto completo. Invia la tua candidatura."
+  },
+  "hero": {
+    "label": "Diventare formatore WAHM",
+    "title": "Condividi la tua expertise con il mondo",
+    "subtitle": "Diamo insieme una nuova dimensione alla formazione online. La tua conoscenza merita un pubblico mondiale.",
+    "ctaApply": "Invia la mia candidatura",
+    "ctaContact": "Parla con un responsabile partnership",
+    "imageAlt": "Diventare formatore WAHM"
+  },
+  "avantages": {
+    "label": "Perché unirsi",
+    "title": "Diventa un attore chiave di una piattaforma globale",
+    "intro": "Unendoti a World Academy of Human Movement, diventi un attore chiave di una piattaforma globale che riunisce i migliori formatori in salute, benessere, coaching e performance. WAHM ti permette di:",
+    "items": [
+      {
+        "title": "Raggiungere un pubblico internazionale",
+        "desc": "Il tuo corso diventa accessibile in diverse lingue a migliaia di studenti in oltre 50 paesi."
+      },
+      {
+        "title": "Generare entrate ricorrenti",
+        "desc": "Ogni corso diventa un asset digitale che ti genera denaro ogni mese, senza limiti geografici."
+      },
+      {
+        "title": "Rafforzare la tua reputazione",
+        "desc": "Essere selezionati da WAHM è un segno di prestigio. La tua credibilità cresce. La tua visibilità aumenta esponenzialmente."
+      },
+      {
+        "title": "Creare senza vincoli tecnici",
+        "desc": "Tu fornisci il contenuto. Noi ci occupiamo dell'hosting, della distribuzione mondiale, della traduzione e dei sottotitoli, del marketing e del supporto pedagogico."
+      },
+      {
+        "title": "Entrare a far parte di un collettivo di esperti internazionali",
+        "desc": "Unisciti a un'elite didattica che condivide gli stessi valori: eccellenza, innovazione, trasmissione."
+      }
+    ],
+    "highlight": {
+      "title": "Insegna al mondo intero. Lascia un segno duraturo.",
+      "text1": "WAHM non è solo una piattaforma: è un ecosistema di esperti in cui i migliori condividono la loro conoscenza con il maggior numero di persone.",
+      "text2": "Hai una conoscenza unica? Dagle la portata che merita."
+    }
+  },
+  "disciplines": {
+    "label": "Per chi è WAHM",
+    "title": "Discipline che cerchiamo",
+    "subtitle": "Selezioniamo formatori riconosciuti nei seguenti campi:",
+    "outro": "Se stai portando avanti la tua disciplina, WAHM vuole lavorare con te.",
+    "items": [
+      { "name": "Preparazione fisica e performance atletica", "tag": "Forza e performance" },
+      { "name": "Coaching sportivo e personal training", "tag": "Coaching individuale" },
+      { "name": "Yoga, Pilates, mobilità", "tag": "Mobilità e respirazione" },
+      { "name": "Salute, riabilitazione, biomeccanica", "tag": "Ritorno allo sport" },
+      { "name": "Neuroscienze applicate al movimento", "tag": "Scienze del movimento" },
+      { "name": "Preferenze motorie, metodi innovativi", "tag": "Metodi innovativi" },
+      { "name": "Benessere, respirazione, recupero", "tag": "Recupero" },
+      { "name": "Mental coaching e preparazione psicologica", "tag": "Preparazione mentale" }
+    ]
+  },
+  "criteres": {
+    "label": "I nostri criteri di selezione",
+    "title": "Garantire l'eccellenza",
+    "subtitle": "Scegliamo formatori che:",
+    "imageAlt": "Il team WAHM valuta un candidato formatore",
+    "cardKicker": "WAHM · Scheda di valutazione",
+    "cardBadge": "Approvato",
+    "cardTitle": "Criteri di selezione",
+    "items": [
+      "Siano esperti nel loro campo",
+      "Abbiano competenze didattiche chiare, strutturate e di impatto",
+      "Sappiano portare un reale valore aggiunto",
+      "Offrano contenuti unici e scientificamente fondati",
+      "Siano motivati a condividere la conoscenza a livello internazionale"
+    ]
+  },
+  "etapes": {
+    "label": "Come funziona",
+    "title": "Cinque passi, accompagnato dall'inizio alla fine",
+    "outro": "Accompagnato dall'inizio alla fine, senza limiti di guadagno.",
+    "imageAlt": "Expertise in movimento e performance",
+    "items": [
+      {
+        "title": "Invii la tua candidatura",
+        "desc": "Presentazione, expertise, tema, contenuto di esempio."
+      },
+      {
+        "title": "Il nostro comitato valuta la tua proposta",
+        "desc": "Qualità pedagogica, rilevanza, originalità, valore aggiunto."
+      },
+      {
+        "title": "Ti aiutiamo a strutturare il corso",
+        "desc": "Storyboard, moduli, materiali, riprese se necessario."
+      },
+      {
+        "title": "WAHM si occupa di tutto",
+        "desc": "Pubblicazione, marketing, distribuzione mondiale, supporto agli utenti."
+      },
+      {
+        "title": "Vieni pagato ogni mese",
+        "desc": "Entrate trasparenti e crescenti, senza limiti."
+      }
+    ]
+  },
+  "candidature": {
+    "label": "Candidatura formatore",
+    "title": "La tua expertise merita un pubblico mondiale",
+    "text": "Unisciti ai migliori esperti del movimento umano. Pubblico internazionale, entrate ricorrenti, supporto completo.",
+    "benefits": [
+      "Un pubblico internazionale",
+      "Entrate ricorrenti",
+      "Supporto completo"
+    ],
+    "formTitle": "Invia la tua candidatura",
+    "formSubtitle": "Valutiamo il tuo profilo e ti rispondiamo entro 7 giorni.",
+    "success": {
+      "title": "Candidatura inviata!",
+      "text": "Grazie. Il nostro comitato sta valutando il tuo profilo e ti risponderà entro 7 giorni all'indirizzo indicato."
+    },
+    "form": {
+      "fields": {
+        "nom": "Nome completo *",
+        "email": "Email *",
+        "domaine": "Campo di competenza *",
+        "theme": "Tema del corso",
+        "echantillon": "Link a un contenuto di esempio",
+        "refs": "Social media / riferimenti",
+        "bio": "Presentazione (CV / bio)"
+      },
+      "placeholders": {
+        "nom": "Mario Rossi",
+        "email": "mario@esempio.it",
+        "domaine": "Preparazione fisica, Pilates…",
+        "theme": "Es.: Riabilitazione del ginocchio",
+        "echantillon": "https://…  (video, PDF, canale…)",
+        "refs": "Instagram, LinkedIn, sito web…",
+        "bio": "Qualche riga sul tuo percorso e approccio…"
+      },
+      "submit": "Invia la mia candidatura",
+      "submitting": "Invio in corso…",
+      "consent": "Inviando, accetti di essere contattato dal team WAHM.",
+      "errors": {
+        "invalid": "Per favore, inserisci almeno il tuo nome, un'email valida e il tuo campo di competenza.",
+        "failed": "Invio fallito. Riprova più tardi o scrivici direttamente.",
+        "network": "Invio fallito. Controlla la tua connessione e riprova."
+      }
+    }
+  }
+}

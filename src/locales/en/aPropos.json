@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "About — WAHM",
+    "description": "World Academy of Human Movement: our vision, our mission and the global community of human movement experts."
+  },
+  "hero": {
+    "label": "About",
+    "title": "World Academy of Human Movement",
+    "subtitle": "Global excellence in service of your growth.",
+    "discoverCta": "Discover the platform",
+    "communityCta": "Join the WAHM community",
+    "imageAlt": "World Academy of Human Movement"
+  },
+  "vision": {
+    "label": "Our vision",
+    "title": "Knowledge has the power to transform lives",
+    "text": "At World Academy of Human Movement (WAHM), we believe that knowledge has the power to transform lives. In a world where approaches to human movement are constantly evolving, our mission is clear:",
+    "textStrong": "make the most advanced expertise in health, well-being and performance accessible, everywhere.",
+    "piliers": [
+      {
+        "titre": "Accessibility",
+        "texte": "Make the most advanced expertise in health, well-being and performance accessible, everywhere."
+      },
+      {
+        "titre": "Excellence",
+        "texte": "A rigorous selection of the best experts and courses, with no compromise on quality."
+      },
+      {
+        "titre": "Community",
+        "texte": "A global community united by the same ambition: learn, grow, share."
+      }
+    ],
+    "outro": "WAHM was born from a simple observation: the best training courses are often scattered, uneven in quality, sometimes inaccessible because of language or geographic barriers. We decided to change that."
+  },
+  "mission": {
+    "label": "Our mission",
+    "title": "Bring together, on a single platform, the world's most influential trainers and most innovative content",
+    "intro": "We select recognized experts in the following fields:",
+    "domaines": [
+      { "title": "Sports coaching & Personal Training" },
+      { "title": "Health & Rehabilitation – biomechanics" },
+      { "title": "Multi-sport physical preparation" },
+      { "title": "Yoga & Pilates – Zen training" },
+      { "title": "Neurotraining & movement science" },
+      { "title": "Personal development & Mental Coaching" }
+    ],
+    "criteresIntro": "Every course featured on WAHM meets strict criteria:",
+    "criteres": [
+      "Scientific relevance",
+      "Pedagogical clarity",
+      "Immediate applicability",
+      "Content originality",
+      "Audiovisual quality",
+      "Multilingual accessibility"
+    ],
+    "outro": "We are not a platform. We are the world's reference in e-learning dedicated to human movement."
+  },
+  "communaute": {
+    "label": "Our community",
+    "title": "WAHM is above all an ecosystem of exchange, excellence and impact",
+    "intro": "WAHM brings together:",
+    "profils": [
+      { "label": "Sports coaches" },
+      { "label": "Therapists & health professionals" },
+      { "label": "Physical trainers" },
+      { "label": "Pilates & Yoga instructors" },
+      { "label": "Sports science students" },
+      { "label": "Human development experts" }
+    ],
+    "outro": "All united by the same ambition: learn, grow, share."
+  },
+  "engagement": {
+    "label": "Our commitment",
+    "title": "We are committed to",
+    "items": [
+      { "txt": "Offering only high-quality content" },
+      { "txt": "Guaranteeing a smooth, accessible and multilingual learning experience" },
+      { "txt": "Bringing together a global community of experts" },
+      { "txt": "Helping every user build solid, modern and profitable expertise" },
+      { "txt": "Supporting research and innovation in the field of human movement" }
+    ],
+    "imageAlt": "WAHM's commitment to excellence"
+  },
+  "pourquoi": {
+    "label": "Why we exist",
+    "title": "Because today's professionals deserve better",
+    "raisons": [
+      "Better than generic training",
+      "Better than amateur content",
+      "Better than platforms with no standards"
+    ],
+    "outro": "WAHM offers direct access to the world's best experts, courses and approaches, with no compromise."
+  },
+  "cta": {
+    "label": "Join us",
+    "title": "Are you a coach? therapist? trainer? enthusiast?",
+    "text": "Welcome to the first global community dedicated to human movement.",
+    "discoverCta": "Discover the platform",
+    "communityCta": "Join the WAHM community"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "title": "How it works — WAHM",
+    "description": "The WAHM learner journey, step by step: from discovering courses to your place in a global ecosystem."
+  },
+  "hero": {
+    "label": "How it works · Learners",
+    "title": "Your expertise, amplified in a few clicks",
+    "subtitle": "From your language to the WAHM certificate: a smooth, clear journey designed for your progress.",
+    "ctaDiscoverParcours": "Discover the journey",
+    "ctaExploreFormations": "Explore courses",
+    "imageAlt": "A learner following a WAHM sports course on video"
+  },
+  "parcours": {
+    "label": "The learner journey",
+    "title": "A smooth journey, step by step",
+    "cta": "Get started",
+    "stepLabel": "Step"
+  },
+  "domaines": [
+    "Sports Coaching & Personal Training",
+    "Health & Rehabilitation – biomechanics",
+    "Multisport Physical Preparation",
+    "Yoga & Pilates – Zen training",
+    "Neurotraining & movement science",
+    "Personal Development & Mental Coaching"
+  ],
+  "etapes": [
+    {
+      "title": "Choose your language",
+      "intro": "For each course, you can select:",
+      "points": ["The trainer's original language", "Available subtitles", "Translated versions"],
+      "note": "Your learning adapts to you, not the other way around."
+    },
+    {
+      "title": "Choose your field",
+      "intro": "WAHM brings together the world's best courses in:",
+      "note": "A smart search engine helps you find the course suited to your level and goals."
+    },
+    {
+      "title": "Access your course in one click",
+      "intro": "After secure payment, you get:",
+      "points": ["Immediate access", "Lifetime access (except in special cases)", "On all your devices (mobile, tablet, computer)"],
+      "note": "If you're interrupted, you pick up exactly where you left off."
+    },
+    {
+      "title": "Learn at your own pace",
+      "intro": "Each course is broken down into short, practical modules you can apply right away. You can:",
+      "points": ["Pause", "Revisit a module", "Download PDF sheets", "Take notes directly from your dashboard"],
+      "note": "Learning becomes smooth, clear and effective."
+    },
+    {
+      "title": "Enjoy premium content",
+      "intro": "All our courses meet WAHM standards:",
+      "points": ["HD videos", "Practical demonstrations", "Measured progress", "Content written by international experts", "Regularly updated to reflect scientific advances"]
+    },
+    {
+      "title": "Earn your WAHM certificate",
+      "intro": "At the end of certain courses, you receive a:",
+      "points": ["Digital certificate", "Recognized on the WAHM platform", "Worth showcasing on your resume and social media", "Proof of your skill development"]
+    },
+    {
+      "title": "Join the global WAHM community",
+      "intro": "By becoming a learner, you gain access to:",
+      "points": ["Private discussion groups", "Exclusive conferences", "Expert advice", "International networking opportunities"],
+      "note": "You're no longer learning alone: you become part of a global ecosystem."
+    },
+    {
+      "title": "Keep growing with us",
+      "intro": "WAHM automatically recommends:",
+      "points": ["Complementary courses", "Personalized learning paths", "New content tailored to your progress"],
+      "note": "Your learning becomes continuous, structured and smart."
+    }
+  ],
+  "cta": {
+    "kicker": "Ready to get started?",
+    "title": "Ready to get started",
+    "text": "Explore courses and unlock your potential.",
+    "ctaExploreFormations": "Explore courses",
+    "ctaJoinCommunity": "Join the WAHM community"
+  }
+}

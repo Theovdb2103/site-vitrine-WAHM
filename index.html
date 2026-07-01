@@ -3,6 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <!-- Anti-FOUC : pose data-theme AVANT le premier paint (choix mémorisé sinon préférence système). -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('wahm_theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
   <!-- Titre et meta par page : injectes par le composant Seo (vite-react-ssg Head). -->
   <link rel="icon" type="image/png" href="/assets/wahm-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />

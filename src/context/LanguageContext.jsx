@@ -1,43 +1,31 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { LOCALES, DEFAULT_LOCALE } from '../i18n/locales'
+import { localizedPath, toDefaultPath } from '../lib/site'
 
 const LanguageContext = createContext(null)
 
-export const LANGS = [
-  { code: 'FR', flag: '🇫🇷', name: 'Français' },
-  { code: 'EN', flag: '🇬🇧', name: 'English' },
-  { code: 'ES', flag: '🇪🇸', name: 'Español' },
-  { code: 'DE', flag: '🇩🇪', name: 'Deutsch' },
-  { code: 'PT', flag: '🇵🇹', name: 'Português' },
-  { code: 'IT', flag: '🇮🇹', name: 'Italiano' },
-]
-
-const LABELS = { FR: '🇫🇷 FR', EN: '🇬🇧 EN', ES: '🇪🇸 ES', DE: '🇩🇪 DE', PT: '🇵🇹 PT', IT: '🇮🇹 IT' }
-
-export function LanguageProvider({ children }) {
-  // SSR/SSG-safe : valeurs par défaut au rendu statique (pas d'accès localStorage/window ici),
-  // puis lecture réelle dans useEffect côté client (évite tout mismatch d'hydratation).
-  const [lang, setLang] = useState(null)
+// `locale` vient de la route (prop fixée par src/routes.jsx) — c'est l'URL qui fait
+// foi, jamais localStorage. localStorage.wahm_lang ne fait que SUIVRE l'URL visitée
+// (pré-sélection de la modale de premier passage + mémoire pour un prochain visiteur
+// sans préférence), il ne déclenche jamais de redirection silencieuse.
+export function LanguageProvider({ locale, children }) {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [showOverlay, setShowOverlay] = useState(false)
 
   useEffect(() => {
-    // Lien partageable ?lang=FR : présélectionne la langue et saute l'overlay.
-    let fromUrl = null
-    try {
-      const p = new URLSearchParams(window.location.search).get('lang')
-      if (p && LANGS.some((l) => l.code === p.toUpperCase())) fromUrl = p.toUpperCase()
-    } catch (e) { /* noop */ }
     let stored = null
     try {
       stored = localStorage.getItem('wahm_lang')
     } catch (e) { /* localStorage indisponible */ }
-    const chosen = fromUrl || stored
-    if (chosen) {
-      setLang(chosen)
-      if (fromUrl) { try { localStorage.setItem('wahm_lang', fromUrl) } catch (e) { /* noop */ } }
-    } else {
+    if (!stored) {
       setShowOverlay(true)
+    } else if (stored !== locale) {
+      try { localStorage.setItem('wahm_lang', locale) } catch (e) { /* noop */ }
     }
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locale])
 
   // Verrouille le scroll du body quand l'overlay est ouvert.
   useEffect(() => {
@@ -48,15 +36,16 @@ export function LanguageProvider({ children }) {
 
   const chooseLang = (code) => {
     try { localStorage.setItem('wahm_lang', code) } catch (e) { /* noop */ }
-    setLang(code)
     setShowOverlay(false)
+    if (code !== locale && LOCALES.includes(code)) {
+      const defaultPath = toDefaultPath(location.pathname, locale)
+      navigate(localizedPath(defaultPath, code) + location.search + location.hash)
+    }
   }
   const openOverlay = () => setShowOverlay(true)
   const closeOverlay = () => setShowOverlay(false)
 
-  const langLabel = (LABELS[lang] || LABELS.FR) + '  ▾'
-
-  const value = { lang, langLabel, showOverlay, chooseLang, openOverlay, closeOverlay }
+  const value = { locale: locale || DEFAULT_LOCALE, showOverlay, chooseLang, openOverlay, closeOverlay }
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
 }
 

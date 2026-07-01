@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "Over ons — WAHM",
+    "description": "World Academy of Human Movement: onze visie, onze missie en de wereldwijde gemeenschap van experts in menselijke beweging."
+  },
+  "hero": {
+    "label": "Over ons",
+    "title": "World Academy of Human Movement",
+    "subtitle": "Wereldwijde excellentie ten dienste van jouw groei.",
+    "discoverCta": "Ontdek het platform",
+    "communityCta": "Word lid van de WAHM-gemeenschap",
+    "imageAlt": "World Academy of Human Movement"
+  },
+  "vision": {
+    "label": "Onze visie",
+    "title": "Kennis heeft de kracht om levens te transformeren",
+    "text": "Bij World Academy of Human Movement (WAHM) geloven we dat kennis de kracht heeft om levens te transformeren. In een wereld waar benaderingen van menselijke beweging voortdurend evolueren, is onze missie duidelijk:",
+    "textStrong": "de meest geavanceerde expertise in gezondheid, welzijn en prestaties overal toegankelijk maken.",
+    "piliers": [
+      {
+        "titre": "Toegankelijkheid",
+        "texte": "De meest geavanceerde expertise in gezondheid, welzijn en prestaties overal toegankelijk maken."
+      },
+      {
+        "titre": "Excellentie",
+        "texte": "Een strenge selectie van de beste experts en cursussen, zonder concessies aan kwaliteit."
+      },
+      {
+        "titre": "Gemeenschap",
+        "texte": "Een wereldwijde gemeenschap verenigd door dezelfde ambitie: leren, groeien, delen."
+      }
+    ],
+    "outro": "WAHM is ontstaan uit een eenvoudige observatie: de beste opleidingen zijn vaak verspreid, ongelijk van kwaliteit en soms ontoegankelijk door taal- of geografische barrières. We besloten dat te veranderen."
+  },
+  "mission": {
+    "label": "Onze missie",
+    "title": "De meest invloedrijke trainers en meest innovatieve content samenbrengen op één platform",
+    "intro": "We selecteren erkende experts in de volgende vakgebieden:",
+    "domaines": [
+      { "title": "Sportcoaching & Personal Training" },
+      { "title": "Gezondheid & Revalidatie – biomechanica" },
+      { "title": "Multisport fysieke voorbereiding" },
+      { "title": "Yoga & Pilates – Zen training" },
+      { "title": "Neurotraining & bewegingswetenschap" },
+      { "title": "Persoonlijke ontwikkeling & Mentale coaching" }
+    ],
+    "criteresIntro": "Elke cursus op WAHM voldoet aan strenge criteria:",
+    "criteres": [
+      "Wetenschappelijke relevantie",
+      "Pedagogische helderheid",
+      "Directe toepasbaarheid",
+      "Originaliteit van de content",
+      "Audiovisuele kwaliteit",
+      "Meertalige toegankelijkheid"
+    ],
+    "outro": "We zijn geen platform. We zijn de wereldwijde referentie in e-learning gewijd aan menselijke beweging."
+  },
+  "communaute": {
+    "label": "Onze gemeenschap",
+    "title": "WAHM is bovenal een ecosysteem van uitwisseling, excellentie en impact",
+    "intro": "WAHM brengt samen:",
+    "profils": [
+      { "label": "Sportcoaches" },
+      { "label": "Therapeuten & zorgprofessionals" },
+      { "label": "Fysieke trainers" },
+      { "label": "Pilates- & Yoga-instructeurs" },
+      { "label": "Studenten sportwetenschappen" },
+      { "label": "Experts in menselijke ontwikkeling" }
+    ],
+    "outro": "Allen verenigd door dezelfde ambitie: leren, groeien, delen."
+  },
+  "engagement": {
+    "label": "Onze toewijding",
+    "title": "Wij verbinden ons ertoe",
+    "items": [
+      { "txt": "Uitsluitend hoogwaardige content aan te bieden" },
+      { "txt": "Een vlotte, toegankelijke en meertalige leerervaring te garanderen" },
+      { "txt": "Een wereldwijde gemeenschap van experts samen te brengen" },
+      { "txt": "Elke gebruiker te helpen solide, moderne en waardevolle expertise op te bouwen" },
+      { "txt": "Onderzoek en innovatie op het gebied van menselijke beweging te ondersteunen" }
+    ],
+    "imageAlt": "WAHM's toewijding aan excellentie"
+  },
+  "pourquoi": {
+    "label": "Waarom wij bestaan",
+    "title": "Omdat de professionals van vandaag beter verdienen",
+    "raisons": [
+      "Beter dan generieke opleidingen",
+      "Beter dan amateuristische content",
+      "Beter dan platforms zonder standaarden"
+    ],
+    "outro": "WAHM biedt directe toegang tot de beste experts, cursussen en benaderingen ter wereld, zonder compromissen."
+  },
+  "cta": {
+    "label": "Sluit je aan",
+    "title": "Ben je coach? therapeut? trainer? enthousiast?",
+    "text": "Welkom bij de eerste wereldwijde gemeenschap gewijd aan menselijke beweging.",
+    "discoverCta": "Ontdek het platform",
+    "communityCta": "Word lid van de WAHM-gemeenschap"
+  }
+}

@@ -1,52 +1,39 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { useLanguage } from '../context/LanguageContext'
+import { getMarketplaceUrl, localizedPath } from '../lib/site'
 
 // Lien de footer : couleur douce, survol doré.
 function FLink({ to, children }) {
-  const cls = 'font-sans text-[15px] text-[#aebccd] no-underline transition-colors duration-200 hover:text-wahm-orange'
-  if (to.startsWith('#') || to.startsWith('mailto:') || to.startsWith('tel:')) {
+  const cls = 'font-sans text-[15px] text-muted no-underline transition-colors duration-200 hover:text-wahm-orange'
+  if (/^https?:/.test(to)) {
+    return <a href={to} target="_blank" rel="noopener noreferrer" className={cls}>{children}</a>
+  }
+  if (/^(mailto:|tel:|#)/.test(to)) {
     return <a href={to} className={cls}>{children}</a>
   }
   return <Link to={to} className={cls}>{children}</Link>
 }
 
-// 4 colonnes de liens (façon référence : Overview / Club / News / Contacts).
-const COLS = [
+// Structure des 4 colonnes — labels traduits via common.json (footer.columns[i].links[j]),
+// `to` non traduisible reste ici, zippé par index avec le texte au rendu.
+const COLS_META = [
   {
-    title: 'Plateforme',
-    links: [
-      { label: 'Formations', to: '#marketplace' },
-      { label: 'Comment ça marche', to: '/comment-ca-marche' },
-      { label: 'Communauté', to: '/communaute' },
-    ],
+    links: [{ marketplace: true }, { to: '/comment-ca-marche' }, { to: '/communaute' }],
   },
   {
-    title: 'Entreprise',
-    links: [
-      { label: 'À propos', to: '/a-propos' },
-      { label: 'Devenir formateur', to: '/devenir-formateur' },
-      { label: 'FAQ formateurs', to: '/faq' },
-    ],
+    links: [{ to: '/a-propos' }, { to: '/devenir-formateur' }, { to: '/faq' }],
   },
   {
-    title: 'Légal',
-    links: [
-      { label: 'Mentions légales', to: '/mentions-legales' },
-      { label: 'CGU & CGV', to: '/mentions-legales' },
-      { label: 'Confidentialité', to: '/mentions-legales' },
-      { label: 'Cookies', to: '/mentions-legales' },
-    ],
+    links: [{ to: '/mentions-legales' }, { to: '/mentions-legales' }, { to: '/mentions-legales' }, { to: '/mentions-legales' }],
   },
   {
-    title: 'Contact',
-    links: [
-      { label: 'contact@wahm.com', to: 'mailto:contact@wahm.com' },
-      { label: 'Nous contacter', to: '/contact' },
-      { label: 'Support international 24/7', to: '/contact' },
-    ],
+    links: [{ to: 'mailto:contact@wahm.com' }, { to: '/contact' }, { to: '/contact' }],
   },
 ]
 
-// Icônes réseaux en SVG inline (lucide n'inclut plus les marques).
+// Icônes réseaux en SVG inline (lucide n'inclut plus les marques) — noms de marque,
+// non traduits.
 const SOCIALS = [
   {
     label: 'Instagram',
@@ -80,14 +67,18 @@ const SOCIALS = [
 ]
 
 export default function Footer() {
+  const { t } = useTranslation('common')
+  const { locale } = useLanguage()
+  const columns = t('footer.columns', { returnObjects: true })
+
   return (
-    <footer className="relative border-t border-white/[0.1] bg-wahm-navyDark">
+    <footer className="relative border-t border-line/[0.1] bg-surface-2">
       <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-x-8 gap-y-12 px-5 py-[80px] md:px-10 lg:grid-cols-[1.7fr_1fr_1fr_1fr_1.1fr] lg:gap-x-10">
         {/* Bloc marque (gauche) */}
         <div className="col-span-2 lg:col-span-1">
           <img src="/assets/wahm-logo.png" alt="WAHM" className="block h-[40px] w-auto" />
-          <p className="mt-7 max-w-[300px] font-display text-[22px] font-extrabold uppercase leading-[1.1] tracking-[-0.01em] text-white md:text-[26px]">
-            Suivez le mouvement<span className="text-wahm-orange">.</span>
+          <p className="mt-7 max-w-[300px] font-display text-[22px] font-extrabold uppercase leading-[1.1] tracking-[-0.01em] text-fg md:text-[26px]">
+            {t('footer.tagline').replace(/\.$/, '')}<span className="text-wahm-orange">.</span>
           </p>
           <div className="mt-7 flex gap-3">
             {SOCIALS.map((s) => (
@@ -95,7 +86,7 @@ export default function Footer() {
                 key={s.label}
                 href={s.href}
                 aria-label={s.label}
-                className="flex h-11 w-11 items-center justify-center border border-wahm-goldLight/35 text-[#d6e0ea] transition-colors duration-200 hover:border-wahm-orange hover:text-wahm-orange"
+                className="flex h-11 w-11 items-center justify-center border border-wahm-goldLight/35 text-fg-soft transition-colors duration-200 hover:border-wahm-orange hover:text-wahm-orange"
               >
                 {s.svg}
               </a>
@@ -104,23 +95,25 @@ export default function Footer() {
         </div>
 
         {/* Colonnes de liens */}
-        {COLS.map((col) => (
+        {columns.map((col, i) => (
           <div key={col.title}>
-            <h4 className="m-0 mb-5 font-display text-[14px] font-bold uppercase tracking-[0.06em] text-white md:text-[15px]">{col.title}</h4>
+            <h4 className="m-0 mb-5 font-display text-[14px] font-bold uppercase tracking-[0.06em] text-fg md:text-[15px]">{col.title}</h4>
             <ul className="m-0 flex list-none flex-col gap-3.5 p-0">
-              {col.links.map((l, i) => (
-                <li key={i}><FLink to={l.to}>{l.label}</FLink></li>
-              ))}
+              {col.links.map((label, j) => {
+                const meta = COLS_META[i].links[j]
+                const to = meta.marketplace ? getMarketplaceUrl(locale) : (meta.to.startsWith('/') ? localizedPath(meta.to, locale) : meta.to)
+                return <li key={j}><FLink to={to}>{label}</FLink></li>
+              })}
             </ul>
           </div>
         ))}
       </div>
 
       {/* Barre basse */}
-      <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 border-t border-white/[0.08] px-5 py-6 md:px-10">
-        <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#6f8197]">© 2026 World Academy of Human Movement — WAHM</span>
-        <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#6f8197]">
-          Conçu par <a href="https://effiweb.be" target="_blank" rel="noopener noreferrer" className="text-wahm-goldLight no-underline transition-colors hover:text-wahm-orange">Effiweb</a>
+      <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 border-t border-line/[0.08] px-5 py-6 md:px-10">
+        <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-subtle">{t('footer.copyright')}</span>
+        <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-subtle">
+          {t('footer.credit')} <a href="https://effiweb.be" target="_blank" rel="noopener noreferrer" className="text-gold no-underline transition-colors hover:text-wahm-orange">Effiweb</a>
         </span>
       </div>
     </footer>

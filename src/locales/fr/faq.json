@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "FAQ formateurs — WAHM",
+    "description": "Toutes les réponses aux questions des formateurs WAHM : candidature, rémunération, production, exclusivité, délais."
+  },
+  "hero": {
+    "label": "FAQ Formateurs",
+    "title": "Toutes les réponses pour devenir formateur",
+    "subtitle": "Candidature, sélection, langues, rémunération, délais… Tout ce que vous devez savoir avant de rejoindre WAHM."
+  },
+  "faqItems": [
+    {
+      "question": "Qui peut devenir formateur sur WAHM ?",
+      "answer": "WAHM sélectionne des experts reconnus dans les domaines du coaching sportif, de la santé, de la rééducation, du Pilates, du yoga, de la préparation physique, du neurotraining, de la performance humaine et du bien-être.\nSi vous avez une expertise solide, une pédagogie claire et un contenu unique, vous pouvez postuler."
+    },
+    {
+      "question": "Comment soumettre ma candidature ?",
+      "answer": "Il vous suffit de remplir le formulaire de candidature en ligne. Nous vous demanderons :\n•  Votre CV ou biographie professionnelle\n•  Une description de votre formation ou concept\n•  Un exemple de contenu vidéo ou pédagogique\n•  Vos réseaux sociaux ou références"
+    },
+    {
+      "question": "Quels sont vos critères de sélection ?",
+      "answer": "WAHM évalue :\n•  La crédibilité et l'expérience du formateur\n•  La pertinence scientifique ou méthodologique\n•  La qualité pédagogique\n•  L'originalité du contenu\n•  La faisabilité en e-learning\n•  L'intérêt international du sujet"
+    },
+    {
+      "question": "Dois-je créer toute la formation moi-même ?",
+      "answer": "Non. Vous pouvez proposer une formation complète OU une idée structurée. WAHM peut vous accompagner pour structurer les modules, optimiser la pédagogie, améliorer la progression pédagogique, et tourner et monter vos vidéos si besoin."
+    },
+    {
+      "question": "Dans quelles langues les formations sont-elles proposées ?",
+      "answer": "Vous pouvez enregistrer dans votre langue. WAHM se charge de la traduction, des sous-titres, de la traduction de vos fichiers PDF et de l'adaptation au marché international. Votre formation devient immédiatement accessible au monde entier."
+    },
+    {
+      "question": "Combien puis-je gagner en tant que formateur ?",
+      "answer": "Les gains varient selon le nombre de ventes, votre notoriété, la thématique et les mises en avant marketing. Le modèle est transparent et basé sur les royalties : vous gagnez chaque mois sur toutes les ventes, sans limite."
+    },
+    {
+      "question": "Qui fixe le prix de la formation ?",
+      "answer": "Le prix est défini en collaboration : vous proposez un prix cible, WAHM analyse le marché international, puis nous ajustons ensemble pour maximiser vos revenus."
+    },
+    {
+      "question": "Puis-je mettre ma formation ailleurs ?",
+      "answer": "Oui, sauf si vous choisissez le programme exclusif WAHM, réservé à certains formateurs (avec une rémunération plus élevée et un marketing premium)."
+    },
+    {
+      "question": "Qui gère les aspects techniques, administratifs et marketing ?",
+      "answer": "WAHM s'occupe de tout : hébergement, interface e-learning, sécurité, paiements, support client, marketing international, promotion du formateur. Vous vous concentrez sur l'essentiel : votre expertise."
+    },
+    {
+      "question": "Combien de temps faut-il pour mettre ma formation en ligne ?",
+      "answer": "En moyenne, 2 à 6 semaines si la formation est prête."
+    },
+    {
+      "question": "Puis-je mettre à jour ma formation ?",
+      "answer": "Oui. Vous pouvez ajouter des vidéos, actualiser des modules, intégrer des fichiers, ajouter des bonus. WAHM vous accompagne dans la mise à jour si nécessaire."
+    },
+    {
+      "question": "Comment maximiser mes ventes ?",
+      "answer": "WAHM vous conseille sur le format optimal de votre formation, le storytelling et le positionnement, les bonnes pratiques de tournage, la construction d'une audience et les stratégies marketing. Plus vous êtes impliqué, plus vos gains grandissent."
+    },
+    {
+      "question": "Comment commencer ?",
+      "answer": "Très simple : déposez votre candidature, nous analysons votre profil, et nous vous recontactons sous 7 jours."
+    }
+  ],
+  "cta": {
+    "label": "Une question sans réponse ?",
+    "title": "Parlons de votre projet",
+    "text": "Déposez votre candidature ou discutez avec un chargé de partenariat. Nous vous recontactons sous 7 jours.",
+    "apply": "Déposer ma candidature",
+    "discuss": "Discuter avec un chargé de partenariat"
+  }
+}

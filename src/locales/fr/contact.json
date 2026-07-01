@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Contact — WAHM",
+    "description": "Une question, un projet, un partenariat ? Contactez l'équipe World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Contact",
+    "title": "Parlons de votre projet",
+    "subtitle": "Une question, un partenariat, une candidature formateur ? Notre équipe vous répond."
+  },
+  "info": {
+    "writeToUs": "Écrivez-nous",
+    "responseNote": "Nous répondons généralement sous 48h ouvrées.",
+    "partnership": {
+      "title": "Discuter avec un chargé de partenariat",
+      "text": "Vous êtes formateur, école ou institution ? Construisons ensemble votre présence sur WAHM.",
+      "cta": "Devenir formateur"
+    }
+  },
+  "coordonnees": [
+    {
+      "title": "Écrivez-nous",
+      "value": "contact@wahm.com",
+      "desc": "Nous répondons généralement sous 48h ouvrées."
+    },
+    {
+      "title": "Temps de réponse",
+      "value": "Sous 48h ouvrées",
+      "desc": "Notre équipe traite chaque demande avec attention."
+    }
+  ],
+  "form": {
+    "label": "Formulaire",
+    "title": "Envoyez-nous un message",
+    "fields": {
+      "nom": "Nom complet *",
+      "email": "Email *",
+      "sujet": "Sujet",
+      "message": "Message *"
+    },
+    "placeholders": {
+      "nom": "Jean Dupont",
+      "email": "jean@exemple.com",
+      "sujet": "Objet de votre message",
+      "message": "Votre message…"
+    },
+    "submit": "Envoyer le message",
+    "submitting": "Envoi en cours…",
+    "consent": "En envoyant ce message, vous acceptez que vos données soient utilisées pour traiter votre demande.",
+    "errors": {
+      "invalid": "Merci de remplir votre nom, un email valide et votre message.",
+      "failed": "L'envoi a échoué. Réessayez plus tard.",
+      "network": "L'envoi a échoué. Vérifiez votre connexion et réessayez."
+    },
+    "success": {
+      "title": "Message envoyé",
+      "text": "Merci de nous avoir contactés. Notre équipe vous répond sous 48h ouvrées."
+    }
+  }
+}

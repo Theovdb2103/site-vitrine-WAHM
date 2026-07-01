@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Contatto — WAHM",
+    "description": "Una domanda, un progetto, una partnership? Contatta il team di World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Contatto",
+    "title": "Parliamo del tuo progetto",
+    "subtitle": "Una domanda, una partnership, una candidatura come formatore? Il nostro team ti risponderà."
+  },
+  "info": {
+    "writeToUs": "Scrivici",
+    "responseNote": "Di solito rispondiamo entro 48 ore lavorative.",
+    "partnership": {
+      "title": "Parla con un responsabile partnership",
+      "text": "Sei un formatore, una scuola o un'istituzione? Costruiamo insieme la tua presenza su WAHM.",
+      "cta": "Diventare formatore"
+    }
+  },
+  "coordonnees": [
+    {
+      "title": "Scrivici",
+      "value": "contact@wahm.com",
+      "desc": "Di solito rispondiamo entro 48 ore lavorative."
+    },
+    {
+      "title": "Tempo di risposta",
+      "value": "Entro 48 ore lavorative",
+      "desc": "Il nostro team gestisce ogni richiesta con cura."
+    }
+  ],
+  "form": {
+    "label": "Modulo",
+    "title": "Inviaci un messaggio",
+    "fields": {
+      "nom": "Nome completo *",
+      "email": "Email *",
+      "sujet": "Oggetto",
+      "message": "Messaggio *"
+    },
+    "placeholders": {
+      "nom": "Mario Rossi",
+      "email": "mario@esempio.it",
+      "sujet": "Oggetto del tuo messaggio",
+      "message": "Il tuo messaggio…"
+    },
+    "submit": "Invia messaggio",
+    "submitting": "Invio in corso…",
+    "consent": "Inviando questo messaggio, accetti che i tuoi dati possano essere utilizzati per gestire la tua richiesta.",
+    "errors": {
+      "invalid": "Per favore, inserisci il tuo nome, un'email valida e il tuo messaggio.",
+      "failed": "Invio fallito. Riprova più tardi.",
+      "network": "Invio fallito. Controlla la tua connessione e riprova."
+    },
+    "success": {
+      "title": "Messaggio inviato",
+      "text": "Grazie per averci contattato. Il nostro team ti risponderà entro 48 ore lavorative."
+    }
+  }
+}

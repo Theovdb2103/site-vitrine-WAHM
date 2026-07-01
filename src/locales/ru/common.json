@@ -1,0 +1,63 @@
+{
+  "skipToContent": "Перейти к содержимому",
+  "nav": {
+    "formations": "Курсы",
+    "devenir-formateur": "Стать тренером",
+    "comment-ca-marche": "Как это работает",
+    "communaute": "Сообщество",
+    "a-propos": "О нас",
+    "faq": "FAQ",
+    "contact": "Контакт"
+  },
+  "cta": {
+    "discover": "Открыть наши курсы",
+    "apply": "Подать заявку",
+    "join": "Присоединиться к WAHM"
+  },
+  "header": {
+    "homeAriaLabel": "Главная страница WAHM",
+    "languageAriaLabel": "Сменить язык",
+    "menu": {
+      "open": "Открыть меню",
+      "close": "Закрыть меню"
+    },
+    "theme": {
+      "toggleToDark": "Включить тёмный режим",
+      "toggleToLight": "Включить светлый режим"
+    },
+    "faqMenu": {
+      "label": "FAQ",
+      "learner": "Ученик",
+      "trainer": "Тренер"
+    }
+  },
+  "languageOverlay": {
+    "ariaLabel": "Выберите язык",
+    "title": "Выберите язык",
+    "subtitle": "Выберите язык для продолжения",
+    "hint": "Вы можете изменить язык в любое время через меню."
+  },
+  "footer": {
+    "tagline": "Следуй за движением.",
+    "columns": [
+      {
+        "title": "Платформа",
+        "links": ["Курсы", "Как это работает", "Сообщество"]
+      },
+      {
+        "title": "Компания",
+        "links": ["О нас", "Стать тренером", "FAQ тренеров"]
+      },
+      {
+        "title": "Правовая информация",
+        "links": ["Правовые сведения", "Условия использования", "Конфиденциальность", "Cookies"]
+      },
+      {
+        "title": "Контакт",
+        "links": ["contact@wahm.com", "Связаться с нами", "Международная поддержка 24/7"]
+      }
+    ],
+    "copyright": "© 2026 World Academy of Human Movement — WAHM",
+    "credit": "Разработано"
+  }
+}

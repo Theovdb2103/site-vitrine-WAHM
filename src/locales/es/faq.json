@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "FAQ formadores — WAHM",
+    "description": "Todas las respuestas a las preguntas de los formadores WAHM: solicitud, remuneración, producción, exclusividad, plazos."
+  },
+  "hero": {
+    "label": "FAQ formadores",
+    "title": "Todas las respuestas para convertirse en formador",
+    "subtitle": "Solicitud, selección, idiomas, remuneración, plazos… Todo lo que necesitas saber antes de unirte a WAHM."
+  },
+  "faqItems": [
+    {
+      "question": "¿Quién puede convertirse en formador en WAHM?",
+      "answer": "WAHM selecciona expertos reconocidos en los campos del coaching deportivo, salud, rehabilitación, Pilates, yoga, preparación física, neurotraining, rendimiento humano y bienestar.\nSi tienes una expertise sólida, habilidades docentes claras y contenido único, puedes solicitar la admisión."
+    },
+    {
+      "question": "¿Cómo envío mi solicitud?",
+      "answer": "Simplemente rellena el formulario de solicitud online. Te pediremos:\n•  Tu CV o biografía profesional\n•  Una descripción de tu curso o concepto\n•  Una muestra de contenido en vídeo o educativo\n•  Tus redes sociales o referencias"
+    },
+    {
+      "question": "¿Cuáles son sus criterios de selección?",
+      "answer": "WAHM evalúa:\n•  La credibilidad y experiencia del formador\n•  La relevancia científica o metodológica\n•  La calidad pedagógica\n•  La originalidad del contenido\n•  La viabilidad para el e-learning\n•  El atractivo internacional del tema"
+    },
+    {
+      "question": "¿Necesito crear el curso completo por mi cuenta?",
+      "answer": "No. Puedes proponer un curso completo O una idea estructurada. WAHM puede apoyarte en la estructuración de los módulos, la optimización del enfoque pedagógico, la mejora de la progresión de aprendizaje, y la filmación y edición de tus vídeos si es necesario."
+    },
+    {
+      "question": "¿En qué idiomas se ofrecen los cursos?",
+      "answer": "Puedes grabar en tu propio idioma. WAHM se encarga de la traducción, los subtítulos, la traducción de tus archivos PDF y la adaptación al mercado internacional. Tu curso se vuelve inmediatamente accesible en todo el mundo."
+    },
+    {
+      "question": "¿Cuánto puedo ganar como formador?",
+      "answer": "Los ingresos varían según el número de ventas, tu notoriedad, el tema y la promoción de marketing. El modelo es transparente y se basa en regalías: ganas cada mes sobre todas las ventas, sin límite."
+    },
+    {
+      "question": "¿Quién fija el precio del curso?",
+      "answer": "El precio se fija de forma colaborativa: tú propones un precio objetivo, WAHM analiza el mercado internacional y luego lo ajustamos juntos para maximizar tus ingresos."
+    },
+    {
+      "question": "¿Puedo ofrecer mi curso en otros lugares?",
+      "answer": "Sí, a menos que elijas el programa exclusivo WAHM, reservado para ciertos formadores (con mayor remuneración y marketing premium)."
+    },
+    {
+      "question": "¿Quién se encarga de los aspectos técnicos, administrativos y de marketing?",
+      "answer": "WAHM se encarga de todo: alojamiento, interfaz de e-learning, seguridad, pagos, soporte al cliente, marketing internacional, promoción de formadores. Puedes centrarte en lo que más importa: tu expertise."
+    },
+    {
+      "question": "¿Cuánto tiempo se tarda en publicar mi curso?",
+      "answer": "De media, entre 2 y 6 semanas si el curso está listo."
+    },
+    {
+      "question": "¿Puedo actualizar mi curso?",
+      "answer": "Sí. Puedes añadir vídeos, actualizar módulos, integrar archivos, añadir bonificaciones. WAHM te apoya en las actualizaciones siempre que sea necesario."
+    },
+    {
+      "question": "¿Cómo puedo maximizar mis ventas?",
+      "answer": "WAHM te asesora sobre el formato óptimo para tu curso, el storytelling y el posicionamiento, las mejores prácticas de filmación, la creación de una audiencia y las estrategias de marketing. Cuanto más implicado estés, más crecen tus ingresos."
+    },
+    {
+      "question": "¿Cómo empiezo?",
+      "answer": "Muy sencillo: envía tu solicitud, revisamos tu perfil y te respondemos en 7 días."
+    }
+  ],
+  "cta": {
+    "label": "¿Una pregunta sin respuesta?",
+    "title": "Hablemos de tu proyecto",
+    "text": "Envía tu solicitud o habla con un responsable de alianzas. Te responderemos en 7 días.",
+    "apply": "Enviar mi solicitud",
+    "discuss": "Hablar con un responsable de alianzas"
+  }
+}

@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Tokens de thème (variables CSS, triplets RGB pour le support alpha Tailwind) =====
+   Le défaut :root reste le thème SOMBRE → le SSG et le rendu sans-JS s'affichent en sombre.
+   [data-theme="light"] applique la déclinaison crème. Voir tailwind.config.js (colors). */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  /* Surfaces */
+  --c-surface: 10 26 47;        /* wahm-navy */
+  --c-surface-2: 6 18 31;       /* wahm-navyDark — cartes/panneaux élevés */
+  --c-surface-3: 13 33 56;      /* wahm-cookie — bande pleine largeur creusée */
+  /* Texte — 3 niveaux distincts */
+  --c-fg: 255 255 255;          /* primaire */
+  --c-fg-soft: 205 216 228;     /* secondaire important (#cdd8e4) */
+  --c-muted: 159 177 198;       /* paragraphes discrets (#9fb1c6) */
+  --c-subtle: 138 156 176;      /* captions / méta / placeholders (#8a9cb0) */
+  /* Filets (utilisés à bas alpha : border-line/[0.08]) */
+  --c-line: 255 255 255;
+  /* Accent de marque (tokenisé pour ajustement clair ultérieur) */
+  --c-accent: 255 123 44;       /* wahm-orange */
+  --c-accent-fg: 255 255 255;
+  /* Or accent EN TANT QUE TEXTE (sur surface) : identique au sombre actuel (goldLight) */
+  --c-gold: 233 177 74;         /* #E9B14A */
+  /* Scrim de lisibilité du texte clair posé sur image — reste navy dans les 2 thèmes */
+  --c-scrim: 10 26 47;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+  --c-surface: 247 246 242;     /* crème #F7F6F2 */
+  --c-surface-2: 255 255 255;   /* cartes blanches */
+  --c-surface-3: 238 235 228;   /* bande creusée crème plus foncée */
+  --c-fg: 10 26 47;             /* navy */
+  --c-fg-soft: 47 60 76;
+  --c-muted: 92 85 70;          /* #5c5546 (îlot formateur) */
+  --c-subtle: 138 132 117;      /* #8a8475 */
+  --c-line: 10 26 47;           /* hairlines navy à bas alpha */
+  --c-accent: 255 123 44;       /* identique au sombre au départ */
+  --c-accent-fg: 255 255 255;
+  --c-gold: 154 122 30;         /* #9a7a1e (goldDark) : lisible sur crème */
+  --c-scrim: 10 26 47;          /* scrims d'image : navy dans les 2 thèmes */
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -10,9 +52,16 @@
   }
   body {
     margin: 0;
-    background: #0A1A2F;
+    background: rgb(var(--c-surface));
     overflow-x: clip;
   }
+}
+
+/* Voile de fondu décoratif posé sur les photos (pas de texte dessus, à distinguer des
+   scrims de lisibilité qui restent navy dans les 2 thèmes). En mode clair, ce voile
+   crème/blanc est supprimé — l'image reste nette de bord à bord. */
+[data-theme='light'] .img-fade {
+  background: none !important;
 }
 
 /* Bandeaux défilants (marquee) — le contenu est dupliqué, -50% = une copie pleine. */

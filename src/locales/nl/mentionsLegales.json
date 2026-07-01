@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Juridische informatie — WAHM",
+    "description": "Juridische informatie, gebruiksvoorwaarden, verkoopvoorwaarden, privacybeleid (AVG) en cookies van World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Juridische informatie",
+    "title": "Juridische kennisgeving",
+    "subtitle": "Sjabloonversie — in afwachting van juridische validatie. Vermeldingen gemarkeerd als \"in te vullen\" moeten worden ingevuld vóór livegang."
+  },
+  "sommaire": {
+    "ariaLabel": "Inhoudsopgave",
+    "label": "Inhoudsopgave"
+  },
+  "sections": [
+    { "label": "Juridische kennisgeving" },
+    { "label": "Gebruiksvoorwaarden" },
+    { "label": "Verkoopvoorwaarden" },
+    { "label": "Privacy (AVG)" },
+    { "label": "Cookies" }
+  ],
+  "mentions": {
+    "title": "Juridische kennisgeving",
+    "editeur": {
+      "title": "Website-uitgever",
+      "formeJuridiqueLabel": "Rechtsvorm:",
+      "formeJuridiqueTbd": "in te vullen (bijv. BV / NV / SRL)",
+      "siegeSocialLabel": "Maatschappelijke zetel:",
+      "siegeSocialTbd": "adres in te vullen",
+      "numeroEntrepriseLabel": "Ondernemingsnummer / KvK / BCE:",
+      "numeroEntrepriseTbd": "in te vullen",
+      "tvaLabel": "Intra-communautair BTW-nummer:",
+      "tvaTbd": "in te vullen",
+      "emailLabel": "E-mail:",
+      "responsablePublicationLabel": "Publicatieverantwoordelijke:",
+      "responsablePublicationTbd": "naam van de oprichter of juridisch directeur"
+    },
+    "hebergement": {
+      "title": "Hosting",
+      "hebergeurLabel": "De website wordt gehost door:",
+      "hebergeurTbd": "naam van de host (bijv. AWS, OVH, Cloudflare…)",
+      "adresseLabel": "Adres:",
+      "adresseTbd": "in te vullen",
+      "siteWebLabel": "Website:",
+      "siteWebTbd": "URL van de host"
+    },
+    "propriete": {
+      "title": "Intellectuele eigendom",
+      "text": "Alle content op de website (teksten, video's, afbeeldingen, logo's, cursussen, documenten) is beschermd door auteursrecht en blijft eigendom van WAHM of haar partnertrainers. Reproductie, distributie of gebruik zonder toestemming is strikt verboden."
+    }
+  },
+  "cgu": {
+    "title": "Gebruiksvoorwaarden (CGU)",
+    "articles": [
+      {
+        "title": "Artikel 1 — Doel van de website",
+        "text": "WAHM is een e-learningplatform waarmee gebruikers online cursussen kunnen kopen en volgen, cursussen kunnen aanbieden als trainer, toegang kunnen krijgen tot educatieve bronnen en kunnen communiceren met de WAHM-gemeenschap."
+      },
+      {
+        "title": "Artikel 2 — Accountaanmaak",
+        "text": "Om toegang te krijgen tot de cursussen moet de gebruiker een account aanmaken met nauwkeurige informatie. De gebruiker is verantwoordelijk voor de vertrouwelijkheid van zijn inloggegevens."
+      },
+      {
+        "title": "Artikel 3 — Gebruik van het platform",
+        "text": "Het is verboden een cursus te kopiëren, over te dragen of door te verkopen, persoonlijke toegang te delen, content illegaal te downloaden of het platform te misbruiken voor niet-toegestane commerciële doeleinden. WAHM kan een account opschorten bij niet-naleving."
+      },
+      {
+        "title": "Artikel 4 — Certificeringen",
+        "text": "Door WAHM uitgegeven certificaten bevestigen de voltooiing van een cursus, maar vervangen geen officiële beroepscertificering, tenzij anders vermeld."
+      },
+      {
+        "title": "Artikel 5 — Aansprakelijkheid",
+        "text": "WAHM garandeert niet het professionele succes van de gebruiker, de absolute nauwkeurigheid van de content van partnertrainers, noch de afwezigheid van tijdelijke serviceonderbrekingen. WAHM doet er alles aan om de kwaliteit van de service te waarborgen."
+      }
+    ]
+  },
+  "cgv": {
+    "title": "Verkoopvoorwaarden (CGV)",
+    "articles": [
+      {
+        "title": "Artikel 1 — Prijzen",
+        "text": "Prijzen zijn vermeld in € inclusief alle belastingen, tenzij anders aangegeven. WAHM behoudt zich het recht voor haar tarieven te wijzigen."
+      },
+      {
+        "title": "Artikel 2 — Betaling",
+        "text": "Betalingen worden beveiligd via Stripe, PayPal of een andere aanbieder. Er worden geen kaartnummers opgeslagen door WAHM."
+      },
+      {
+        "title": "Artikel 3 — Toegang tot cursussen",
+        "text": "Toegang wordt direct na betaling verleend, is persoonlijk en niet-overdraagbaar, en is onbeperkt in de tijd tenzij anders vermeld."
+      },
+      {
+        "title": "Artikel 4 — Terugbetalingsbeleid",
+        "text": "In overeenstemming met de wet op digitale content is het herroepingsrecht niet langer van toepassing zodra toegang tot de content is verleend. WAHM kan in uitzonderlijke gevallen een terugbetaling aanbieden."
+      },
+      {
+        "title": "Artikel 5 — Aansprakelijkheid van trainers",
+        "text": "Trainers garanderen de originaliteit van hun content, naleving van de wet, en de afwezigheid van plagiaat of gevaarlijke informatie."
+      },
+      {
+        "title": "Artikel 6 — Beëindiging",
+        "text": "WAHM kan een account opschorten bij frauduleus gebruik, niet-naleving van de gebruiksvoorwaarden, of gedrag dat in strijd is met de belangen van het platform."
+      },
+      {
+        "title": "Artikel 7 — Toepasselijk recht",
+        "textPrefix": "Deze voorwaarden worden beheerst door het recht van het land waar de onderneming is geregistreerd (",
+        "tbd": "in te vullen",
+        "textSuffix": ")."
+      }
+    ]
+  },
+  "confidentialite": {
+    "title": "Privacybeleid (AVG)",
+    "paragraphe1": "WAHM verzamelt uitsluitend de noodzakelijke gegevens: voor- en achternaam, e-mail, betalingsinformatie, aankoopgeschiedenis, leervoortgang.",
+    "paragraphe2": "Deze gegevens worden gebruikt om je account te beheren, je cursussen bij te houden, ondersteuning te bieden, communicatie gerelateerd aan je aankopen te verzenden en de service te verbeteren.",
+    "paragraphe3Prefix": "In overeenstemming met de AVG kun je verzoeken om toegang tot, correctie of verwijdering van je gegevens, evenals gegevensoverdraagbaarheid en beperking van verwerking. Verzoek:",
+    "emailLink": "privacy@wahm.com"
+  },
+  "cookies": {
+    "title": "Cookies",
+    "paragraphe1": "De website gebruikt cookies om je ervaring te verbeteren, je voorkeuren te onthouden (inclusief taal) en verkeer te analyseren. Je kunt niet-essentiële cookies accepteren of weigeren bij je eerste bezoek en je keuze op elk moment wijzigen.",
+    "paragraphe2Prefix": "Voor vragen over cookies of je gegevens:",
+    "emailLink": "privacy@wahm.com"
+  },
+  "retour": "Terug naar startpagina"
+}

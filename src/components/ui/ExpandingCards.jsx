@@ -28,7 +28,7 @@ export function ExpandingCards({ items, defaultActiveIndex = 0, className = '' }
       {items.map((item, index) => (
         <li
           key={item.id}
-          className="group relative min-h-0 min-w-0 cursor-pointer overflow-hidden border border-white/[0.1] bg-wahm-navyDark transition-colors duration-300 hover:border-white/25 md:min-w-[60px]"
+          className="group relative min-h-0 min-w-0 cursor-pointer overflow-hidden border border-line/[0.1] bg-surface-2 transition-colors duration-300 hover:border-line/25 md:min-w-[60px]"
           onMouseEnter={() => setActiveIndex(index)}
           onFocus={() => setActiveIndex(index)}
           onClick={() => setActiveIndex(index)}
@@ -44,7 +44,7 @@ export function ExpandingCards({ items, defaultActiveIndex = 0, className = '' }
           <span
             aria-hidden="true"
             className="pointer-events-none absolute inset-0"
-            style={{ background: 'linear-gradient(to top, rgba(10,26,47,0.94), rgba(10,26,47,0.5) 45%, rgba(10,26,47,0.12))' }}
+            style={{ background: 'linear-gradient(to top, rgb(var(--c-scrim) / 0.94), rgb(var(--c-scrim) / 0.5) 45%, rgb(var(--c-scrim) / 0.12))' }}
           />
           {/* Liseré orange signature sur la carte active */}
           <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-data-[active=true]:scale-x-100" />
@@ -54,13 +54,13 @@ export function ExpandingCards({ items, defaultActiveIndex = 0, className = '' }
             <h3 className="hidden origin-left translate-y-[-4px] rotate-90 whitespace-nowrap font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 transition-opacity duration-300 ease-out md:block group-data-[active=true]:opacity-0">
               {item.title}
             </h3>
-            <div className="text-wahm-goldLight opacity-0 transition-all delay-75 duration-300 ease-out group-data-[active=true]:opacity-100">
+            <div className="text-gold opacity-0 transition-all delay-75 duration-300 ease-out group-data-[active=true]:opacity-100">
               {item.icon}
             </div>
             <h3 className="font-display text-[20px] font-extrabold uppercase leading-[1.1] tracking-[-0.005em] text-white opacity-0 transition-all delay-150 duration-300 ease-out group-data-[active=true]:opacity-100">
               {item.title}
             </h3>
-            <p className="max-w-xs font-sans text-[14px] leading-[1.55] text-[#cdd8e4] opacity-0 transition-all duration-300 ease-out group-data-[active=true]:opacity-100" style={{ transitionDelay: '225ms' }}>
+            <p className="max-w-xs font-sans text-[14px] leading-[1.55] text-fg-soft opacity-0 transition-all duration-300 ease-out group-data-[active=true]:opacity-100" style={{ transitionDelay: '225ms' }}>
               {item.description}
             </p>
           </article>

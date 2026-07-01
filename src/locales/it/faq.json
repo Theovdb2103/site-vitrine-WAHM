@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "FAQ formatori — WAHM",
+    "description": "Tutte le risposte alle domande dei formatori WAHM: candidatura, compenso, produzione, esclusività, tempi."
+  },
+  "hero": {
+    "label": "FAQ formatori",
+    "title": "Tutte le risposte per diventare formatore",
+    "subtitle": "Candidatura, selezione, lingue, compenso, tempi… Tutto quello che devi sapere prima di unirti a WAHM."
+  },
+  "faqItems": [
+    {
+      "question": "Chi può diventare formatore su WAHM?",
+      "answer": "WAHM seleziona esperti riconosciuti nei campi del coaching sportivo, salute, riabilitazione, Pilates, yoga, preparazione fisica, neurotraining, performance umana e benessere.\nSe hai una solida expertise, competenze didattiche chiare e contenuti unici, puoi fare domanda."
+    },
+    {
+      "question": "Come invio la mia candidatura?",
+      "answer": "Basta compilare il modulo di candidatura online. Ti chiederemo:\n•  Il tuo CV o biografia professionale\n•  Una descrizione del tuo corso o concetto\n•  Un campione di contenuto video o didattico\n•  I tuoi social media o riferimenti"
+    },
+    {
+      "question": "Quali sono i vostri criteri di selezione?",
+      "answer": "WAHM valuta:\n•  La credibilità e l'esperienza del formatore\n•  La rilevanza scientifica o metodologica\n•  La qualità pedagogica\n•  L'originalità dei contenuti\n•  La fattibilità per l'e-learning\n•  L'attrattività internazionale del tema"
+    },
+    {
+      "question": "Devo creare l'intero corso da solo?",
+      "answer": "No. Puoi proporre un corso completo OPPURE un'idea strutturata. WAHM può supportarti nella strutturazione dei moduli, nell'ottimizzazione dell'approccio pedagogico, nel miglioramento della progressione di apprendimento e nelle riprese e montaggio dei tuoi video se necessario."
+    },
+    {
+      "question": "In quali lingue vengono offerti i corsi?",
+      "answer": "Puoi registrare nella tua lingua. WAHM si occupa della traduzione, dei sottotitoli, della traduzione dei tuoi file PDF e dell'adattamento al mercato internazionale. Il tuo corso diventa immediatamente accessibile in tutto il mondo."
+    },
+    {
+      "question": "Quanto posso guadagnare come formatore?",
+      "answer": "I guadagni variano in base al numero di vendite, alla tua notorietà, al tema e alla promozione marketing. Il modello è trasparente e basato su royalty: guadagni ogni mese su tutte le vendite, senza limiti."
+    },
+    {
+      "question": "Chi stabilisce il prezzo del corso?",
+      "answer": "Il prezzo viene fissato in modo collaborativo: tu proponi un prezzo obiettivo, WAHM analizza il mercato internazionale e poi lo aggiustiamo insieme per massimizzare le tue entrate."
+    },
+    {
+      "question": "Posso offrire il mio corso altrove?",
+      "answer": "Sì, a meno che tu non scelga il programma esclusivo WAHM, riservato a certi formatori (con compenso più alto e marketing premium)."
+    },
+    {
+      "question": "Chi gestisce gli aspetti tecnici, amministrativi e di marketing?",
+      "answer": "WAHM si occupa di tutto: hosting, interfaccia e-learning, sicurezza, pagamenti, supporto clienti, marketing internazionale, promozione dei formatori. Puoi concentrarti su ciò che conta di più: la tua expertise."
+    },
+    {
+      "question": "Quanto tempo ci vuole per mettere online il mio corso?",
+      "answer": "In media, da 2 a 6 settimane se il corso è pronto."
+    },
+    {
+      "question": "Posso aggiornare il mio corso?",
+      "answer": "Sì. Puoi aggiungere video, rinnovare moduli, integrare file, aggiungere bonus. WAHM ti supporta negli aggiornamenti quando necessario."
+    },
+    {
+      "question": "Come posso massimizzare le mie vendite?",
+      "answer": "WAHM ti consiglia sul formato ottimale per il tuo corso, storytelling e posizionamento, migliori pratiche di ripresa, costruzione di un pubblico e strategie di marketing. Più sei coinvolto, più crescono le tue entrate."
+    },
+    {
+      "question": "Come inizio?",
+      "answer": "Semplicissimo: invia la tua candidatura, valutiamo il tuo profilo e ti rispondiamo entro 7 giorni."
+    }
+  ],
+  "cta": {
+    "label": "Una domanda senza risposta?",
+    "title": "Parliamo del tuo progetto",
+    "text": "Invia la tua candidatura o parla con un responsabile partnership. Ti risponderemo entro 7 giorni.",
+    "apply": "Invia la mia candidatura",
+    "discuss": "Parla con un responsabile partnership"
+  }
+}

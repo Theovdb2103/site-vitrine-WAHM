@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Legal Notice — WAHM",
+    "description": "Legal notice, Terms of Use, Terms of Sale, privacy policy (GDPR) and cookies of World Academy of Human Movement."
+  },
+  "hero": {
+    "label": "Legal information",
+    "title": "Legal Notice",
+    "subtitle": "Template version — pending legal validation. Mentions marked \"to be completed\" must be filled in before going live."
+  },
+  "sommaire": {
+    "ariaLabel": "Table of contents",
+    "label": "Table of contents"
+  },
+  "sections": [
+    { "label": "Legal Notice" },
+    { "label": "Terms of Use" },
+    { "label": "Terms of Sale" },
+    { "label": "Privacy (GDPR)" },
+    { "label": "Cookies" }
+  ],
+  "mentions": {
+    "title": "Legal Notice",
+    "editeur": {
+      "title": "Website publisher",
+      "formeJuridiqueLabel": "Legal form:",
+      "formeJuridiqueTbd": "to be specified (e.g. SRL / SAS / LTD)",
+      "siegeSocialLabel": "Registered office:",
+      "siegeSocialTbd": "address to be completed",
+      "numeroEntrepriseLabel": "Company number / RCS / BCE:",
+      "numeroEntrepriseTbd": "to be completed",
+      "tvaLabel": "Intra-Community VAT number:",
+      "tvaTbd": "to be completed",
+      "emailLabel": "Email:",
+      "responsablePublicationLabel": "Publication director:",
+      "responsablePublicationTbd": "name of the founder or legal director"
+    },
+    "hebergement": {
+      "title": "Hosting",
+      "hebergeurLabel": "The website is hosted by:",
+      "hebergeurTbd": "name of the host (e.g. AWS, OVH, Cloudflare…)",
+      "adresseLabel": "Address:",
+      "adresseTbd": "to be completed",
+      "siteWebLabel": "Website:",
+      "siteWebTbd": "host's URL"
+    },
+    "propriete": {
+      "title": "Intellectual property",
+      "text": "All content on the website (texts, videos, images, logos, courses, documents) is protected by copyright and remains the property of WAHM or its partner trainers. Any reproduction, distribution or use without authorization is strictly prohibited."
+    }
+  },
+  "cgu": {
+    "title": "Terms of Use (CGU)",
+    "articles": [
+      {
+        "title": "Article 1 — Purpose of the website",
+        "text": "WAHM is an e-learning platform allowing users to purchase and follow online courses, to offer courses as a trainer, to access educational resources and to interact with the WAHM community."
+      },
+      {
+        "title": "Article 2 — Account creation",
+        "text": "To access the courses, the user must create an account with accurate information. The user is responsible for the confidentiality of their login credentials."
+      },
+      {
+        "title": "Article 3 — Use of the platform",
+        "text": "It is prohibited to copy, transfer or resell a course, to share personal access, to illegally download content, or to misuse the platform for unauthorized commercial purposes. WAHM may suspend an account in the event of non-compliance."
+      },
+      {
+        "title": "Article 4 — Certifications",
+        "text": "Certificates issued by WAHM attest to course completion but do not replace any official professional certification, except where stated otherwise."
+      },
+      {
+        "title": "Article 5 — Liability",
+        "text": "WAHM does not guarantee the user's professional success, the absolute accuracy of partner trainers' content, or the absence of temporary service interruptions. WAHM makes every effort to ensure the quality of the service."
+      }
+    ]
+  },
+  "cgv": {
+    "title": "Terms of Sale (CGV)",
+    "articles": [
+      {
+        "title": "Article 1 — Prices",
+        "text": "Prices are stated in € inclusive of all taxes, unless otherwise indicated. WAHM reserves the right to modify its rates."
+      },
+      {
+        "title": "Article 2 — Payment",
+        "text": "Payments are secured via Stripe, PayPal or any other provider. No card numbers are stored by WAHM."
+      },
+      {
+        "title": "Article 3 — Access to courses",
+        "text": "Access is granted immediately after payment, is personal and non-transferable, and is unlimited in time unless otherwise indicated."
+      },
+      {
+        "title": "Article 4 — Refund policy",
+        "text": "In accordance with the law on digital content, the right of withdrawal no longer applies once access to the content has been granted. WAHM may offer an exceptional refund on a case-by-case basis."
+      },
+      {
+        "title": "Article 5 — Trainer liability",
+        "text": "Trainers guarantee the originality of their content, compliance with the law, and the absence of plagiarism or hazardous information."
+      },
+      {
+        "title": "Article 6 — Termination",
+        "text": "WAHM may suspend an account in the event of fraudulent use, non-compliance with the Terms of Use, or conduct contrary to the interests of the platform."
+      },
+      {
+        "title": "Article 7 — Applicable law",
+        "textPrefix": "These terms are governed by the law of the country in which the company is registered (",
+        "tbd": "to be completed",
+        "textSuffix": ")."
+      }
+    ]
+  },
+  "confidentialite": {
+    "title": "Privacy Policy (GDPR)",
+    "paragraphe1": "WAHM only collects the data necessary: first and last name, email, payment information, purchase history, learning progress.",
+    "paragraphe2": "This data is used to manage your account, track your courses, provide support, send communications related to your purchases and improve the service.",
+    "paragraphe3Prefix": "In accordance with the GDPR, you may request access to, correction or deletion of your data, as well as data portability and restriction of processing. Request:",
+    "emailLink": "privacy@wahm.com"
+  },
+  "cookies": {
+    "title": "Cookies",
+    "paragraphe1": "The website uses cookies to improve your experience, remember your preferences (including language) and analyze traffic. You may accept or decline non-essential cookies on your first visit, and change your choice at any time.",
+    "paragraphe2Prefix": "For any question regarding cookies or your data:",
+    "emailLink": "privacy@wahm.com"
+  },
+  "retour": "Back to home"
+}

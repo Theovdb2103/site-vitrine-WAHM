@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "Trainer FAQ — WAHM",
+    "description": "All the answers to WAHM trainers' questions: application, compensation, production, exclusivity, timelines."
+  },
+  "hero": {
+    "label": "Trainer FAQ",
+    "title": "All the answers to becoming a trainer",
+    "subtitle": "Application, selection, languages, compensation, timelines… Everything you need to know before joining WAHM."
+  },
+  "faqItems": [
+    {
+      "question": "Who can become a trainer on WAHM?",
+      "answer": "WAHM selects recognized experts in the fields of sports coaching, health, rehabilitation, Pilates, yoga, physical preparation, neurotraining, human performance and wellness.\nIf you have solid expertise, clear teaching skills and unique content, you can apply."
+    },
+    {
+      "question": "How do I submit my application?",
+      "answer": "Simply fill out the online application form. We will ask you for:\n•  Your CV or professional biography\n•  A description of your course or concept\n•  A sample of video or educational content\n•  Your social media or references"
+    },
+    {
+      "question": "What are your selection criteria?",
+      "answer": "WAHM evaluates:\n•  The trainer's credibility and experience\n•  The scientific or methodological relevance\n•  The teaching quality\n•  The originality of the content\n•  The feasibility for e-learning\n•  The international appeal of the topic"
+    },
+    {
+      "question": "Do I need to create the entire course myself?",
+      "answer": "No. You can propose a complete course OR a structured idea. WAHM can support you in structuring the modules, optimizing the teaching approach, improving the learning progression, and filming and editing your videos if needed."
+    },
+    {
+      "question": "What languages are courses offered in?",
+      "answer": "You can record in your own language. WAHM handles the translation, subtitles, translation of your PDF files and adaptation to the international market. Your course immediately becomes accessible worldwide."
+    },
+    {
+      "question": "How much can I earn as a trainer?",
+      "answer": "Earnings vary depending on the number of sales, your notoriety, the topic and marketing promotion. The model is transparent and based on royalties: you earn every month on all sales, with no limit."
+    },
+    {
+      "question": "Who sets the price of the course?",
+      "answer": "The price is set collaboratively: you propose a target price, WAHM analyzes the international market, and then we adjust it together to maximize your revenue."
+    },
+    {
+      "question": "Can I offer my course elsewhere?",
+      "answer": "Yes, unless you choose the exclusive WAHM program, reserved for certain trainers (with higher compensation and premium marketing)."
+    },
+    {
+      "question": "Who handles the technical, administrative and marketing aspects?",
+      "answer": "WAHM takes care of everything: hosting, e-learning interface, security, payments, customer support, international marketing, trainer promotion. You can focus on what matters most: your expertise."
+    },
+    {
+      "question": "How long does it take to get my course online?",
+      "answer": "On average, 2 to 6 weeks if the course is ready."
+    },
+    {
+      "question": "Can I update my course?",
+      "answer": "Yes. You can add videos, refresh modules, integrate files, add bonuses. WAHM supports you with updates whenever needed."
+    },
+    {
+      "question": "How can I maximize my sales?",
+      "answer": "WAHM advises you on the optimal format for your course, storytelling and positioning, best filming practices, building an audience and marketing strategies. The more involved you are, the more your earnings grow."
+    },
+    {
+      "question": "How do I get started?",
+      "answer": "Very simple: submit your application, we review your profile, and we get back to you within 7 days."
+    }
+  ],
+  "cta": {
+    "label": "An unanswered question?",
+    "title": "Let's talk about your project",
+    "text": "Submit your application or talk to a partnership manager. We will get back to you within 7 days.",
+    "apply": "Submit my application",
+    "discuss": "Talk to a partnership manager"
+  }
+}

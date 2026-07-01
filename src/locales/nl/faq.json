@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "title": "Trainer FAQ — WAHM",
+    "description": "Alle antwoorden op de vragen van WAHM-trainers: aanmelding, vergoeding, productie, exclusiviteit, tijdlijnen."
+  },
+  "hero": {
+    "label": "Trainer FAQ",
+    "title": "Alle antwoorden om trainer te worden",
+    "subtitle": "Aanmelding, selectie, talen, vergoeding, tijdlijnen… Alles wat je moet weten voordat je bij WAHM komt."
+  },
+  "faqItems": [
+    {
+      "question": "Wie kan trainer worden bij WAHM?",
+      "answer": "WAHM selecteert erkende experts op het gebied van sportcoaching, gezondheid, revalidatie, Pilates, yoga, fysieke voorbereiding, neurotraining, menselijke prestaties en welzijn.\nAls je over solide expertise, duidelijke onderwijsvaardigheden en unieke content beschikt, kun je je aanmelden."
+    },
+    {
+      "question": "Hoe dien ik mijn aanmelding in?",
+      "answer": "Vul simpelweg het online aanmeldingsformulier in. We vragen je om:\n•  Je cv of professionele biografie\n•  Een beschrijving van je cursus of concept\n•  Een voorbeeld van video- of educatieve content\n•  Je sociale media of referenties"
+    },
+    {
+      "question": "Wat zijn jullie selectiecriteria?",
+      "answer": "WAHM evalueert:\n•  De geloofwaardigheid en ervaring van de trainer\n•  De wetenschappelijke of methodologische relevantie\n•  De onderwijskwaliteit\n•  De originaliteit van de content\n•  De haalbaarheid voor e-learning\n•  De internationale aantrekkingskracht van het onderwerp"
+    },
+    {
+      "question": "Moet ik de volledige cursus zelf maken?",
+      "answer": "Nee. Je kunt een volledige cursus voorstellen OF een gestructureerd idee. WAHM kan je ondersteunen bij het structureren van de modules, het optimaliseren van de didactische aanpak, het verbeteren van de leerprogressie, en het filmen en monteren van je video's indien nodig."
+    },
+    {
+      "question": "In welke talen worden cursussen aangeboden?",
+      "answer": "Je kunt opnemen in je eigen taal. WAHM regelt de vertaling, ondertitels, vertaling van je PDF-bestanden en aanpassing aan de internationale markt. Jouw cursus wordt meteen wereldwijd toegankelijk."
+    },
+    {
+      "question": "Hoeveel kan ik verdienen als trainer?",
+      "answer": "De inkomsten variëren afhankelijk van het aantal verkopen, je bekendheid, het onderwerp en de marketingpromotie. Het model is transparant en gebaseerd op royalty's: je verdient elke maand op alle verkopen, zonder limiet."
+    },
+    {
+      "question": "Wie bepaalt de prijs van de cursus?",
+      "answer": "De prijs wordt gezamenlijk bepaald: jij stelt een doelprijs voor, WAHM analyseert de internationale markt, en dan passen we hem samen aan om jouw inkomsten te maximaliseren."
+    },
+    {
+      "question": "Kan ik mijn cursus ook elders aanbieden?",
+      "answer": "Ja, tenzij je kiest voor het exclusieve WAHM-programma, voorbehouden voor bepaalde trainers (met hogere vergoeding en premium marketing)."
+    },
+    {
+      "question": "Wie regelt de technische, administratieve en marketingaspecten?",
+      "answer": "WAHM regelt alles: hosting, e-learninginterface, beveiliging, betalingen, klantenservice, internationale marketing, promotie van trainers. Jij kunt je concentreren op wat het belangrijkste is: jouw expertise."
+    },
+    {
+      "question": "Hoe lang duurt het om mijn cursus online te krijgen?",
+      "answer": "Gemiddeld 2 tot 6 weken als de cursus klaar is."
+    },
+    {
+      "question": "Kan ik mijn cursus bijwerken?",
+      "answer": "Ja. Je kunt video's toevoegen, modules vernieuwen, bestanden integreren, bonussen toevoegen. WAHM ondersteunt je bij updates wanneer dat nodig is."
+    },
+    {
+      "question": "Hoe kan ik mijn verkopen maximaliseren?",
+      "answer": "WAHM adviseert je over het optimale formaat voor je cursus, storytelling en positionering, beste filmpraktijken, het opbouwen van een publiek en marketingstrategieën. Hoe meer je betrokken bent, hoe meer je inkomsten groeien."
+    },
+    {
+      "question": "Hoe begin ik?",
+      "answer": "Heel eenvoudig: dien je aanmelding in, we beoordelen je profiel en nemen binnen 7 dagen contact met je op."
+    }
+  ],
+  "cta": {
+    "label": "Een onbeantwoorde vraag?",
+    "title": "Laten we praten over jouw project",
+    "text": "Dien je aanmelding in of spreek met een partnershipmanager. We nemen binnen 7 dagen contact met je op.",
+    "apply": "Mijn aanmelding indienen",
+    "discuss": "Spreek met een partnershipmanager"
+  }
+}

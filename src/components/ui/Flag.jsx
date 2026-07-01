@@ -1,7 +1,7 @@
 // Drapeau affiché en image SVG (et non en emoji) : les emojis-drapeaux ne s'affichent
 // pas sur Windows/Chrome (rendus en lettres « FR »). On utilise donc des SVG de drapeaux
 // servis par flagcdn — nets, légers, cohérents sur toutes les plateformes.
-const CC = { FR: 'fr', EN: 'gb', ES: 'es', DE: 'de', PT: 'pt', IT: 'it' }
+const CC = { FR: 'fr', EN: 'gb', ES: 'es', DE: 'de', PT: 'pt', IT: 'it', NL: 'nl', RU: 'ru' }
 
 export default function Flag({ code = 'FR', className = '' }) {
   const cc = CC[code] || 'fr'

@@ -15,8 +15,8 @@ export default function Reveal({ as = 'div', children, delay = 0, y = 24, classN
     <MotionTag
       className={className}
       style={style}
-      initial={{ opacity: 0, y, filter: 'blur(8px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
       {...rest}
@@ -64,7 +64,7 @@ export function RevealItem({ as = 'div', children, className, style, y = 20, ...
     <MotionTag
       className={className}
       style={style}
-      variants={{ hidden: { opacity: 0, y, filter: 'blur(8px)' }, show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.85, ease: EASE } } }}
+      variants={{ hidden: { opacity: 0, y }, show: { opacity: 1, y: 0, transition: { duration: 0.85, ease: EASE } } }}
       {...rest}
     >
       {children}

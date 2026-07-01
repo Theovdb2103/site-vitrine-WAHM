@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "title": "À propos — WAHM",
+    "description": "World Academy of Human Movement : notre vision, notre mission et la communauté mondiale d'experts du mouvement humain."
+  },
+  "hero": {
+    "label": "À propos",
+    "title": "World Academy of Human Movement",
+    "subtitle": "L'excellence mondiale au service de votre évolution.",
+    "discoverCta": "Découvrir la plateforme",
+    "communityCta": "Rejoindre la communauté WAHM",
+    "imageAlt": "World Academy of Human Movement"
+  },
+  "vision": {
+    "label": "Notre vision",
+    "title": "La connaissance a le pouvoir de transformer des vies",
+    "text": "Chez World Academy of Human Movement (WAHM), nous croyons que la connaissance a le pouvoir de transformer des vies. Dans un monde où les approches du mouvement humain évoluent sans cesse, notre mission est claire :",
+    "textStrong": "rendre accessible, partout, l'expertise la plus avancée en santé, bien-être et performance.",
+    "piliers": [
+      {
+        "titre": "Accessibilité",
+        "texte": "Rendre accessible, partout, l'expertise la plus avancée en santé, bien-être et performance."
+      },
+      {
+        "titre": "Excellence",
+        "texte": "Une sélection rigoureuse des meilleurs experts et formations, sans compromis sur la qualité."
+      },
+      {
+        "titre": "Communauté",
+        "texte": "Une communauté mondiale unie par la même ambition : se former, progresser, transmettre."
+      }
+    ],
+    "outro": "WAHM est née d'un constat simple : les meilleures formations sont souvent dispersées, inégales en qualité, parfois inaccessibles à cause de la langue ou de barrières géographiques. Nous avons décidé de changer cela."
+  },
+  "mission": {
+    "label": "Notre mission",
+    "title": "Réunir, sur une seule plateforme, les formateurs les plus influents et les contenus les plus innovants du monde",
+    "intro": "Nous sélectionnons des experts reconnus dans les domaines suivants :",
+    "domaines": [
+      { "title": "Coaching sportif & Personal Training" },
+      { "title": "Santé & Rééducation – biomécanique" },
+      { "title": "Préparation physique multisports" },
+      { "title": "Yoga & Pilates – Zen training" },
+      { "title": "Neurotraining & sciences du mouvement" },
+      { "title": "Développement personnel & Mental Coaching" }
+    ],
+    "criteresIntro": "Chaque formation intégrée à WAHM répond à des critères stricts :",
+    "criteres": [
+      "Pertinence scientifique",
+      "Clarté pédagogique",
+      "Applicabilité immédiate",
+      "Originalité du contenu",
+      "Qualité audiovisuelle",
+      "Accessibilité multilingue"
+    ],
+    "outro": "Nous ne sommes pas une plateforme. Nous sommes la référence mondiale en formation e-learning dédiée au mouvement humain."
+  },
+  "communaute": {
+    "label": "Notre communauté",
+    "title": "WAHM est avant tout un écosystème d'échange, d'excellence et d'impact",
+    "intro": "WAHM fédère des :",
+    "profils": [
+      { "label": "Coachs sportifs" },
+      { "label": "Thérapeutes & professionnels de santé" },
+      { "label": "Préparateurs physiques" },
+      { "label": "Instructeurs Pilates & Yoga" },
+      { "label": "Étudiants en sciences du sport" },
+      { "label": "Experts du développement humain" }
+    ],
+    "outro": "Tous unis par une même ambition : se former, progresser, transmettre."
+  },
+  "engagement": {
+    "label": "Notre engagement",
+    "title": "Nous nous engageons à",
+    "items": [
+      { "txt": "Proposer uniquement des contenus de haute qualité" },
+      { "txt": "Garantir une expérience d'apprentissage fluide, accessible et multilingue" },
+      { "txt": "Réunir une communauté mondiale d'experts" },
+      { "txt": "Aider chaque utilisateur à développer une expertise solide, moderne et rentable" },
+      { "txt": "Soutenir la recherche et l'innovation dans le domaine du mouvement humain" }
+    ],
+    "imageAlt": "L'engagement WAHM envers l'excellence"
+  },
+  "pourquoi": {
+    "label": "Pourquoi nous existons",
+    "title": "Parce que les professionnels d'aujourd'hui méritent mieux",
+    "raisons": [
+      "Mieux que des formations génériques",
+      "Mieux que du contenu amateur",
+      "Mieux que des plateformes sans exigence"
+    ],
+    "outro": "WAHM offre un accès direct aux meilleurs experts, formations et approches du monde, sans compromis."
+  },
+  "cta": {
+    "label": "Rejoignez-nous",
+    "title": "Vous êtes coach ? thérapeute ? formateur ? passionné ?",
+    "text": "Bienvenue dans la première communauté mondiale dédiée au mouvement humain.",
+    "discoverCta": "Découvrir la plateforme",
+    "communityCta": "Rejoindre la communauté WAHM"
+  }
+}

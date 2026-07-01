@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "title": "WAHM — Leer van de besten",
+    "description": "World Academy of Human Movement: de wereldwijde marktplaats voor opleidingen in gezondheid, sport, welzijn en prestaties, in jouw taal."
+  },
+  "hero": {
+    "label": "Het wereldwijde platform voor menselijke beweging",
+    "title1": "Leer van",
+    "title2": "de beste",
+    "title3": "trainers",
+    "tagline": "Overal ter wereld. In de taal van jouw keuze.",
+    "text": "Ontdek 's werelds meest innovatieve cursussen in sportcoaching, gezondheid, revalidatie, Pilates, yoga en menselijke prestaties. Één platform. Één standaard van expertise. Een wereldwijde gemeenschap van gepassioneerde professionals.",
+    "ctaDiscover": "Ontdek onze cursussen",
+    "ctaCommunity": "Word lid van de WAHM-gemeenschap"
+  },
+  "pourquoiCards": [
+    {
+      "title": "Wereldklasse experts",
+      "description": "Erkende experts van over de hele wereld in bewegingswetenschap, prestaties en gezondheid."
+    },
+    {
+      "title": "Exclusieve content",
+      "description": "Originele cursussen die je nergens anders vindt."
+    },
+    {
+      "title": "Meertalig",
+      "description": "Directe spraakomzetting die automatisch een gesynchroniseerde versie levert met behoud van de originele stem, in meerdere talen."
+    },
+    {
+      "title": "Wereldwijde toegang",
+      "description": "Directe toegang vanuit elk land en op elk apparaat."
+    },
+    {
+      "title": "Gemeenschap",
+      "description": "Een gemeenschap van coaches, therapeuten en enthousiastelingen die dezelfde waarden delen: groei, excellentie, impact."
+    }
+  ],
+  "promesse": [
+    {
+      "title": "Gecertificeerd & erkend",
+      "text": "Certificerend of erkend in hun vakgebied"
+    },
+    {
+      "title": "Wereldwijde referenties",
+      "text": "Gecreëerd door internationale leiders (fysieke voorbereiding, gezondheid, Pilates, yoga, neurotraining, welzijn…)"
+    },
+    {
+      "title": "Direct toepasbaar",
+      "text": "Pedagogisch, praktisch en direct toepasbaar"
+    },
+    {
+      "title": "Altijd up-to-date",
+      "text": "Regelmatig bijgewerkt op basis van de nieuwste wetenschappelijke inzichten"
+    },
+    {
+      "title": "Voor alle niveaus",
+      "text": "Geschikt voor alle niveaus: beginners, gevorderden, experts"
+    }
+  ],
+  "categories": [
+    {
+      "title": "Sportcoaching & Personal Training",
+      "desc": "Moderne methodologieën, planning, klantbeheer, coachingsbusiness."
+    },
+    {
+      "title": "Gezondheid & Revalidatie – biomechanica",
+      "desc": "Revalidatie, biomechanica, functionele beweging, terugkeer naar sport."
+    },
+    {
+      "title": "Multisport fysieke voorbereiding",
+      "desc": "Sportspecifieke training, prestaties, kracht, snelheid, blessurepreventie."
+    },
+    {
+      "title": "Yoga & Pilates – Zen training",
+      "desc": "Flow, mobiliteit, ademhaling, bewegingsoptimalisatie."
+    },
+    {
+      "title": "Neurotraining & bewegingswetenschap",
+      "desc": "Archaïsche reflexen, motorische voorkeuren, sensomotorische lus."
+    },
+    {
+      "title": "Persoonlijke ontwikkeling & Mentale coaching",
+      "desc": "Mentale beeldvorming, mindset, motivatie, stressmanagement."
+    }
+  ],
+  "plateforme": [
+    {
+      "tag": "Video",
+      "title": "Meertalige HD-video's",
+      "desc": "Cursussen gefilmd in hoge definitie, nagesynchroniseerd in meerdere talen."
+    },
+    {
+      "tag": "Voortgang",
+      "title": "Een persoonlijke ruimte",
+      "desc": "Jouw dashboard: cursussen, certificaten en voortgang in één oogopslag."
+    },
+    {
+      "tag": "Talen",
+      "title": "Slimme ondertitels",
+      "desc": "Gesynchroniseerd in NL / EN / FR / ES en meer."
+    },
+    {
+      "tag": "Bronnen",
+      "title": "Downloadbare materialen",
+      "desc": "Werkbladen, PDF's en bronnen om overal mee te nemen."
+    },
+    {
+      "tag": "Beschikbaarheid",
+      "title": "24/7 toegang",
+      "desc": "Leer wanneer je wilt, waar je wilt."
+    }
+  ],
+  "communaute": [
+    "Een internationaal netwerk van coaches, therapeuten, fysieke trainers en instructeurs",
+    "Exclusieve webinars met de beste experts",
+    "Kortingen op cursussen",
+    "Privé-discussiegroepen",
+    "Continue wetenschappelijke monitoring"
+  ],
+  "stats": [
+    { "label": "Beschikbare talen" },
+    { "label": "Onbeperkte toegang" },
+    { "label": "Expertisegebieden" },
+    { "label": "Geverifieerde cursussen" }
+  ],
+  "pourquoi": {
+    "label": "Waarom WAHM?",
+    "discover": "Ontdekken",
+    "title": "Wereldwijde excellentie, toegankelijk voor iedereen",
+    "intro": "Bij World Academy of Human Movement selecteren we uitsluitend cursussen die al duizenden professionals wereldwijd hebben getransformeerd. WAHM is geen gewone marktplaats: het is het internationale ontmoetingspunt tussen:",
+    "outro": "WAHM opent de deuren naar wereldwijde kennis, gestructureerd, geverifieerd en ontworpen voor jouw professionele groei."
+  },
+  "promesseSection": {
+    "label": "Onze belofte",
+    "title": "Leer van de besten, zonder grenzen",
+    "intro": "Wij verbinden ons ertoe cursussen aan te bieden die:",
+    "outro": "Jouw groei wordt grenzeloos."
+  },
+  "categoriesSection": {
+    "label": "Vind jouw ideale cursus",
+    "explore": "Alles verkennen",
+    "title": "Duidelijke categorieën, ontworpen om je te begeleiden",
+    "exploreCard": "Verkennen",
+    "outro": "Elke cursus is een veilige investering in jouw expertise."
+  },
+  "conviction": {
+    "label": "Onze overtuiging",
+    "title1": "WAHM is geen",
+    "title2": "gewone marktplaats",
+    "cta": "Verken de cursussen"
+  },
+  "plateformeSection": {
+    "label": "Ontworpen voor de wereld",
+    "title1": "Leer in jouw taal. Op jouw tempo. Overal",
+    "outro": "Jij kiest waar, wanneer en hoe je leert."
+  },
+  "communauteSection": {
+    "label": "WAHM Gemeenschap",
+    "title": "Word lid van de enige wereldwijde gemeenschap gewijd aan menselijke beweging",
+    "intro": "Als lid krijg je toegang tot:",
+    "tagline": "Leer niet langer alleen. Groei met de besten.",
+    "cta": "Word lid van de WAHM-gemeenschap"
+  },
+  "ctaFinal": {
+    "eyebrow": "Laatste oproep tot actie",
+    "title1": "Jouw groei begint nu",
+    "text": "De beste experts ter wereld staan klaar voor je. Word een gevraagde en erkende professional.",
+    "exploreCta": "Verken de cursussen",
+    "joinCta": "Word lid van de WAHM-gemeenschap"
+  }
+}
