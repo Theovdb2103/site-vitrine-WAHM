@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { Globe, Coins, Star, Settings, Users, Check } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
@@ -81,9 +82,8 @@ export default function DevenirFormateur() {
     e.preventDefault()
     const form = e.currentTarget
     const formData = new FormData(form)
-    formData.append('_type', 'candidature')
 
-    // Validation client minimale (le backend revalide).
+    // Validation client minimale.
     const nom = (formData.get('nom') || '').toString().trim()
     const email = (formData.get('email') || '').toString().trim()
     const domaine = (formData.get('domaine') || '').toString().trim()
@@ -98,16 +98,23 @@ export default function DevenirFormateur() {
     setStatus('submitting')
     setErrorMsg('')
     try {
-      const res = await fetch('/form-handler.php', { method: 'POST', body: formData })
-      const json = await res.json().catch(() => ({ ok: false }))
-      if (res.ok && json.ok) {
-        setStatus('success')
-        try { window.scrollTo({ top: 0, behavior: 'smooth' }) } catch { /* noop */ }
-      } else {
-        setErrorMsg(json.error || t('devenirFormateur:candidature.form.errors.failed'))
-        setStatus('error')
-      }
-    } catch {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_CANDIDATURE,
+        {
+          from_name: nom,
+          from_email: email,
+          domaine,
+          theme: (formData.get('theme') || '').toString().trim(),
+          echantillon: (formData.get('echantillon') || '').toString().trim(),
+          refs: (formData.get('refs') || '').toString().trim(),
+          bio: (formData.get('bio') || '').toString().trim(),
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      setStatus('success')
+    } catch (err) {
+      console.error(err)
       setErrorMsg(t('devenirFormateur:candidature.form.errors.network'))
       setStatus('error')
     }

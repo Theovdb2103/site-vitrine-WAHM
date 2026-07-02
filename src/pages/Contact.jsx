@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
 import { Mail, Clock, Check } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
@@ -92,20 +93,20 @@ export default function Contact() {
     setErrorMsg('')
 
     try {
-      const res = await fetch('/form-handler.php', { method: 'POST', body: formData })
-      const data = await res.json()
-      if (data && data.ok) {
-        setStatus('success')
-        try {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-        } catch {
-          /* noop */
-        }
-      } else {
-        setStatus('error')
-        setErrorMsg((data && data.error) || t('contact:form.errors.failed'))
-      }
-    } catch {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT,
+        {
+          from_name: nom,
+          from_email: email,
+          subject: formData.get('sujet') || '(sans sujet)',
+          message: message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      setStatus('success')
+    } catch (err) {
+      console.error(err)
       setStatus('error')
       setErrorMsg(t('contact:form.errors.network'))
     }
