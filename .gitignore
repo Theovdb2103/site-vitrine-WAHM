@@ -20,3 +20,8 @@ Thumbs.db
 .idea/
 .vscode/
 *.local
+
+# CMS/admin export dumps — ne jamais committer de page admin sauvegardée
+assets/*WordPress*.html
+assets/*WordPress*_files/
+*.har
