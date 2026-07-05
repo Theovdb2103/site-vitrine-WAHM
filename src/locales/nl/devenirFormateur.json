@@ -49,14 +49,38 @@
     "subtitle": "We selecteren erkende trainers in de volgende vakgebieden:",
     "outro": "Als je jouw discipline vooruithelpt, wil WAHM met je samenwerken.",
     "items": [
-      { "name": "Fysieke voorbereiding & sportprestaties", "tag": "Kracht & prestaties" },
-      { "name": "Sportcoaching & personal training", "tag": "Individuele coaching" },
-      { "name": "Yoga, Pilates, mobiliteit", "tag": "Mobiliteit & ademhaling" },
-      { "name": "Gezondheid, revalidatie, biomechanica", "tag": "Terugkeer naar sport" },
-      { "name": "Neurowetenschap toegepast op beweging", "tag": "Bewegingswetenschap" },
-      { "name": "Motorische voorkeuren, innovatieve methoden", "tag": "Innovatieve methoden" },
-      { "name": "Welzijn, ademhaling, herstel", "tag": "Herstel" },
-      { "name": "Mentale coaching en psychologische voorbereiding", "tag": "Mentale voorbereiding" }
+      {
+        "name": "Fysieke voorbereiding & sportprestaties",
+        "tag": "Kracht & prestaties"
+      },
+      {
+        "name": "Sportcoaching & personal training",
+        "tag": "Individuele coaching"
+      },
+      {
+        "name": "Yoga, Pilates, mobiliteit",
+        "tag": "Mobiliteit & ademhaling"
+      },
+      {
+        "name": "Gezondheid, revalidatie, biomechanica",
+        "tag": "Terugkeer naar sport"
+      },
+      {
+        "name": "Neurowetenschap toegepast op beweging",
+        "tag": "Bewegingswetenschap"
+      },
+      {
+        "name": "Motorische voorkeuren, innovatieve methoden",
+        "tag": "Innovatieve methoden"
+      },
+      {
+        "name": "Welzijn, ademhaling, herstel",
+        "tag": "Herstel"
+      },
+      {
+        "name": "Mentale coaching en psychologische voorbereiding",
+        "tag": "Mentale voorbereiding"
+      }
     ]
   },
   "criteres": {
@@ -137,6 +161,20 @@
         "refs": "Instagram, LinkedIn, website…",
         "bio": "Een paar regels over je achtergrond en aanpak…"
       },
+      "domainePlaceholder": "Selecteer uw domein",
+      "domaineOptions": [
+        "Fysieke voorbereiding & sportieve prestaties",
+        "Sportcoaching & personal training",
+        "Yoga, Pilates, mobiliteit",
+        "Gezondheid, revalidatie, biomechanica",
+        "Neurowetenschappen toegepast op beweging",
+        "Innovatieve methoden & motorische voorkeuren",
+        "Welzijn, ademhaling, herstel",
+        "Mentale coaching & psychologische voorbereiding",
+        "Andere"
+      ],
+      "echantillonBrowse": "Bestand kiezen",
+      "echantillonNone": "Geen bestand geselecteerd",
       "submit": "Mijn aanmelding indienen",
       "submitting": "Verzenden…",
       "consent": "Door in te dienen, ga je akkoord dat het WAHM-team contact met je opneemt.",

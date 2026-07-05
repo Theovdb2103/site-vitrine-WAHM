@@ -49,14 +49,38 @@
     "subtitle": "We select recognized trainers in the following fields:",
     "outro": "If you're pushing your discipline forward, WAHM wants to work with you.",
     "items": [
-      { "name": "Physical preparation & athletic performance", "tag": "Strength & performance" },
-      { "name": "Sports coaching & personal training", "tag": "One-on-one coaching" },
-      { "name": "Yoga, Pilates, mobility", "tag": "Mobility & breathing" },
-      { "name": "Health, rehabilitation, biomechanics", "tag": "Re-athletization" },
-      { "name": "Neuroscience applied to movement", "tag": "Movement science" },
-      { "name": "Motor preferences, innovative methods", "tag": "Innovative methods" },
-      { "name": "Wellness, breathing, recovery", "tag": "Recovery" },
-      { "name": "Mental coaching and psychological preparation", "tag": "Mental preparation" }
+      {
+        "name": "Physical preparation & athletic performance",
+        "tag": "Strength & performance"
+      },
+      {
+        "name": "Sports coaching & personal training",
+        "tag": "One-on-one coaching"
+      },
+      {
+        "name": "Yoga, Pilates, mobility",
+        "tag": "Mobility & breathing"
+      },
+      {
+        "name": "Health, rehabilitation, biomechanics",
+        "tag": "Re-athletization"
+      },
+      {
+        "name": "Neuroscience applied to movement",
+        "tag": "Movement science"
+      },
+      {
+        "name": "Motor preferences, innovative methods",
+        "tag": "Innovative methods"
+      },
+      {
+        "name": "Wellness, breathing, recovery",
+        "tag": "Recovery"
+      },
+      {
+        "name": "Mental coaching and psychological preparation",
+        "tag": "Mental preparation"
+      }
     ]
   },
   "criteres": {
@@ -137,6 +161,20 @@
         "refs": "Instagram, LinkedIn, website…",
         "bio": "A few lines about your background and approach…"
       },
+      "domainePlaceholder": "Select your domain",
+      "domaineOptions": [
+        "Physical preparation & sports performance",
+        "Sports coaching & personal training",
+        "Yoga, Pilates, mobility",
+        "Health, rehabilitation, biomechanics",
+        "Neurosciences applied to movement",
+        "Innovative methods & motor preferences",
+        "Wellbeing, breathing, recovery",
+        "Mental coaching & psychological preparation",
+        "Other"
+      ],
+      "echantillonBrowse": "Choose a file",
+      "echantillonNone": "No file selected",
       "submit": "Submit my application",
       "submitting": "Sending…",
       "consent": "By submitting, you agree to be contacted by the WAHM team.",

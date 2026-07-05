@@ -116,6 +116,31 @@ export default function Footer() {
           {t('footer.credit')} <a href="https://effiweb.be" target="_blank" rel="noopener noreferrer" className="text-gold no-underline transition-colors hover:text-wahm-orange">Effiweb</a>
         </span>
       </div>
+
+      {/* Typo géante WAHM — SVG textLength = 100% largeur garantie, fill=none = transparent */}
+      <div className="select-none" aria-hidden="true">
+        <svg
+          viewBox="0 0 1000 230"
+          xmlns="http://www.w3.org/2000/svg"
+          className="block w-full"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <text
+            style={{ fontFamily: "'General Sans', Montserrat, system-ui, sans-serif", fontWeight: 700 }}
+            x="0"
+            y="215"
+            fontSize="230"
+            fill="none"
+            stroke="#D4A018"
+            strokeWidth="2"
+            vectorEffect="non-scaling-stroke"
+            textLength="1000"
+            lengthAdjust="spacingAndGlyphs"
+          >
+            WAHM
+          </text>
+        </svg>
+      </div>
     </footer>
   )
 }

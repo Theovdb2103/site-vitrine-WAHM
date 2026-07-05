@@ -49,14 +49,38 @@
     "subtitle": "Wir wählen anerkannte Trainer in folgenden Bereichen aus:",
     "outro": "Wenn du deine Disziplin voranbringst, möchte WAHM mit dir zusammenarbeiten.",
     "items": [
-      { "name": "Körperliche Vorbereitung & sportliche Leistung", "tag": "Kraft & Leistung" },
-      { "name": "Sportcoaching & Personal Training", "tag": "Einzelcoaching" },
-      { "name": "Yoga, Pilates, Mobilität", "tag": "Mobilität & Atmung" },
-      { "name": "Gesundheit, Rehabilitation, Biomechanik", "tag": "Rückkehr zum Sport" },
-      { "name": "Neurowissenschaften angewandt auf Bewegung", "tag": "Bewegungswissenschaft" },
-      { "name": "Motorische Präferenzen, innovative Methoden", "tag": "Innovative Methoden" },
-      { "name": "Wohlbefinden, Atmung, Erholung", "tag": "Erholung" },
-      { "name": "Mental Coaching und psychologische Vorbereitung", "tag": "Mentale Vorbereitung" }
+      {
+        "name": "Körperliche Vorbereitung & sportliche Leistung",
+        "tag": "Kraft & Leistung"
+      },
+      {
+        "name": "Sportcoaching & Personal Training",
+        "tag": "Einzelcoaching"
+      },
+      {
+        "name": "Yoga, Pilates, Mobilität",
+        "tag": "Mobilität & Atmung"
+      },
+      {
+        "name": "Gesundheit, Rehabilitation, Biomechanik",
+        "tag": "Rückkehr zum Sport"
+      },
+      {
+        "name": "Neurowissenschaften angewandt auf Bewegung",
+        "tag": "Bewegungswissenschaft"
+      },
+      {
+        "name": "Motorische Präferenzen, innovative Methoden",
+        "tag": "Innovative Methoden"
+      },
+      {
+        "name": "Wohlbefinden, Atmung, Erholung",
+        "tag": "Erholung"
+      },
+      {
+        "name": "Mental Coaching und psychologische Vorbereitung",
+        "tag": "Mentale Vorbereitung"
+      }
     ]
   },
   "criteres": {
@@ -137,6 +161,20 @@
         "refs": "Instagram, LinkedIn, Website…",
         "bio": "Ein paar Zeilen über deinen Werdegang und deinen Ansatz…"
       },
+      "domainePlaceholder": "Wählen Sie Ihren Bereich",
+      "domaineOptions": [
+        "Körperliche Vorbereitung & sportliche Leistung",
+        "Sportcoaching & Personal Training",
+        "Yoga, Pilates, Mobilität",
+        "Gesundheit, Rehabilitation, Biomechanik",
+        "Neurowissenschaften angewandt auf Bewegung",
+        "Innovative Methoden & motorische Präferenzen",
+        "Wohlbefinden, Atmung, Erholung",
+        "Mentalcoaching & psychologische Vorbereitung",
+        "Andere"
+      ],
+      "echantillonBrowse": "Datei auswählen",
+      "echantillonNone": "Keine Datei ausgewählt",
       "submit": "Meine Bewerbung einreichen",
       "submitting": "Wird gesendet…",
       "consent": "Durch das Einreichen stimmst du zu, vom WAHM-Team kontaktiert zu werden.",

@@ -149,6 +149,13 @@ export default function Header() {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [menuOpen])
+  // Empêche le scroll de la page pendant que l'overlay plein écran est ouvert.
+  useEffect(() => {
+    if (!menuOpen) return
+    const { overflow } = document.body.style
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = overflow }
+  }, [menuOpen])
 
   return (
     <header className="fixed inset-x-0 top-0 z-[200] flex h-[72px] items-stretch bg-surface">
@@ -236,27 +243,20 @@ export default function Header() {
         </Link>
       )}
 
-      {/* Panneau mobile */}
+      {/* Overlay mobile plein écran — tous les liens du menu, à plat, comme sur desktop */}
       {menuOpen && (
-        <div id="mobile-menu" className="border-b border-line/[0.1] bg-surface/[0.98] px-5 py-4 backdrop-blur-[12px] lg:hidden">
+        <div
+          id="mobile-menu"
+          className="fixed inset-x-0 top-[72px] bottom-0 z-[199] flex flex-col overflow-y-auto bg-surface px-5 py-6 lg:hidden"
+        >
           <nav className="flex flex-col">
-            {nav.filter((item) => item.key !== 'comment-ca-marche').map((item) => (
-              item.key === 'faq' ? (
-                <div key="faq-group" className="border-b border-line/[0.06] py-3.5">
-                  <span className="block font-mono text-[11px] uppercase tracking-[0.14em] text-subtle">{t('header.faqMenu.label')}</span>
-                  <div className="mt-1 flex flex-col pl-3">
-                    <NavLink to={localizedPath('/comment-ca-marche', locale)} active={navKey === 'comment-ca-marche'} onClick={() => setMenuOpen(false)} className="py-2 text-[13px]">{t('header.faqMenu.learner')}</NavLink>
-                    <NavLink to={localizedPath('/faq', locale)} active={navKey === 'faq'} onClick={() => setMenuOpen(false)} className="py-2 text-[13px]">{t('header.faqMenu.trainer')}</NavLink>
-                  </div>
-                </div>
-              ) : (
-                <NavLink key={item.key} to={item.to} active={navKey === item.key} onClick={() => setMenuOpen(false)} className="border-b border-line/[0.06] py-3.5 text-[13px]">
-                  {item.label}
-                </NavLink>
-              )
+            {nav.map((item) => (
+              <NavLink key={item.key} to={item.to} active={navKey === item.key} onClick={() => setMenuOpen(false)} className="border-b border-line/[0.06] py-4 text-[16px]">
+                {item.label}
+              </NavLink>
             ))}
           </nav>
-          <div className="mt-4 flex flex-col gap-3">
+          <div className="mt-6 flex flex-col gap-3">
             <div className="flex gap-3">
               <button
                 type="button"

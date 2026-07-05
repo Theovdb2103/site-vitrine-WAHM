@@ -49,14 +49,38 @@
     "subtitle": "Seleccionamos formadores reconocidos en los siguientes campos:",
     "outro": "Si estás impulsando tu disciplina hacia adelante, WAHM quiere trabajar contigo.",
     "items": [
-      { "name": "Preparación física y rendimiento deportivo", "tag": "Fuerza y rendimiento" },
-      { "name": "Coaching deportivo y personal training", "tag": "Coaching individual" },
-      { "name": "Yoga, Pilates, movilidad", "tag": "Movilidad y respiración" },
-      { "name": "Salud, rehabilitación, biomecánica", "tag": "Vuelta al deporte" },
-      { "name": "Neurociencia aplicada al movimiento", "tag": "Ciencias del movimiento" },
-      { "name": "Preferencias motoras, métodos innovadores", "tag": "Métodos innovadores" },
-      { "name": "Bienestar, respiración, recuperación", "tag": "Recuperación" },
-      { "name": "Coaching mental y preparación psicológica", "tag": "Preparación mental" }
+      {
+        "name": "Preparación física y rendimiento deportivo",
+        "tag": "Fuerza y rendimiento"
+      },
+      {
+        "name": "Coaching deportivo y personal training",
+        "tag": "Coaching individual"
+      },
+      {
+        "name": "Yoga, Pilates, movilidad",
+        "tag": "Movilidad y respiración"
+      },
+      {
+        "name": "Salud, rehabilitación, biomecánica",
+        "tag": "Vuelta al deporte"
+      },
+      {
+        "name": "Neurociencia aplicada al movimiento",
+        "tag": "Ciencias del movimiento"
+      },
+      {
+        "name": "Preferencias motoras, métodos innovadores",
+        "tag": "Métodos innovadores"
+      },
+      {
+        "name": "Bienestar, respiración, recuperación",
+        "tag": "Recuperación"
+      },
+      {
+        "name": "Coaching mental y preparación psicológica",
+        "tag": "Preparación mental"
+      }
     ]
   },
   "criteres": {
@@ -137,6 +161,20 @@
         "refs": "Instagram, LinkedIn, sitio web…",
         "bio": "Unas líneas sobre tu trayectoria y enfoque…"
       },
+      "domainePlaceholder": "Seleccione su dominio",
+      "domaineOptions": [
+        "Preparación física & rendimiento deportivo",
+        "Entrenamiento deportivo & personal training",
+        "Yoga, Pilates, movilidad",
+        "Salud, rehabilitación, biomecánica",
+        "Neurociencias aplicadas al movimiento",
+        "Métodos innovadores & preferencias motrices",
+        "Bienestar, respiración, recuperación",
+        "Coaching mental & preparación psicológica",
+        "Otro"
+      ],
+      "echantillonBrowse": "Elegir archivo",
+      "echantillonNone": "Ningún archivo seleccionado",
       "submit": "Enviar mi solicitud",
       "submitting": "Enviando…",
       "consent": "Al enviar, aceptas ser contactado por el equipo WAHM.",
