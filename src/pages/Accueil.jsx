@@ -356,11 +356,15 @@ export default function Accueil() {
                   <Action to={marketplaceUrl} variant="filled" arrow className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('accueil:communauteSection.cta')}</Action>
                 </div>
               </div>
-              {/* Mobile : globe centré, entièrement visible. md+ : déborde du coin (DA). */}
-              <div className="relative mx-auto h-[260px] w-full max-w-[260px] md:mx-0 md:h-[180px] md:max-w-xl">
-                <Globe className="scale-110 md:-bottom-20 md:-right-40 md:scale-150" />
+              {/* Mobile : globe en décor dans le coin haut-droit, fondu dans le fond de carte
+                  (vignette radiale) pour garder le texte lisible, ne prend plus de place dans
+                  le flux. md+ : redevient une colonne normale à côté du texte, qui déborde du
+                  coin de la carte (DA). */}
+              <div className="pointer-events-none absolute -right-16 -top-16 z-0 h-[240px] w-[240px] opacity-90 md:pointer-events-auto md:relative md:inset-auto md:right-auto md:top-auto md:z-auto md:h-[180px] md:w-full md:max-w-xl md:opacity-100">
+                <Globe className="scale-125 md:scale-150 md:-bottom-20 md:-right-40" />
               </div>
             </div>
+            <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] md:hidden" style={{ background: 'radial-gradient(65% 55% at 100% 0%, transparent 0%, rgb(var(--c-surface-2)) 70%)' }} />
           </div>
         </div>
       </Reveal>
