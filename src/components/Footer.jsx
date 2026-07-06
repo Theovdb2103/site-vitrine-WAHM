@@ -117,7 +117,10 @@ export default function Footer() {
         </span>
       </div>
 
-      {/* Typo géante WAHM — SVG textLength = 100% largeur garantie, fill=none = transparent */}
+      {/* Typo géante WAHM — SVG textLength = 100% largeur garantie. Fill plein (pas de
+          contour seul) : les polices grasses construisent A/H avec des tracés internes
+          superposés (barre transversale en forme séparée) qui se fondent proprement en
+          mode fill, mais qui ressortent comme des formes cassées en mode contour seul. */}
       <div className="select-none" aria-hidden="true">
         <svg
           viewBox="0 0 1000 230"
@@ -126,17 +129,12 @@ export default function Footer() {
           preserveAspectRatio="xMidYMid meet"
         >
           <text
-            style={{ fontFamily: "'General Sans', Montserrat, system-ui, sans-serif", fontWeight: 700 }}
-            className="[stroke-width:1px] md:[stroke-width:2px]"
+            style={{ fontFamily: "Montserrat, system-ui, sans-serif", fontWeight: 800 }}
             x="0"
             y="215"
             fontSize="230"
-            fill="none"
-            stroke="#D4A018"
-            strokeWidth="2"
-            vectorEffect="non-scaling-stroke"
+            fill="#D4A018"
             textLength="1000"
-            lengthAdjust="spacingAndGlyphs"
           >
             WAHM
           </text>
