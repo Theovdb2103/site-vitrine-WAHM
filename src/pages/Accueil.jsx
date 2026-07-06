@@ -353,7 +353,7 @@ export default function Accueil() {
                 </ul>
                 <p className="mt-6 font-sans text-[15.5px] font-semibold leading-[1.6] text-gold">{t('accueil:communauteSection.tagline')}</p>
                 <div className="mt-8">
-                  <Action to={marketplaceUrl} variant="filled" arrow>{t('accueil:communauteSection.cta')}</Action>
+                  <Action to={marketplaceUrl} variant="filled" arrow className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('accueil:communauteSection.cta')}</Action>
                 </div>
               </div>
               {/* Mobile : globe centré, entièrement visible. md+ : déborde du coin (DA). */}
