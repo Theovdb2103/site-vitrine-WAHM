@@ -127,7 +127,7 @@ export default function DevenirFormateur() {
       <Reveal as="section" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
         <div className={WRAP}>
           <div className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="relative border-b border-r border-line/[0.08] p-7 py-12 md:p-12 md:py-16">
+            <div className="relative min-w-0 border-b border-r border-line/[0.08] p-7 py-12 md:p-12 md:py-16">
               <CornerTicks />
               <Label>{t('devenirFormateur:hero.label')}</Label>
               <h1 className="mt-7 max-w-[900px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
@@ -138,10 +138,10 @@ export default function DevenirFormateur() {
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Action to="#candidature" variant="filled" arrow>{t('devenirFormateur:hero.ctaApply')}</Action>
-                <Action to={localizedPath('/contact', locale)} variant="outline">{t('devenirFormateur:hero.ctaContact')}</Action>
+                <Action to={localizedPath('/contact', locale)} variant="outline" className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('devenirFormateur:hero.ctaContact')}</Action>
               </div>
             </div>
-            <div className="relative border-b border-r border-line/[0.08]">
+            <div className="relative min-w-0 border-b border-r border-line/[0.08]">
               <CornerTicks />
               <Shot src="/assets/media/formateur-portrait.webp" alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[280px] w-full" position="top" corners />
               <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />

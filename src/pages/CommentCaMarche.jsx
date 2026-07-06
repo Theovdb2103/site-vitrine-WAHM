@@ -148,7 +148,7 @@ export default function CommentCaMarche() {
         <div className={WRAP}>
           <div className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
             {/* Colonne texte */}
-            <div className="relative border-b border-r border-line/[0.08] p-7 py-12 md:p-12 md:py-16">
+            <div className="relative min-w-0 border-b border-r border-line/[0.08] p-7 py-12 md:p-12 md:py-16">
               <CornerTicks />
               <Label>{t('commentCaMarche:hero.label')}</Label>
               <h1 className="mt-7 max-w-[900px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
@@ -164,7 +164,7 @@ export default function CommentCaMarche() {
             </div>
 
             {/* Colonne visuel — ratio carré (le portrait est recadré, comme sur Devenir formateur) */}
-            <div className="relative border-b border-r border-line/[0.08]">
+            <div className="relative min-w-0 border-b border-r border-line/[0.08]">
               <CornerTicks />
               <Shot src="/assets/media/ccm-etudiant.webp" alt={t('commentCaMarche:hero.imageAlt')} className="aspect-square w-full" position="center" corners />
               <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 z-10 hidden w-[150px] md:grid" />
