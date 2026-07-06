@@ -120,7 +120,10 @@ export default function Footer() {
       {/* Typo géante WAHM — SVG textLength = 100% largeur garantie, fill=none = transparent.
           Police système (Arial Black/Helvetica) : Montserrat/Inter dessinent la barre du H
           et le triangle du A avec des tracés internes séparés qui ressortent comme des
-          formes cassées en mode contour seul (invisible en fill plein, mais pas ici). */}
+          formes cassées en mode contour seul (invisible en fill plein, mais pas ici).
+          lengthAdjust="spacingAndGlyphs" + letter-spacing négatif : les glyphes eux-mêmes
+          s'élargissent pour remplir la largeur, lettres massives quasi collées (réf. MOKKO),
+          au lieu d'étirer seulement les espaces entre lettres. */}
       <div className="select-none" aria-hidden="true">
         <svg
           viewBox="0 0 1000 230"
@@ -139,6 +142,8 @@ export default function Footer() {
             strokeWidth="2"
             vectorEffect="non-scaling-stroke"
             textLength="1000"
+            lengthAdjust="spacingAndGlyphs"
+            letterSpacing="-12"
           >
             WAHM
           </text>
