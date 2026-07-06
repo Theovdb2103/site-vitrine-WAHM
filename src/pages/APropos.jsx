@@ -116,12 +116,8 @@ export default function APropos() {
 
       <ChevronDivider className="py-2" />
 
-      {/* ===== NOTRE MISSION =====
-          Section longue (6 cartes-photos + grille de critères) : amount réduit pour que
-          l'apparition se déclenche dès l'entrée du haut de la section, pas seulement une
-          fois 15% de sa hauteur totale visible (ce qui, ici, veut dire scroller bien plus
-          loin qu'ailleurs avant que quoi que ce soit n'apparaisse). */}
-      <Reveal as="section" amount={0.02} className={`${SECTION} py-20 md:py-[120px]`}>
+      {/* ===== NOTRE MISSION ===== */}
+      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
         <div className={WRAP}>
           {/* En-tête deux colonnes — titre à gauche, intro à droite (façon « Our squad ») */}
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-[1.25fr_1fr] lg:items-end lg:gap-16">

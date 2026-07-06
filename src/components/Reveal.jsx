@@ -1,8 +1,15 @@
 import { motion, useReducedMotion } from 'framer-motion'
 
+// Marge de déclenchement partagée par Reveal et RevealStagger : rétrécit le viewport
+// effectif de 15% en bas avant de tester l'intersection. Contrairement à `amount` (qui se
+// base sur un % de la hauteur de l'ÉLÉMENT — donc un déclenchement d'autant plus tardif que
+// la section est longue), une marge en % du VIEWPORT déclenche l'apparition au même endroit
+// à l'écran pour toutes les sections, courtes ou longues.
+const TRIGGER_MARGIN = '0px 0px -15% 0px'
+
 // Apparition au scroll, sobre : fondu + légère translation Y, une seule fois.
 // `as` permet de choisir la balise (section, div, etc.). Respecte prefers-reduced-motion.
-export default function Reveal({ as = 'div', children, delay = 0, y = 24, amount = 0.15, className, style, ...rest }) {
+export default function Reveal({ as = 'div', children, delay = 0, y = 24, margin = TRIGGER_MARGIN, className, style, ...rest }) {
   const reduce = useReducedMotion()
   const MotionTag = motion[as] || motion.div
 
@@ -17,7 +24,7 @@ export default function Reveal({ as = 'div', children, delay = 0, y = 24, amount
       style={style}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount }}
+      viewport={{ once: true, margin }}
       transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
       {...rest}
     >
@@ -30,7 +37,7 @@ const EASE = [0.22, 1, 0.36, 1]
 
 // Conteneur orchestrant l'apparition en cascade (stagger) de ses enfants <RevealItem>.
 // Sobre : chaque enfant monte en fondu, légèrement décalé. Une seule fois, au scroll.
-export function RevealStagger({ as = 'div', children, className, style, stagger = 0.14, delayChildren = 0.05, amount = 0.2, ...rest }) {
+export function RevealStagger({ as = 'div', children, className, style, stagger = 0.14, delayChildren = 0.05, margin = TRIGGER_MARGIN, ...rest }) {
   const reduce = useReducedMotion()
   const MotionTag = motion[as] || motion.div
   if (reduce) {
@@ -43,7 +50,7 @@ export function RevealStagger({ as = 'div', children, className, style, stagger 
       style={style}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount }}
+      viewport={{ once: true, margin }}
       variants={{ hidden: {}, show: { transition: { staggerChildren: stagger, delayChildren } } }}
       {...rest}
     >
