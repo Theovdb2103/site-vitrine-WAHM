@@ -60,7 +60,7 @@ export function ExpandingCards({ items, defaultActiveIndex = 0, className = '' }
             <h3 className="font-display text-[20px] font-extrabold uppercase leading-[1.1] tracking-[-0.005em] text-white opacity-0 transition-all delay-150 duration-300 ease-out group-data-[active=true]:opacity-100">
               {item.title}
             </h3>
-            <p className="max-w-xs font-sans text-[14px] leading-[1.55] text-fg-soft opacity-0 transition-all duration-300 ease-out group-data-[active=true]:opacity-100" style={{ transitionDelay: '225ms' }}>
+            <p className="max-w-xs font-sans text-[14px] leading-[1.55] text-white/80 opacity-0 transition-all duration-300 ease-out group-data-[active=true]:opacity-100" style={{ transitionDelay: '225ms' }}>
               {item.description}
             </p>
           </article>
