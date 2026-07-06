@@ -130,7 +130,7 @@ function PromesseSpotlight({ items }) {
       </div>
 
       {/* Onglets + barre de progression */}
-      <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="mt-3 grid grid-cols-5 gap-1.5 sm:grid-cols-3 sm:gap-2 lg:grid-cols-5">
         {items.map((p, i) => {
           const on = i === active
           return (
@@ -139,10 +139,10 @@ function PromesseSpotlight({ items }) {
               type="button"
               onClick={() => setActive(i)}
               aria-pressed={on}
-              className={`group relative overflow-hidden border p-4 text-left transition-colors duration-200 ${on ? 'border-wahm-orange/50 bg-surface-2' : 'border-line/[0.08] hover:bg-surface-2/60'}`}
+              className={`group relative overflow-hidden border p-2.5 text-center transition-colors duration-200 sm:p-4 sm:text-left ${on ? 'border-wahm-orange/50 bg-surface-2' : 'border-line/[0.08] hover:bg-surface-2/60'}`}
             >
               <span className={`font-mono text-[11px] tracking-[0.12em] ${on ? 'text-gold' : 'text-subtle'}`}>{String(i + 1).padStart(2, '0')}</span>
-              <span className={`mt-1.5 block font-display text-[13px] font-bold uppercase leading-[1.15] tracking-[0.01em] ${on ? 'text-fg' : 'text-muted'}`}>{p.title}</span>
+              <span className={`mt-1.5 hidden font-display text-[13px] font-bold uppercase leading-[1.15] tracking-[0.01em] sm:block ${on ? 'text-fg' : 'text-muted'}`}>{p.title}</span>
               <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-line/[0.06]" />
               {on && !reduce && isDesktop && (
                 <motion.span
