@@ -2,7 +2,7 @@ import { Construction } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
 import Reveal from '../components/Reveal'
-import { Label, Action, CornerTicks, Motif } from '../components/ui/Frame'
+import { Label, Action, Motif } from '../components/ui/Frame'
 import { useLanguage } from '../context/LanguageContext'
 import { localizedPath } from '../lib/site'
 
@@ -16,9 +16,8 @@ export default function Communaute() {
   return (
     <Page title={t('communaute:meta.title')} description={t('communaute:meta.description')} path="/communaute">
 
-      <Reveal as="section" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" className={`${SECTION} flex min-h-screen items-center pt-[120px] md:pt-[150px]`}>
         <div className={`${WRAP} relative py-12 md:py-16`}>
-          <CornerTicks />
           {/* Motifs symétriques en arrière-plan */}
           <Motif color="#D4A018" cols={5} rows={5} className="pointer-events-none absolute left-6 top-1/2 hidden w-[170px] -translate-y-1/2 md:left-10 lg:grid" />
           <Motif color="#D4A018" cols={5} rows={5} className="pointer-events-none absolute right-6 top-1/2 hidden w-[170px] -translate-y-1/2 md:right-10 lg:grid" />
