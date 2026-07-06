@@ -338,7 +338,7 @@ export default function Accueil() {
         {/* Panneau arrondi · texte à gauche, globe qui déborde du coin (cf. Featured_05) */}
         <div className={WRAP}>
           <div className="relative mx-auto w-full overflow-hidden border border-line/[0.08] bg-surface-2 px-6 py-16 shadow-md md:px-16 md:py-20">
-            <div className="flex flex-col-reverse items-center justify-between gap-10 md:flex-row">
+            <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
               <div className="z-10 w-full min-w-0 max-w-xl text-left">
                 <Label>{t('accueil:communauteSection.label')}</Label>
                 <h2 className="mt-5 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-fg sm:text-[36px] md:text-[44px]">{t('accueil:communauteSection.title')}<span className="text-wahm-orange">.</span></h2>
