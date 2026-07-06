@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Languages, LayoutGrid, MousePointerClick, Clock, Sparkles, Award, Users, TrendingUp } from 'lucide-react'
@@ -31,7 +31,7 @@ const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 // Carte d'étape « empilée » : pinnée en haut (sticky) ; quand l'étape suivante remonte
 // par-dessus, celle-ci passe derrière en fondant et en rétrécissant légèrement (scroll-link).
 // Layout alterné carte-texte / photo (façon référence), DA WAHM (navy + accents or/orange).
-function StepCard({ etape, index, total, isLast, progress, stepLabel }) {
+function StepCard({ etape, index, total, isLast, progress, stepLabel, isDesktop }) {
   const reduce = useReducedMotion()
   // Fenêtre de scroll de cette carte (sur la progression du conteneur global). Elle reste
   // pleine, puis s'efface + rétrécit depuis le haut quand la carte suivante remonte par-dessus.
@@ -39,14 +39,18 @@ function StepCard({ etape, index, total, isLast, progress, stepLabel }) {
   const start = index * w
   const opacity = useTransform(progress, [start, start + w * 0.2, start + w], [1, 1, isLast ? 1 : 0])
   const scale = useTransform(progress, [start, start + w], [1, isLast ? 1 : 0.9])
-  const style = reduce ? undefined : { opacity, scale, transformOrigin: 'top center' }
+  // L'effet d'empilement (sticky + fondu/rétrécissement) suppose des cartes courtes,
+  // adapté à la mise en page côte-à-côte du desktop. Sur mobile, le texte (puces, note)
+  // empile bien plus de hauteur au-dessus de la photo : figer la carte masquerait la
+  // photo avant qu'on ait pu scroller jusqu'à elle. On revient donc à une liste normale.
+  const style = (reduce || !isDesktop) ? undefined : { opacity, scale, transformOrigin: 'top center' }
   // Décalage de pin croissant : la carte figée « dépasse » un peu en haut → on la voit rétrécir/s'effacer.
   const stickyTop = 88 + index * 14
   const imageLeft = index % 2 === 1
   const Icon = etape.Icon
 
   return (
-    <div className="sticky mb-5 md:mb-6" style={{ top: stickyTop }}>
+    <div className={`mb-5 md:mb-6 ${isDesktop ? 'sticky' : 'relative'}`} style={isDesktop ? { top: stickyTop } : undefined}>
       <motion.article
         style={style}
         className={`grid grid-cols-1 gap-3 overflow-hidden bg-surface-2 shadow-[0_30px_70px_-45px_rgba(0,0,0,0.85)] md:gap-4 ${imageLeft ? 'md:grid-cols-[0.82fr_1.18fr]' : 'md:grid-cols-[1.18fr_0.82fr]'}`}
@@ -97,15 +101,25 @@ function StepCard({ etape, index, total, isLast, progress, stepLabel }) {
 }
 
 // Pile d'étapes : chaque carte est sticky au même offset → elles s'empilent au scroll.
+// Effet réservé au desktop (cf. StepCard) : sur mobile, liste normale sans sticky.
 function ParcoursStack({ etapes, stepLabel }) {
   // Scroll mesuré sur le conteneur (qui défile normalement) → la progression avance
   // même quand les cartes sont figées en sticky. Chaque carte en dérive son anim.
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const onResize = () => setIsDesktop(window.innerWidth >= 768)
+    onResize()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
   return (
     <div ref={ref} className="mt-14 md:mt-16">
       {etapes.map((etape, i) => (
-        <StepCard key={etape.title} etape={etape} index={i} total={etapes.length} isLast={i === etapes.length - 1} progress={scrollYProgress} stepLabel={stepLabel} />
+        <StepCard key={etape.title} etape={etape} index={i} total={etapes.length} isLast={i === etapes.length - 1} progress={scrollYProgress} stepLabel={stepLabel} isDesktop={isDesktop} />
       ))}
     </div>
   )
