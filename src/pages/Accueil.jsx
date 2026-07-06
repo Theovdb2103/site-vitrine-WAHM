@@ -68,12 +68,21 @@ const SPOTLIGHT_MS = 4800
 function PromesseSpotlight({ items }) {
   const [active, setActive] = useState(0)
   const reduce = useReducedMotion()
+  // Sur mobile, l'utilisateur choisit l'étape lui-même : pas de défilement auto.
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
-    if (reduce) return undefined
+    const onResize = () => setIsDesktop(window.innerWidth >= 768)
+    onResize()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  useEffect(() => {
+    if (reduce || !isDesktop) return undefined
     const t = setTimeout(() => setActive((a) => (a + 1) % items.length), SPOTLIGHT_MS)
     return () => clearTimeout(t)
-  }, [active, items.length, reduce])
+  }, [active, items.length, reduce, isDesktop])
 
   const cur = items[active]
   const CurIcon = cur.Icon
@@ -135,7 +144,7 @@ function PromesseSpotlight({ items }) {
               <span className={`font-mono text-[11px] tracking-[0.12em] ${on ? 'text-gold' : 'text-subtle'}`}>{String(i + 1).padStart(2, '0')}</span>
               <span className={`mt-1.5 block font-display text-[13px] font-bold uppercase leading-[1.15] tracking-[0.01em] ${on ? 'text-fg' : 'text-muted'}`}>{p.title}</span>
               <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-line/[0.06]" />
-              {on && !reduce && (
+              {on && !reduce && isDesktop && (
                 <motion.span
                   key={active}
                   aria-hidden="true"
@@ -145,7 +154,7 @@ function PromesseSpotlight({ items }) {
                   transition={{ duration: SPOTLIGHT_MS / 1000, ease: 'linear' }}
                 />
               )}
-              {on && reduce && <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-wahm-orange" />}
+              {on && (reduce || !isDesktop) && <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-wahm-orange" />}
             </button>
           )
         })}
