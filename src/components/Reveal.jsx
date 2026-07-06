@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 
 // Apparition au scroll, sobre : fondu + légère translation Y, une seule fois.
 // `as` permet de choisir la balise (section, div, etc.). Respecte prefers-reduced-motion.
-export default function Reveal({ as = 'div', children, delay = 0, y = 24, className, style, ...rest }) {
+export default function Reveal({ as = 'div', children, delay = 0, y = 24, amount = 0.15, className, style, ...rest }) {
   const reduce = useReducedMotion()
   const MotionTag = motion[as] || motion.div
 
@@ -17,7 +17,7 @@ export default function Reveal({ as = 'div', children, delay = 0, y = 24, classN
       style={style}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount }}
       transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
       {...rest}
     >
