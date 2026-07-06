@@ -144,6 +144,7 @@ export default function Footer() {
             textLength="1000"
             lengthAdjust="spacingAndGlyphs"
             letterSpacing="-12"
+            transform="translate(0, 215) scale(1, 1.3) translate(0, -215)"
           >
             WAHM
           </text>
