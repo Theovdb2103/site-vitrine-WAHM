@@ -133,7 +133,6 @@ export default function Footer() {
             fill="none"
             stroke="#D4A018"
             strokeWidth="2"
-            vectorEffect="non-scaling-stroke"
             textLength="1000"
             lengthAdjust="spacingAndGlyphs"
           >
