@@ -127,12 +127,14 @@ export default function Footer() {
         >
           <text
             style={{ fontFamily: "'General Sans', Montserrat, system-ui, sans-serif", fontWeight: 700 }}
+            className="[stroke-width:1px] md:[stroke-width:2px]"
             x="0"
             y="215"
             fontSize="230"
             fill="none"
             stroke="#D4A018"
             strokeWidth="2"
+            vectorEffect="non-scaling-stroke"
             textLength="1000"
             lengthAdjust="spacingAndGlyphs"
           >
