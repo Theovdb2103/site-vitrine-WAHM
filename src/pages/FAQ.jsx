@@ -109,7 +109,7 @@ export default function FAQ() {
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Action to={localizedPath('/devenir-formateur#candidature', locale)} variant="dark" arrow>{t('faq:cta.apply')}</Action>
-                <Action to={localizedPath('/contact', locale)} variant="outlineDark">{t('faq:cta.discuss')}</Action>
+                <Action to={localizedPath('/contact', locale)} variant="outlineDark" className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('faq:cta.discuss')}</Action>
               </div>
             </div>
             <div className="relative hidden items-center justify-center border-l border-wahm-navy/15 p-10 md:flex">
