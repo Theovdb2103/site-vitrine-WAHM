@@ -141,6 +141,7 @@ export default function Header() {
     to: item.marketplace ? getMarketplaceUrl(locale) : localizedPath(item.to, locale),
   }))
   const [menuOpen, setMenuOpen] = useState(false)
+  const [faqOpenMobile, setFaqOpenMobile] = useState(false)
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
   useEffect(() => {
@@ -250,10 +251,30 @@ export default function Header() {
           className="fixed inset-x-0 top-[72px] bottom-0 z-[199] flex flex-col overflow-y-auto bg-surface px-5 py-6 lg:hidden"
         >
           <nav className="flex flex-col">
-            {nav.map((item) => (
-              <NavLink key={item.key} to={item.to} active={navKey === item.key} onClick={() => setMenuOpen(false)} className="border-b border-line/[0.06] py-4 text-[16px]">
-                {item.label}
-              </NavLink>
+            {nav.filter((item) => item.key !== 'comment-ca-marche').map((item) => (
+              item.key === 'faq' ? (
+                <div key="faq-group" className="border-b border-line/[0.06]">
+                  <button
+                    type="button"
+                    onClick={() => setFaqOpenMobile((v) => !v)}
+                    aria-expanded={faqOpenMobile}
+                    className={`flex w-full items-center justify-between py-4 text-left font-display text-[16px] font-bold uppercase tracking-[0.01em] no-underline ${navKey === 'faq' || navKey === 'comment-ca-marche' ? 'text-wahm-goldLight' : 'text-fg'}`}
+                  >
+                    {t('header.faqMenu.label')}
+                    <span aria-hidden="true" className={`text-[10px] transition-transform duration-200 ${faqOpenMobile ? 'rotate-180' : ''}`}>▼</span>
+                  </button>
+                  {faqOpenMobile && (
+                    <div className="flex flex-col gap-1 pb-4 pl-3">
+                      <NavLink to={localizedPath('/comment-ca-marche', locale)} active={navKey === 'comment-ca-marche'} onClick={() => setMenuOpen(false)} className="py-2 text-[14px]">{t('header.faqMenu.learner')}</NavLink>
+                      <NavLink to={localizedPath('/faq', locale)} active={navKey === 'faq'} onClick={() => setMenuOpen(false)} className="py-2 text-[14px]">{t('header.faqMenu.trainer')}</NavLink>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <NavLink key={item.key} to={item.to} active={navKey === item.key} onClick={() => setMenuOpen(false)} className="border-b border-line/[0.06] py-4 text-[16px]">
+                  {item.label}
+                </NavLink>
+              )
             ))}
           </nav>
           <div className="mt-6 flex flex-col gap-3">
