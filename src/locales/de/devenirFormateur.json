@@ -148,7 +148,7 @@
         "email": "E-Mail *",
         "domaine": "Fachgebiet *",
         "theme": "Kursthema",
-        "echantillon": "Link zu einem Inhaltsbeispiel",
+        "echantillon": "Inhaltsprobe (Video, PDF…)",
         "refs": "Soziale Medien / Referenzen",
         "bio": "Vorstellung (Lebenslauf / Bio)"
       },
@@ -175,13 +175,16 @@
       ],
       "echantillonBrowse": "Datei auswählen",
       "echantillonNone": "Keine Datei ausgewählt",
+      "echantillonUploading": "Wird hochgeladen…",
       "submit": "Meine Bewerbung einreichen",
       "submitting": "Wird gesendet…",
       "consent": "Durch das Einreichen stimmst du zu, vom WAHM-Team kontaktiert zu werden.",
       "errors": {
         "invalid": "Bitte gib mindestens deinen Namen, eine gültige E-Mail-Adresse und dein Fachgebiet ein.",
         "failed": "Senden fehlgeschlagen. Bitte versuche es später erneut oder schreib uns direkt.",
-        "network": "Senden fehlgeschlagen. Überprüfe deine Verbindung und versuche es erneut."
+        "network": "Senden fehlgeschlagen. Überprüfe deine Verbindung und versuche es erneut.",
+        "uploadFailed": "Der Upload ist fehlgeschlagen. Versuche es erneut oder verwende einen Link.",
+        "fileTooLarge": "Datei zu groß (maximal 100 MB)."
       }
     }
   }

@@ -148,7 +148,7 @@
         "email": "Email *",
         "domaine": "Field of expertise *",
         "theme": "Course topic",
-        "echantillon": "Link to a content sample",
+        "echantillon": "Content sample (video, PDF…)",
         "refs": "Social media / references",
         "bio": "Introduction (CV / bio)"
       },
@@ -175,13 +175,16 @@
       ],
       "echantillonBrowse": "Choose a file",
       "echantillonNone": "No file selected",
+      "echantillonUploading": "Uploading…",
       "submit": "Submit my application",
       "submitting": "Sending…",
       "consent": "By submitting, you agree to be contacted by the WAHM team.",
       "errors": {
         "invalid": "Please fill in at least your name, a valid email and your field of expertise.",
         "failed": "Sending failed. Please try again later or write to us directly.",
-        "network": "Sending failed. Check your connection and try again."
+        "network": "Sending failed. Check your connection and try again.",
+        "uploadFailed": "Upload failed. Try again or use a link instead.",
+        "fileTooLarge": "File too large (100 MB maximum)."
       }
     }
   }

@@ -148,7 +148,7 @@
         "email": "E-mail *",
         "domaine": "Expertisegebied *",
         "theme": "Cursusonderwerp",
-        "echantillon": "Link naar een contentvoorbeeld",
+        "echantillon": "Contentvoorbeeld (video, PDF…)",
         "refs": "Sociale media / referenties",
         "bio": "Introductie (cv / bio)"
       },
@@ -175,13 +175,16 @@
       ],
       "echantillonBrowse": "Bestand kiezen",
       "echantillonNone": "Geen bestand geselecteerd",
+      "echantillonUploading": "Uploaden…",
       "submit": "Mijn aanmelding indienen",
       "submitting": "Verzenden…",
       "consent": "Door in te dienen, ga je akkoord dat het WAHM-team contact met je opneemt.",
       "errors": {
         "invalid": "Vul minimaal je naam, een geldig e-mailadres en je expertisegebied in.",
         "failed": "Verzenden mislukt. Probeer het later opnieuw of schrijf ons direct.",
-        "network": "Verzenden mislukt. Controleer je verbinding en probeer opnieuw."
+        "network": "Verzenden mislukt. Controleer je verbinding en probeer opnieuw.",
+        "uploadFailed": "Upload mislukt. Probeer opnieuw of gebruik een link.",
+        "fileTooLarge": "Bestand te groot (maximaal 100 MB)."
       }
     }
   }

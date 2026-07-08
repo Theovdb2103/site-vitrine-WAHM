@@ -148,7 +148,7 @@
         "email": "Email *",
         "domaine": "Domaine d'expertise *",
         "theme": "Thématique de la formation",
-        "echantillon": "Lien vers un échantillon de contenu",
+        "echantillon": "Échantillon de contenu (vidéo, PDF…)",
         "refs": "Réseaux sociaux / références",
         "bio": "Présentation (CV / biographie)"
       },
@@ -175,13 +175,16 @@
       ],
       "echantillonBrowse": "Choisir un fichier",
       "echantillonNone": "Aucun fichier sélectionné",
+      "echantillonUploading": "Téléversement en cours…",
       "submit": "Déposer ma candidature",
       "submitting": "Envoi en cours…",
       "consent": "En soumettant, vous acceptez d'être recontacté par l'équipe WAHM.",
       "errors": {
         "invalid": "Merci de remplir au minimum votre nom, un email valide et votre domaine d'expertise.",
         "failed": "L'envoi a échoué. Réessayez plus tard ou écrivez-nous directement.",
-        "network": "L'envoi a échoué. Vérifiez votre connexion et réessayez."
+        "network": "L'envoi a échoué. Vérifiez votre connexion et réessayez.",
+        "uploadFailed": "Le téléversement a échoué. Réessayez ou utilisez un lien à la place.",
+        "fileTooLarge": "Fichier trop volumineux (100 Mo maximum)."
       }
     }
   }

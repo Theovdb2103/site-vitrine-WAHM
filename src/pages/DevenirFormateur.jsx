@@ -1,7 +1,7 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { Globe, Coins, Star, Settings, Users, Check } from 'lucide-react'
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion'
+import { Globe, Coins, Star, Settings, Users, Check, ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
 import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
@@ -63,6 +63,7 @@ export default function DevenirFormateur() {
   const criteresItems = t('devenirFormateur:criteres.items', { returnObjects: true })
   const etapesItems = t('devenirFormateur:etapes.items', { returnObjects: true })
   const candidatureBenefits = t('devenirFormateur:candidature.benefits', { returnObjects: true })
+  const domaineOptions = t('devenirFormateur:candidature.form.domaineOptions', { returnObjects: true })
 
   // Zip texte traduit + icônes/images structurelles (par index).
   const avantages = avantagesItems.map((a, i) => ({ ...a, Icon: AVANTAGES_META[i].Icon }))
@@ -77,6 +78,54 @@ export default function DevenirFormateur() {
   // 'idle' | 'submitting' | 'success' | 'error'
   const [status, setStatus] = useState('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const successRef = useRef(null)
+
+  // Au succès, on déplace le focus sur la confirmation pour que le navigateur scrolle
+  // automatiquement jusqu'à elle et que les lecteurs d'écran l'annoncent.
+  useEffect(() => {
+    if (status === 'success') successRef.current?.focus()
+  }, [status])
+
+  // Échantillon de contenu : upload direct du fichier choisi vers Cloudinary (pas de
+  // backend ici), on n'envoie par email que le lien public renvoyé — les vidéos ne
+  // peuvent pas être jointes à un email (limites EmailJS bien trop basses).
+  const MAX_ECHANTILLON_SIZE = 100 * 1024 * 1024 // 100 Mo — plafond du plan gratuit Cloudinary
+  const [fileState, setFileState] = useState({ status: 'idle', url: '', name: '' }) // 'idle' | 'uploading' | 'done' | 'error'
+
+  async function handleFileChange(e) {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    if (file.size > MAX_ECHANTILLON_SIZE) {
+      setFileState({ status: 'idle', url: '', name: '' })
+      setErrorMsg(t('devenirFormateur:candidature.form.errors.fileTooLarge'))
+      setStatus('error')
+      e.target.value = ''
+      return
+    }
+
+    setFileState({ status: 'uploading', url: '', name: file.name })
+    setErrorMsg('')
+    setStatus('idle')
+
+    try {
+      const body = new FormData()
+      body.append('file', file)
+      body.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET)
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/auto/upload`,
+        { method: 'POST', body },
+      )
+      if (!res.ok) throw new Error('Cloudinary upload failed')
+      const data = await res.json()
+      setFileState({ status: 'done', url: data.secure_url, name: file.name })
+    } catch (err) {
+      console.error(err)
+      setFileState({ status: 'error', url: '', name: file.name })
+      setErrorMsg(t('devenirFormateur:candidature.form.errors.uploadFailed'))
+      setStatus('error')
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -95,6 +144,12 @@ export default function DevenirFormateur() {
       return
     }
 
+    if (fileState.status === 'uploading') {
+      setErrorMsg(t('devenirFormateur:candidature.form.errors.uploadFailed'))
+      setStatus('error')
+      return
+    }
+
     setStatus('submitting')
     setErrorMsg('')
     try {
@@ -106,7 +161,7 @@ export default function DevenirFormateur() {
           from_email: email,
           domaine,
           theme: (formData.get('theme') || '').toString().trim(),
-          echantillon: (formData.get('echantillon') || '').toString().trim(),
+          echantillon: fileState.url,
           refs: (formData.get('refs') || '').toString().trim(),
           bio: (formData.get('bio') || '').toString().trim(),
         },
@@ -330,7 +385,7 @@ export default function DevenirFormateur() {
 
               <div className="mt-7">
             {status === 'success' ? (
-              <div className="flex flex-col items-center justify-center py-10 text-center">
+              <div ref={successRef} tabIndex={-1} className="flex flex-col items-center justify-center py-10 text-center outline-none">
                 <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-wahm-orange text-white">
                   <Check className="h-7 w-7" strokeWidth={3} aria-hidden="true" />
                 </span>
@@ -366,7 +421,21 @@ export default function DevenirFormateur() {
                   <div className="mt-[18px] grid grid-cols-1 gap-[18px] md:grid-cols-2">
                     <div>
                       <label htmlFor="f-domaine" className={LABEL_LIGHT}>{t('devenirFormateur:candidature.form.fields.domaine')}</label>
-                      <input id="f-domaine" name="domaine" type="text" required placeholder={t('devenirFormateur:candidature.form.placeholders.domaine')} className={INPUT_LIGHT} />
+                      <div className="relative">
+                        <select
+                          id="f-domaine"
+                          name="domaine"
+                          required
+                          defaultValue=""
+                          className={`${INPUT_LIGHT} appearance-none pr-10`}
+                        >
+                          <option value="" disabled>{t('devenirFormateur:candidature.form.domainePlaceholder')}</option>
+                          {domaineOptions.map((opt) => (
+                            <option key={opt} value={opt}>{opt}</option>
+                          ))}
+                        </select>
+                        <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8a8475]" />
+                      </div>
                     </div>
                     <div>
                       <label htmlFor="f-theme" className={LABEL_LIGHT}>{t('devenirFormateur:candidature.form.fields.theme')}</label>
@@ -376,7 +445,69 @@ export default function DevenirFormateur() {
 
                   <div className="mt-[18px]">
                     <label htmlFor="f-echantillon" className={LABEL_LIGHT}>{t('devenirFormateur:candidature.form.fields.echantillon')}</label>
-                    <input id="f-echantillon" name="echantillon" type="text" placeholder={t('devenirFormateur:candidature.form.placeholders.echantillon')} className={INPUT_LIGHT} />
+                    <input
+                      id="f-echantillon"
+                      type="file"
+                      accept="video/*,application/pdf,image/*"
+                      onChange={handleFileChange}
+                      className="sr-only"
+                    />
+                    <label
+                      htmlFor="f-echantillon"
+                      className={`${INPUT_LIGHT} flex cursor-pointer items-center justify-between gap-3`}
+                    >
+                      <span className="flex min-w-0 flex-1 items-center gap-2.5">
+                        <span className="truncate">
+                          {fileState.status === 'uploading'
+                            ? t('devenirFormateur:candidature.form.echantillonUploading')
+                            : fileState.name || t('devenirFormateur:candidature.form.echantillonNone')}
+                        </span>
+                        {fileState.status === 'uploading' && (
+                          <motion.span
+                            initial={{ opacity: 0, scale: 0.7 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-wahm-gold/15"
+                            aria-hidden="true"
+                          >
+                            {/* Fond « jauge liquide » qui monte puis redescend en boucle */}
+                            <motion.span
+                              className="absolute inset-x-0 bottom-0 bg-wahm-gold/40"
+                              initial={{ height: '0%' }}
+                              animate={{ height: ['0%', '100%', '100%', '0%'] }}
+                              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut', times: [0, 0.45, 0.55, 1] }}
+                            />
+                            {/* Chevron fixe par-dessus, ne se déforme jamais */}
+                            <ChevronDown className="relative z-10 h-5 w-5 text-wahm-gold" strokeWidth={3.5} />
+                          </motion.span>
+                        )}
+                      </span>
+                      <span className="flex h-6 w-[92px] shrink-0 items-center justify-end">
+                        <AnimatePresence mode="wait" initial={false}>
+                          {fileState.status === 'done' ? (
+                            <motion.span
+                              key="done"
+                              initial={{ scale: 0, opacity: 0, rotate: -45 }}
+                              animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                              exit={{ scale: 0, opacity: 0 }}
+                              transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+                              className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500"
+                            >
+                              <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
+                            </motion.span>
+                          ) : fileState.status !== 'uploading' ? (
+                            <motion.span
+                              key="browse"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              className="font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-wahm-orange"
+                            >
+                              {t('devenirFormateur:candidature.form.echantillonBrowse')}
+                            </motion.span>
+                          ) : null}
+                        </AnimatePresence>
+                      </span>
+                    </label>
                   </div>
 
                   <div className="mt-[18px]">
@@ -401,7 +532,7 @@ export default function DevenirFormateur() {
                   )}
 
                   <div className="mt-[26px]">
-                    <Action type="submit" variant="filled" arrow disabled={status === 'submitting'} className="w-full disabled:cursor-not-allowed disabled:opacity-60">
+                    <Action type="submit" variant="filled" arrow disabled={status === 'submitting' || fileState.status === 'uploading'} className="w-full disabled:cursor-not-allowed disabled:opacity-60">
                       {status === 'submitting' ? t('devenirFormateur:candidature.form.submitting') : t('devenirFormateur:candidature.form.submit')}
                     </Action>
                   </div>

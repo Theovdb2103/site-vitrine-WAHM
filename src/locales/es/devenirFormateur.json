@@ -148,7 +148,7 @@
         "email": "Correo electrónico *",
         "domaine": "Campo de especialización *",
         "theme": "Tema del curso",
-        "echantillon": "Enlace a una muestra de contenido",
+        "echantillon": "Muestra de contenido (vídeo, PDF…)",
         "refs": "Redes sociales / referencias",
         "bio": "Presentación (CV / bio)"
       },
@@ -175,13 +175,16 @@
       ],
       "echantillonBrowse": "Elegir archivo",
       "echantillonNone": "Ningún archivo seleccionado",
+      "echantillonUploading": "Subiendo…",
       "submit": "Enviar mi solicitud",
       "submitting": "Enviando…",
       "consent": "Al enviar, aceptas ser contactado por el equipo WAHM.",
       "errors": {
         "invalid": "Por favor, introduce al menos tu nombre, un correo electrónico válido y tu campo de especialización.",
         "failed": "Error al enviar. Por favor, inténtalo de nuevo más tarde o escríbenos directamente.",
-        "network": "Error al enviar. Comprueba tu conexión e inténtalo de nuevo."
+        "network": "Error al enviar. Comprueba tu conexión e inténtalo de nuevo.",
+        "uploadFailed": "La subida falló. Inténtalo de nuevo o usa un enlace.",
+        "fileTooLarge": "Archivo demasiado grande (máximo 100 MB)."
       }
     }
   }
