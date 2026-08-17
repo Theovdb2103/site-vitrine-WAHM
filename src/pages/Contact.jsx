@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
 import { Mail, Clock, Check } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
@@ -93,7 +92,10 @@ export default function Contact() {
     setErrorMsg('')
 
     try {
-      await emailjs.send(
+      // Le SDK n'est utile qu'à l'envoi : le charger ici évite de le livrer à
+      // l'affichage de la page.
+      const { send } = await import('@emailjs/browser')
+      await send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT,
         {
