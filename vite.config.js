@@ -14,6 +14,13 @@ const FONT_PRELOAD_RE = /<link[^>]+rel="preload"[^>]+as="font"[^>]*>/g
 export default defineConfig({
   plugins: [react()],
   base: '/',
+  build: {
+    // Les fichiers générés par le build portent un hash de contenu et peuvent donc être
+    // mis en cache indéfiniment ; ceux de public/ gardent un nom stable et ne le peuvent
+    // pas. Les séparer dans /static permet de viser exactement les premiers dans les
+    // en-têtes Cache-Control de vercel.json, sans risque de figer les seconds.
+    assetsDir: 'static',
+  },
   ssgOptions: {
     onPageRendered: (_route, html) =>
       html.replace(FONT_PRELOAD_RE, (tag) => (KEEP_FONT_PRELOAD.test(tag) ? tag : '')),
