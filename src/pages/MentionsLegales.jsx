@@ -58,7 +58,7 @@ export default function MentionsLegales() {
     <Page title={t('mentionsLegales:meta.title')} description={t('mentionsLegales:meta.description')} pathKey="/mentions-legales">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" className={`${SECTION} pb-14 pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" eager className={`${SECTION} pb-14 pt-[120px] md:pt-[150px]`}>
         <div className={`${WRAP} relative`}>
           <CornerTicks />
           <Motif color="#D4A018" cols={5} rows={4} className="pointer-events-none absolute right-5 top-1/2 hidden w-[180px] -translate-y-1/2 md:right-10 lg:grid" />

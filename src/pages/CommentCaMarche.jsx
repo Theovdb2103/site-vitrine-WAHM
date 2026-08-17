@@ -158,7 +158,7 @@ export default function CommentCaMarche() {
     <Page title={t('commentCaMarche:meta.title')} description={t('commentCaMarche:meta.description')} pathKey="/comment-ca-marche">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" id="top" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" id="top" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
         <div className={WRAP}>
           <div className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
             {/* Colonne texte */}

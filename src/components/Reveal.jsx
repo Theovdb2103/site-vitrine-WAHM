@@ -9,11 +9,16 @@ const TRIGGER_MARGIN = '0px 0px -15% 0px'
 
 // Apparition au scroll, sobre : fondu + légère translation Y, une seule fois.
 // `as` permet de choisir la balise (section, div, etc.). Respecte prefers-reduced-motion.
-export default function Reveal({ as = 'div', children, delay = 0, y = 24, margin = TRIGGER_MARGIN, className, style, ...rest }) {
+//
+// `eager` : rend la balise nue, visible immédiatement, sans wrapper motion. À utiliser
+// sur les héros (contenu au-dessus de la ligne de flottaison) — sans quoi le HTML
+// statique du SSG sort en opacity:0 et le premier écran reste invisible tant que le JS
+// n'a pas hydraté (et définitivement vide s'il ne charge pas).
+export default function Reveal({ as = 'div', children, delay = 0, y = 24, margin = TRIGGER_MARGIN, eager = false, className, style, ...rest }) {
   const reduce = useReducedMotion()
   const MotionTag = motion[as] || motion.div
 
-  if (reduce) {
+  if (reduce || eager) {
     const Tag = as
     return <Tag className={className} style={style} {...rest}>{children}</Tag>
   }
@@ -37,10 +42,10 @@ const EASE = [0.22, 1, 0.36, 1]
 
 // Conteneur orchestrant l'apparition en cascade (stagger) de ses enfants <RevealItem>.
 // Sobre : chaque enfant monte en fondu, légèrement décalé. Une seule fois, au scroll.
-export function RevealStagger({ as = 'div', children, className, style, stagger = 0.14, delayChildren = 0.05, margin = TRIGGER_MARGIN, ...rest }) {
+export function RevealStagger({ as = 'div', children, className, style, stagger = 0.14, delayChildren = 0.05, margin = TRIGGER_MARGIN, eager = false, ...rest }) {
   const reduce = useReducedMotion()
   const MotionTag = motion[as] || motion.div
-  if (reduce) {
+  if (reduce || eager) {
     const Tag = as
     return <Tag className={className} style={style} {...rest}>{children}</Tag>
   }
@@ -60,10 +65,10 @@ export function RevealStagger({ as = 'div', children, className, style, stagger 
 }
 
 // Élément animé (fade-in-up) à placer DANS un <RevealStagger>.
-export function RevealItem({ as = 'div', children, className, style, y = 20, ...rest }) {
+export function RevealItem({ as = 'div', children, className, style, y = 20, eager = false, ...rest }) {
   const reduce = useReducedMotion()
   const MotionTag = motion[as] || motion.div
-  if (reduce) {
+  if (reduce || eager) {
     const Tag = as
     return <Tag className={className} style={style} {...rest}>{children}</Tag>
   }

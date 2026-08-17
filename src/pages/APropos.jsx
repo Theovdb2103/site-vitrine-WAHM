@@ -48,7 +48,7 @@ export default function APropos() {
     <Page title={t('aPropos:meta.title')} description={t('aPropos:meta.description')} path="/a-propos">
 
       {/* ===== HERO (plein cadre, façon éditoriale) ===== */}
-      <Reveal as="section" className="relative overflow-hidden bg-surface pt-[120px] md:pt-[150px]">
+      <Reveal as="section" eager className="relative overflow-hidden bg-surface pt-[120px] md:pt-[150px]">
         <div className={`${WRAP} relative py-14 md:py-20`}>
           <CornerTicks />
           <Label>{t('aPropos:hero.label')}</Label>

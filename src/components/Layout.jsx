@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { useLocation, useOutlet } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { I18nextProvider } from 'react-i18next'
@@ -19,6 +19,17 @@ function PageTransition() {
   const location = useLocation()
   const outlet = useOutlet()
   const reduce = useReducedMotion()
+
+  // Le tout premier rendu (HTML statique du SSG + hydratation) ne doit JAMAIS partir
+  // d'opacity:0 : sinon la page entière est invisible tant que le JS n'a pas hydraté,
+  // et reste vide si le JS ne charge pas. L'effet ne s'exécutant pas côté serveur, le
+  // HTML prérendu et le premier rendu client restent identiques (pas de mismatch), et
+  // les navigations suivantes retrouvent la transition normale.
+  const isFirstRender = useRef(true)
+  useEffect(() => {
+    isFirstRender.current = false
+  }, [])
+
   return (
     <AnimatePresence mode="wait">
       <motion.main
@@ -26,7 +37,7 @@ function PageTransition() {
         tabIndex={-1}
         key={location.pathname}
         className="scroll-mt-[80px] focus:outline-none"
-        initial={reduce ? false : { opacity: 0 }}
+        initial={reduce || isFirstRender.current ? false : { opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={reduce ? undefined : { opacity: 0 }}
         transition={{ duration: 0.25, ease: 'easeOut' }}

@@ -116,7 +116,7 @@ export default function Contact() {
     <Page title={t('contact:meta.title')} description={t('contact:meta.description')} path="/contact">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
         <div className={`${WRAP} relative py-12 md:py-16`}>
           <CornerTicks />
           <Motif color="#D4A018" cols={6} rows={5} className="pointer-events-none absolute right-5 top-1/2 hidden w-[210px] -translate-y-1/2 md:right-10 lg:grid" />

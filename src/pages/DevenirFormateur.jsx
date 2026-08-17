@@ -179,7 +179,7 @@ export default function DevenirFormateur() {
     <Page title={t('devenirFormateur:meta.title')} description={t('devenirFormateur:meta.description')} pathKey="/devenir-formateur">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
         <div className={WRAP}>
           <div className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
             <div className="relative min-w-0 border-b border-r border-line/[0.08] p-7 py-12 md:p-12 md:py-16">
