@@ -9,6 +9,9 @@ import { localizedPath } from '../lib/site'
 const SECTION = 'bg-surface'
 const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 
+// Image de héros plein cadre, largeur variable pour srcset (ratio ~16:9 conservé).
+const UN_HERO = (w) => `https://images.unsplash.com/photo-1604233098531-90b71b1b17a6?w=${w}&h=${Math.round(w * 1240 / 2200)}&fit=crop&q=80&auto=format`
+
 export default function FAQ() {
   const { t } = useTranslation(['common', 'faq'])
   const { locale } = useLanguage()
@@ -23,8 +26,13 @@ export default function FAQ() {
       {/* ===== HERO — image plein écran + texte par-dessus ===== */}
       <section className="relative isolate flex min-h-[580px] items-end overflow-hidden bg-surface md:min-h-[720px]">
         <img
-          src="https://images.unsplash.com/photo-1604233098531-90b71b1b17a6?w=2200&h=1240&fit=crop&q=80&auto=format"
+          src={UN_HERO(2200)}
+          srcSet={`${UN_HERO(768)} 768w, ${UN_HERO(1200)} 1200w, ${UN_HERO(1800)} 1800w, ${UN_HERO(2200)} 2200w`}
+          sizes="100vw"
           alt="L'expertise et l'engagement, au cœur de WAHM"
+          width={2200}
+          height={1240}
+          fetchPriority="high"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-center grayscale-[15%]"
         />
         {/* Voiles navy : assombrit la gauche (lisibilité du texte) + le bas */}

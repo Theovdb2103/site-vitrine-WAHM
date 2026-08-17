@@ -197,10 +197,23 @@ export function Action({ to, onClick, type = 'button', variant = 'filled', size 
 // Photo habillée selon la DA WAHM : object-cover, léger désaturé + voile bleu nuit
 // pour fondre l'image dans la base sombre. À placer DANS un <Framed> (qui porte les
 // marques d'angle) — le `overflow-hidden` interne ne rogne donc pas les marques.
-export function Shot({ src, alt = '', className = '', imgClassName = '', overlay = true, position = 'center', corners = false }) {
+// `priority` : réservé aux images du premier écran (candidat LCP mesuré). Charge en
+// eager + fetchPriority haute au lieu du lazy par défaut des images de contenu.
+export function Shot({ src, alt = '', className = '', imgClassName = '', overlay = true, position = 'center', corners = false, priority = false, width, height, sizes }) {
   return (
     <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
-      <img src={src} alt={alt} loading="lazy" className={`h-full w-full object-cover grayscale-[18%] ${imgClassName}`} style={{ objectPosition: position }} />
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes={sizes}
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : undefined}
+        decoding={priority ? undefined : 'async'}
+        className={`h-full w-full object-cover grayscale-[18%] ${imgClassName}`}
+        style={{ objectPosition: position }}
+      />
       {overlay && <span aria-hidden="true" className="img-fade pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg,rgb(var(--c-surface) / 0.08),rgb(var(--c-surface) / 0.42))' }} />}
       {/* Équerres dorées (jaune WAHM) — accent autour des images seules */}
       {corners && (

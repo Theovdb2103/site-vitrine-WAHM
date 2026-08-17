@@ -11,6 +11,9 @@ import { getMarketplaceUrl, localizedPath } from '../lib/site'
 // Photo Unsplash (nouvelles, hors bibliothèque locale) — cadrage portrait éditorial.
 const UN = (id) => `https://images.unsplash.com/${id}?w=640&h=820&fit=crop&q=80&auto=format`
 
+// Bandeau de héros, largeur variable pour srcset (ratio 9:5 conservé à chaque palier).
+const UN_HERO = (w) => `https://images.unsplash.com/photo-1544021601-3e5723f9d333?w=${w}&h=${Math.round(w * 5 / 9)}&fit=crop&q=80&auto=format`
+
 // Les six grands domaines d'expertise (cartes-photos de la section Mission) — image/position
 // non traduisibles, zippées par index avec mission.domaines.
 const DOMAINES_META = [
@@ -69,9 +72,13 @@ export default function APropos() {
         <div className="relative h-[320px] w-full overflow-hidden md:h-[460px] lg:h-[620px]">
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-wahm-gold to-wahm-orange" style={{ clipPath: 'polygon(0 0, 30% 0, 15% 100%, 0 100%)' }} />
           <img
-            src="https://images.unsplash.com/photo-1544021601-3e5723f9d333?w=1800&h=1000&fit=crop&q=80&auto=format"
+            src={UN_HERO(1800)}
+            srcSet={`${UN_HERO(768)} 768w, ${UN_HERO(1200)} 1200w, ${UN_HERO(1800)} 1800w, ${UN_HERO(2400)} 2400w`}
+            sizes="100vw"
             alt={t('aPropos:hero.imageAlt')}
-            loading="lazy"
+            width={1800}
+            height={1000}
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover grayscale-[35%]"
             style={{ clipPath: 'polygon(15% 100%, 30% 0, 100% 0, 100% 100%)' }}
           />

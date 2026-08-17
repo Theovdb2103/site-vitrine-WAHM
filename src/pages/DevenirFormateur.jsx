@@ -198,7 +198,7 @@ export default function DevenirFormateur() {
             </div>
             <div className="relative min-w-0 border-b border-r border-line/[0.08]">
               <CornerTicks />
-              <Shot src="/assets/media/formateur-portrait.webp" alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[280px] w-full" position="top" corners />
+              <Shot src="/assets/media/formateur-portrait.webp" alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[280px] w-full" position="top" corners priority width={900} height={900} />
               <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
             </div>
           </div>
