@@ -22,7 +22,10 @@ const DEFERRED_PRELOAD_RE = /<link[^>]+rel="modulepreload"[^>]+href="[^"]*\/diff
 // que le navigateur ne retiendra qu'un seul fichier — et pas même un de ceux-là, le
 // format AVIF n'étant pas géré par ce préchargement. Tout était donc téléchargé en
 // pure perte. La sélection revient à srcset/sizes, seuls capables d'arbitrer.
-const IMAGE_PRELOAD_RE = /<link[^>]+rel="preload"[^>]+as="image"[^>]*>/g
+//
+// Ciblé sur le seul jeu de variantes concerné plutôt que sur toutes les images : une
+// future image critique préchargée volontairement ne doit pas être neutralisée ici.
+const IMAGE_PRELOAD_RE = /<link[^>]+rel="preload"[^>]+as="image"[^>]+href="[^"]*hero-home-[^"]*"[^>]*>/g
 
 export default defineConfig({
   plugins: [react()],
