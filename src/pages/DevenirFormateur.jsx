@@ -72,7 +72,24 @@ export default function DevenirFormateur() {
   const timelineRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start 0.78', 'end 0.55'] })
   const railScaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 })
-  const dotTop = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+
+  // Le point descend via `transform` plutôt que `top` : `top` force un calcul de mise
+  // en page à chaque frame de scroll, contrairement à la barre voisine qui anime déjà
+  // scaleY. Il faut donc la hauteur réelle du rail en pixels, remesurée si elle change.
+  const [timelineHeight, setTimelineHeight] = useState(0)
+  useEffect(() => {
+    const el = timelineRef.current
+    if (!el) return
+    const measure = () => setTimelineHeight(el.offsetHeight)
+    measure()
+    if (typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+  // -5,5 px = moitié du diamètre du point : reprend le centrage que faisait la classe
+  // -translate-y-1/2, que le style inline `y` de Framer Motion écraserait sinon.
+  const dotY = useTransform(scrollYProgress, [0, 1], [-5.5, timelineHeight - 5.5])
 
   // 'idle' | 'submitting' | 'success' | 'error'
   const [status, setStatus] = useState('idle')
@@ -322,7 +339,7 @@ export default function DevenirFormateur() {
             {/* Rail de progression (se remplit au scroll) */}
             <motion.span aria-hidden="true" style={{ scaleY: railScaleY }} className="absolute left-[21px] top-3 bottom-3 w-px origin-top bg-gradient-to-b from-wahm-orange to-wahm-gold md:left-[25px]" />
             {/* Point lumineux qui descend au scroll */}
-            <motion.span aria-hidden="true" style={{ top: dotTop }} className="absolute left-[21px] z-0 -ml-[5px] mt-3 h-[11px] w-[11px] -translate-y-1/2 rounded-full bg-wahm-orange shadow-[0_0_16px_4px_rgba(255,123,44,0.7)] md:left-[25px]" />
+            <motion.span aria-hidden="true" style={{ y: dotY }} className="absolute left-[21px] top-0 z-0 -ml-[5px] mt-3 h-[11px] w-[11px] rounded-full bg-wahm-orange shadow-[0_0_16px_4px_rgba(255,123,44,0.7)] md:left-[25px]" />
 
             <RevealStagger as="ol" className="relative m-0 list-none p-0">
               {etapesItems.map((step, i) => (
