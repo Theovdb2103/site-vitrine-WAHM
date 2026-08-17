@@ -20,11 +20,18 @@
   </script>
   <!-- Titre et meta par page : injectes par le composant Seo (vite-react-ssg Head). -->
   <link rel="icon" type="image/png" href="/assets/wahm-mark.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Montserrat et Inter sont auto-hébergés (voir src/index.css) : plus aucune requête
+       vers fonts.googleapis.com / fonts.gstatic.com.
+       General Sans reste servi par Fontshare (licence de redistribution non vérifiable),
+       mais sans bloquer le premier rendu : la feuille est chargée en media="print" puis
+       réactivée. Le texte s'affiche entretemps en Montserrat, exactement comme le fait
+       déjà le font-display:swap actuel — et comme le fait le russe, que General Sans ne
+       couvre pas. Graisse 500 retirée : déclarée mais jamais utilisée. -->
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@600,700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@600,700&display=swap" />
+  </noscript>
 </head>
 <body>
   <div id="root"></div>

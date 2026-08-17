@@ -32,9 +32,11 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Montserrat', 'system-ui', 'sans-serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        grotesk: ['General Sans', 'Montserrat', 'system-ui', 'sans-serif'],
+        // 'Montserrat Variable' / 'Inter Variable' = noms exposés par @fontsource-variable.
+        // Les noms non suffixés restent en repli pour un cache navigateur éventuel.
+        display: ['Montserrat Variable', 'Montserrat', 'system-ui', 'sans-serif'],
+        sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
+        grotesk: ['General Sans', 'Montserrat Variable', 'Montserrat', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'orange-glow': '0 16px 34px -12px rgba(255,123,44,.65)',
