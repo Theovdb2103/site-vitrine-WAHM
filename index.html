@@ -20,18 +20,15 @@
   </script>
   <!-- Titre et meta par page : injectes par le composant Seo (vite-react-ssg Head). -->
   <link rel="icon" type="image/png" href="/assets/wahm-mark.png" />
-  <!-- Montserrat et Inter sont auto-hébergés (voir src/index.css) : plus aucune requête
-       vers fonts.googleapis.com / fonts.gstatic.com.
-       General Sans reste servi par Fontshare (licence de redistribution non vérifiable),
-       mais sans bloquer le premier rendu : la feuille est chargée en media="print" puis
-       réactivée. Le texte s'affiche entretemps en Montserrat, exactement comme le fait
-       déjà le font-display:swap actuel — et comme le fait le russe, que General Sans ne
-       couvre pas. Graisse 500 retirée : déclarée mais jamais utilisée. -->
-  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@600,700&display=swap" media="print" onload="this.media='all'" />
-  <noscript>
-    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@600,700&display=swap" />
-  </noscript>
+  <!-- Toutes les polices du site sont auto-hébergées (voir src/index.css) : aucune
+       requête vers un domaine tiers.
+       General Sans a été retiré : ses fichiers sont servis par cdn.fontshare.com, que la
+       CSP de vercel.json n'autorise pas — la police était donc déjà bloquée en
+       production et les visiteurs voyaient Montserrat. Charger sa feuille de style
+       revenait à payer une connexion tierce pour un résultat invisible. Rétablir
+       General Sans suppose d'ajouter cdn.fontshare.com à font-src, ce qui changerait
+       l'apparence réelle du site : à décider séparément. -->
+
 </head>
 <body>
   <div id="root"></div>

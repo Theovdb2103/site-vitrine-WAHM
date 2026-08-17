@@ -17,6 +17,13 @@ const FONT_PRELOAD_RE = /<link[^>]+rel="preload"[^>]+as="font"[^>]*>/g
 // du chunk de la page, lui, est conservé (il évite une cascade au chargement).
 const DEFERRED_PRELOAD_RE = /<link[^>]+rel="modulepreload"[^>]+href="[^"]*\/differe-[^"]*"[^>]*>/g
 
+// Le préchargement automatique des images ignore <picture> : il émet un lien par
+// variante importée (les 4 largeurs WebP + le JPEG de repli du héros, ~129 Ko) alors
+// que le navigateur ne retiendra qu'un seul fichier — et pas même un de ceux-là, le
+// format AVIF n'étant pas géré par ce préchargement. Tout était donc téléchargé en
+// pure perte. La sélection revient à srcset/sizes, seuls capables d'arbitrer.
+const IMAGE_PRELOAD_RE = /<link[^>]+rel="preload"[^>]+as="image"[^>]*>/g
+
 export default defineConfig({
   plugins: [react()],
   base: '/',
@@ -42,6 +49,7 @@ export default defineConfig({
     onPageRendered: (_route, html) =>
       html
         .replace(FONT_PRELOAD_RE, (tag) => (KEEP_FONT_PRELOAD.test(tag) ? tag : ''))
-        .replace(DEFERRED_PRELOAD_RE, ''),
+        .replace(DEFERRED_PRELOAD_RE, '')
+        .replace(IMAGE_PRELOAD_RE, ''),
   },
 })
