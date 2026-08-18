@@ -9,5 +9,8 @@ export const LOCALE_LABELS = {
   de: { name: 'Deutsch', flag: 'DE' },
   es: { name: 'Español', flag: 'ES' },
   it: { name: 'Italiano', flag: 'IT' },
-  ru: { name: 'Русский', flag: 'RU' },
+  // nonLatin : le nom natif sort de l'alphabet latin. La modale le rend alors en
+  // police système, pour ne pas faire télécharger un sous-ensemble Montserrat entier
+  // (24 Ko de cyrillique) à un visiteur qui ne lira peut-être jamais le russe.
+  ru: { name: 'Русский', flag: 'RU', nonLatin: true },
 }

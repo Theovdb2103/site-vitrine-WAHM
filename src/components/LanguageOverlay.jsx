@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useLanguage } from '../context/LanguageContext'
 import { LOCALES, LOCALE_LABELS } from '../i18n/locales'
 import Flag from './ui/Flag'
+import wahmLogo from '../assets/wahm-logo.webp'
 
 // Overlay de sélection de langue : accessible (focus trap, Escape, clic extérieur),
 // fondu d'entrée/sortie. Liste des langues = LOCALES (src/i18n/locales.js) — ajouter
@@ -36,7 +37,7 @@ export default function LanguageOverlay() {
         >
           <div className="pointer-events-none absolute inset-9 border border-[rgba(212,160,24,0.14)]" aria-hidden="true" />
 
-          <img src="/assets/wahm-logo.png" alt="WAHM" className="block h-[118px] w-auto" />
+          <img src={wahmLogo} alt="WAHM" width="544" height="311" className="block h-[118px] w-auto" />
           <div className="my-[30px] mb-[22px] h-px w-[34px] bg-[rgba(212,160,24,0.5)]" aria-hidden="true" />
           <h2 className="m-0 text-center font-display text-[22px] font-bold text-fg">{t('languageOverlay.title')}</h2>
           <p className="mt-[9px] font-sans text-[13px] tracking-[0.05em] text-muted">{t('languageOverlay.subtitle')}</p>
@@ -53,7 +54,7 @@ export default function LanguageOverlay() {
                 >
                   <Flag code={meta.flag} className="h-[24px] w-[34px]" />
                   <span>
-                    <span className="block font-display text-[15px] font-semibold text-fg">{meta.name}</span>
+                    <span className={`block text-[15px] font-semibold text-fg ${meta.nonLatin ? 'font-[system-ui]' : 'font-display'}`}>{meta.name}</span>
                     <span className="block text-[11px] text-muted">{code.toUpperCase()}</span>
                   </span>
                 </button>

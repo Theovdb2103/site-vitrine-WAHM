@@ -8,6 +8,7 @@ import { NAV_KEYS, ROUTE_CTA, getRouteConfig, getMarketplaceUrl, localizedPath, 
 import { LOCALE_LABELS } from '../i18n/locales'
 import { Action } from './ui/Frame'
 import Flag from './ui/Flag'
+import wahmLogo from '../assets/wahm-logo.webp'
 
 function NavLink({ to, active, onClick, children, className = '' }) {
   const base = 'font-display text-[13px] font-bold uppercase tracking-[0.01em] no-underline transition-colors duration-200 hover:text-wahm-goldLight'
@@ -163,7 +164,7 @@ export default function Header() {
       {/* Barre principale — contenu centré + CTA qui borde le bord droit de l'écran */}
       <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-3 px-5 md:px-10">
         <Link to={localizedPath('/', locale)} className="flex shrink-0 items-center" aria-label={t('header.homeAriaLabel')}>
-          <img src="/assets/wahm-logo.png" alt="WAHM" className="block h-[32px] w-auto shrink-0 md:h-[38px]" />
+          <img src={wahmLogo} alt="WAHM" width="544" height="311" className="block h-[32px] w-auto shrink-0 md:h-[38px]" />
         </Link>
 
         <nav className="hidden items-center gap-2 lg:flex">

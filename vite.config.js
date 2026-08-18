@@ -23,9 +23,14 @@ const DEFERRED_PRELOAD_RE = /<link[^>]+rel="modulepreload"[^>]+href="[^"]*\/diff
 // format AVIF n'étant pas géré par ce préchargement. Tout était donc téléchargé en
 // pure perte. La sélection revient à srcset/sizes, seuls capables d'arbitrer.
 //
-// Ciblé sur le seul jeu de variantes concerné plutôt que sur toutes les images : une
-// future image critique préchargée volontairement ne doit pas être neutralisée ici.
-const IMAGE_PRELOAD_RE = /<link[^>]+rel="preload"[^>]+as="image"[^>]+href="[^"]*hero-home-[^"]*"[^>]*>/g
+// Le logo est écarté pour une autre raison : l'élément LCP mesuré est un texte, pas une
+// image. Le précharger revient à disputer la bande passante aux polices et au CSS dont
+// ce texte dépend, alors qu'il est de toute façon découvert tôt (présent dans l'en-tête
+// du HTML prérendu, donc chargé en priorité haute sans qu'on ait à l'exiger).
+//
+// Liste explicite plutôt que « toutes les images » : une future image réellement
+// critique, préchargée volontairement, ne doit pas être neutralisée ici.
+const IMAGE_PRELOAD_RE = /<link[^>]+rel="preload"[^>]+as="image"[^>]+href="[^"]*(?:hero-home-|wahm-logo-)[^"]*"[^>]*>/g
 
 export default defineConfig({
   plugins: [react()],
