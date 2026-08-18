@@ -10,9 +10,14 @@ import ru from '../../assets/flags/ru.svg'
 // sur Windows/Chrome (rendus en lettres « FR »).
 //
 // Les fichiers sont auto-hébergés et importés, sans dépendance à un CDN tiers.
-// Auparavant servis par flagcdn, dont le drapeau espagnol pèse à lui seul 153 Ko
-// (armoiries en tracés) : mesuré, il coûtait ~1,4 s de LCP sur mobile à l'ouverture de
-// la modale de langue, et expliquait à lui seul l'instabilité des mesures.
+// Auparavant servis par flagcdn : à l'ouverture de la modale de langue, l'ensemble de
+// ces requêtes coûtait ~1 s de LCP sur mobile (A/B mesuré en bloquant flagcdn), le
+// poids venant très majoritairement du drapeau espagnol — 153 Ko à lui seul, armoiries
+// en tracés, contre ~200 o pour les six autres. Ce même A/B a fait tomber l'amplitude
+// des mesures de 801 ms à 107 ms ; les drapeaux n'ayant pas été isolés un par un, cette
+// stabilisation s'attribue au groupe, pas à l'Espagne seule.
+// Le gain global du chantier, 1,422 s de LCP, recouvre l'ensemble : drapeaux, logo
+// allégé et sous-ensemble cyrillique devenu inutile.
 //
 // Tous pèsent moins que la limite d'inlining de Vite : aucun n'est émis en fichier
 // séparé. Les sept sont intégrés en data URI directement dans le chunk JS (lui-même
