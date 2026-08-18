@@ -9,10 +9,16 @@ import ru from '../../assets/flags/ru.svg'
 // Drapeau affiché en image (et non en emoji) : les emojis-drapeaux ne s'affichent pas
 // sur Windows/Chrome (rendus en lettres « FR »).
 //
-// Les fichiers sont auto-hébergés et importés — donc servis avec un nom haché et un
-// cache définitif, sans dépendance à un CDN tiers. Auparavant servis par flagcdn, dont
-// le drapeau espagnol pèse à lui seul 153 Ko (armoiries en tracés) : mesuré, il coûtait
-// ~1 s de LCP sur mobile à l'ouverture de la modale de langue.
+// Les fichiers sont auto-hébergés et importés, sans dépendance à un CDN tiers.
+// Auparavant servis par flagcdn, dont le drapeau espagnol pèse à lui seul 153 Ko
+// (armoiries en tracés) : mesuré, il coûtait ~1,4 s de LCP sur mobile à l'ouverture de
+// la modale de langue, et expliquait à lui seul l'instabilité des mesures.
+//
+// Tous pèsent moins que la limite d'inlining de Vite : aucun n'est émis en fichier
+// séparé. Les sept sont intégrés en data URI directement dans le chunk JS (lui-même
+// haché et mis en cache définitivement), et ne provoquent donc aucune requête réseau
+// distincte. Le drapeau de la langue courante, rendu par l'en-tête au prérendu, se
+// retrouve pour la même raison en data URI dans le HTML SSG lui-même.
 //
 // Chaque fichier reprend le ratio officiel de son drapeau (identique à flagcdn), pour
 // que le recadrage `object-cover` reste exactement celui d'avant.
