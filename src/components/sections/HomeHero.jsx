@@ -35,6 +35,7 @@ export default function HomeHero() {
           <RevealItem as="h1" eager className="mt-7 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
             {t('accueil:hero.title1')}<br />{t('accueil:hero.title2')}<br />{t('accueil:hero.title3')}<span className="text-wahm-orange">.</span>
           </RevealItem>
+          <RevealItem as="div" eager aria-hidden="true" className="mt-6 h-px w-full max-w-[440px] bg-line/[0.14]" />
           <RevealItem as="p" eager className="mt-6 max-w-[440px] font-display text-[17px] font-semibold uppercase tracking-[0.01em] text-gold sm:text-[19px]">
             {t('accueil:hero.tagline')}
           </RevealItem>

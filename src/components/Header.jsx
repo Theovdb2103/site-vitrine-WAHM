@@ -160,7 +160,7 @@ export default function Header() {
   }, [menuOpen])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[200] flex h-[72px] items-stretch bg-surface">
+    <header className="fixed inset-x-0 top-0 z-[200] flex h-[72px] items-stretch border-b border-line/[0.08] bg-surface">
       {/* Barre principale — contenu centré + CTA qui borde le bord droit de l'écran */}
       <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-3 px-5 md:px-10">
         <Link to={localizedPath('/', locale)} className="flex shrink-0 items-center" aria-label={t('header.homeAriaLabel')}>
