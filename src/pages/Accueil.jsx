@@ -294,35 +294,40 @@ export default function Accueil() {
       </Reveal>
 
       {/* ===== BANNIERE CITATION (photo plein cadre + fondu navy) ===== */}
-      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
+      {/* overflow-x-clip : contient les prolongements de 100vw sans rogner la verticale. */}
+      <Reveal as="section" className={`${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         <div className={WRAP}>
-          <Framed ticks={false} className="relative bg-surface-2">
-            {/* Photo de fond, déborde à droite, en N&B */}
-            <img
-              src="/assets/media/conviction.webp"
-              alt=""
-              aria-hidden="true"
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover object-[68%_center] grayscale"
-            />
-            {/* Fondu navy : opaque à gauche → transparent à droite (lisibilité du texte) */}
-            <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgb(var(--c-scrim)) 0%, rgb(var(--c-scrim)) 26%, rgb(var(--c-scrim) / 0.72) 52%, rgb(var(--c-scrim) / 0.30) 80%, rgb(var(--c-scrim) / 0.12) 100%)' }} />
-            <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgb(var(--c-scrim) / 0.55) 0%, transparent 42%)' }} />
+          <div className="relative">
+            <Framed ticks={false} className="relative bg-surface-2">
+              {/* Photo de fond, déborde à droite, en N&B */}
+              <img
+                src="/assets/media/conviction.webp"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-[68%_center] grayscale"
+              />
+              {/* Fondu navy : opaque à gauche → transparent à droite (lisibilité du texte) */}
+              <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(90deg, rgb(var(--c-scrim)) 0%, rgb(var(--c-scrim)) 26%, rgb(var(--c-scrim) / 0.72) 52%, rgb(var(--c-scrim) / 0.30) 80%, rgb(var(--c-scrim) / 0.12) 100%)' }} />
+              <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgb(var(--c-scrim) / 0.55) 0%, transparent 42%)' }} />
 
-            {/* Contenu */}
-            <div className="relative z-10 max-w-[620px] px-6 py-16 md:px-14 md:py-28">
-              <Label>{t('accueil:conviction.label')}</Label>
-              <p className="mt-6 font-display text-[30px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[42px] md:text-[52px]">
-                {t('accueil:conviction.title1')}<br />{t('accueil:conviction.title2')}<span className="text-wahm-orange">.</span>
-              </p>
-              <div className="mt-9">
-                <Action to={marketplaceUrl} variant="filled" arrow>{t('accueil:conviction.cta')}</Action>
+              {/* Contenu */}
+              <div className="relative z-10 max-w-[620px] px-6 py-16 md:px-14 md:py-28">
+                <Label>{t('accueil:conviction.label')}</Label>
+                <p className="mt-6 font-display text-[30px] font-extrabold uppercase leading-[1.04] tracking-[-0.015em] text-white sm:text-[42px] md:text-[52px]">
+                  {t('accueil:conviction.title1')}<br />{t('accueil:conviction.title2')}<span className="text-wahm-orange">.</span>
+                </p>
+                <div className="mt-9">
+                  <Action to={marketplaceUrl} variant="filled" arrow>{t('accueil:conviction.cta')}</Action>
+                </div>
               </div>
-            </div>
-
-            {/* Marques d'angle WAHM, au-dessus de la photo */}
-            <CornerTicks className="pointer-events-none absolute inset-0 z-20 text-wahm-orange" />
-          </Framed>
+            </Framed>
+            {/* Liserés prolongés jusqu'aux bords de l'écran + marques d'angle, au-dessus
+                de la photo. Posés HORS du Framed pour se centrer sur sa boîte de
+                BORDURE : à l'intérieur, inset-0 se cale sur la boîte de padding et
+                décalait les carrés de 1px vers l'intérieur. */}
+            <BlockGuides className="z-20" />
+          </div>
         </div>
       </Reveal>
 
