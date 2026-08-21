@@ -35,12 +35,14 @@
     "fields": {
       "nom": "Volledige naam *",
       "email": "E-mail *",
+      "telephone": "Telefoon",
       "sujet": "Onderwerp",
       "message": "Bericht *"
     },
     "placeholders": {
       "nom": "Jan de Vries",
       "email": "jan@voorbeeld.nl",
+      "telephone": "+31 6 12 34 56 78",
       "sujet": "Onderwerp van jouw bericht",
       "message": "Jouw bericht…"
     },
@@ -55,6 +57,14 @@
     "success": {
       "title": "Bericht verzonden",
       "text": "Bedankt voor jouw bericht. Ons team neemt binnen 48 werkuren contact met je op."
-    }
+    },
+    "sujetChoose": "Kies een onderwerp",
+    "sujetOptions": [
+      "Algemene vraag",
+      "Trainer worden",
+      "Partnerschap",
+      "Technische ondersteuning",
+      "Anders"
+    ]
   }
 }

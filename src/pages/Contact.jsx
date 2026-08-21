@@ -3,7 +3,7 @@ import { Mail, Clock, Check } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
 import Reveal from '../components/Reveal'
-import { Label, SectionHead, Action, Framed, CornerTicks, Motif } from '../components/ui/Frame'
+import { Label, Action, BlockGuides } from '../components/ui/Frame'
 import { useLanguage } from '../context/LanguageContext'
 import { localizedPath } from '../lib/site'
 
@@ -15,6 +15,10 @@ const inputClass =
   'w-full bg-surface border border-line/[0.14] px-4 py-3 font-sans text-[15px] text-fg placeholder:text-subtle outline-none transition-colors focus:border-wahm-orange'
 
 const labelClass = 'font-mono text-[11px] uppercase tracking-[0.14em] text-fg-soft mb-2 block'
+
+// Le select natif garde son menu system (accessible, localisé) mais perd son
+// habillage par défaut, incohérent avec les autres champs — d'où le chevron dessiné.
+const selectClass = `${inputClass} appearance-none cursor-pointer pr-10`
 
 // Icônes / href non traduisibles — zippées par index avec les textes de contact.coordonnees.
 const COORDONNEES_META = [
@@ -60,6 +64,7 @@ export default function Contact() {
   const { t } = useTranslation(['common', 'contact'])
   const { locale } = useLanguage()
   const coordonnees = t('contact:coordonnees', { returnObjects: true })
+  const sujetOptions = t('contact:form.sujetOptions', { returnObjects: true })
   const [status, setStatus] = useState('idle') // 'idle' | 'submitting' | 'success' | 'error'
   const [errorMsg, setErrorMsg] = useState('')
   const successRef = useRef(null)
@@ -101,6 +106,7 @@ export default function Contact() {
         {
           from_name: nom,
           from_email: email,
+          phone: (formData.get('telephone') || '').toString().trim() || '(non renseigné)',
           subject: formData.get('sujet') || '(sans sujet)',
           message: message,
         },
@@ -117,92 +123,101 @@ export default function Contact() {
   return (
     <Page title={t('contact:meta.title')} description={t('contact:meta.description')} path="/contact">
 
-      {/* ===== HERO ===== */}
-      <Reveal as="section" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
-        <div className={`${WRAP} relative py-12 md:py-16`}>
-          <CornerTicks />
-          <Motif color="#D4A018" cols={6} rows={5} className="pointer-events-none absolute right-5 top-1/2 hidden w-[210px] -translate-y-1/2 md:right-10 lg:grid" />
-          <Label>{t('contact:hero.label')}</Label>
-          <h1 className="mt-7 max-w-[620px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
-            {t('contact:hero.title')}<span className="text-wahm-orange">.</span>
-          </h1>
-          <p className="mt-6 max-w-[560px] font-sans text-[16px] leading-[1.7] text-muted">
-            {t('contact:hero.subtitle')}
-          </p>
+      {/* ===== HERO — bandeau photo, titre centré (cf. template de référence) ===== */}
+      {/* pt = hauteur exacte du header fixe : le bandeau vient le coller, comme le template. */}
+      <Reveal as="section" eager className={`${SECTION} overflow-x-clip pt-[72px]`}>
+        <div className={WRAP}>
+          <div className="relative">
+            <div className="relative h-[300px] overflow-hidden bg-surface-2 md:h-[380px] lg:h-[440px]">
+              <img
+                src="/assets/media/contact-hero.webp"
+                alt=""
+                aria-hidden="true"
+                width={1800}
+                height={720}
+                fetchPriority="high"
+                className="absolute inset-0 h-full w-full object-cover grayscale"
+              />
+              {/* Voile bleu nuit : la photo passe au second plan, le titre reste lisible */}
+              <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-scrim) / 0.42) 0%, rgb(var(--c-scrim) / 0.66) 100%)' }} />
+              <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+                <Label>{t('contact:hero.label')}</Label>
+                <h1 className="mt-6 max-w-[900px] font-display text-[38px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[52px] lg:text-[60px]">
+                  {t('contact:hero.title')}<span className="text-wahm-orange">.</span>
+                </h1>
+              </div>
+            </div>
+            {/* Repères hors du cadre : son overflow-hidden rognerait les carrés. */}
+            <BlockGuides className="z-20" />
+          </div>
         </div>
       </Reveal>
 
-      {/* ===== CONTACT (info + formulaire) ===== */}
+      {/* ===== CONTACT — colonne info à gauche, formulaire à droite ===== */}
       <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
-        <div className={`${WRAP} grid grid-cols-1 items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14`}>
+        <div className={`${WRAP} grid grid-cols-1 items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16`}>
 
-          {/* ----- Colonne info / coordonnées ----- */}
-          <div>
-            <Framed className="relative bg-surface-2 p-7 md:p-9">
-              <Label>{t('contact:info.writeToUs')}</Label>
-              <a
-                href="mailto:contact@wahm.com"
-                className="mt-5 block font-display text-[22px] font-extrabold text-fg no-underline transition-colors hover:text-gold"
-              >
-                contact@wahm.com
-              </a>
-              <p className="mt-3 font-sans text-[14px] leading-[1.6] text-muted">
-                {t('contact:info.responseNote')}
-              </p>
+          {/* ----- Colonne gauche : accroche, coordonnées, réseaux ----- */}
+          <div className="flex h-full flex-col">
+            <h2 className="m-0 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-fg sm:text-[36px] md:text-[40px]">
+              {t('contact:info.writeToUs')}<span className="text-wahm-orange">.</span>
+            </h2>
+            <p className="mt-6 max-w-[460px] font-sans text-[16px] leading-[1.7] text-muted">
+              {t('contact:hero.subtitle')}
+            </p>
 
-              <div className="my-7 h-px bg-line/[0.08]" />
-
-              {/* Détails de contact avec icônes lucide en carrés bordés */}
-              <div className="flex flex-col gap-5">
-                {coordonnees.map((c, i) => {
-                  const meta = COORDONNEES_META[i]
-                  return (
-                    <div key={c.title} className="flex items-start gap-4">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-line/[0.12] text-gold">
-                        <meta.Icon className="h-5 w-5" strokeWidth={1.9} aria-hidden="true" />
-                      </span>
-                      <div className="min-w-0">
-                        <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-gold">{c.title}</div>
-                        {meta.href ? (
-                          <a href={meta.href} className="mt-1 block font-display text-[16px] font-bold text-fg no-underline transition-colors hover:text-wahm-orange">{c.value}</a>
-                        ) : (
-                          <div className="mt-1 font-display text-[16px] font-bold text-fg">{c.value}</div>
-                        )}
-                        <p className="mt-1 font-sans text-[13.5px] leading-[1.55] text-muted">{c.desc}</p>
-                      </div>
+            <div className="mt-9 flex flex-col gap-6">
+              {coordonnees.map((c, i) => {
+                const meta = COORDONNEES_META[i]
+                return (
+                  <div key={c.title} className="flex items-start gap-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-line/[0.12] text-gold">
+                      <meta.Icon className="h-5 w-5" strokeWidth={1.9} aria-hidden="true" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-gold">{c.title}</div>
+                      {meta.href ? (
+                        <a href={meta.href} className="mt-1 block font-display text-[16px] font-bold text-fg no-underline transition-colors hover:text-wahm-orange">{c.value}</a>
+                      ) : (
+                        <div className="mt-1 font-display text-[16px] font-bold text-fg">{c.value}</div>
+                      )}
+                      <p className="mt-1 font-sans text-[13.5px] leading-[1.55] text-muted">{c.desc}</p>
                     </div>
-                  )
-                })}
-              </div>
+                  </div>
+                )
+              })}
+            </div>
 
-              <div className="my-7 h-px bg-line/[0.08]" />
-
+            <div className="mt-10 border-t border-line/[0.08] pt-7">
               <div className="font-display text-[16px] font-bold uppercase tracking-[0.01em] text-fg">{t('contact:info.partnership.title')}</div>
-              <p className="mb-6 mt-3 font-sans text-[14px] leading-[1.6] text-muted">
+              <p className="mb-6 mt-3 max-w-[420px] font-sans text-[14px] leading-[1.6] text-muted">
                 {t('contact:info.partnership.text')}
               </p>
               <Action to={localizedPath('/devenir-formateur', locale)} variant="outline" size="sm" arrow>{t('contact:info.partnership.cta')}</Action>
-            </Framed>
+            </div>
 
-            {/* Réseaux sociaux */}
-            <div className="mt-5 grid grid-cols-3 gap-2">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="flex items-center justify-center border border-line/[0.14] py-3.5 text-fg-soft no-underline transition-colors hover:border-wahm-orange hover:text-wahm-orange"
-                >
-                  {s.svg}
-                </a>
-              ))}
+            {/* Réseaux — ancrés en bas de colonne sur grand écran, comme le template */}
+            <div className="mt-10 flex flex-wrap items-center gap-4 lg:mt-auto lg:pt-12">
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-subtle">{t('common:footer.tagline')}</span>
+              <div className="flex gap-2.5">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    aria-label={s.label}
+                    className="flex h-11 w-11 items-center justify-center border border-line/[0.14] text-fg-soft no-underline transition-colors hover:border-wahm-orange hover:bg-wahm-orange hover:text-white"
+                  >
+                    {s.svg}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* ----- Colonne formulaire ----- */}
-          <div>
+          {/* ----- Colonne droite : carte formulaire ----- */}
+          <div className="relative">
             {status === 'success' ? (
-              <Framed className="relative bg-surface-2 p-10 text-center md:p-12" role="status" aria-live="polite">
+              <div className="relative border border-line/[0.1] bg-surface-2 p-10 text-center md:p-14" role="status" aria-live="polite">
                 <span className="mx-auto mb-6 flex h-14 w-14 items-center justify-center bg-wahm-orange text-white">
                   <Check className="h-7 w-7" strokeWidth={2.6} aria-hidden="true" />
                 </span>
@@ -210,11 +225,9 @@ export default function Contact() {
                 <p className="mt-3 font-sans text-[15px] leading-[1.6] text-muted">
                   {t('contact:form.success.text')}
                 </p>
-              </Framed>
+              </div>
             ) : (
-              <Framed className="relative bg-surface-2 p-7 md:p-9">
-                <SectionHead label={t('contact:form.label')} className="mb-8">{t('contact:form.title')}</SectionHead>
-
+              <div className="relative border border-line/[0.1] bg-surface-2 p-7 md:p-10">
                 <form onSubmit={handleSubmit} noValidate>
                   {/* Honeypot anti-spam — doit rester vide (caché visuellement). */}
                   <input
@@ -229,17 +242,26 @@ export default function Contact() {
                   <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                     <div>
                       <label htmlFor="f-nom" className={labelClass}>{t('contact:form.fields.nom')}</label>
-                      <input id="f-nom" name="nom" className={inputClass} placeholder={t('contact:form.placeholders.nom')} required />
+                      <input id="f-nom" name="nom" autoComplete="name" className={inputClass} placeholder={t('contact:form.placeholders.nom')} required />
+                    </div>
+                    <div>
+                      <label htmlFor="f-telephone" className={labelClass}>{t('contact:form.fields.telephone')}</label>
+                      <input id="f-telephone" name="telephone" type="tel" autoComplete="tel" className={inputClass} placeholder={t('contact:form.placeholders.telephone')} />
                     </div>
                     <div>
                       <label htmlFor="f-email" className={labelClass}>{t('contact:form.fields.email')}</label>
-                      <input id="f-email" name="email" type="email" className={inputClass} placeholder={t('contact:form.placeholders.email')} required />
+                      <input id="f-email" name="email" type="email" autoComplete="email" className={inputClass} placeholder={t('contact:form.placeholders.email')} required />
                     </div>
-                  </div>
-
-                  <div className="mt-5">
-                    <label htmlFor="f-sujet" className={labelClass}>{t('contact:form.fields.sujet')}</label>
-                    <input id="f-sujet" name="sujet" className={inputClass} placeholder={t('contact:form.placeholders.sujet')} />
+                    <div>
+                      <label htmlFor="f-sujet" className={labelClass}>{t('contact:form.fields.sujet')}</label>
+                      <div className="relative">
+                        <select id="f-sujet" name="sujet" defaultValue="" className={selectClass}>
+                          <option value="" disabled>{t('contact:form.sujetChoose')}</option>
+                          {sujetOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                        <span aria-hidden="true" className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[10px] text-subtle">▼</span>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="mt-5">
@@ -247,7 +269,7 @@ export default function Contact() {
                     <textarea
                       id="f-message"
                       name="message"
-                      className={`${inputClass} min-h-[150px] resize-y`}
+                      className={`${inputClass} min-h-[180px] resize-y`}
                       placeholder={t('contact:form.placeholders.message')}
                       required
                     />
@@ -267,7 +289,7 @@ export default function Contact() {
                     {t('contact:form.consent')}
                   </p>
                 </form>
-              </Framed>
+              </div>
             )}
           </div>
 

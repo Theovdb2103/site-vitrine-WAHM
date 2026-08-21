@@ -35,12 +35,14 @@
     "fields": {
       "nom": "Nome completo *",
       "email": "Email *",
+      "telephone": "Telefono",
       "sujet": "Oggetto",
       "message": "Messaggio *"
     },
     "placeholders": {
       "nom": "Mario Rossi",
       "email": "mario@esempio.it",
+      "telephone": "+39 340 123 4567",
       "sujet": "Oggetto del tuo messaggio",
       "message": "Il tuo messaggio…"
     },
@@ -55,6 +57,14 @@
     "success": {
       "title": "Messaggio inviato",
       "text": "Grazie per averci contattato. Il nostro team ti risponderà entro 48 ore lavorative."
-    }
+    },
+    "sujetChoose": "Scegli un argomento",
+    "sujetOptions": [
+      "Domanda generale",
+      "Diventare formatore",
+      "Partnership",
+      "Supporto tecnico",
+      "Altro"
+    ]
   }
 }

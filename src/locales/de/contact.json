@@ -35,12 +35,14 @@
     "fields": {
       "nom": "Vollständiger Name *",
       "email": "E-Mail *",
+      "telephone": "Telefon",
       "sujet": "Betreff",
       "message": "Nachricht *"
     },
     "placeholders": {
       "nom": "Max Mustermann",
       "email": "max@beispiel.de",
+      "telephone": "+49 151 12345678",
       "sujet": "Betreff deiner Nachricht",
       "message": "Deine Nachricht…"
     },
@@ -55,6 +57,14 @@
     "success": {
       "title": "Nachricht gesendet",
       "text": "Danke für deine Nachricht. Unser Team meldet sich innerhalb von 48 Werktagen bei dir."
-    }
+    },
+    "sujetChoose": "Thema auswählen",
+    "sujetOptions": [
+      "Allgemeine Anfrage",
+      "Trainer werden",
+      "Partnerschaft",
+      "Technischer Support",
+      "Sonstiges"
+    ]
   }
 }
