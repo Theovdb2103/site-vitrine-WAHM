@@ -83,13 +83,16 @@ export function GridTicks({ cols, rows, className = '' }) {
 // chaque intersection n'affiche qu'un carré de 5px. À préférer à GridTicks dès que
 // les rangées peuvent être de hauteurs différentes (contenu variable), GridTicks
 // supposant une grille régulière.
+// z-20 : sans lui, les marques (positionnées, z-index auto, en tête du DOM) passent
+// SOUS les visuels de la cellule, eux aussi positionnés mais plus bas dans le DOM —
+// une image qui touche le bord de la cellule en rognait donc la moitié à l'écran.
 export function CellTicks({ className = '' }) {
   return (
     <span className={className} aria-hidden="true">
-      <Mark className="-left-[2.5px] -top-[2.5px]" />
-      <Mark className="-right-[3.5px] -top-[2.5px]" />
-      <Mark className="-bottom-[3.5px] -left-[2.5px]" />
-      <Mark className="-bottom-[3.5px] -right-[3.5px]" />
+      <Mark className="z-20 -left-[2.5px] -top-[2.5px]" />
+      <Mark className="z-20 -right-[3.5px] -top-[2.5px]" />
+      <Mark className="z-20 -bottom-[3.5px] -left-[2.5px]" />
+      <Mark className="z-20 -bottom-[3.5px] -right-[3.5px]" />
     </span>
   )
 }
