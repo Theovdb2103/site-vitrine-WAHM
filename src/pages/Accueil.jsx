@@ -186,9 +186,11 @@ export default function Accueil() {
       <HomeHero />
 
       {/* ===== STATS ===== */}
-      {/* overflow-hidden : les traits filent de 100vw pour rejoindre les bords de
-          l'écran — on évite ainsi tout débordement horizontal. */}
-      <section className={`${SECTION} overflow-hidden pb-20 md:pb-[120px]`}>
+      {/* overflow-x-clip : les traits filent de 100vw pour rejoindre les bords de
+          l'écran — on rogne donc l'horizontale. Surtout pas overflow-hidden, qui
+          rognerait aussi la verticale et couperait en deux les repères du liseré
+          haut, posés à cheval sur le bord de la section. */}
+      <section className={`${SECTION} overflow-x-clip pb-20 md:pb-[120px]`}>
         <div className={WRAP}>
           <div className="relative">
             <RevealStagger className="grid grid-cols-2 border-l border-t border-line/[0.08] lg:grid-cols-4" stagger={0.12}>

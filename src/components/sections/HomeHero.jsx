@@ -44,10 +44,9 @@ function HeroGuides() {
           <span className={`absolute inset-y-0 left-0 w-px ${RULE}`} />
           <span className={`absolute inset-y-0 left-1/2 w-px ${RULE}`} />
           <span className={`absolute inset-y-0 right-0 w-px ${RULE}`} />
-          {/* Carrés de pied — ferment la grille sur le liseré de la section suivante */}
-          <GuideMark className="bottom-0 left-0 -translate-x-1/2 translate-y-1/2" />
-          <GuideMark className="bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" />
-          <GuideMark className="bottom-0 right-0 translate-x-1/2 translate-y-1/2" />
+          {/* Pas de carrés de pied : le liseré du bas est partagé avec la bande de
+              statistiques qui suit, dont les propres repères couvrent déjà ces
+              positions (et deux de plus). En poser ici les dupliquerait. */}
         </div>
       </div>
     </div>
@@ -60,9 +59,11 @@ export default function HomeHero() {
   const marketplaceUrl = getMarketplaceUrl(locale)
 
   return (
-    // overflow-hidden : la barre traversante se prolonge de 100vw de chaque côté pour
-    // rejoindre les bords de l'écran — on évite ainsi tout débordement horizontal.
-    <section id="top" className="relative overflow-hidden bg-surface pt-[104px] md:pt-[120px]">
+    // overflow-x-clip : la barre traversante se prolonge de 100vw de chaque côté pour
+    // rejoindre les bords de l'écran — on rogne donc l'horizontale pour éviter tout
+    // débordement. Surtout pas overflow-hidden, qui rognerait AUSSI la verticale et
+    // couperait en deux les repères posés à cheval sur les bords de la section.
+    <section id="top" className="relative overflow-x-clip bg-surface pt-[104px] md:pt-[120px]">
       <HeroGuides />
       <RevealStagger eager className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr]">
         {/* Colonne texte, rangée 1 : accroche + titre. À partir de lg le texte est mis
