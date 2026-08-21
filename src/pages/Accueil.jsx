@@ -332,7 +332,7 @@ export default function Accueil() {
       </Reveal>
 
       {/* ===== PLATEFORME INTERNATIONALE ===== */}
-      <Reveal as="section" id="plateforme" className={`scroll-mt-[80px] ${SECTION} py-20 md:py-[120px]`}>
+      <Reveal as="section" id="plateforme" className={`scroll-mt-[80px] ${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <Label>{t('accueil:plateformeSection.label')}</Label>
           <h2 className="mt-5 max-w-[760px] font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-fg sm:text-[36px] md:text-[44px]">{t('accueil:plateformeSection.title1')}<span className="text-wahm-orange">.</span></h2>
@@ -342,15 +342,20 @@ export default function Accueil() {
             {plateforme.map((f, i) => {
               const meta = PLATEFORME_META[i]
               return (
-              <div key={meta.id} className={`group relative overflow-hidden border border-line/[0.1] bg-surface-2 ${meta.span} ${meta.h}`}>
-                <img src={meta.img} alt={f.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale-[20%] transition-transform duration-700 ease-out group-hover:scale-105" />
-                <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--c-scrim) / 0.96), rgb(var(--c-scrim) / 0.55) 48%, rgb(var(--c-scrim) / 0.12))' }} />
-                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')} · {f.tag}</span>
-                  <h3 className="mt-2 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[20px]">{f.title}</h3>
-                  <p className="mt-1.5 max-w-[440px] font-sans text-[13.5px] leading-[1.5] text-white/80">{f.desc}</p>
+              <div key={meta.id} className={`relative ${meta.span} ${meta.h}`}>
+                <div className="group relative h-full overflow-hidden border border-line/[0.1] bg-surface-2">
+                  <img src={meta.img} alt={f.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale-[20%] transition-transform duration-700 ease-out group-hover:scale-105" />
+                  <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--c-scrim) / 0.96), rgb(var(--c-scrim) / 0.55) 48%, rgb(var(--c-scrim) / 0.12))' }} />
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')} · {f.tag}</span>
+                    <h3 className="mt-2 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[20px]">{f.title}</h3>
+                    <p className="mt-1.5 max-w-[440px] font-sans text-[13.5px] leading-[1.5] text-white/80">{f.desc}</p>
+                  </div>
                 </div>
+                {/* Repères posés HORS de la tuile : son overflow-hidden les rognerait, et
+                    sa bordure décalerait les carrés de 1px vers l'intérieur. z-20 pour
+                    passer au-dessus de la photo. */}
+                <BlockGuides className="z-20" />
               </div>
               )
             })}

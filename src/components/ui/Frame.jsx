@@ -150,8 +150,12 @@ export function GridRowRules({ gridRef }) {
 export function BlockGuides({ ticks = true, className = '' }) {
   return (
     <span aria-hidden="true" className={`pointer-events-none absolute inset-0 ${className}`}>
-      <span className="absolute left-1/2 top-0 h-px w-screen -translate-x-1/2 bg-line/[0.08]" />
-      <span className="absolute bottom-0 left-1/2 h-px w-screen -translate-x-1/2 bg-line/[0.08]" />
+      {/* 200vw et non 100vw : le trait est centré sur le BLOC, qui n'est pas forcément
+          centré dans le viewport (une tuile de bento, par exemple). 100vw ne
+          rejoindrait alors qu'un seul bord. Le surplus est rogné par l'overflow-x-clip
+          de la section. */}
+      <span className="absolute left-1/2 top-0 h-px w-[200vw] -translate-x-1/2 bg-line/[0.08]" />
+      <span className="absolute bottom-0 left-1/2 h-px w-[200vw] -translate-x-1/2 bg-line/[0.08]" />
       {ticks && <CornerTicks />}
     </span>
   )
