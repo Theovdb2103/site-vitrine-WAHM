@@ -6,7 +6,7 @@ import Page from '../components/Page'
 import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
 import HomeHero from '../components/sections/HomeHero'
 import { GhostNumber } from '../components/ui/Kinetic'
-import { Label, SectionHead, Action, Framed, CornerTicks, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
+import { Label, SectionHead, Action, Framed, CornerTicks, GridTicks, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
 import { ExpandingCards } from '../components/ui/ExpandingCards'
 import SectionOutro from '../components/SectionOutro'
 import Globe from '../components/Globe'
@@ -186,18 +186,27 @@ export default function Accueil() {
       <HomeHero />
 
       {/* ===== STATS ===== */}
-      <section className={`${SECTION} pb-20 md:pb-[120px]`}>
+      {/* overflow-hidden : les traits filent de 100vw pour rejoindre les bords de
+          l'écran — on évite ainsi tout débordement horizontal. */}
+      <section className={`${SECTION} overflow-hidden pb-20 md:pb-[120px]`}>
         <div className={WRAP}>
-          <RevealStagger className="grid grid-cols-2 border-l border-t border-line/[0.08] lg:grid-cols-4" stagger={0.12}>
-            {stats.map((s, i) => (
-              <RevealItem as="div" key={s.label} className="relative border-b border-r border-line/[0.08] p-7 md:p-8">
-                <CornerTicks />
-                <span className="font-mono text-[11px] text-gold">{String(i + 1).padStart(2, '0')}</span>
-                <div className="mt-3 font-display text-[44px] font-black leading-none text-fg md:text-[56px]">{STATS_META[i].value}<span className="text-gold">{STATS_META[i].suffix}</span></div>
-                <div className="mt-2 font-mono text-[11.5px] uppercase tracking-[0.14em] text-muted">{s.label}</div>
-              </RevealItem>
-            ))}
-          </RevealStagger>
+          <div className="relative">
+            <RevealStagger className="grid grid-cols-2 border-l border-t border-line/[0.08] lg:grid-cols-4" stagger={0.12}>
+              {stats.map((s, i) => (
+                <RevealItem as="div" key={s.label} className="border-b border-r border-line/[0.08] p-7 md:p-8">
+                  <span className="font-mono text-[11px] text-gold">{String(i + 1).padStart(2, '0')}</span>
+                  <div className="mt-3 font-display text-[44px] font-black leading-none text-fg md:text-[56px]">{STATS_META[i].value}<span className="text-gold">{STATS_META[i].suffix}</span></div>
+                  <div className="mt-2 font-mono text-[11.5px] uppercase tracking-[0.14em] text-muted">{s.label}</div>
+                </RevealItem>
+              ))}
+            </RevealStagger>
+            {/* Traits horizontaux prolongés jusqu'aux bords de l'écran */}
+            <span aria-hidden="true" className="pointer-events-none absolute left-1/2 top-0 h-px w-screen -translate-x-1/2 bg-line/[0.08]" />
+            <span aria-hidden="true" className="pointer-events-none absolute bottom-0 left-1/2 h-px w-screen -translate-x-1/2 bg-line/[0.08]" />
+            {/* Un seul carré par intersection — 2 colonnes / 2 rangées sous lg, 4 / 1 au-delà */}
+            <GridTicks cols={2} rows={2} className="lg:hidden" />
+            <GridTicks cols={4} rows={1} className="hidden lg:block" />
+          </div>
         </div>
       </section>
 

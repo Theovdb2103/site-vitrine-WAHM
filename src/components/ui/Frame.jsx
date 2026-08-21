@@ -50,6 +50,28 @@ export function CornerTicks({ className = '' }) {
   )
 }
 
+// Repères d'une grille de plusieurs cellules : un unique carré par intersection,
+// posé depuis le CONTENEUR et non depuis chaque cellule. Poser des CornerTicks sur
+// chaque cellule empile en effet deux carrés sur les séparations internes, décalés
+// d'1px (le bord droit d'une cellule et le bord gauche de la suivante n'ont pas la
+// même origine, la boîte de padding variant selon les bordures présentes) — d'où des
+// marques d'épaisseur inégale. Le parent doit être `relative` et épouser la grille.
+export function GridTicks({ cols, rows, className = '' }) {
+  const xs = Array.from({ length: cols + 1 }, (_, i) => (i * 100) / cols)
+  const ys = Array.from({ length: rows + 1 }, (_, i) => (i * 100) / rows)
+  return (
+    <span aria-hidden="true" className={`pointer-events-none absolute inset-0 ${className}`}>
+      {ys.map((y) => xs.map((x) => (
+        <span
+          key={`${x}-${y}`}
+          className="absolute h-[5px] w-[5px] -translate-x-1/2 -translate-y-1/2 bg-wahm-orange"
+          style={{ left: `${x}%`, top: `${y}%` }}
+        />
+      )))}
+    </span>
+  )
+}
+
 // Boîte encadrée à liseré fin + croix d'angle.
 export function Framed({ as: Tag = 'div', className = '', ticks = true, tickColor, children, ...rest }) {
   return (
