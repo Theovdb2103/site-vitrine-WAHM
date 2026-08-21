@@ -72,6 +72,24 @@ export function GridTicks({ cols, rows, className = '' }) {
   )
 }
 
+// Repères d'un bloc : ses liserés haut et bas prolongés jusqu'aux bords de l'écran,
+// plus un carré orange centré sur chacun des quatre angles. À poser dans un parent
+// `relative` qui épouse exactement le bloc.
+//
+// Ce parent ne doit JAMAIS être en overflow-hidden : les carrés débordent de 2,5px
+// et seraient rognés d'un quart. Si un rognage est nécessaire (les prolongements
+// mesurent 100vw), le poser en overflow-x-clip sur la section — il ne rogne que
+// l'horizontale et laisse les carrés intacts.
+export function BlockGuides({ className = '' }) {
+  return (
+    <span aria-hidden="true" className={`pointer-events-none absolute inset-0 ${className}`}>
+      <span className="absolute left-1/2 top-0 h-px w-screen -translate-x-1/2 bg-line/[0.08]" />
+      <span className="absolute bottom-0 left-1/2 h-px w-screen -translate-x-1/2 bg-line/[0.08]" />
+      <CornerTicks />
+    </span>
+  )
+}
+
 // Boîte encadrée à liseré fin + croix d'angle.
 export function Framed({ as: Tag = 'div', className = '', ticks = true, tickColor, children, ...rest }) {
   return (

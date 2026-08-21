@@ -6,7 +6,7 @@ import Page from '../components/Page'
 import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
 import HomeHero from '../components/sections/HomeHero'
 import { GhostNumber } from '../components/ui/Kinetic'
-import { Label, SectionHead, Action, Framed, CornerTicks, GridTicks, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
+import { Label, SectionHead, Action, Framed, CornerTicks, GridTicks, BlockGuides, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
 import { ExpandingCards } from '../components/ui/ExpandingCards'
 import SectionOutro from '../components/SectionOutro'
 import Globe from '../components/Globe'
@@ -89,75 +89,82 @@ function PromesseSpotlight({ items }) {
 
   return (
     <div className="mt-12">
-      {/* Panneau vedette */}
-      <div className="relative min-h-[300px] overflow-hidden border border-line/[0.1] bg-surface-2 md:min-h-[340px]">
-        <GridPattern />
-        <CornerTicks />
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={reduce ? false : { opacity: 0, y: 18, filter: 'blur(7px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            exit={reduce ? undefined : { opacity: 0, y: -14, filter: 'blur(7px)' }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-[1] grid h-full items-center gap-8 p-8 md:grid-cols-[1fr_minmax(0,0.82fr)] md:gap-10 md:p-10 lg:gap-12 lg:p-12"
-          >
-            {/* Contenu */}
-            <div>
-              <div className="flex items-center gap-5">
-                <span aria-hidden="true" className="font-display text-[64px] font-black leading-[0.8] text-gold md:text-[92px]">{String(active + 1).padStart(2, '0')}</span>
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center border border-wahm-orange/30 bg-wahm-orange/10 text-gold">
-                  <CurIcon className="h-[24px] w-[24px]" strokeWidth={1.85} aria-hidden="true" />
-                </span>
+      {/* Panneau vedette — les repères vivent sur un parent SANS overflow, sans quoi
+          l'overflow-hidden du panneau (qui rogne la texture et l'animation) couperait
+          les carrés d'angle et les prolongements. */}
+      <div className="relative">
+        <div className="relative min-h-[300px] overflow-hidden border border-line/[0.1] bg-surface-2 md:min-h-[340px]">
+          <GridPattern />
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={reduce ? false : { opacity: 0, y: 18, filter: 'blur(7px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={reduce ? undefined : { opacity: 0, y: -14, filter: 'blur(7px)' }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-[1] grid h-full items-center gap-8 p-8 md:grid-cols-[1fr_minmax(0,0.82fr)] md:gap-10 md:p-10 lg:gap-12 lg:p-12"
+            >
+              {/* Contenu */}
+              <div>
+                <div className="flex items-center gap-5">
+                  <span aria-hidden="true" className="font-display text-[64px] font-black leading-[0.8] text-gold md:text-[92px]">{String(active + 1).padStart(2, '0')}</span>
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center border border-wahm-orange/30 bg-wahm-orange/10 text-gold">
+                    <CurIcon className="h-[24px] w-[24px]" strokeWidth={1.85} aria-hidden="true" />
+                  </span>
+                </div>
+                <h3 className="mt-6 font-display text-[24px] font-extrabold uppercase leading-[1.05] tracking-[-0.01em] text-fg sm:text-[30px] md:text-[34px]">
+                  {cur.title}<span className="text-wahm-orange">.</span>
+                </h3>
+                <p className="mt-4 max-w-[520px] font-sans text-[16px] leading-[1.7] text-muted md:text-[17px]">{cur.text}</p>
               </div>
-              <h3 className="mt-6 font-display text-[24px] font-extrabold uppercase leading-[1.05] tracking-[-0.01em] text-fg sm:text-[30px] md:text-[34px]">
-                {cur.title}<span className="text-wahm-orange">.</span>
-              </h3>
-              <p className="mt-4 max-w-[520px] font-sans text-[16px] leading-[1.7] text-muted md:text-[17px]">{cur.text}</p>
-            </div>
 
-            {/* Image cadrée (équerres dorées, façon hero) */}
-            <div className="relative">
-              <span aria-hidden="true" className="pointer-events-none absolute left-3 top-3 z-[2] h-8 w-8 border-l-2 border-t-2 border-wahm-goldLight" />
-              <span aria-hidden="true" className="pointer-events-none absolute bottom-3 right-3 z-[2] h-8 w-8 border-b-2 border-r-2 border-wahm-goldLight" />
-              <div className="relative h-[210px] w-full overflow-hidden border border-line/10 sm:h-[240px] md:h-[260px] lg:h-[280px]">
-                <img src={cur.img} alt={cur.title} className="h-full w-full object-cover grayscale-[30%]" />
-                <span aria-hidden="true" className="img-fade absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-surface) / 0.18) 0%, rgb(var(--c-surface) / 0.52) 100%)' }} />
+              {/* Image cadrée (équerres dorées, façon hero) */}
+              <div className="relative">
+                <span aria-hidden="true" className="pointer-events-none absolute left-3 top-3 z-[2] h-8 w-8 border-l-2 border-t-2 border-wahm-goldLight" />
+                <span aria-hidden="true" className="pointer-events-none absolute bottom-3 right-3 z-[2] h-8 w-8 border-b-2 border-r-2 border-wahm-goldLight" />
+                <div className="relative h-[210px] w-full overflow-hidden border border-line/10 sm:h-[240px] md:h-[260px] lg:h-[280px]">
+                  <img src={cur.img} alt={cur.title} className="h-full w-full object-cover grayscale-[30%]" />
+                  <span aria-hidden="true" className="img-fade absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-surface) / 0.18) 0%, rgb(var(--c-surface) / 0.52) 100%)' }} />
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <BlockGuides />
       </div>
 
       {/* Onglets + barre de progression */}
-      <div className="mt-3 grid grid-cols-5 gap-1.5 sm:grid-cols-3 sm:gap-2 lg:grid-cols-5">
-        {items.map((p, i) => {
-          const on = i === active
-          return (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setActive(i)}
-              aria-pressed={on}
-              className={`group relative overflow-hidden border p-2.5 text-center transition-colors duration-200 sm:p-4 sm:text-left ${on ? 'border-wahm-orange/50 bg-surface-2' : 'border-line/[0.08] hover:bg-surface-2/60'}`}
-            >
-              <span className={`font-mono text-[11px] tracking-[0.12em] ${on ? 'text-gold' : 'text-subtle'}`}>{String(i + 1).padStart(2, '0')}</span>
-              <span className={`mt-1.5 hidden font-display text-[13px] font-bold uppercase leading-[1.15] tracking-[0.01em] sm:block ${on ? 'text-fg' : 'text-muted'}`}>{p.title}</span>
-              <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-line/[0.06]" />
-              {on && !reduce && isDesktop && (
-                <motion.span
-                  key={active}
-                  aria-hidden="true"
-                  className="absolute bottom-0 left-0 h-[2px] bg-wahm-orange"
-                  initial={{ width: '0%' }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: SPOTLIGHT_MS / 1000, ease: 'linear' }}
-                />
-              )}
-              {on && (reduce || !isDesktop) && <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-wahm-orange" />}
-            </button>
-          )
-        })}
+      <div className="relative mt-3">
+        <div className="grid grid-cols-5 gap-1.5 sm:grid-cols-3 sm:gap-2 lg:grid-cols-5">
+          {items.map((p, i) => {
+            const on = i === active
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-pressed={on}
+                className={`group relative overflow-hidden border p-2.5 text-center transition-colors duration-200 sm:p-4 sm:text-left ${on ? 'border-wahm-orange/50 bg-surface-2' : 'border-line/[0.08] hover:bg-surface-2/60'}`}
+              >
+                <span className={`font-mono text-[11px] tracking-[0.12em] ${on ? 'text-gold' : 'text-subtle'}`}>{String(i + 1).padStart(2, '0')}</span>
+                <span className={`mt-1.5 hidden font-display text-[13px] font-bold uppercase leading-[1.15] tracking-[0.01em] sm:block ${on ? 'text-fg' : 'text-muted'}`}>{p.title}</span>
+                <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-line/[0.06]" />
+                {on && !reduce && isDesktop && (
+                  <motion.span
+                    key={active}
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-0 h-[2px] bg-wahm-orange"
+                    initial={{ width: '0%' }}
+                    animate={{ width: '100%' }}
+                    transition={{ duration: SPOTLIGHT_MS / 1000, ease: 'linear' }}
+                  />
+                )}
+                {on && (reduce || !isDesktop) && <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[2px] bg-wahm-orange" />}
+              </button>
+            )
+          })}
+        </div>
+        <BlockGuides />
       </div>
     </div>
   )
@@ -229,7 +236,9 @@ export default function Accueil() {
       <ChevronDivider className="py-2" />
 
       {/* ===== NOTRE PROMESSE (spotlight auto-rotatif) ===== */}
-      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
+      {/* overflow-x-clip : les prolongements de 100vw des repères ne doivent pas
+          déborder — et surtout pas overflow-hidden, qui rognerait les carrés. */}
+      <Reveal as="section" className={`${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead label={t('accueil:promesseSection.label')}>{t('accueil:promesseSection.title')}</SectionHead>
           <p className="mt-6 max-w-[560px] font-sans text-[16px] leading-[1.7] text-muted">{t('accueil:promesseSection.intro')}</p>
