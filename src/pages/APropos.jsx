@@ -41,6 +41,7 @@ export default function APropos() {
   const { locale } = useLanguage()
   const marketplaceUrl = getMarketplaceUrl(locale)
   const criteresGridRef = useRef(null)
+  const raisonsGridRef = useRef(null)
 
   const piliers = t('aPropos:vision.piliers', { returnObjects: true })
   const domaines = t('aPropos:mission.domaines', { returnObjects: true })
@@ -265,18 +266,24 @@ export default function APropos() {
       </Reveal>
 
       {/* ===== POURQUOI NOUS EXISTONS ===== */}
-      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
+      {/* overflow-x-clip : contient les prolongements de 200vw sans rogner la verticale. */}
+      <Reveal as="section" className={`${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead label={t('aPropos:pourquoi.label')}>
             {t('aPropos:pourquoi.title')}
           </SectionHead>
-          <div className="mt-12 grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
-            {raisons.map((txt) => (
-              <TiltCard key={txt} className="border-b border-r border-line/[0.08] p-7 md:p-8">
-                <X className="h-9 w-9 text-red-500" strokeWidth={2.5} aria-hidden="true" />
-                <p className="mt-5 font-display text-[17px] font-extrabold uppercase leading-[1.2] tracking-[-0.005em] text-gold">{txt}</p>
-              </TiltCard>
-            ))}
+          <div className="relative mt-12">
+            <div ref={raisonsGridRef} className="grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
+              {raisons.map((txt) => (
+                <TiltCard key={txt} ticks={false} className="border-b border-r border-line/[0.08] p-7 md:p-8">
+                  <CellTicks />
+                  <X className="h-9 w-9 text-red-500" strokeWidth={2.5} aria-hidden="true" />
+                  <p className="mt-5 font-display text-[17px] font-extrabold uppercase leading-[1.2] tracking-[-0.005em] text-gold">{txt}</p>
+                </TiltCard>
+              ))}
+            </div>
+            <BlockGuides ticks={false} />
+            <GridRowRules gridRef={raisonsGridRef} />
           </div>
           <SectionOutro>{t('aPropos:pourquoi.outro')}</SectionOutro>
         </div>
