@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { Mail, Clock, Check } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
 import Reveal from '../components/Reveal'
-import { Label, Action, BlockGuides } from '../components/ui/Frame'
-import { useLanguage } from '../context/LanguageContext'
-import { localizedPath } from '../lib/site'
+import { Label, Action } from '../components/ui/Frame'
 
 const SECTION = 'bg-surface'
 const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
@@ -19,12 +17,6 @@ const labelClass = 'font-mono text-[11px] uppercase tracking-[0.14em] text-fg-so
 // Le select natif garde son menu system (accessible, localisé) mais perd son
 // habillage par défaut, incohérent avec les autres champs — d'où le chevron dessiné.
 const selectClass = `${inputClass} appearance-none cursor-pointer pr-10`
-
-// Icônes / href non traduisibles — zippées par index avec les textes de contact.coordonnees.
-const COORDONNEES_META = [
-  { Icon: Mail, href: 'mailto:contact@wahm.com' },
-  { Icon: Clock },
-]
 
 // Réseaux sociaux — icônes SVG inline (lucide n'inclut plus les marques) + noms de
 // marque non traduisibles (utilisés aussi comme aria-label).
@@ -62,8 +54,6 @@ const SOCIALS = [
 
 export default function Contact() {
   const { t } = useTranslation(['common', 'contact'])
-  const { locale } = useLanguage()
-  const coordonnees = t('contact:coordonnees', { returnObjects: true })
   const sujetOptions = t('contact:form.sujetOptions', { returnObjects: true })
   const [status, setStatus] = useState('idle') // 'idle' | 'submitting' | 'success' | 'error'
   const [errorMsg, setErrorMsg] = useState('')
@@ -126,29 +116,41 @@ export default function Contact() {
       {/* ===== HERO — bandeau photo, titre centré (cf. template de référence) ===== */}
       {/* pt = hauteur exacte du header fixe : le bandeau vient le coller, comme le template. */}
       <Reveal as="section" eager className={`${SECTION} overflow-x-clip pt-[72px]`}>
-        <div className={WRAP}>
-          <div className="relative">
-            <div className="relative h-[300px] overflow-hidden bg-surface-2 md:h-[380px] lg:h-[440px]">
-              <img
-                src="/assets/media/contact-hero.webp"
-                alt=""
-                aria-hidden="true"
-                width={1800}
-                height={720}
-                fetchPriority="high"
-                className="absolute inset-0 h-full w-full object-cover grayscale"
-              />
-              {/* Voile bleu nuit : la photo passe au second plan, le titre reste lisible */}
-              <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-scrim) / 0.42) 0%, rgb(var(--c-scrim) / 0.66) 100%)' }} />
-              <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-                <Label>{t('contact:hero.label')}</Label>
-                <h1 className="mt-6 max-w-[900px] font-display text-[38px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[52px] lg:text-[60px]">
-                  {t('contact:hero.title')}<span className="text-wahm-orange">.</span>
-                </h1>
+        {/* Bandeau pleine largeur d'écran — posé HORS du conteneur, contrairement aux
+            autres sections du site : c'est le parti pris du template. */}
+        <div className="relative">
+          <div className="relative h-[320px] overflow-hidden bg-surface-2 md:h-[420px] lg:h-[500px]">
+            <img
+              src="/assets/media/contact-hero.webp"
+              alt=""
+              aria-hidden="true"
+              width={2400}
+              height={840}
+              fetchPriority="high"
+              className="absolute inset-0 h-full w-full object-cover grayscale"
+            />
+            {/* Voile bleu nuit : la photo passe au second plan, le titre reste lisible */}
+            <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-scrim) / 0.52) 0%, rgb(var(--c-scrim) / 0.72) 100%)' }} />
+            <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+              <Label>{t('contact:hero.label')}</Label>
+              <h1 className="mt-6 max-w-[900px] font-display text-[38px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-white sm:text-[52px] lg:text-[60px]">
+                {t('contact:hero.title')}<span className="text-wahm-orange">.</span>
+              </h1>
+            </div>
+          </div>
+          {/* Les verticales du conteneur se prolongent sur le bandeau, un carré au pied
+              de chacune — comme le template. Posées hors du cadre, dont l'overflow-hidden
+              les rognerait. Trait blanc et non bg-line : sur une photo, le liseré de
+              section serait invisible. */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-20">
+            <div className="mx-auto h-full max-w-[1440px] px-5 md:px-10">
+              <div className="relative h-full">
+                <span className="absolute inset-y-0 left-0 w-px bg-white/20" />
+                <span className="absolute inset-y-0 right-0 w-px bg-white/20" />
+                <span className="absolute bottom-0 left-0 h-[5px] w-[5px] -translate-x-1/2 translate-y-1/2 bg-wahm-orange" />
+                <span className="absolute bottom-0 right-0 h-[5px] w-[5px] translate-x-1/2 translate-y-1/2 bg-wahm-orange" />
               </div>
             </div>
-            {/* Repères hors du cadre : son overflow-hidden rognerait les carrés. */}
-            <BlockGuides className="z-20" />
           </div>
         </div>
       </Reveal>
@@ -165,36 +167,6 @@ export default function Contact() {
             <p className="mt-6 max-w-[460px] font-sans text-[16px] leading-[1.7] text-muted">
               {t('contact:hero.subtitle')}
             </p>
-
-            <div className="mt-9 flex flex-col gap-6">
-              {coordonnees.map((c, i) => {
-                const meta = COORDONNEES_META[i]
-                return (
-                  <div key={c.title} className="flex items-start gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center border border-line/[0.12] text-gold">
-                      <meta.Icon className="h-5 w-5" strokeWidth={1.9} aria-hidden="true" />
-                    </span>
-                    <div className="min-w-0">
-                      <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-gold">{c.title}</div>
-                      {meta.href ? (
-                        <a href={meta.href} className="mt-1 block font-display text-[16px] font-bold text-fg no-underline transition-colors hover:text-wahm-orange">{c.value}</a>
-                      ) : (
-                        <div className="mt-1 font-display text-[16px] font-bold text-fg">{c.value}</div>
-                      )}
-                      <p className="mt-1 font-sans text-[13.5px] leading-[1.55] text-muted">{c.desc}</p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-
-            <div className="mt-10 border-t border-line/[0.08] pt-7">
-              <div className="font-display text-[16px] font-bold uppercase tracking-[0.01em] text-fg">{t('contact:info.partnership.title')}</div>
-              <p className="mb-6 mt-3 max-w-[420px] font-sans text-[14px] leading-[1.6] text-muted">
-                {t('contact:info.partnership.text')}
-              </p>
-              <Action to={localizedPath('/devenir-formateur', locale)} variant="outline" size="sm" arrow>{t('contact:info.partnership.cta')}</Action>
-            </div>
 
             {/* Réseaux — ancrés en bas de colonne sur grand écran, comme le template */}
             <div className="mt-10 flex flex-wrap items-center gap-4 lg:mt-auto lg:pt-12">
