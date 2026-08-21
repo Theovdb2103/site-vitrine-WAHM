@@ -175,6 +175,7 @@ export default function Accueil() {
   const { locale } = useLanguage()
   const marketplaceUrl = getMarketplaceUrl(locale)
   const categoriesGridRef = useRef(null)
+  const plateformeGridRef = useRef(null)
 
   const stats = t('accueil:stats', { returnObjects: true })
   const pourquoiCards = t('accueil:pourquoiCards', { returnObjects: true })
@@ -337,28 +338,33 @@ export default function Accueil() {
           <Label>{t('accueil:plateformeSection.label')}</Label>
           <h2 className="mt-5 max-w-[760px] font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-fg sm:text-[36px] md:text-[44px]">{t('accueil:plateformeSection.title1')}<span className="text-wahm-orange">.</span></h2>
 
-          {/* Bento : tuiles asymétriques, images plein cadre */}
-          <div className="mt-12 grid grid-cols-1 gap-3 lg:grid-cols-6">
-            {plateforme.map((f, i) => {
-              const meta = PLATEFORME_META[i]
-              return (
-              <div key={meta.id} className={`relative ${meta.span} ${meta.h}`}>
-                <div className="group relative h-full overflow-hidden border border-line/[0.1] bg-surface-2">
-                  <img src={meta.img} alt={f.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale-[20%] transition-transform duration-700 ease-out group-hover:scale-105" />
-                  <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--c-scrim) / 0.96), rgb(var(--c-scrim) / 0.55) 48%, rgb(var(--c-scrim) / 0.12))' }} />
-                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
-                    <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')} · {f.tag}</span>
-                    <h3 className="mt-2 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[20px]">{f.title}</h3>
-                    <p className="mt-1.5 max-w-[440px] font-sans text-[13.5px] leading-[1.5] text-white/80">{f.desc}</p>
+          {/* Bento : tuiles asymétriques accolées, images plein cadre. Bordures réparties
+              comme sur la grille des catégories — le conteneur porte haut et gauche, les
+              tuiles bas et droite — pour qu'une jointure interne ne cumule jamais deux
+              traits de 1px. Les repères vivent sur la tuile, pas dans son cadre à
+              overflow-hidden qui les rognerait. */}
+          <div className="relative mt-12">
+            <div ref={plateformeGridRef} className="grid grid-cols-1 border-l border-t border-line/[0.1] lg:grid-cols-6">
+              {plateforme.map((f, i) => {
+                const meta = PLATEFORME_META[i]
+                return (
+                <div key={meta.id} className={`relative border-b border-r border-line/[0.1] ${meta.span} ${meta.h}`}>
+                  <CellTicks />
+                  <div className="group relative h-full overflow-hidden bg-surface-2">
+                    <img src={meta.img} alt={f.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover grayscale-[20%] transition-transform duration-700 ease-out group-hover:scale-105" />
+                    <span aria-hidden="true" className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--c-scrim) / 0.96), rgb(var(--c-scrim) / 0.55) 48%, rgb(var(--c-scrim) / 0.12))' }} />
+                    <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+                      <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')} · {f.tag}</span>
+                      <h3 className="mt-2 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-white md:text-[20px]">{f.title}</h3>
+                      <p className="mt-1.5 max-w-[440px] font-sans text-[13.5px] leading-[1.5] text-white/80">{f.desc}</p>
+                    </div>
                   </div>
                 </div>
-                {/* Repères posés HORS de la tuile : son overflow-hidden les rognerait, et
-                    sa bordure décalerait les carrés de 1px vers l'intérieur. z-20 pour
-                    passer au-dessus de la photo. */}
-                <BlockGuides className="z-20" />
-              </div>
-              )
-            })}
+                )
+              })}
+            </div>
+            <BlockGuides ticks={false} />
+            <GridRowRules gridRef={plateformeGridRef} />
           </div>
 
           <SectionOutro>{t('accueil:plateformeSection.outro')}</SectionOutro>
