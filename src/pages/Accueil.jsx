@@ -6,7 +6,7 @@ import Page from '../components/Page'
 import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
 import HomeHero from '../components/sections/HomeHero'
 import { GhostNumber } from '../components/ui/Kinetic'
-import { Label, SectionHead, Action, Framed, CornerTicks, GridTicks, BlockGuides, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
+import { Label, SectionHead, Action, Framed, CornerTicks, GridTicks, CellTicks, BlockGuides, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
 import { ExpandingCards } from '../components/ui/ExpandingCards'
 import SectionOutro from '../components/SectionOutro'
 import Globe from '../components/Globe'
@@ -250,7 +250,7 @@ export default function Accueil() {
       </Reveal>
 
       {/* ===== CATEGORIES ===== */}
-      <Reveal as="section" id="categories" className={`scroll-mt-[80px] ${SECTION} py-20 md:py-[120px]`}>
+      <Reveal as="section" id="categories" className={`scroll-mt-[80px] ${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead
             label={t('accueil:categoriesSection.label')}
@@ -258,32 +258,36 @@ export default function Accueil() {
           >
             {t('accueil:categoriesSection.title')}
           </SectionHead>
-          <div className="mt-12 grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
-            {categories.map((cat, i) => {
-              const meta = CATEGORIES_META[i]
-              return (
-              <TiltCard key={cat.title} href={marketplaceUrl} className="block border-b border-r border-line/[0.08] no-underline transition-colors duration-200 hover:bg-surface-2" max={5}>
-                {/* Visuel : image plein cadre + zoom au survol + dégradé navy */}
-                <div className="relative">
-                  <div className="relative h-[208px] w-full overflow-hidden">
-                    <img src={meta.img} alt={cat.title} loading="lazy" className="h-full w-full object-cover grayscale-[25%] transition-transform duration-700 ease-out group-hover:scale-[1.06]" />
-                    <span aria-hidden="true" className="img-fade absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--c-surface) / 0.96) 0%, rgb(var(--c-surface) / 0.30) 55%, rgb(var(--c-surface) / 0.05) 100%)' }} />
+          <div className="relative mt-12">
+            <div className="grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
+              {categories.map((cat, i) => {
+                const meta = CATEGORIES_META[i]
+                return (
+                <TiltCard key={cat.title} href={marketplaceUrl} ticks={false} className="block border-b border-r border-line/[0.08] no-underline transition-colors duration-200 hover:bg-surface-2" max={5}>
+                  <CellTicks />
+                  {/* Visuel : image plein cadre + zoom au survol + dégradé navy */}
+                  <div className="relative">
+                    <div className="relative h-[208px] w-full overflow-hidden">
+                      <img src={meta.img} alt={cat.title} loading="lazy" className="h-full w-full object-cover grayscale-[25%] transition-transform duration-700 ease-out group-hover:scale-[1.06]" />
+                      <span aria-hidden="true" className="img-fade absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--c-surface) / 0.96) 0%, rgb(var(--c-surface) / 0.30) 55%, rgb(var(--c-surface) / 0.05) 100%)' }} />
+                    </div>
+                    {/* Accent orange qui se déploie au survol */}
+                    <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                    {/* Numéro */}
+                    <span className="absolute right-4 top-4 font-mono text-[12px] font-semibold tracking-[0.1em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
+                    {/* Pastille icône, chevauchant le bas du visuel */}
+                    <span className="absolute -bottom-6 left-6 flex h-12 w-12 items-center justify-center border border-line/15 bg-surface text-gold"><meta.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" /></span>
                   </div>
-                  {/* Accent orange qui se déploie au survol */}
-                  <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                  {/* Numéro */}
-                  <span className="absolute right-4 top-4 font-mono text-[12px] font-semibold tracking-[0.1em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
-                  {/* Pastille icône, chevauchant le bas du visuel */}
-                  <span className="absolute -bottom-6 left-6 flex h-12 w-12 items-center justify-center border border-line/15 bg-surface text-gold"><meta.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" /></span>
-                </div>
-                <div className="p-7 pt-10 md:px-8 md:pb-8">
-                  <h3 className="font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-fg md:text-[20px]">{cat.title}</h3>
-                  <p className="mt-3 font-sans text-[14px] leading-[1.6] text-muted">{cat.desc}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-gold">{t('accueil:categoriesSection.exploreCard')} <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
-                </div>
-              </TiltCard>
-              )
-            })}
+                  <div className="p-7 pt-10 md:px-8 md:pb-8">
+                    <h3 className="font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-fg md:text-[20px]">{cat.title}</h3>
+                    <p className="mt-3 font-sans text-[14px] leading-[1.6] text-muted">{cat.desc}</p>
+                    <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-gold">{t('accueil:categoriesSection.exploreCard')} <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span></span>
+                  </div>
+                </TiltCard>
+                )
+              })}
+            </div>
+            <BlockGuides ticks={false} />
           </div>
           <SectionOutro>{t('accueil:categoriesSection.outro')}</SectionOutro>
         </div>

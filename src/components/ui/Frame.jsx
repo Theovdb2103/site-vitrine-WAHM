@@ -72,6 +72,28 @@ export function GridTicks({ cols, rows, className = '' }) {
   )
 }
 
+// Marques d'angle d'une CELLULE de grille (cellules bordées en bas et à droite, la
+// grille portant les bordures haut et gauche). Identique à CornerTicks, mais centrée
+// sur la boîte de BORDURE et non sur celle de padding — les deux ne coïncident pas,
+// la cellule n'ayant de bordure que sur deux côtés. Sans cette compensation, la
+// marque droite d'une cellule et la marque gauche de sa voisine tombent à 1px l'une
+// de l'autre et forment une marque visiblement épaissie.
+//
+// Ainsi corrigées, les marques des cellules adjacentes se superposent exactement :
+// chaque intersection n'affiche qu'un carré de 5px. À préférer à GridTicks dès que
+// les rangées peuvent être de hauteurs différentes (contenu variable), GridTicks
+// supposant une grille régulière.
+export function CellTicks({ className = '' }) {
+  return (
+    <span className={className} aria-hidden="true">
+      <Mark className="-left-[2.5px] -top-[2.5px]" />
+      <Mark className="-right-[3.5px] -top-[2.5px]" />
+      <Mark className="-bottom-[3.5px] -left-[2.5px]" />
+      <Mark className="-bottom-[3.5px] -right-[3.5px]" />
+    </span>
+  )
+}
+
 // Repères d'un bloc : ses liserés haut et bas prolongés jusqu'aux bords de l'écran,
 // plus un carré orange centré sur chacun des quatre angles. À poser dans un parent
 // `relative` qui épouse exactement le bloc.
@@ -80,12 +102,14 @@ export function GridTicks({ cols, rows, className = '' }) {
 // et seraient rognés d'un quart. Si un rognage est nécessaire (les prolongements
 // mesurent 100vw), le poser en overflow-x-clip sur la section — il ne rogne que
 // l'horizontale et laisse les carrés intacts.
-export function BlockGuides({ className = '' }) {
+// `ticks={false}` quand les angles sont déjà marqués autrement — par les CellTicks
+// des cellules d'une grille, par exemple.
+export function BlockGuides({ ticks = true, className = '' }) {
   return (
     <span aria-hidden="true" className={`pointer-events-none absolute inset-0 ${className}`}>
       <span className="absolute left-1/2 top-0 h-px w-screen -translate-x-1/2 bg-line/[0.08]" />
       <span className="absolute bottom-0 left-1/2 h-px w-screen -translate-x-1/2 bg-line/[0.08]" />
-      <CornerTicks />
+      {ticks && <CornerTicks />}
     </span>
   )
 }
