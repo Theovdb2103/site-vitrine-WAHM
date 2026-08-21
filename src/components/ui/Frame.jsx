@@ -282,7 +282,9 @@ const ACT_SIZE = {
 export function Action({ to, onClick, type = 'button', variant = 'filled', size = 'md', arrow = false, className = '', children, ...rest }) {
   const v = VARIANTS[variant] || VARIANTS.filled
   const s = ACT_SIZE[size] || ACT_SIZE.md
-  const radius = 'rounded-md'
+  // Angles droits, jamais arrondis : rounded-none est explicite plutôt qu'omis, pour
+  // rester immunisé si un rayon par défaut était un jour ajouté à la config Tailwind.
+  const radius = 'rounded-none'
   const base = `group relative inline-flex items-center justify-center overflow-hidden border-2 font-display font-bold uppercase tracking-[0.08em] no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight disabled:cursor-not-allowed disabled:opacity-60 ${radius} ${s.h} ${v.border} ${className}`
 
   const content = (
