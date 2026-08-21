@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
@@ -94,6 +94,46 @@ export function CellTicks({ className = '' }) {
   )
 }
 
+// Prolonge jusqu'aux bords de l'écran les séparations INTERNES d'une grille, c'est-à-dire
+// les bords entre rangées (BlockGuides ne prolonge que le haut et le bas du bloc).
+//
+// Leur position ne se déduit pas en CSS : le nombre de rangées change avec le point de
+// rupture et leurs hauteurs dépendent de la longueur des textes. On mesure donc les
+// cellules — via offsetTop/offsetHeight, insensibles aux transformations : les cartes
+// pouvant s'incliner au survol, getBoundingClientRect ferait sauter les traits. C'est
+// aussi pourquoi les traits sont posés sur le conteneur et non dans les cellules.
+//
+// `gridRef` doit pointer la grille, elle-même enfant direct d'un parent `relative`.
+// Purement décoratif : rien n'est rendu tant que la mesure n'a pas eu lieu.
+export function GridRowRules({ gridRef }) {
+  const [bords, setBords] = useState([])
+
+  useEffect(() => {
+    const grid = gridRef.current
+    if (!grid || typeof ResizeObserver === 'undefined') return undefined
+    const mesurer = () => {
+      const cellules = [...grid.children]
+      const bas = [...new Set(cellules.map((c) => c.offsetTop + c.offsetHeight))].sort((a, b) => a - b)
+      // La dernière valeur est le bas de la grille — déjà tracé par BlockGuides.
+      setBords(bas.slice(0, -1))
+    }
+    mesurer()
+    const ro = new ResizeObserver(mesurer)
+    ro.observe(grid)
+    ;[...grid.children].forEach((c) => ro.observe(c))
+    return () => ro.disconnect()
+  }, [gridRef])
+
+  return (
+    <span aria-hidden="true" className="pointer-events-none absolute inset-0">
+      {bords.map((b) => (
+        // -1px : on recouvre le pixel de la bordure basse de la cellule.
+        <span key={b} className="absolute left-1/2 h-px w-screen -translate-x-1/2 bg-line/[0.08]" style={{ top: b - 1 }} />
+      ))}
+    </span>
+  )
+}
+
 // Repères d'un bloc : ses liserés haut et bas prolongés jusqu'aux bords de l'écran,
 // plus un carré orange centré sur chacun des quatre angles. À poser dans un parent
 // `relative` qui épouse exactement le bloc.
@@ -127,9 +167,13 @@ export function Framed({ as: Tag = 'div', className = '', ticks = true, tickColo
 // Carte interactive « verre dépoli » : au survol, légère inclinaison 3D suivant le
 // curseur + reflet orange qui suit la souris. Conserve le liseré fin + les marques
 // d'angle WAHM. Rendu <a> si `href`, sinon <div>. Respecte prefers-reduced-motion.
-export function TiltCard({ as = 'div', href, className = '', children, max = 7, ticks = true, ...rest }) {
+// `tilt={false}` : la carte ne s'incline plus, elle reste parfaitement stable au
+// survol. Le reflet orange qui suit le curseur, lui, est conservé — il n'entraîne
+// aucun déplacement de la carte.
+export function TiltCard({ as = 'div', href, className = '', children, max = 7, ticks = true, tilt = true, ...rest }) {
   const ref = useRef(null)
   const reduce = useReducedMotion()
+  const incline = tilt && !reduce
 
   const onMove = (e) => {
     const el = ref.current
@@ -137,8 +181,10 @@ export function TiltCard({ as = 'div', href, className = '', children, max = 7, 
     const r = el.getBoundingClientRect()
     const px = (e.clientX - r.left) / r.width
     const py = (e.clientY - r.top) / r.height
-    el.style.setProperty('--ry', `${(px - 0.5) * max * 2}deg`)
-    el.style.setProperty('--rx', `${(0.5 - py) * max * 2}deg`)
+    if (incline) {
+      el.style.setProperty('--ry', `${(px - 0.5) * max * 2}deg`)
+      el.style.setProperty('--rx', `${(0.5 - py) * max * 2}deg`)
+    }
     el.style.setProperty('--mx', `${px * 100}%`)
     el.style.setProperty('--my', `${py * 100}%`)
   }
@@ -156,8 +202,8 @@ export function TiltCard({ as = 'div', href, className = '', children, max = 7, 
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className={`group relative transition-transform duration-200 ease-out will-change-transform hover:z-10 ${className}`}
-      style={reduce ? undefined : { transform: 'perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))' }}
+      className={`group relative hover:z-10 ${incline ? 'transition-transform duration-200 ease-out will-change-transform' : ''} ${className}`}
+      style={incline ? { transform: 'perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))' } : undefined}
       {...tagProps}
       {...rest}
     >

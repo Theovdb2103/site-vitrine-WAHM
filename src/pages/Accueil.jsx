@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { Dumbbell, HeartPulse, Activity, Wind, Brain, Target, Check, Award, Sparkles, Languages, Globe2, Users, BadgeCheck, FlaskConical, Layers } from 'lucide-react'
@@ -6,7 +6,7 @@ import Page from '../components/Page'
 import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
 import HomeHero from '../components/sections/HomeHero'
 import { GhostNumber } from '../components/ui/Kinetic'
-import { Label, SectionHead, Action, Framed, CornerTicks, GridTicks, CellTicks, BlockGuides, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
+import { Label, SectionHead, Action, Framed, CornerTicks, GridTicks, CellTicks, BlockGuides, GridRowRules, Motif, Shot, TiltCard, GridPattern, ChevronDivider } from '../components/ui/Frame'
 import { ExpandingCards } from '../components/ui/ExpandingCards'
 import SectionOutro from '../components/SectionOutro'
 import Globe from '../components/Globe'
@@ -174,6 +174,7 @@ export default function Accueil() {
   const { t } = useTranslation(['common', 'accueil'])
   const { locale } = useLanguage()
   const marketplaceUrl = getMarketplaceUrl(locale)
+  const categoriesGridRef = useRef(null)
 
   const stats = t('accueil:stats', { returnObjects: true })
   const pourquoiCards = t('accueil:pourquoiCards', { returnObjects: true })
@@ -259,11 +260,11 @@ export default function Accueil() {
             {t('accueil:categoriesSection.title')}
           </SectionHead>
           <div className="relative mt-12">
-            <div className="grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
+            <div ref={categoriesGridRef} className="grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
               {categories.map((cat, i) => {
                 const meta = CATEGORIES_META[i]
                 return (
-                <TiltCard key={cat.title} href={marketplaceUrl} ticks={false} className="block border-b border-r border-line/[0.08] no-underline transition-colors duration-200 hover:bg-surface-2" max={5}>
+                <TiltCard key={cat.title} href={marketplaceUrl} ticks={false} tilt={false} className="block border-b border-r border-line/[0.08] no-underline transition-colors duration-200 hover:bg-surface-2" max={5}>
                   <CellTicks />
                   {/* Visuel : image plein cadre + zoom au survol + dégradé navy */}
                   <div className="relative">
@@ -288,6 +289,7 @@ export default function Accueil() {
               })}
             </div>
             <BlockGuides ticks={false} />
+            <GridRowRules gridRef={categoriesGridRef} />
           </div>
           <SectionOutro>{t('accueil:categoriesSection.outro')}</SectionOutro>
         </div>
