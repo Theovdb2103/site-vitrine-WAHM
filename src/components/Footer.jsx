@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useLanguage } from '../context/LanguageContext'
 import { getMarketplaceUrl, localizedPath } from '../lib/site'
+import wahmLogo from '../assets/wahm-logo.webp'
 
 // Lien de footer : couleur douce, survol doré.
 function FLink({ to, children }) {
@@ -76,7 +77,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-x-8 gap-y-12 px-5 py-[80px] md:px-10 lg:grid-cols-[1.7fr_1fr_1fr_1fr_1.1fr] lg:gap-x-10">
         {/* Bloc marque (gauche) */}
         <div className="col-span-2 lg:col-span-1">
-          <img src="/assets/wahm-logo.png" alt="WAHM" className="block h-[40px] w-auto" />
+          <img src={wahmLogo} alt="WAHM" width="544" height="311" className="block h-[40px] w-auto" />
           <p className="mt-7 max-w-[300px] font-display text-[22px] font-extrabold uppercase leading-[1.1] tracking-[-0.01em] text-fg md:text-[26px]">
             {t('footer.tagline').replace(/\.$/, '')}<span className="text-wahm-orange">.</span>
           </p>

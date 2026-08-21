@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef } from 'react'
-import createGlobe from 'cobe'
 
 // Globe interactif (cobe) habillé selon la DA WAHM : sphère bleu nuit, marqueurs
 // orange WAHM, halo discret. Villes = réseau international WAHM (hub Paris).
@@ -69,28 +68,61 @@ export default function Globe({ className = '', config = WAHM_GLOBE }) {
     window.addEventListener('resize', onResize)
     onResize()
 
-    const globe = createGlobe(canvasRef.current, {
-      ...config,
-      width: widthRef.current * 2,
-      height: widthRef.current * 2,
-      onRender,
-    })
+    // `cobe` (WebGL) n'est ni téléchargé ni initialisé tant que le globe n'approche
+    // pas de l'écran : sur l'accueil il est bas de page, la majorité des visiteurs
+    // n'atteint jamais cette section.
+    let globe = null
+    let creating = false
+    let cancelled = false
+    let fadeTimer = null
+
+    const create = async () => {
+      if (globe || creating || cancelled) return
+      creating = true
+      try {
+        const { default: createGlobe } = await import('cobe')
+        // Le composant a pu être démonté pendant le téléchargement du module.
+        if (cancelled || !canvasRef.current) return
+        globe = createGlobe(canvasRef.current, {
+          ...config,
+          width: widthRef.current * 2,
+          height: widthRef.current * 2,
+          onRender,
+        })
+        fadeTimer = setTimeout(() => {
+          if (canvasRef.current) canvasRef.current.style.opacity = '1'
+        })
+      } catch (e) {
+        // Chunk indisponible (réseau, déploiement en cours) : la section reste sans
+        // globe plutôt que de casser la page — le canvas est purement décoratif.
+      } finally {
+        creating = false
+      }
+    }
 
     // Le rendu WebGL tourne en continu à 60fps tant qu'il n'est pas mis en pause :
     // on le coupe quand le globe sort de l'écran pour ne pas grignoter le budget
     // de fluidité du scroll ailleurs sur la page (aucun changement visuel).
-    const io = new IntersectionObserver(([entry]) => {
-      globe.toggle(entry.isIntersecting)
-    })
-    if (canvasRef.current) io.observe(canvasRef.current)
+    let io = null
+    if (typeof IntersectionObserver === 'undefined') {
+      create()
+    } else {
+      io = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) create()
+          if (globe) globe.toggle(entry.isIntersecting)
+        },
+        // marge d'anticipation : le globe est prêt quand il entre réellement à l'écran
+        { rootMargin: '200px' },
+      )
+      if (canvasRef.current) io.observe(canvasRef.current)
+    }
 
-    const t = setTimeout(() => {
-      if (canvasRef.current) canvasRef.current.style.opacity = '1'
-    })
     return () => {
-      clearTimeout(t)
-      io.disconnect()
-      globe.destroy()
+      cancelled = true
+      if (fadeTimer) clearTimeout(fadeTimer)
+      io?.disconnect()
+      globe?.destroy()
       window.removeEventListener('resize', onResize)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

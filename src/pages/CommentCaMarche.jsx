@@ -158,7 +158,7 @@ export default function CommentCaMarche() {
     <Page title={t('commentCaMarche:meta.title')} description={t('commentCaMarche:meta.description')} pathKey="/comment-ca-marche">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" id="top" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" id="top" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
         <div className={WRAP}>
           <div className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
             {/* Colonne texte */}
@@ -180,7 +180,7 @@ export default function CommentCaMarche() {
             {/* Colonne visuel — ratio carré (le portrait est recadré, comme sur Devenir formateur) */}
             <div className="relative min-w-0 border-b border-r border-line/[0.08]">
               <CornerTicks />
-              <Shot src="/assets/media/ccm-etudiant.webp" alt={t('commentCaMarche:hero.imageAlt')} className="aspect-square w-full" position="center" corners />
+              <Shot src="/assets/media/ccm-etudiant.webp" alt={t('commentCaMarche:hero.imageAlt')} className="aspect-square w-full" position="center" corners priority width={1100} height={1100} />
               <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 z-10 hidden w-[150px] md:grid" />
             </div>
           </div>

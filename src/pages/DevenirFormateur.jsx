@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react'
-import emailjs from '@emailjs/browser'
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion'
 import { Globe, Coins, Star, Settings, Users, Check, ChevronDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
@@ -73,7 +72,33 @@ export default function DevenirFormateur() {
   const timelineRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: timelineRef, offset: ['start 0.78', 'end 0.55'] })
   const railScaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 })
-  const dotTop = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+
+  // Le point descend via `transform` plutôt que `top` : `top` force un calcul de mise
+  // en page à chaque frame de scroll, contrairement à la barre voisine qui anime déjà
+  // scaleY. Il faut donc la hauteur réelle du rail en pixels, remesurée si elle change.
+  const [timelineHeight, setTimelineHeight] = useState(0)
+  useEffect(() => {
+    const el = timelineRef.current
+    if (!el) return
+    const measure = () => setTimelineHeight(el.offsetHeight)
+    measure()
+    if (typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+  // Le rail est posé en top-3/bottom-3 : il court donc de 12 px à (hauteur - 12) px.
+  // Le point est positionné en top-0 sans marge, son centre étant à 5,5 px de son bord
+  // haut ; la translation vise ces deux bornes pour que le centre coïncide exactement
+  // avec le début et la fin du rail. (`y` de Framer Motion écrasant tout transform de
+  // classe, le centrage ne peut pas passer par -translate-y-1/2.)
+  const RAIL_INSET = 12
+  const DOT_RADIUS = 5.5
+  const dotY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [RAIL_INSET - DOT_RADIUS, Math.max(0, timelineHeight - RAIL_INSET) - DOT_RADIUS],
+  )
 
   // 'idle' | 'submitting' | 'success' | 'error'
   const [status, setStatus] = useState('idle')
@@ -153,7 +178,10 @@ export default function DevenirFormateur() {
     setStatus('submitting')
     setErrorMsg('')
     try {
-      await emailjs.send(
+      // Le SDK n'est utile qu'à l'envoi : le charger ici évite de le livrer à
+      // l'affichage de la page.
+      const { send } = await import('@emailjs/browser')
+      await send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_CANDIDATURE,
         {
@@ -179,7 +207,7 @@ export default function DevenirFormateur() {
     <Page title={t('devenirFormateur:meta.title')} description={t('devenirFormateur:meta.description')} pathKey="/devenir-formateur">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
         <div className={WRAP}>
           <div className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
             <div className="relative min-w-0 border-b border-r border-line/[0.08] p-7 py-12 md:p-12 md:py-16">
@@ -198,7 +226,7 @@ export default function DevenirFormateur() {
             </div>
             <div className="relative min-w-0 border-b border-r border-line/[0.08]">
               <CornerTicks />
-              <Shot src="/assets/media/formateur-portrait.webp" alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[280px] w-full" position="top" corners />
+              <Shot src="/assets/media/formateur-portrait.webp" alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[280px] w-full" position="top" corners priority width={900} height={900} />
               <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
             </div>
           </div>
@@ -320,7 +348,7 @@ export default function DevenirFormateur() {
             {/* Rail de progression (se remplit au scroll) */}
             <motion.span aria-hidden="true" style={{ scaleY: railScaleY }} className="absolute left-[21px] top-3 bottom-3 w-px origin-top bg-gradient-to-b from-wahm-orange to-wahm-gold md:left-[25px]" />
             {/* Point lumineux qui descend au scroll */}
-            <motion.span aria-hidden="true" style={{ top: dotTop }} className="absolute left-[21px] z-0 -ml-[5px] mt-3 h-[11px] w-[11px] -translate-y-1/2 rounded-full bg-wahm-orange shadow-[0_0_16px_4px_rgba(255,123,44,0.7)] md:left-[25px]" />
+            <motion.span aria-hidden="true" style={{ y: dotY }} className="absolute left-[21px] top-0 z-0 -ml-[5px] h-[11px] w-[11px] rounded-full bg-wahm-orange shadow-[0_0_16px_4px_rgba(255,123,44,0.7)] md:left-[25px]" />
 
             <RevealStagger as="ol" className="relative m-0 list-none p-0">
               {etapesItems.map((step, i) => (

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
 import { Mail, Clock, Check } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
@@ -93,7 +92,10 @@ export default function Contact() {
     setErrorMsg('')
 
     try {
-      await emailjs.send(
+      // Le SDK n'est utile qu'à l'envoi : le charger ici évite de le livrer à
+      // l'affichage de la page.
+      const { send } = await import('@emailjs/browser')
+      await send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT,
         {
@@ -116,7 +118,7 @@ export default function Contact() {
     <Page title={t('contact:meta.title')} description={t('contact:meta.description')} path="/contact">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
         <div className={`${WRAP} relative py-12 md:py-16`}>
           <CornerTicks />
           <Motif color="#D4A018" cols={6} rows={5} className="pointer-events-none absolute right-5 top-1/2 hidden w-[210px] -translate-y-1/2 md:right-10 lg:grid" />

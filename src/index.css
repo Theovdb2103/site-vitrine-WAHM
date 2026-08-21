@@ -1,3 +1,12 @@
+/* Polices auto-hébergées (versions variables : un fichier couvre toutes les graisses,
+   par sous-ensemble Unicode — latin, latin-ext, cyrillique… conservés tels quels, le
+   navigateur ne télécharge que ce dont la page a besoin). Servies depuis notre propre
+   domaine : plus de résolution DNS/TLS vers un tiers ni d'aller-retour CSS avant que
+   le navigateur ne découvre les fichiers. Variantes italiques volontairement non
+   importées : le site n'en chargeait pas non plus via Google Fonts. */
+@import '@fontsource-variable/montserrat/wght.css';
+@import '@fontsource-variable/inter/wght.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
