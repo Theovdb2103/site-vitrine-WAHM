@@ -4,7 +4,7 @@ import Page from '../components/Page'
 import Reveal from '../components/Reveal'
 import SectionOutro from '../components/SectionOutro'
 import { GhostNumber } from '../components/ui/Kinetic'
-import { Label, SectionHead, Action, ChevronDivider, CornerTicks, Motif, TiltCard } from '../components/ui/Frame'
+import { Label, SectionHead, Action, ChevronDivider, CornerTicks, BlockGuides, Motif, TiltCard } from '../components/ui/Frame'
 import { useLanguage } from '../context/LanguageContext'
 import { getMarketplaceUrl, localizedPath } from '../lib/site'
 
@@ -124,7 +124,7 @@ export default function APropos() {
       <ChevronDivider className="py-2" />
 
       {/* ===== NOTRE MISSION ===== */}
-      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
+      <Reveal as="section" className={`${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         <div className={WRAP}>
           {/* En-tête deux colonnes — titre à gauche, intro à droite (façon « Our squad ») */}
           <div className="grid grid-cols-1 gap-7 lg:grid-cols-[1.25fr_1fr] lg:items-end lg:gap-16">
@@ -145,17 +145,22 @@ export default function APropos() {
               const meta = DOMAINES_META[i]
               return (
                 <article key={d.title} className="group">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-surface-2">
-                    <img
-                      src={meta.img}
-                      alt={d.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover grayscale transition duration-[800ms] ease-out will-change-transform group-hover:scale-[1.05] group-hover:grayscale-0"
-                      style={{ objectPosition: meta.pos }}
-                    />
-                    <span aria-hidden="true" className="img-fade pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-surface) / 0) 42%, rgb(var(--c-surface) / 0.78) 100%)' }} />
-                    <GhostNumber className="absolute left-5 top-4 text-[46px]" stroke="rgba(255,123,44,0.6)">{String(i + 1).padStart(2, '0')}</GhostNumber>
-                    <span aria-hidden="true" className="pointer-events-none absolute bottom-3 right-3 h-7 w-7 border-b-2 border-r-2 border-wahm-goldLight/70" />
+                  {/* Repères posés HORS du cadre de l'image : son overflow-hidden
+                      (recadrage + zoom au survol) rognerait les carrés d'angle. */}
+                  <div className="relative">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-surface-2">
+                      <img
+                        src={meta.img}
+                        alt={d.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover grayscale transition duration-[800ms] ease-out will-change-transform group-hover:scale-[1.05] group-hover:grayscale-0"
+                        style={{ objectPosition: meta.pos }}
+                      />
+                      <span aria-hidden="true" className="img-fade pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-surface) / 0) 42%, rgb(var(--c-surface) / 0.78) 100%)' }} />
+                      <GhostNumber className="absolute left-5 top-4 text-[46px]" stroke="rgba(255,123,44,0.6)">{String(i + 1).padStart(2, '0')}</GhostNumber>
+                      <span aria-hidden="true" className="pointer-events-none absolute bottom-3 right-3 h-7 w-7 border-b-2 border-r-2 border-wahm-goldLight/70" />
+                    </div>
+                    <BlockGuides className="z-20" />
                   </div>
                   <div className="mt-5 flex items-start gap-3">
                     <span aria-hidden="true" className="mt-[7px] h-[2px] w-7 shrink-0 bg-wahm-orange transition-all duration-300 group-hover:w-11" />
