@@ -3,7 +3,7 @@ import { Check } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
 import Reveal from '../components/Reveal'
-import { Label, Action } from '../components/ui/Frame'
+import { Label, Action, CellTicks, BlockGuides } from '../components/ui/Frame'
 import { useLanguage } from '../context/LanguageContext'
 import { getMarketplaceUrl } from '../lib/site'
 
@@ -270,39 +270,51 @@ export default function Contact() {
       </Reveal>
 
       {/* ===== CTA FINAL (bloc accent + photo) — repris du template de référence ===== */}
-      <section className={`${SECTION} pb-20 md:pb-[120px]`}>
+      {/* overflow-x-clip : contient les prolongements de 200vw sans rogner la verticale. */}
+      <section className={`${SECTION} overflow-x-clip pb-20 md:pb-[120px]`}>
         <div className={WRAP}>
-          <div className="relative grid grid-cols-1 overflow-hidden lg:grid-cols-2 lg:min-h-[560px]">
-            {/* Colonne gauche : bloc accent (titre + CTA) puis paragraphe sur fond sombre */}
-            <div className="flex flex-col">
-              <div className="flex flex-1 flex-col justify-center bg-wahm-orange px-7 py-14 md:px-12 md:py-16">
-                <h2 className="max-w-[480px] font-display text-[32px] font-black uppercase leading-[0.98] tracking-[-0.02em] text-wahm-navy sm:text-[42px] md:text-[48px]">
-                  {t('contact:final.title')}
-                </h2>
-                <div className="mt-9">
-                  <Action to={marketplaceUrl} variant="dark" arrow>{t('common:cta.discover')}</Action>
+          <div className="relative">
+            <div className="grid grid-cols-1 border-l border-t border-line/[0.08] lg:grid-cols-2 lg:min-h-[560px]">
+              {/* Colonne gauche : bloc accent (titre + CTA) puis paragraphe sur fond sombre */}
+              <div className="relative flex flex-col border-b border-r border-line/[0.08]">
+                <CellTicks />
+                <div className="flex flex-1 flex-col justify-center bg-wahm-orange px-7 py-14 md:px-12 md:py-16">
+                  <h2 className="max-w-[480px] font-display text-[32px] font-black uppercase leading-[0.98] tracking-[-0.02em] text-wahm-navy sm:text-[42px] md:text-[48px]">
+                    {t('contact:final.title')}
+                  </h2>
+                  <div className="mt-9">
+                    <Action to={marketplaceUrl} variant="dark" arrow>{t('common:cta.discover')}</Action>
+                  </div>
+                </div>
+                <div className="border-t border-line/[0.08] bg-surface-2 px-7 py-10 md:px-12 md:py-12">
+                  <p className="max-w-[440px] font-sans text-[15.5px] leading-[1.7] text-muted">
+                    {t('contact:final.text')}
+                  </p>
                 </div>
               </div>
-              <div className="border-t border-line/[0.08] bg-surface-2 px-7 py-10 md:px-12 md:py-12">
-                <p className="max-w-[440px] font-sans text-[15.5px] leading-[1.7] text-muted">
-                  {t('contact:final.text')}
-                </p>
+
+              {/* Colonne droite : photo pleine hauteur. L'image et son voile vivent dans un
+                  calque interne à overflow-hidden — sans quoi CellTicks, qui déborde de
+                  2,5px, serait rogné. */}
+              <div className="relative h-[280px] border-b border-r border-line/[0.08] lg:h-auto">
+                <CellTicks />
+                <div className="absolute inset-0 overflow-hidden">
+                  <img
+                    src="/assets/media/cta-final.webp"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    width={1400}
+                    height={1600}
+                    className="h-full w-full object-cover grayscale"
+                  />
+                  <span aria-hidden="true" className="img-fade pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-surface) / 0.1), rgb(var(--c-surface) / 0.32))' }} />
+                </div>
               </div>
             </div>
-
-            {/* Colonne droite : photo pleine hauteur */}
-            <div className="relative h-[280px] lg:h-auto">
-              <img
-                src="/assets/media/cta-final.webp"
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                width={1400}
-                height={1600}
-                className="absolute inset-0 h-full w-full object-cover grayscale"
-              />
-              <span aria-hidden="true" className="img-fade pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-surface) / 0.1), rgb(var(--c-surface) / 0.32))' }} />
-            </div>
+            {/* Liserés haut/bas prolongés jusqu'aux bords de l'écran ; ticks={false} car
+                les quatre coins sont déjà marqués par les CellTicks des deux cellules. */}
+            <BlockGuides ticks={false} className="z-20" />
           </div>
         </div>
       </section>
