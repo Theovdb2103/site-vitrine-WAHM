@@ -21,22 +21,61 @@ const HERO_WEBP = `${heroWebp480} 480w, ${heroWebp768} 768w, ${heroWebp1200} 120
 // Colonne pleine largeur sur mobile, ~moitié du conteneur 1440px à partir de lg.
 const HERO_SIZES = '(min-width: 1024px) 700px, 100vw'
 
+// Teinte des traits de la grille de repères — même valeur que les liserés de section
+// du reste du site, pour rester discret.
+const RULE = 'bg-line/[0.08]'
+
+// Petit carré orange posé sur une intersection de la grille (même vocabulaire que les
+// CornerTicks du reste du site). Le positionnement — y compris le centrage sur le
+// point d'intersection — est entièrement passé par `className`.
+function GuideMark({ className = '' }) {
+  return <span aria-hidden="true" className={`absolute h-[5px] w-[5px] bg-wahm-orange ${className}`} />
+}
+
+// Repères verticaux courant sur TOUTE la hauteur du héros : les deux bords du
+// conteneur et la césure entre les colonnes texte / image. Calque au-dessus de la
+// photo (z-[2]) pour que les traits et les carrés restent lisibles par-dessus elle.
+// Masqué sous lg, où les colonnes sont empilées et la grille n'aurait aucun sens.
+function HeroGuides() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[2] hidden lg:block">
+      <div className="mx-auto h-full max-w-[1440px] px-5 md:px-10">
+        <div className="relative h-full">
+          <span className={`absolute inset-y-0 left-0 w-px ${RULE}`} />
+          <span className={`absolute inset-y-0 left-1/2 w-px ${RULE}`} />
+          <span className={`absolute inset-y-0 right-0 w-px ${RULE}`} />
+          {/* Carrés de pied — ferment la grille sur le liseré de la section suivante */}
+          <GuideMark className="bottom-0 left-0 -translate-x-1/2 translate-y-1/2" />
+          <GuideMark className="bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" />
+          <GuideMark className="bottom-0 right-0 translate-x-1/2 translate-y-1/2" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function HomeHero() {
   const { t } = useTranslation(['common', 'accueil'])
   const { locale } = useLanguage()
   const marketplaceUrl = getMarketplaceUrl(locale)
 
   return (
-    <section id="top" className="relative bg-surface pt-[104px] md:pt-[120px]">
-      <RevealStagger eager className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2">
-        {/* Colonne texte */}
-        <div className="relative flex flex-col justify-start border-line/[0.08] py-12 lg:border-r lg:py-16 lg:pr-12">
+    // overflow-hidden : la barre traversante se prolonge de 100vw de chaque côté pour
+    // rejoindre les bords de l'écran — on évite ainsi tout débordement horizontal.
+    <section id="top" className="relative overflow-hidden bg-surface pt-[104px] md:pt-[120px]">
+      <HeroGuides />
+      <RevealStagger eager className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr]">
+        {/* Colonne texte, rangée 1 : accroche + titre */}
+        <div className="relative flex flex-col justify-start pb-3 pt-12 lg:col-start-1 lg:row-start-1 lg:pb-8 lg:pr-12 lg:pt-16">
           <RevealItem eager><Label>{t('accueil:hero.label')}</Label></RevealItem>
           <RevealItem as="h1" eager className="mt-7 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
             {t('accueil:hero.title1')}<br />{t('accueil:hero.title2')}<br />{t('accueil:hero.title3')}<span className="text-wahm-orange">.</span>
           </RevealItem>
-          <RevealItem as="div" eager aria-hidden="true" className="mt-6 h-px w-full max-w-[440px] bg-line/[0.14]" />
-          <RevealItem as="p" eager className="mt-6 max-w-[440px] font-display text-[17px] font-semibold uppercase tracking-[0.01em] text-gold sm:text-[19px]">
+        </div>
+
+        {/* Colonne texte, rangée 3 : tagline + texte + boutons */}
+        <div className="relative flex flex-col justify-start pb-12 pt-3 lg:col-start-1 lg:row-start-3 lg:pb-16 lg:pr-12 lg:pt-8">
+          <RevealItem as="p" eager className="max-w-[440px] font-display text-[17px] font-semibold uppercase tracking-[0.01em] text-gold sm:text-[19px]">
             {t('accueil:hero.tagline')}
           </RevealItem>
           <RevealItem as="p" eager className="mt-6 max-w-[470px] font-sans text-[16px] leading-[1.7] text-muted">
@@ -48,9 +87,9 @@ export default function HomeHero() {
           </RevealItem>
         </div>
 
-        {/* Colonne image encadrée — collée au bas du header fixe (72px) à partir de lg,
-            via une marge négative qui annule le padding-top de la section. */}
-        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:-mt-12 lg:pb-0 lg:pl-0">
+        {/* Colonne image — s'étend sur les trois rangées et vient coller le header
+            (la marge négative annule l'écart restant sous la barre fixe de 72px). */}
+        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:-mt-12 lg:pb-0">
           <Framed className="relative w-full" ticks={false}>
             <div className="relative h-[380px] overflow-hidden sm:h-[480px] lg:h-full lg:min-h-[580px]">
               <picture>
@@ -70,6 +109,16 @@ export default function HomeHero() {
             </div>
           </Framed>
         </RevealItem>
+
+        {/* Barre de séparation traversante (rangée 2). Dernière du DOM pour passer
+            AU-DESSUS de l'image, et prolongée jusqu'aux bords de l'écran. */}
+        <div className={`relative hidden h-px lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:block ${RULE}`}>
+          <span aria-hidden="true" className={`absolute right-full top-0 h-px w-screen ${RULE}`} />
+          <span aria-hidden="true" className={`absolute left-full top-0 h-px w-screen ${RULE}`} />
+          <GuideMark className="left-0 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+          <GuideMark className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+          <GuideMark className="right-0 top-1/2 -translate-y-1/2 translate-x-1/2" />
+        </div>
       </RevealStagger>
     </section>
   )
