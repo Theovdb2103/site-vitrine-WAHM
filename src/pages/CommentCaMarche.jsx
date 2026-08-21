@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Languages, LayoutGrid, MousePointerClick, Clock, Sparkles, Award, Users, TrendingUp } from 'lucide-react'
 import Page from '../components/Page'
 import Reveal from '../components/Reveal'
-import { Label, SectionHead, Action, Framed, CornerTicks, Motif, Shot } from '../components/ui/Frame'
+import { Label, SectionHead, Action, Framed, CornerTicks, CellTicks, BlockGuides, GridRowRules, Motif, Shot } from '../components/ui/Frame'
 import { useLanguage } from '../context/LanguageContext'
 import { getMarketplaceUrl, localizedPath } from '../lib/site'
 
@@ -144,6 +144,7 @@ export default function CommentCaMarche() {
   const { t } = useTranslation(['common', 'commentCaMarche'])
   const { locale } = useLanguage()
   const marketplaceUrl = getMarketplaceUrl(locale)
+  const heroGridRef = useRef(null)
 
   const domaines = t('commentCaMarche:domaines', { returnObjects: true })
   const etapesText = t('commentCaMarche:etapes', { returnObjects: true })
@@ -158,12 +159,13 @@ export default function CommentCaMarche() {
     <Page title={t('commentCaMarche:meta.title')} description={t('commentCaMarche:meta.description')} pathKey="/comment-ca-marche">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" id="top" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" id="top" eager className={`${SECTION} overflow-x-clip pt-[120px] md:pt-[150px]`}>
         <div className={WRAP}>
-          <div className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="relative">
+          <div ref={heroGridRef} className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
             {/* Colonne texte */}
             <div className="relative min-w-0 border-b border-r border-line/[0.08] p-7 py-12 md:p-12 md:py-16">
-              <CornerTicks />
+              <CellTicks />
               <Label>{t('commentCaMarche:hero.label')}</Label>
               <h1 className="mt-7 max-w-[900px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
                 {t('commentCaMarche:hero.title')}<span className="text-wahm-orange">.</span>
@@ -179,10 +181,13 @@ export default function CommentCaMarche() {
 
             {/* Colonne visuel — ratio carré (le portrait est recadré, comme sur Devenir formateur) */}
             <div className="relative min-w-0 border-b border-r border-line/[0.08]">
-              <CornerTicks />
+              <CellTicks />
               <Shot src="/assets/media/ccm-etudiant.webp" alt={t('commentCaMarche:hero.imageAlt')} className="aspect-square w-full" position="center" corners priority width={1100} height={1100} />
               <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 z-10 hidden w-[150px] md:grid" />
             </div>
+          </div>
+            <BlockGuides ticks={false} />
+            <GridRowRules gridRef={heroGridRef} />
           </div>
         </div>
       </Reveal>
