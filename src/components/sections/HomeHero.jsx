@@ -50,7 +50,7 @@ export default function HomeHero() {
         {/* Colonne image encadrée — collée au bas du header fixe (72px) à partir de lg,
             via une marge négative qui annule le padding-top de la section. */}
         <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:-mt-12 lg:pb-0 lg:pl-0">
-          <Framed className="relative w-full">
+          <Framed className="relative w-full" ticks={false}>
             <div className="relative h-[380px] overflow-hidden sm:h-[480px] lg:h-full lg:min-h-[580px]">
               <picture>
                 <source type="image/avif" srcSet={HERO_AVIF} sizes={HERO_SIZES} />
@@ -66,8 +66,6 @@ export default function HomeHero() {
                 />
               </picture>
               <span className="img-fade pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg,rgb(var(--c-surface) / 0.15),rgb(var(--c-surface) / 0.55))' }} />
-              <span aria-hidden="true" className="pointer-events-none absolute left-3 top-3 h-8 w-8 border-l-2 border-t-2 border-wahm-goldLight" />
-              <span aria-hidden="true" className="pointer-events-none absolute right-3 top-3 h-8 w-8 border-r-2 border-t-2 border-wahm-goldLight" />
             </div>
           </Framed>
         </RevealItem>
