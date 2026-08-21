@@ -1,10 +1,11 @@
+import { useRef } from 'react'
 import { Activity, Award, Brain, Check, Dumbbell, FlaskConical, Flower2, Globe2, GraduationCap, HeartPulse, Languages, TrendingUp, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
 import Reveal from '../components/Reveal'
 import SectionOutro from '../components/SectionOutro'
 import { GhostNumber } from '../components/ui/Kinetic'
-import { Label, SectionHead, Action, ChevronDivider, CornerTicks, BlockGuides, Motif, TiltCard } from '../components/ui/Frame'
+import { Label, SectionHead, Action, ChevronDivider, CornerTicks, CellTicks, BlockGuides, GridRowRules, Motif, TiltCard } from '../components/ui/Frame'
 import { useLanguage } from '../context/LanguageContext'
 import { getMarketplaceUrl, localizedPath } from '../lib/site'
 
@@ -39,6 +40,7 @@ export default function APropos() {
   const { t } = useTranslation(['common', 'aPropos'])
   const { locale } = useLanguage()
   const marketplaceUrl = getMarketplaceUrl(locale)
+  const criteresGridRef = useRef(null)
 
   const piliers = t('aPropos:vision.piliers', { returnObjects: true })
   const domaines = t('aPropos:mission.domaines', { returnObjects: true })
@@ -176,13 +178,18 @@ export default function APropos() {
           </p>
 
           {/* Critères stricts — grille bordée compacte (check + libellé) */}
-          <div className="grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
-            {criteres.map((c) => (
-              <TiltCard key={c} className="flex items-center gap-3 border-b border-r border-line/[0.08] p-5 md:p-6">
-                <Check className="h-[17px] w-[17px] shrink-0 text-wahm-gold" strokeWidth={2.75} aria-hidden="true" />
-                <span className="font-display text-[13.5px] font-bold uppercase leading-[1.25] tracking-[0.01em] text-fg md:text-[14.5px]">{c}</span>
-              </TiltCard>
-            ))}
+          <div className="relative">
+            <div ref={criteresGridRef} className="grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
+              {criteres.map((c) => (
+                <TiltCard key={c} ticks={false} className="flex items-center gap-3 border-b border-r border-line/[0.08] p-5 md:p-6">
+                  <CellTicks />
+                  <Check className="h-[17px] w-[17px] shrink-0 text-wahm-gold" strokeWidth={2.75} aria-hidden="true" />
+                  <span className="font-display text-[13.5px] font-bold uppercase leading-[1.25] tracking-[0.01em] text-fg md:text-[14.5px]">{c}</span>
+                </TiltCard>
+              ))}
+            </div>
+            <BlockGuides ticks={false} />
+            <GridRowRules gridRef={criteresGridRef} />
           </div>
 
           {/* Conviction — phrase de conclusion, même design que les autres fins de section */}
