@@ -47,8 +47,9 @@ export default function HomeHero() {
           </RevealItem>
         </div>
 
-        {/* Colonne image encadrée */}
-        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:pb-0 lg:pl-0 lg:pt-8">
+        {/* Colonne image encadrée — collée au bas du header fixe (72px) à partir de lg,
+            via une marge négative qui annule le padding-top de la section. */}
+        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:-mt-12 lg:pb-0 lg:pl-0">
           <Framed className="relative w-full">
             <div className="relative h-[380px] overflow-hidden sm:h-[480px] lg:h-full lg:min-h-[580px]">
               <picture>
