@@ -68,7 +68,7 @@ export default function HomeHero() {
         {/* Colonne texte, rangée 1 : accroche + titre. À partir de lg le texte est mis
             en retrait des traits de la grille (pl/pr/pt/pb) pour ne jamais les toucher —
             retrait plus serré à lg, où la colonne est la plus étroite. */}
-        <div className="relative flex flex-col justify-start pb-3 pt-12 lg:col-start-1 lg:row-start-1 lg:pb-14 lg:pl-8 lg:pr-8 lg:pt-20 xl:pl-12 xl:pr-12">
+        <div className="relative flex flex-col justify-start pb-3 pt-12 lg:col-start-1 lg:row-start-1 lg:pb-14 lg:pl-8 lg:pr-8 lg:pt-14 xl:pl-12 xl:pr-12">
           <RevealItem eager><Label>{t('accueil:hero.label')}</Label></RevealItem>
           <RevealItem as="h1" eager className="mt-7 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
             {t('accueil:hero.title1')}<br />{t('accueil:hero.title2')}<br />{t('accueil:hero.title3')}<span className="text-wahm-orange">.</span>
