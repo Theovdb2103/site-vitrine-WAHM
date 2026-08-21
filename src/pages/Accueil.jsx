@@ -374,37 +374,43 @@ export default function Accueil() {
       <ChevronDivider className="py-2" />
 
       {/* ===== COMMUNAUTE (frise « trajectoire ») ===== */}
-      <Reveal as="section" id="communaute" className={`scroll-mt-[80px] ${SECTION} py-20 md:py-[120px]`}>
+      <Reveal as="section" id="communaute" className={`scroll-mt-[80px] ${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         {/* Panneau arrondi · texte à gauche, globe qui déborde du coin (cf. Featured_05) */}
         <div className={WRAP}>
-          <div className="relative mx-auto w-full overflow-hidden border border-line/[0.08] bg-surface-2 px-6 py-16 shadow-md md:px-16 md:py-20">
-            <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
-              <div className="z-10 w-full min-w-0 max-w-xl text-left">
-                <Label>{t('accueil:communauteSection.label')}</Label>
-                <h2 className="mt-5 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-fg sm:text-[36px] md:text-[44px]">{t('accueil:communauteSection.title')}<span className="text-wahm-orange">.</span></h2>
-                <p className="mt-6 font-sans text-[16px] leading-[1.7] text-muted">{t('accueil:communauteSection.intro')}</p>
-                <ul className="mt-5 space-y-3">
-                  {communaute.map((item) => (
-                    <li key={item} className="flex items-start gap-3 font-sans text-[15px] leading-[1.6] text-fg-soft">
-                      <span aria-hidden="true" className="mt-[9px] h-[6px] w-[6px] shrink-0 bg-wahm-orange" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 font-sans text-[15.5px] font-semibold leading-[1.6] text-gold">{t('accueil:communauteSection.tagline')}</p>
-                <div className="mt-8">
-                  <Action to={marketplaceUrl} variant="filled" arrow className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('accueil:communauteSection.cta')}</Action>
+          <div className="relative">
+            <div className="relative mx-auto w-full overflow-hidden border border-line/[0.08] bg-surface-2 px-6 py-16 shadow-md md:px-16 md:py-20">
+              <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
+                <div className="z-10 w-full min-w-0 max-w-xl text-left">
+                  <Label>{t('accueil:communauteSection.label')}</Label>
+                  <h2 className="mt-5 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-fg sm:text-[36px] md:text-[44px]">{t('accueil:communauteSection.title')}<span className="text-wahm-orange">.</span></h2>
+                  <p className="mt-6 font-sans text-[16px] leading-[1.7] text-muted">{t('accueil:communauteSection.intro')}</p>
+                  <ul className="mt-5 space-y-3">
+                    {communaute.map((item) => (
+                      <li key={item} className="flex items-start gap-3 font-sans text-[15px] leading-[1.6] text-fg-soft">
+                        <span aria-hidden="true" className="mt-[9px] h-[6px] w-[6px] shrink-0 bg-wahm-orange" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-6 font-sans text-[15.5px] font-semibold leading-[1.6] text-gold">{t('accueil:communauteSection.tagline')}</p>
+                  <div className="mt-8">
+                    <Action to={marketplaceUrl} variant="filled" arrow className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('accueil:communauteSection.cta')}</Action>
+                  </div>
+                </div>
+                {/* Mobile : globe en décor dans le coin haut-droit, fondu dans le fond de carte
+                    (vignette radiale) pour garder le texte lisible, ne prend plus de place dans
+                    le flux. md+ : redevient une colonne normale à côté du texte, qui déborde du
+                    coin de la carte (DA). */}
+                <div className="pointer-events-none absolute -right-16 -top-16 z-0 h-[240px] w-[240px] opacity-90 md:pointer-events-auto md:relative md:inset-auto md:right-auto md:top-auto md:z-auto md:h-[180px] md:w-full md:max-w-xl md:opacity-100">
+                  <Globe className="scale-125 md:scale-150 md:-bottom-20 md:-right-40" />
                 </div>
               </div>
-              {/* Mobile : globe en décor dans le coin haut-droit, fondu dans le fond de carte
-                  (vignette radiale) pour garder le texte lisible, ne prend plus de place dans
-                  le flux. md+ : redevient une colonne normale à côté du texte, qui déborde du
-                  coin de la carte (DA). */}
-              <div className="pointer-events-none absolute -right-16 -top-16 z-0 h-[240px] w-[240px] opacity-90 md:pointer-events-auto md:relative md:inset-auto md:right-auto md:top-auto md:z-auto md:h-[180px] md:w-full md:max-w-xl md:opacity-100">
-                <Globe className="scale-125 md:scale-150 md:-bottom-20 md:-right-40" />
-              </div>
+              <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] md:hidden" style={{ background: 'radial-gradient(65% 55% at 100% 0%, transparent 0%, rgb(var(--c-surface-2)) 70%)' }} />
             </div>
-            <span aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] md:hidden" style={{ background: 'radial-gradient(65% 55% at 100% 0%, transparent 0%, rgb(var(--c-surface-2)) 70%)' }} />
+            {/* Repères posés HORS du panneau : son overflow-hidden (le globe déborde
+                volontairement du coin) les rognerait, et sa bordure décalerait les
+                carrés de 1px vers l'intérieur. */}
+            <BlockGuides className="z-20" />
           </div>
         </div>
       </Reveal>
