@@ -272,8 +272,6 @@ export default function Accueil() {
                       <img src={meta.img} alt={cat.title} loading="lazy" className="h-full w-full object-cover grayscale-[25%] transition-transform duration-700 ease-out group-hover:scale-[1.06]" />
                       <span aria-hidden="true" className="img-fade absolute inset-0" style={{ background: 'linear-gradient(to top, rgb(var(--c-surface) / 0.96) 0%, rgb(var(--c-surface) / 0.30) 55%, rgb(var(--c-surface) / 0.05) 100%)' }} />
                     </div>
-                    {/* Accent orange qui se déploie au survol */}
-                    <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-hover:scale-x-100" />
                     {/* Numéro */}
                     <span className="absolute right-4 top-4 font-mono text-[12px] font-semibold tracking-[0.1em] text-wahm-goldLight">{String(i + 1).padStart(2, '0')}</span>
                     {/* Pastille icône, chevauchant le bas du visuel */}
