@@ -125,7 +125,7 @@ export default function Contact() {
               alt=""
               aria-hidden="true"
               width={2400}
-              height={840}
+              height={630}
               fetchPriority="high"
               className="absolute inset-0 h-full w-full object-cover grayscale"
             />
@@ -138,19 +138,16 @@ export default function Contact() {
               </h1>
             </div>
           </div>
-          {/* Les verticales du conteneur se prolongent sur le bandeau, un carré au pied
-              de chacune — comme le template. Posées hors du cadre, dont l'overflow-hidden
-              les rognerait. Trait blanc et non bg-line : sur une photo, le liseré de
-              section serait invisible. */}
+          {/* Deux verticales aux tiers : le bandeau est découpé en trois parts égales,
+              un carré orange au pied de chacune — comme le template. Posées hors du
+              cadre, dont l'overflow-hidden les rognerait. Trait blanc translucide et non
+              bg-line : sur une photo, le liseré de section serait invisible. */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-20">
-            <div className="mx-auto h-full max-w-[1440px] px-5 md:px-10">
-              <div className="relative h-full">
-                <span className="absolute inset-y-0 left-0 w-px bg-white/20" />
-                <span className="absolute inset-y-0 right-0 w-px bg-white/20" />
-                <span className="absolute bottom-0 left-0 h-[5px] w-[5px] -translate-x-1/2 translate-y-1/2 bg-wahm-orange" />
-                <span className="absolute bottom-0 right-0 h-[5px] w-[5px] translate-x-1/2 translate-y-1/2 bg-wahm-orange" />
-              </div>
-            </div>
+            {[1, 2].map((i) => (
+              <span key={i} className="absolute inset-y-0 w-px bg-white/25" style={{ left: `${(i * 100) / 3}%` }}>
+                <span className="absolute bottom-0 left-1/2 h-[5px] w-[5px] -translate-x-1/2 translate-y-1/2 bg-wahm-orange" />
+              </span>
+            ))}
           </div>
         </div>
       </Reveal>
