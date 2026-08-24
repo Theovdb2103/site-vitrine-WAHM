@@ -36,13 +36,22 @@ function GuideMark({ className = '' }) {
 // conteneur et la césure entre les colonnes texte / image. Calque au-dessus de la
 // photo (z-[2]) pour que les traits et les carrés restent lisibles par-dessus elle.
 // Masqué sous lg, où les colonnes sont empilées et la grille n'aurait aucun sens.
+// Écart entre les colonnes texte / image (repris du template de référence, qui ne
+// colle jamais les deux colonnes : la césure y est un véritable vide, pas un simple
+// trait partagé). Doit rester en phase avec le gap-x posé sur la grille ci-dessous —
+// les deux valeurs déterminent ensemble où tombent les traits gauche/droite de la
+// césure : à 50% ± (gap / 2).
+const GAP_LEFT = 'left-[calc(50%-1rem)] xl:left-[calc(50%-1.5rem)]'
+const GAP_RIGHT = 'left-[calc(50%+1rem)] xl:left-[calc(50%+1.5rem)]'
+
 function HeroGuides() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[2] hidden lg:block">
       <div className="mx-auto h-full max-w-[1440px] px-5 md:px-10">
         <div className="relative h-full">
           <span className={`absolute inset-y-0 left-0 w-px ${RULE}`} />
-          <span className={`absolute inset-y-0 left-1/2 w-px ${RULE}`} />
+          <span className={`absolute inset-y-0 w-px ${GAP_LEFT} ${RULE}`} />
+          <span className={`absolute inset-y-0 w-px ${GAP_RIGHT} ${RULE}`} />
           <span className={`absolute inset-y-0 right-0 w-px ${RULE}`} />
           {/* Pas de carrés de pied : le liseré du bas est partagé avec la bande de
               statistiques qui suit, dont les propres repères couvrent déjà ces
@@ -65,7 +74,7 @@ export default function HomeHero() {
     // couperait en deux les repères posés à cheval sur les bords de la section.
     <section id="top" className="relative overflow-x-clip bg-surface pt-[104px] md:pt-[120px]">
       <HeroGuides />
-      <RevealStagger eager className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr]">
+      <RevealStagger eager className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 xl:gap-x-12">
         {/* Colonne texte, rangée 1 : accroche + titre. À partir de lg le texte est mis
             en retrait des traits de la grille (pl/pr/pt/pb) pour ne jamais les toucher —
             retrait plus serré à lg, où la colonne est la plus étroite. */}
@@ -118,8 +127,9 @@ export default function HomeHero() {
         <div className={`relative hidden h-px lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:block ${RULE}`}>
           <span aria-hidden="true" className={`absolute right-full top-0 h-px w-screen ${RULE}`} />
           <span aria-hidden="true" className={`absolute left-full top-0 h-px w-screen ${RULE}`} />
-          <GuideMark className="left-0 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-          <GuideMark className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+          <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 left-0`} />
+          <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 ${GAP_LEFT}`} />
+          <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 ${GAP_RIGHT}`} />
           <GuideMark className="right-0 top-1/2 -translate-y-1/2 translate-x-1/2" />
         </div>
       </RevealStagger>
