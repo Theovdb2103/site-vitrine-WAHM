@@ -41,14 +41,14 @@ function GuideMark({ className = '' }) {
 // trait partagé). Doit rester en phase avec le gap-x posé sur la grille ci-dessous —
 // les deux valeurs déterminent ensemble où tombent les traits gauche/droite de la
 // césure : à 50% ± (gap / 2).
-const GAP_LEFT = 'left-[calc(50%-1rem)] xl:left-[calc(50%-1.5rem)]'
-const GAP_RIGHT = 'left-[calc(50%+1rem)] xl:left-[calc(50%+1.5rem)]'
+const GAP_LEFT = 'left-[calc(50%-0.5rem)] xl:left-[calc(50%-0.75rem)]'
+const GAP_RIGHT = 'left-[calc(50%+0.5rem)] xl:left-[calc(50%+0.75rem)]'
 
-// Même écart que la césure centrale (1rem / 1.5rem), mais appliqué au bord droit :
+// Même écart que la césure centrale (0.5rem / 0.75rem), mais appliqué au bord droit :
 // la photo ne touche plus le liseré du cadre, elle en est retirée d'autant — comme
 // dans le template de référence, où AUCUN bord de la photo ne touche directement un
 // trait de la grille.
-const RIGHT_INNER = 'right-4 xl:right-6'
+const RIGHT_INNER = 'right-2 xl:right-3'
 
 function HeroGuides() {
   return (
@@ -81,11 +81,11 @@ export default function HomeHero() {
     // couperait en deux les repères posés à cheval sur les bords de la section.
     <section id="top" className="relative overflow-x-clip bg-surface pt-[104px] md:pt-[120px]">
       <HeroGuides />
-      <RevealStagger eager className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr] lg:gap-x-8 xl:gap-x-12">
+      <RevealStagger eager className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr] lg:gap-x-4 xl:gap-x-6">
         {/* Colonne texte, rangée 1 : accroche + titre. À partir de lg le texte est mis
             en retrait des traits de la grille (pl/pr/pt/pb) pour ne jamais les toucher —
             retrait plus serré à lg, où la colonne est la plus étroite. */}
-        <div className="relative flex flex-col justify-start pb-3 pt-12 lg:col-start-1 lg:row-start-1 lg:pb-14 lg:pl-8 lg:pr-8 lg:pt-14 xl:pl-12 xl:pr-12">
+        <div className="relative flex flex-col justify-start pb-3 pt-12 lg:col-start-1 lg:row-start-1 lg:pb-14 lg:pl-4 lg:pr-4 lg:pt-14 xl:pl-6 xl:pr-6">
           <RevealItem eager><Label>{t('accueil:hero.label')}</Label></RevealItem>
           <RevealItem as="h1" eager className="mt-7 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
             {t('accueil:hero.title1')}<br />{t('accueil:hero.title2')}<br />{t('accueil:hero.title3')}<span className="text-wahm-orange">.</span>
@@ -93,7 +93,7 @@ export default function HomeHero() {
         </div>
 
         {/* Colonne texte, rangée 3 : tagline + texte + boutons */}
-        <div className="relative flex flex-col justify-start pb-12 pt-3 lg:col-start-1 lg:row-start-3 lg:pb-16 lg:pl-8 lg:pr-8 lg:pt-14 xl:pl-12 xl:pr-12">
+        <div className="relative flex flex-col justify-start pb-12 pt-3 lg:col-start-1 lg:row-start-3 lg:pb-16 lg:pl-4 lg:pr-4 lg:pt-14 xl:pl-6 xl:pr-6">
           <RevealItem as="p" eager className="max-w-[440px] font-display text-[17px] font-semibold uppercase tracking-[0.01em] text-gold sm:text-[19px]">
             {t('accueil:hero.tagline')}
           </RevealItem>
@@ -108,9 +108,9 @@ export default function HomeHero() {
 
         {/* Colonne image — s'étend sur les trois rangées et vient coller le header
             (la marge négative annule l'écart restant sous la barre fixe de 72px).
-            lg:pr-4/xl:pr-6 : retire la photo du liseré droit du cadre, du même écart
+            lg:pr-2/xl:pr-3 : retire la photo du liseré droit du cadre, du même écart
             que la césure centrale — voir RIGHT_INNER. */}
-        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:-mt-12 lg:pb-0 lg:pr-4 xl:pr-6">
+        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:-mt-12 lg:pb-0 lg:pr-2 xl:pr-3">
           <Framed className="relative w-full" ticks={false}>
             <div className="relative h-[380px] overflow-hidden sm:h-[480px] lg:h-full lg:min-h-[580px]">
               <picture>
