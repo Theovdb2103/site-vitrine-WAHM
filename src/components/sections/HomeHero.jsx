@@ -44,11 +44,10 @@ function GuideMark({ className = '' }) {
 const GAP_LEFT = 'left-[calc(50%-0.5rem)] xl:left-[calc(50%-0.75rem)]'
 const GAP_RIGHT = 'left-[calc(50%+0.5rem)] xl:left-[calc(50%+0.75rem)]'
 
-// Même écart que la césure centrale (0.5rem / 0.75rem), mais appliqué au bord droit :
-// la photo ne touche plus le liseré du cadre, elle en est retirée d'autant — comme
-// dans le template de référence, où AUCUN bord de la photo ne touche directement un
-// trait de la grille.
-const RIGHT_INNER = 'right-2 xl:right-3'
+// Écart indépendant de la césure centrale — celui-ci reste à 1rem / 1.5rem, jugé
+// nickel tel quel. La photo ne touche pas le liseré du cadre, elle en est retirée
+// d'autant, comme dans le template de référence.
+const RIGHT_INNER = 'right-4 xl:right-6'
 
 function HeroGuides() {
   return (
@@ -108,9 +107,8 @@ export default function HomeHero() {
 
         {/* Colonne image — s'étend sur les trois rangées et vient coller le header
             (la marge négative annule l'écart restant sous la barre fixe de 72px).
-            lg:pr-2/xl:pr-3 : retire la photo du liseré droit du cadre, du même écart
-            que la césure centrale — voir RIGHT_INNER. */}
-        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:-mt-12 lg:pb-0 lg:pr-2 xl:pr-3">
+            lg:pr-4/xl:pr-6 : retire la photo du liseré droit du cadre — voir RIGHT_INNER. */}
+        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:-mt-12 lg:pb-0 lg:pr-4 xl:pr-6">
           <Framed className="relative w-full" ticks={false}>
             <div className="relative h-[380px] overflow-hidden sm:h-[480px] lg:h-full lg:min-h-[580px]">
               <picture>
