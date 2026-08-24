@@ -40,10 +40,11 @@ const DISCIPLINES_META = [
 const CRIT_IMAGE = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1000&h=1000&fit=crop&q=80&auto=format'
 
 // ===== Hero =====
-// Photo Unsplash (nouvelle, hors bibliothèque) : portrait d'un coach, remplace
-// l'ancien fichier local /assets/media/formateur-portrait.webp (introuvable en
-// production).
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1750698545009-679820502908?w=1000&h=1200&fit=crop&q=80&auto=format'
+// Photo Unsplash (nouvelle, hors bibliothèque) : une formatrice accompagne un élève
+// dans son mouvement — remplace l'ancien fichier local
+// /assets/media/formateur-portrait.webp (introuvable en production) et le premier
+// remplacement (portrait posé, jugé raté).
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1000&h=1200&fit=crop&q=80&auto=format'
 
 const SECTION = 'bg-surface'
 const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
@@ -51,42 +52,31 @@ const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 // Teinte des traits de repère du hero — même valeur que le reste du site.
 const HERO_RULE = 'bg-line/[0.08]'
 
-// Petit carré orange sur une intersection de la grille (même vocabulaire que les
-// CornerTicks du reste du site — voir Frame.jsx).
-function HeroGuideMark({ className = '' }) {
-  return <span aria-hidden="true" className={`pointer-events-none absolute h-[5px] w-[5px] bg-wahm-orange ${className}`} />
-}
-
 // Écart entre les colonnes texte / photo, et retrait de la photo par rapport au
 // liseré droit — mêmes valeurs que le hero de l'accueil (HomeHero.jsx), pour un
 // vocabulaire visuel cohérent sur tout le site : la photo ne touche jamais
-// directement un trait de la grille, il y a toujours un vide.
+// directement un trait de la grille, il y a toujours un vide. Reprend aussi le choix
+// de HomeHero de ne poser aucun repère (trait haut/bas, CornerTicks) : ici il n'y a
+// pas de rangée intermédiaire à laquelle les accrocher, donc pas de repère du tout —
+// plutôt que d'en inventer un qui n'existe pas dans la référence.
 const HERO_GAP_LEFT = 'left-[calc(50%-0.5rem)] xl:left-[calc(50%-0.75rem)]'
 const HERO_GAP_RIGHT = 'left-[calc(50%+0.5rem)] xl:left-[calc(50%+0.75rem)]'
 const HERO_RIGHT_INNER = 'right-4 xl:right-6'
 
-// Cadre du hero : liserés extérieurs (4 côtés, toutes tailles) + CornerTicks, plus la
-// césure interne entre les deux colonnes à partir de lg seulement (en dessous, les
-// colonnes sont empilées et un simple trait de séparation dans le flux suffit — posé
-// directement sur la cellule de texte, pas ici).
-function HeroFrameGuides() {
+// Repères verticaux courant sur toute la hauteur de la SECTION (donc jusque sous le
+// header fixe — invisible à cet endroit, recouvert par son fond opaque). Masqués sous
+// lg, où les colonnes sont empilées. Même calque que HeroGuides dans HomeHero.jsx.
+function HeroGuides() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-      <span className={`absolute inset-x-0 top-0 h-px ${HERO_RULE}`} />
-      <span className={`absolute inset-x-0 bottom-0 h-px ${HERO_RULE}`} />
-      <span className={`absolute inset-y-0 left-0 w-px ${HERO_RULE}`} />
-      <span className={`absolute inset-y-0 right-0 w-px ${HERO_RULE}`} />
-      <CornerTicks />
-      <div className="absolute inset-0 hidden lg:block">
-        <span className={`absolute inset-y-0 w-px ${HERO_GAP_LEFT} ${HERO_RULE}`} />
-        <span className={`absolute inset-y-0 w-px ${HERO_GAP_RIGHT} ${HERO_RULE}`} />
-        <span className={`absolute inset-y-0 w-px ${HERO_RIGHT_INNER} ${HERO_RULE}`} />
-        <HeroGuideMark className={`top-0 -translate-x-1/2 -translate-y-1/2 ${HERO_GAP_LEFT}`} />
-        <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_GAP_LEFT}`} />
-        <HeroGuideMark className={`top-0 -translate-x-1/2 -translate-y-1/2 ${HERO_GAP_RIGHT}`} />
-        <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_GAP_RIGHT}`} />
-        <HeroGuideMark className={`top-0 translate-x-1/2 -translate-y-1/2 ${HERO_RIGHT_INNER}`} />
-        <HeroGuideMark className={`bottom-0 translate-x-1/2 translate-y-1/2 ${HERO_RIGHT_INNER}`} />
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
+      <div className={`${WRAP} h-full`}>
+        <div className="relative h-full">
+          <span className={`absolute inset-y-0 left-0 w-px ${HERO_RULE}`} />
+          <span className={`absolute inset-y-0 w-px ${HERO_GAP_LEFT} ${HERO_RULE}`} />
+          <span className={`absolute inset-y-0 w-px ${HERO_GAP_RIGHT} ${HERO_RULE}`} />
+          <span className={`absolute inset-y-0 w-px ${HERO_RIGHT_INNER} ${HERO_RULE}`} />
+          <span className={`absolute inset-y-0 right-0 w-px ${HERO_RULE}`} />
+        </div>
       </div>
     </div>
   )
@@ -257,29 +247,31 @@ export default function DevenirFormateur() {
     <Page title={t('devenirFormateur:meta.title')} description={t('devenirFormateur:meta.description')} pathKey="/devenir-formateur">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" eager className={`${SECTION} pt-[120px] md:pt-[150px] pb-20 md:pb-[120px]`}>
-        <div className={WRAP}>
-          <div className="relative">
-            <HeroFrameGuides />
-            <div className="relative grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-x-4 xl:gap-x-6">
-              <div className="relative min-w-0 border-b border-line/[0.08] p-7 md:p-12 lg:border-b-0">
-                <Label>{t('devenirFormateur:hero.label')}</Label>
-                <h1 className="mt-7 max-w-[900px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
-                  {t('devenirFormateur:hero.title')}<span className="text-wahm-orange">.</span>
-                </h1>
-                <p className="mt-7 max-w-[600px] font-sans text-[16px] leading-[1.7] text-muted">
-                  {t('devenirFormateur:hero.subtitle')}
-                </p>
-                <div className="mt-9 flex flex-wrap items-center gap-3">
-                  <Action to="#candidature" variant="filled" arrow>{t('devenirFormateur:hero.ctaApply')}</Action>
-                  <Action to={localizedPath('/contact', locale)} variant="outline" className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('devenirFormateur:hero.ctaContact')}</Action>
-                </div>
-              </div>
-              <div className="relative min-w-0 lg:pr-4 xl:pr-6">
-                <Shot src={HERO_IMAGE} alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[280px] w-full" position="top" priority width={1000} height={1200} />
-                <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
-              </div>
+      {/* Même mécanique que HomeHero.jsx : la grille n'a pas de cadre fermé, seuls des
+          traits verticaux flottent en calque, et c'est la marge négative de la colonne
+          photo qui va coller la photo au bord du header — pas un cadre qui l'engloberait. */}
+      <Reveal as="section" eager className={`relative ${SECTION} pt-[120px] md:pt-[150px]`}>
+        <HeroGuides />
+        <div className={`${WRAP} grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-x-4 xl:gap-x-6`}>
+          <div className="relative min-w-0 p-7 md:p-12">
+            <Label>{t('devenirFormateur:hero.label')}</Label>
+            <h1 className="mt-7 max-w-[900px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
+              {t('devenirFormateur:hero.title')}<span className="text-wahm-orange">.</span>
+            </h1>
+            <p className="mt-7 max-w-[600px] font-sans text-[16px] leading-[1.7] text-muted">
+              {t('devenirFormateur:hero.subtitle')}
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <Action to="#candidature" variant="filled" arrow>{t('devenirFormateur:hero.ctaApply')}</Action>
+              <Action to={localizedPath('/contact', locale)} variant="outline" className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('devenirFormateur:hero.ctaContact')}</Action>
             </div>
+          </div>
+          {/* lg:-mt-[78px] : annule l'écart restant sous le header fixe de 72px
+              (pt-[150px] - 78px = 72px), exactement comme lg:-mt-12 dans HomeHero.jsx
+              pour son propre pt-[120px]. */}
+          <div className="relative min-w-0 pb-12 lg:-mt-[78px] lg:pb-0 lg:pr-4 xl:pr-6">
+            <Shot src={HERO_IMAGE} alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[320px] w-full lg:min-h-[520px]" priority width={1000} height={1200} />
+            <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
           </div>
         </div>
       </Reveal>
