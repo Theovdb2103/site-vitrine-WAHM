@@ -44,6 +44,12 @@ function GuideMark({ className = '' }) {
 const GAP_LEFT = 'left-[calc(50%-1rem)] xl:left-[calc(50%-1.5rem)]'
 const GAP_RIGHT = 'left-[calc(50%+1rem)] xl:left-[calc(50%+1.5rem)]'
 
+// Même écart que la césure centrale (1rem / 1.5rem), mais appliqué au bord droit :
+// la photo ne touche plus le liseré du cadre, elle en est retirée d'autant — comme
+// dans le template de référence, où AUCUN bord de la photo ne touche directement un
+// trait de la grille.
+const RIGHT_INNER = 'right-4 xl:right-6'
+
 function HeroGuides() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-[2] hidden lg:block">
@@ -52,6 +58,7 @@ function HeroGuides() {
           <span className={`absolute inset-y-0 left-0 w-px ${RULE}`} />
           <span className={`absolute inset-y-0 w-px ${GAP_LEFT} ${RULE}`} />
           <span className={`absolute inset-y-0 w-px ${GAP_RIGHT} ${RULE}`} />
+          <span className={`absolute inset-y-0 w-px ${RIGHT_INNER} ${RULE}`} />
           <span className={`absolute inset-y-0 right-0 w-px ${RULE}`} />
           {/* Pas de carrés de pied : le liseré du bas est partagé avec la bande de
               statistiques qui suit, dont les propres repères couvrent déjà ces
@@ -100,8 +107,10 @@ export default function HomeHero() {
         </div>
 
         {/* Colonne image — s'étend sur les trois rangées et vient coller le header
-            (la marge négative annule l'écart restant sous la barre fixe de 72px). */}
-        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:-mt-12 lg:pb-0">
+            (la marge négative annule l'écart restant sous la barre fixe de 72px).
+            lg:pr-4/xl:pr-6 : retire la photo du liseré droit du cadre, du même écart
+            que la césure centrale — voir RIGHT_INNER. */}
+        <RevealItem as="div" eager className="relative flex items-stretch pb-12 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:-mt-12 lg:pb-0 lg:pr-4 xl:pr-6">
           <Framed className="relative w-full" ticks={false}>
             <div className="relative h-[380px] overflow-hidden sm:h-[480px] lg:h-full lg:min-h-[580px]">
               <picture>
@@ -130,6 +139,7 @@ export default function HomeHero() {
           <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 left-0`} />
           <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 ${GAP_LEFT}`} />
           <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 ${GAP_RIGHT}`} />
+          <GuideMark className={`top-1/2 -translate-y-1/2 translate-x-1/2 ${RIGHT_INNER}`} />
           <GuideMark className="right-0 top-1/2 -translate-y-1/2 translate-x-1/2" />
         </div>
       </RevealStagger>
