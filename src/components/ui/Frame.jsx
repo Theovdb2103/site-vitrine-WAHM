@@ -162,11 +162,17 @@ export function BlockGuides({ ticks = true, className = '' }) {
 }
 
 // Boîte encadrée à liseré fin + croix d'angle.
+//
+// Les marques sont posées APRÈS le contenu et en z-20 : un enfant positionné — une
+// image, par exemple — est peint plus tard dans l'ordre du DOM et passerait sinon
+// par-dessus elles, ne laissant dépasser que le quart qui déborde du cadre. Le calque
+// `absolute inset-0` épouse exactement la même boîte que le cadre, donc les marques ne
+// bougent pas d'un pixel par rapport au montage précédent.
 export function Framed({ as: Tag = 'div', className = '', ticks = true, tickColor, children, ...rest }) {
   return (
     <Tag className={`relative border border-line/[0.1] ${className}`} {...rest}>
-      {ticks && <CornerTicks className={tickColor || 'text-wahm-orange/60'} />}
       {children}
+      {ticks && <CornerTicks className={`pointer-events-none absolute inset-0 z-20 ${tickColor || 'text-wahm-orange/60'}`} />}
     </Tag>
   )
 }

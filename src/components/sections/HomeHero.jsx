@@ -32,6 +32,17 @@ function GuideMark({ className = '' }) {
   return <span aria-hidden="true" className={`absolute h-[5px] w-[5px] bg-wahm-orange ${className}`} />
 }
 
+// Centrage horizontal d'une marque sur un trait d'1px, selon qu'elle est ancrée par sa
+// gauche ou par sa droite.
+//
+// `-translate-x-1/2` (2,5px) centrerait la marque sur le BORD du trait, pas sur son
+// milieu : `left-[x]` donne le bord gauche du trait, dont le centre est à x+0,5. D'où
+// un décalage d'un demi-pixel — invisible en soi, mais qui étale la marque sur six
+// pixels physiques au lieu de cinq et la rend floue. 2px au lieu de 2,5px la recentrent
+// ET la calent sur des bords entiers, donc nette.
+const MARK_X_LEFT = 'translate-x-[-2px]'
+const MARK_X_RIGHT = 'translate-x-[2px]'
+
 // Repères verticaux courant sur TOUTE la hauteur du héros : les deux bords du
 // conteneur et la césure entre les colonnes texte / image. Calque au-dessus de la
 // photo (z-[2]) pour que les traits et les carrés restent lisibles par-dessus elle.
@@ -130,16 +141,22 @@ export default function HomeHero() {
           </Framed>
         </RevealItem>
 
-        {/* Barre de séparation traversante (rangée 2). Dernière du DOM pour passer
-            AU-DESSUS de l'image, et prolongée jusqu'aux bords de l'écran. */}
-        <div className={`relative hidden h-px lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:block ${RULE}`}>
+        {/* Barre de séparation (rangée 2), prolongée jusqu'aux bords de l'écran.
+            Elle n'a PAS de fond propre : elle est tracée en segments qui s'arrêtent de
+            part et d'autre de l'image, pour ne pas la barrer en travers. Les carrés,
+            eux, restent posés sur toutes les intersections, image comprise. */}
+        <div className="relative hidden h-px lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:block">
           <span aria-hidden="true" className={`absolute right-full top-0 h-px w-screen ${RULE}`} />
           <span aria-hidden="true" className={`absolute left-full top-0 h-px w-screen ${RULE}`} />
-          <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 left-0`} />
-          <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 ${GAP_LEFT}`} />
-          <GuideMark className={`top-1/2 -translate-x-1/2 -translate-y-1/2 ${GAP_RIGHT}`} />
-          <GuideMark className={`top-1/2 -translate-y-1/2 translate-x-1/2 ${RIGHT_INNER}`} />
-          <GuideMark className="right-0 top-1/2 -translate-y-1/2 translate-x-1/2" />
+          {/* Du bord gauche du cadre jusqu'au bord gauche de l'image */}
+          <span aria-hidden="true" className={`absolute left-0 top-0 h-px right-[calc(50%-0.5rem)] xl:right-[calc(50%-0.75rem)] ${RULE}`} />
+          {/* Du bord droit de l'image jusqu'au bord droit du cadre */}
+          <span aria-hidden="true" className={`absolute right-0 top-0 h-px w-4 xl:w-6 ${RULE}`} />
+          <GuideMark className={`left-0 top-1/2 -translate-y-1/2 ${MARK_X_LEFT}`} />
+          <GuideMark className={`top-1/2 -translate-y-1/2 ${GAP_LEFT} ${MARK_X_LEFT}`} />
+          <GuideMark className={`top-1/2 -translate-y-1/2 ${GAP_RIGHT} ${MARK_X_LEFT}`} />
+          <GuideMark className={`top-1/2 -translate-y-1/2 ${RIGHT_INNER} ${MARK_X_RIGHT}`} />
+          <GuideMark className={`right-0 top-1/2 -translate-y-1/2 ${MARK_X_RIGHT}`} />
         </div>
       </RevealStagger>
     </section>

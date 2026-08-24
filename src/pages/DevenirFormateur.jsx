@@ -4,7 +4,7 @@ import { Globe, Coins, Star, Settings, Users, Check, ChevronDown } from 'lucide-
 import { useTranslation } from 'react-i18next'
 import Page from '../components/Page'
 import Reveal, { RevealStagger, RevealItem } from '../components/Reveal'
-import { Label, SectionHead, Action, Framed, CornerTicks, Shot, Motif, TiltCard } from '../components/ui/Frame'
+import { Label, SectionHead, Action, Framed, CellTicks, BlockGuides, GridRowRules, Shot, TiltCard } from '../components/ui/Frame'
 import { DisciplinesCarousel } from '../components/ui/DisciplinesCarousel'
 import SectionOutro from '../components/SectionOutro'
 import { localizedPath } from '../lib/site'
@@ -23,7 +23,14 @@ const AVANTAGES_META = [
 // ===== Disciplines recherchées =====
 // Photos Unsplash (nouvelles, hors bibliothèque) choisies selon chaque discipline.
 // Zippées par index avec devenirFormateur:disciplines.items (name/tag traduits).
-const UN = (id) => `https://images.unsplash.com/${id}?w=560&h=740&fit=crop&q=80&auto=format`
+// `fp` (optionnel) : point focal [x, y], en fractions de l'image SOURCE. Sans lui,
+// Unsplash recadre au centre — ce qui décentre le sujet quand il est excentré dans une
+// source paysage. Et `pos` (objectPosition) ne peut alors plus rattraper le cadrage :
+// le recadrage serveur a déjà jeté les pixels, et le résultat a déjà le ratio de la
+// carte, donc object-cover n'a plus rien à rogner.
+const UN = (id, fp) =>
+  `https://images.unsplash.com/${id}?w=560&h=740&fit=crop&q=80&auto=format` +
+  (fp ? `&crop=focalpoint&fp-x=${fp[0]}&fp-y=${fp[1]}` : '')
 const DISCIPLINES_META = [
   { img: UN('photo-1591741543032-bf439b4fd46c'), pos: '50% 40%' },
   { img: UN('photo-1616279969722-d81a5a3944ef'), pos: '50% 28%' },
@@ -31,7 +38,9 @@ const DISCIPLINES_META = [
   { img: UN('photo-1649751361457-01d3a696c7e6'), pos: '55% 35%' },
   { img: UN('photo-1547941126-3d5322b218b0'), pos: '50% 45%' },
   { img: UN('photo-1727463389191-22d60aa1f1ca'), pos: '50% 28%' },
-  { img: UN('photo-1461468611824-46457c0e11fd'), pos: '62% 45%' },
+  // 07 — source nativement en portrait, donc pas de point focal nécessaire : le
+  // recadrage serveur ne coupe presque rien et le sujet reste centré.
+  { img: UN('photo-1492288991661-058aa541ff43'), pos: '50% 50%' },
   { img: UN('photo-1577344718665-3e7c0c1ecf6b'), pos: '50% 22%' },
 ]
 
@@ -40,12 +49,14 @@ const DISCIPLINES_META = [
 const CRIT_IMAGE = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1000&h=1000&fit=crop&q=80&auto=format'
 
 // ===== Hero =====
-// Photo Unsplash (nouvelle, hors bibliothèque) : pose confiante, regard caméra,
-// éclairage sombre et cinématographique — plus de prestance que les deux essais
-// précédents (portrait posé jugé raté, puis scène de coaching jugée pas assez
-// impressionnante). Remplace l'ancien fichier local
-// /assets/media/formateur-portrait.webp (introuvable en production).
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1701481057396-30fddf7775b6?w=1000&h=1200&fit=crop&q=80&auto=format'
+// Photo Unsplash (nouvelle, hors bibliothèque) : un coach en t-shirt encadrant une
+// séance, ses élèves visibles derrière lui — il se lit comme un FORMATEUR au travail,
+// pas comme une démonstration de physique (les essais précédents versaient dans le
+// portrait de bodybuilder, hors sujet pour une académie du mouvement qui couvre aussi
+// santé, rééducation, Pilates et yoga).
+// crop=faces : recadrage piloté par la détection de visage, qui garde le sujet dégagé
+// en haut au lieu de lui couper le crâne dans ce format très vertical.
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1682531023937-918848f2ce96?w=1200&h=1364&fit=crop&crop=faces&q=80&auto=format'
 
 const SECTION = 'bg-surface'
 const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
@@ -59,6 +70,17 @@ function HeroGuideMark({ className = '' }) {
   return <span aria-hidden="true" className={`pointer-events-none absolute h-[5px] w-[5px] bg-wahm-orange ${className}`} />
 }
 
+// Centrage horizontal d'une marque sur un trait d'1px, selon qu'elle est ancrée par sa
+// gauche ou par sa droite.
+//
+// `-translate-x-1/2` (2,5px) centrerait la marque sur le BORD du trait, pas sur son
+// milieu : `left-[x]` donne le bord gauche du trait, dont le centre est à x+0,5. D'où
+// un décalage d'un demi-pixel — invisible en soi, mais qui étale la marque sur six
+// pixels physiques au lieu de cinq et la rend floue. 2px au lieu de 2,5px la recentrent
+// ET la calent sur des bords entiers, donc nette.
+const MARK_X_LEFT = 'translate-x-[-2px]'
+const MARK_X_RIGHT = 'translate-x-[2px]'
+
 // Écart entre les colonnes texte / photo, et retrait de la photo par rapport au
 // liseré droit — mêmes valeurs que le hero de l'accueil (HomeHero.jsx), pour un
 // vocabulaire visuel cohérent sur tout le site : la photo ne touche jamais
@@ -69,13 +91,16 @@ const HERO_RIGHT_INNER = 'right-4 xl:right-6'
 
 // Repères verticaux courant sur toute la hauteur de la SECTION (donc jusque sous le
 // header fixe — invisible à cet endroit, recouvert par son fond opaque), avec un
-// carré orange au pied de chacun. Pas de carré en haut : ce serait soit caché sous le
-// header (traits de la césure/photo), soit sans repère horizontal auquel s'arrimer
-// (trait de gauche, côté texte) — seul le bas, dégagé, offre un point d'ancrage net.
-// Masqués sous lg, où les colonnes sont empilées.
+// carré orange au pied de chacun. Pas de carré en haut : il serait caché sous le
+// header. Ceux du milieu sont posés par la barre de séparation horizontale, dans le
+// flux de la grille (voir le JSX du hero). Masqués sous lg, colonnes empilées.
 function HeroGuides() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
+    // z-10 : les marques du bas sont à cheval sur la limite de section, et la section
+    // suivante porte une animation d'apparition — donc un `transform`, qui crée un
+    // contexte d'empilement et la fait peindre par-dessus elles. Sans z-index, leur
+    // moitié basse disparaissait sous son fond.
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
       <div className={`${WRAP} h-full`}>
         <div className="relative h-full">
           <span className={`absolute inset-y-0 left-0 w-px ${HERO_RULE}`} />
@@ -83,11 +108,15 @@ function HeroGuides() {
           <span className={`absolute inset-y-0 w-px ${HERO_GAP_RIGHT} ${HERO_RULE}`} />
           <span className={`absolute inset-y-0 w-px ${HERO_RIGHT_INNER} ${HERO_RULE}`} />
           <span className={`absolute inset-y-0 right-0 w-px ${HERO_RULE}`} />
-          <HeroGuideMark className="bottom-0 left-0 -translate-x-1/2 translate-y-1/2" />
-          <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_GAP_LEFT}`} />
-          <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_GAP_RIGHT}`} />
-          <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_RIGHT_INNER}`} />
-          <HeroGuideMark className="bottom-0 right-0 translate-x-1/2 translate-y-1/2" />
+          {/* translate-y-[2px] et non translate-y-1/2 (2,5px) : le demi-pixel étalait la
+              marque sur six rangées de pixels au lieu de cinq et la rendait floue. */}
+          <HeroGuideMark className={`bottom-0 left-0 translate-y-[2px] ${MARK_X_LEFT}`} />
+          <HeroGuideMark className={`bottom-0 translate-y-[2px] ${HERO_GAP_LEFT} ${MARK_X_LEFT}`} />
+          <HeroGuideMark className={`bottom-0 translate-y-[2px] ${HERO_GAP_RIGHT} ${MARK_X_LEFT}`} />
+          {/* Ancrée par la droite (HERO_RIGHT_INNER) : elle doit donc être décalée vers
+              la droite. Un -translate-x la posait 5px à côté de son trait. */}
+          <HeroGuideMark className={`bottom-0 translate-y-[2px] ${HERO_RIGHT_INNER} ${MARK_X_RIGHT}`} />
+          <HeroGuideMark className={`bottom-0 right-0 translate-y-[2px] ${MARK_X_RIGHT}`} />
         </div>
       </div>
     </div>
@@ -119,6 +148,11 @@ export default function DevenirFormateur() {
   // Zip texte traduit + icônes/images structurelles (par index).
   const avantages = avantagesItems.map((a, i) => ({ ...a, Icon: AVANTAGES_META[i].Icon }))
   const disciplines = disciplinesItems.map((d, i) => ({ ...d, ...DISCIPLINES_META[i] }))
+
+  // Grille des avantages : mesurée par GridRowRules pour prolonger ses séparations
+  // internes jusqu'aux bords de l'écran (leur position dépend du contenu, donc du
+  // point de rupture — elle ne se déduit pas en CSS).
+  const avantagesGridRef = useRef(null)
 
   // Progression de la timeline liée au scroll (le rail se remplit + point lumineux).
   const timelineRef = useRef(null)
@@ -259,18 +293,27 @@ export default function DevenirFormateur() {
     <Page title={t('devenirFormateur:meta.title')} description={t('devenirFormateur:meta.description')} pathKey="/devenir-formateur">
 
       {/* ===== HERO ===== */}
-      {/* Même mécanique que HomeHero.jsx : la grille n'a pas de cadre fermé, seuls des
-          traits verticaux flottent en calque, et c'est la marge négative de la colonne
-          photo qui va coller la photo au bord du header — pas un cadre qui l'engloberait. */}
-      <Reveal as="section" eager className={`relative ${SECTION} pt-[120px] md:pt-[150px]`}>
+      {/* Décalque de HomeHero.jsx, à la même échelle : grille sans cadre fermé, traits
+          verticaux flottant en calque, texte coupé en deux rangées par une barre de
+          séparation horizontale traversante (rangée 2), et colonne photo étalée sur les
+          trois rangées avec une marge négative qui la colle au header.
+          overflow-x-clip : la barre se prolonge de 100vw de chaque côté pour rejoindre
+          les bords de l'écran. Surtout pas overflow-hidden, qui rognerait la verticale
+          et couperait en deux les carrés posés à cheval sur la barre. */}
+      <Reveal as="section" eager className={`relative overflow-x-clip ${SECTION} pt-[104px] md:pt-[120px]`}>
         <HeroGuides />
-        <div className={`${WRAP} grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-x-4 xl:gap-x-6`}>
-          <div className="relative min-w-0 p-7 md:p-12">
+        <div className={`${WRAP} grid lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr] lg:gap-x-4 xl:gap-x-6`}>
+          {/* Rangée 1 : accroche + titre */}
+          <div className="relative min-w-0 pb-3 pt-12 lg:col-start-1 lg:row-start-1 lg:p-4 xl:p-6">
             <Label>{t('devenirFormateur:hero.label')}</Label>
             <h1 className="mt-7 max-w-[900px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
               {t('devenirFormateur:hero.title')}<span className="text-wahm-orange">.</span>
             </h1>
-            <p className="mt-7 max-w-[600px] font-sans text-[16px] leading-[1.7] text-muted">
+          </div>
+
+          {/* Rangée 3 : accroche secondaire + boutons */}
+          <div className="relative min-w-0 pb-12 pt-3 lg:col-start-1 lg:row-start-3 lg:p-4 xl:p-6">
+            <p className="max-w-[600px] font-sans text-[16px] leading-[1.7] text-muted">
               {t('devenirFormateur:hero.subtitle')}
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -278,18 +321,49 @@ export default function DevenirFormateur() {
               <Action to={localizedPath('/contact', locale)} variant="outline" className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('devenirFormateur:hero.ctaContact')}</Action>
             </div>
           </div>
-          {/* lg:-mt-[78px] : annule l'écart restant sous le header fixe de 72px
-              (pt-[150px] - 78px = 72px), exactement comme lg:-mt-12 dans HomeHero.jsx
-              pour son propre pt-[120px]. */}
-          <div className="relative min-w-0 pb-12 lg:-mt-[78px] lg:pb-0 lg:pr-4 xl:pr-6">
-            <Shot src={HERO_IMAGE} alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[320px] w-full lg:min-h-[520px]" priority width={1000} height={1200} />
-            <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
+
+          {/* Colonne photo, étalée sur les trois rangées. lg:-mt-12 annule l'écart
+              restant sous le header fixe de 72px (pt-[120px] - 48px = 72px) — même
+              calcul que dans HomeHero.jsx. */}
+          <div className="relative flex min-w-0 items-stretch pb-12 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:-mt-12 lg:pb-0 lg:pr-4 xl:pr-6">
+            {/* Pas de Motif en surimpression : le hero d'accueil n'en a pas, et les
+                chevrons tombaient en travers du sujet. */}
+            {/* Hauteur calée sur la photo du hero d'accueil (732px mesurés de 1280 à
+                1920). Là-bas elle est dictée par la hauteur du texte, plus abondant ;
+                ici le texte est court, donc on la fixe en min-h.
+                width/height comptent autant que le min-h : `lg:h-full` est indéfini (la
+                hauteur de la grille dépend elle-même de cette photo), donc l'image se
+                dimensionne sur son ratio intrinsèque. 1200/1364 donne exactement 732px
+                pour une colonne de 644px — les deux voies concordent au lieu de se
+                contredire. */}
+            <Shot src={HERO_IMAGE} alt={t('devenirFormateur:hero.imageAlt')} className="h-[380px] w-full sm:h-[480px] lg:h-full lg:min-h-[732px]" priority width={1200} height={1364} />
+          </div>
+
+          {/* Barre de séparation (rangée 2), prolongée jusqu'aux bords de l'écran.
+              Elle n'a PAS de fond propre : elle est tracée en segments qui s'arrêtent de
+              part et d'autre de la photo, pour ne pas la barrer en travers. Les carrés,
+              eux, restent posés sur toutes les intersections, photo comprise. */}
+          <div className="relative hidden h-px lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:block">
+            <span aria-hidden="true" className={`absolute right-full top-0 h-px w-screen ${HERO_RULE}`} />
+            <span aria-hidden="true" className={`absolute left-full top-0 h-px w-screen ${HERO_RULE}`} />
+            {/* Du bord gauche du cadre jusqu'au bord gauche de la photo */}
+            <span aria-hidden="true" className={`absolute left-0 top-0 h-px right-[calc(50%-0.5rem)] xl:right-[calc(50%-0.75rem)] ${HERO_RULE}`} />
+            {/* Du bord droit de la photo jusqu'au bord droit du cadre */}
+            <span aria-hidden="true" className={`absolute right-0 top-0 h-px w-4 xl:w-6 ${HERO_RULE}`} />
+            <HeroGuideMark className={`left-0 top-1/2 -translate-y-1/2 ${MARK_X_LEFT}`} />
+            <HeroGuideMark className={`top-1/2 -translate-y-1/2 ${HERO_GAP_LEFT} ${MARK_X_LEFT}`} />
+            <HeroGuideMark className={`top-1/2 -translate-y-1/2 ${HERO_GAP_RIGHT} ${MARK_X_LEFT}`} />
+            <HeroGuideMark className={`top-1/2 -translate-y-1/2 ${HERO_RIGHT_INNER} ${MARK_X_RIGHT}`} />
+            <HeroGuideMark className={`right-0 top-1/2 -translate-y-1/2 ${MARK_X_RIGHT}`} />
           </div>
         </div>
       </Reveal>
 
       {/* ===== POURQUOI NOUS REJOINDRE ===== */}
-      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
+      {/* overflow-x-clip : les liserés filent jusqu'aux bords de l'écran, on rogne donc
+          l'horizontale. Surtout pas overflow-hidden, qui rognerait aussi la verticale et
+          couperait en deux les carrés posés à cheval sur les liserés. */}
+      <Reveal as="section" className={`${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <SectionHead label={t('devenirFormateur:avantages.label')}>
             {t('devenirFormateur:avantages.title')}
@@ -297,34 +371,51 @@ export default function DevenirFormateur() {
           <p className="mt-6 max-w-[780px] font-sans text-[16px] leading-[1.7] text-muted">
             {t('devenirFormateur:avantages.intro')}
           </p>
-          <div className="mt-12 grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
-            {avantages.map((a) => (
-              <TiltCard key={a.title} className="border-b border-r border-line/[0.08] p-7 md:p-8">
-                <span className="flex h-12 w-12 items-center justify-center border border-line/[0.12] text-gold">
-                  <a.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" />
-                </span>
-                <h3 className="mt-6 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-fg md:text-[20px]">{a.title}</h3>
-                <p className="mt-3 font-sans text-[14px] leading-[1.6] text-muted">{a.desc}</p>
+          <div className="relative mt-12">
+            <div ref={avantagesGridRef} className="grid grid-cols-1 border-l border-t border-line/[0.08] sm:grid-cols-2 lg:grid-cols-3">
+              {/* tilt={false} : la carte ne s'incline plus au survol, seul le reflet
+                  orange qui suit le curseur est conservé.
+                  ticks={false} + CellTicks : les marques d'angle d'une CELLULE de grille
+                  se centrent sur la boîte de bordure, sinon deux marques voisines
+                  tombent à 1px l'une de l'autre et épaississent la jointure. */}
+              {avantages.map((a) => (
+                <TiltCard key={a.title} ticks={false} tilt={false} className="border-b border-r border-line/[0.08] p-7 md:p-8">
+                  <CellTicks />
+                  <span className="flex h-12 w-12 items-center justify-center border border-line/[0.12] text-gold">
+                    <a.Icon className="h-[24px] w-[24px]" strokeWidth={1.8} aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-6 font-display text-[18px] font-extrabold uppercase leading-[1.12] tracking-[-0.005em] text-fg md:text-[20px]">{a.title}</h3>
+                  <p className="mt-3 font-sans text-[14px] leading-[1.6] text-muted">{a.desc}</p>
+                </TiltCard>
+              ))}
+              {/* Carte de mise en avant */}
+              <TiltCard ticks={false} tilt={false} className="flex flex-col justify-center border-b border-r border-line/[0.08] bg-surface-2 p-7 md:p-8">
+                <CellTicks />
+                <p className="m-0 font-display text-[16px] font-bold uppercase leading-[1.3] tracking-[0.01em] text-gold">
+                  {t('devenirFormateur:avantages.highlight.title')}
+                </p>
+                <p className="mt-4 font-sans text-[14px] leading-[1.6] text-muted">
+                  {t('devenirFormateur:avantages.highlight.text1')}
+                </p>
+                <p className="mt-3 font-sans text-[14px] leading-[1.6] text-muted">
+                  {t('devenirFormateur:avantages.highlight.text2')}
+                </p>
               </TiltCard>
-            ))}
-            {/* Carte de mise en avant */}
-            <TiltCard className="flex flex-col justify-center border-b border-r border-line/[0.08] bg-surface-2 p-7 md:p-8">
-              <p className="m-0 font-display text-[16px] font-bold uppercase leading-[1.3] tracking-[0.01em] text-gold">
-                {t('devenirFormateur:avantages.highlight.title')}
-              </p>
-              <p className="mt-4 font-sans text-[14px] leading-[1.6] text-muted">
-                {t('devenirFormateur:avantages.highlight.text1')}
-              </p>
-              <p className="mt-3 font-sans text-[14px] leading-[1.6] text-muted">
-                {t('devenirFormateur:avantages.highlight.text2')}
-              </p>
-            </TiltCard>
+            </div>
+            {/* Liserés haut/bas prolongés jusqu'aux bords de l'écran ; ticks={false} car
+                les angles sont déjà marqués par les CellTicks des cellules. */}
+            <BlockGuides ticks={false} />
+            {/* Séparations internes entre rangées, prolongées de même */}
+            <GridRowRules gridRef={avantagesGridRef} />
           </div>
         </div>
       </Reveal>
 
       {/* ===== DISCIPLINES (grille) ===== */}
-      <Reveal as="section" className={`${SECTION} py-20 md:py-[120px]`}>
+      {/* overflow-x-clip : les liserés filent jusqu'aux bords de l'écran, on rogne donc
+          l'horizontale. Surtout pas overflow-hidden, qui rognerait aussi la verticale et
+          couperait en deux les carrés posés à cheval sur les liserés. */}
+      <Reveal as="section" className={`${SECTION} overflow-x-clip py-20 md:py-[120px]`}>
         <div className={WRAP}>
           <Label>{t('devenirFormateur:disciplines.label')}</Label>
           <h2 className="mt-5 font-display text-[30px] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] text-fg sm:text-[36px] md:text-[44px]">
@@ -335,8 +426,21 @@ export default function DevenirFormateur() {
           </p>
 
           {/* Carrousel de cartes verticales (3 visibles) — flèches latérales */}
-          <div className="mt-12 md:mt-14">
+          <div className="relative mt-12 md:mt-14">
             <DisciplinesCarousel items={disciplines} />
+            <BlockGuides />
+            {/* Angles de la carte du MILIEU. Posés sur le bloc et non sur les cartes :
+                ils restent fixes quand le carrousel défile, comme les quatre angles du
+                bloc. Uniquement à partir de lg, seul palier où trois cartes sont
+                visibles (basis-1/3) et où une « carte du milieu » existe donc.
+                Positions déduites de la géométrie du carrousel : conteneur décalé de
+                -1rem, chaque volet large de (100%+1rem)/3 et rentré de 1rem à gauche. */}
+            <span aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
+              <HeroGuideMark className="-top-[2.5px] left-[calc((100%+1rem)/3)] -translate-x-1/2" />
+              <HeroGuideMark className="-bottom-[2.5px] left-[calc((100%+1rem)/3)] -translate-x-1/2" />
+              <HeroGuideMark className="-top-[2.5px] right-[calc((100%-2rem)/3+1rem)] translate-x-1/2" />
+              <HeroGuideMark className="-bottom-[2.5px] right-[calc((100%-2rem)/3+1rem)] translate-x-1/2" />
+            </span>
           </div>
 
           <SectionOutro>{t('devenirFormateur:disciplines.outro')}</SectionOutro>
@@ -352,9 +456,9 @@ export default function DevenirFormateur() {
           </p>
 
           <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1fr] lg:items-center lg:gap-16 md:mt-14">
-            {/* Image */}
+            {/* Image : pas de carrés orange sur une photo seule — seules les équerres
+                dorées du Shot (`corners`) l'habillent. */}
             <div className="relative border border-line/[0.08]">
-              <CornerTicks />
               <Shot src={CRIT_IMAGE} alt={t('devenirFormateur:criteres.imageAlt')} className="aspect-square w-full" position="50% 30%" corners />
             </div>
 
@@ -423,7 +527,9 @@ export default function DevenirFormateur() {
             {/* Visuel : épouse exactement la hauteur des étapes (image en absolu). */}
             <div className="relative hidden lg:block">
               <div className="absolute inset-0">
-                <Framed className="h-full bg-surface-2">
+                {/* ticks={false} : pas de carrés orange sur une photo seule — seules les
+                    équerres dorées du Shot (`corners`) l'habillent. */}
+                <Framed className="h-full bg-surface-2" ticks={false}>
                   <Shot src="/assets/media/etapes-visual.webp" alt={t('devenirFormateur:etapes.imageAlt')} className="h-full w-full" position="50% 46%" corners />
                 </Framed>
               </div>
@@ -434,10 +540,16 @@ export default function DevenirFormateur() {
       </Reveal>
 
       {/* ===== CANDIDATURE — FORMULAIRE (2 colonnes) ===== */}
-      <section id="candidature" className={`${SECTION} scroll-mt-[80px] py-20 md:py-[120px]`}>
+      {/* overflow-x-clip : les liserés filent jusqu'aux bords de l'écran, on rogne donc
+          l'horizontale. Surtout pas overflow-hidden, qui rognerait aussi la verticale et
+          couperait en deux les carrés posés à cheval sur les liserés. */}
+      <section id="candidature" className={`${SECTION} overflow-x-clip scroll-mt-[80px] py-20 md:py-[120px]`}>
         <div className={WRAP}>
-          <div className="relative grid grid-cols-1 overflow-hidden border border-line/[0.08] lg:grid-cols-2">
-            <CornerTicks className="pointer-events-none absolute inset-0 z-20" />
+          {/* Les repères vivent dans ce conteneur SANS overflow, et non dans la grille :
+              celle-ci est en overflow-hidden (elle détoure les panneaux sur la bordure),
+              ce qui rognait les carrés d'un quart. */}
+          <div className="relative">
+          <div className="grid grid-cols-1 overflow-hidden border border-line/[0.08] lg:grid-cols-2">
 
             {/* Panneau gauche : accroche (sombre, dégradé nuit → orange) */}
             <div className="relative flex flex-col justify-center overflow-hidden p-10 md:p-14" style={{ background: 'linear-gradient(135deg,#0b1a30 0%,#0A1A2F 46%,#5a2a0a 100%)' }}>
@@ -627,6 +739,16 @@ export default function DevenirFormateur() {
             )}
               </div>
             </div>
+          </div>
+            {/* Liserés haut/bas prolongés jusqu'aux bords de l'écran + carrés aux quatre
+                angles du bloc */}
+            <BlockGuides />
+            {/* Jointure verticale des deux panneaux, à mi-largeur. Uniquement à partir
+                de lg : en dessous ils sont empilés et cette jointure n'existe pas. */}
+            <span aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
+              <HeroGuideMark className="-top-[2.5px] left-1/2 -translate-x-1/2" />
+              <HeroGuideMark className="-bottom-[2.5px] left-1/2 -translate-x-1/2" />
+            </span>
           </div>
         </div>
       </section>
