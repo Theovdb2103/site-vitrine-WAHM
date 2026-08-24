@@ -39,8 +39,58 @@ const DISCIPLINES_META = [
 // Photo Unsplash (nouvelle, hors bibliothèque) illustrant l'évaluation des candidats.
 const CRIT_IMAGE = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1000&h=1000&fit=crop&q=80&auto=format'
 
+// ===== Hero =====
+// Photo Unsplash (nouvelle, hors bibliothèque) : portrait d'un coach, remplace
+// l'ancien fichier local /assets/media/formateur-portrait.webp (introuvable en
+// production).
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1750698545009-679820502908?w=1000&h=1200&fit=crop&q=80&auto=format'
+
 const SECTION = 'bg-surface'
 const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
+
+// Teinte des traits de repère du hero — même valeur que le reste du site.
+const HERO_RULE = 'bg-line/[0.08]'
+
+// Petit carré orange sur une intersection de la grille (même vocabulaire que les
+// CornerTicks du reste du site — voir Frame.jsx).
+function HeroGuideMark({ className = '' }) {
+  return <span aria-hidden="true" className={`pointer-events-none absolute h-[5px] w-[5px] bg-wahm-orange ${className}`} />
+}
+
+// Écart entre les colonnes texte / photo, et retrait de la photo par rapport au
+// liseré droit — mêmes valeurs que le hero de l'accueil (HomeHero.jsx), pour un
+// vocabulaire visuel cohérent sur tout le site : la photo ne touche jamais
+// directement un trait de la grille, il y a toujours un vide.
+const HERO_GAP_LEFT = 'left-[calc(50%-0.5rem)] xl:left-[calc(50%-0.75rem)]'
+const HERO_GAP_RIGHT = 'left-[calc(50%+0.5rem)] xl:left-[calc(50%+0.75rem)]'
+const HERO_RIGHT_INNER = 'right-4 xl:right-6'
+
+// Cadre du hero : liserés extérieurs (4 côtés, toutes tailles) + CornerTicks, plus la
+// césure interne entre les deux colonnes à partir de lg seulement (en dessous, les
+// colonnes sont empilées et un simple trait de séparation dans le flux suffit — posé
+// directement sur la cellule de texte, pas ici).
+function HeroFrameGuides() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+      <span className={`absolute inset-x-0 top-0 h-px ${HERO_RULE}`} />
+      <span className={`absolute inset-x-0 bottom-0 h-px ${HERO_RULE}`} />
+      <span className={`absolute inset-y-0 left-0 w-px ${HERO_RULE}`} />
+      <span className={`absolute inset-y-0 right-0 w-px ${HERO_RULE}`} />
+      <CornerTicks />
+      <div className="absolute inset-0 hidden lg:block">
+        <span className={`absolute inset-y-0 w-px ${HERO_GAP_LEFT} ${HERO_RULE}`} />
+        <span className={`absolute inset-y-0 w-px ${HERO_GAP_RIGHT} ${HERO_RULE}`} />
+        <span className={`absolute inset-y-0 w-px ${HERO_RIGHT_INNER} ${HERO_RULE}`} />
+        <HeroGuideMark className={`top-0 -translate-x-1/2 -translate-y-1/2 ${HERO_GAP_LEFT}`} />
+        <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_GAP_LEFT}`} />
+        <HeroGuideMark className={`top-0 -translate-x-1/2 -translate-y-1/2 ${HERO_GAP_RIGHT}`} />
+        <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_GAP_RIGHT}`} />
+        <HeroGuideMark className={`top-0 translate-x-1/2 -translate-y-1/2 ${HERO_RIGHT_INNER}`} />
+        <HeroGuideMark className={`bottom-0 translate-x-1/2 translate-y-1/2 ${HERO_RIGHT_INNER}`} />
+      </div>
+    </div>
+  )
+}
 
 // Style d'input « technical / severe » : coins carrés, focus orange.
 const INPUT_CLASS =
@@ -207,27 +257,28 @@ export default function DevenirFormateur() {
     <Page title={t('devenirFormateur:meta.title')} description={t('devenirFormateur:meta.description')} pathKey="/devenir-formateur">
 
       {/* ===== HERO ===== */}
-      <Reveal as="section" eager className={`${SECTION} pt-[120px] md:pt-[150px]`}>
+      <Reveal as="section" eager className={`${SECTION} pt-[120px] md:pt-[150px] pb-20 md:pb-[120px]`}>
         <div className={WRAP}>
-          <div className="relative grid border-l border-t border-line/[0.08] lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="relative min-w-0 border-b border-r border-line/[0.08] p-7 py-12 md:p-12 md:py-16">
-              <CornerTicks />
-              <Label>{t('devenirFormateur:hero.label')}</Label>
-              <h1 className="mt-7 max-w-[900px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
-                {t('devenirFormateur:hero.title')}<span className="text-wahm-orange">.</span>
-              </h1>
-              <p className="mt-7 max-w-[600px] font-sans text-[16px] leading-[1.7] text-muted">
-                {t('devenirFormateur:hero.subtitle')}
-              </p>
-              <div className="mt-9 flex flex-wrap items-center gap-3">
-                <Action to="#candidature" variant="filled" arrow>{t('devenirFormateur:hero.ctaApply')}</Action>
-                <Action to={localizedPath('/contact', locale)} variant="outline" className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('devenirFormateur:hero.ctaContact')}</Action>
+          <div className="relative">
+            <HeroFrameGuides />
+            <div className="relative grid lg:grid-cols-[1.1fr_0.9fr] lg:gap-x-4 xl:gap-x-6">
+              <div className="relative min-w-0 border-b border-line/[0.08] p-7 md:p-12 lg:border-b-0">
+                <Label>{t('devenirFormateur:hero.label')}</Label>
+                <h1 className="mt-7 max-w-[900px] font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
+                  {t('devenirFormateur:hero.title')}<span className="text-wahm-orange">.</span>
+                </h1>
+                <p className="mt-7 max-w-[600px] font-sans text-[16px] leading-[1.7] text-muted">
+                  {t('devenirFormateur:hero.subtitle')}
+                </p>
+                <div className="mt-9 flex flex-wrap items-center gap-3">
+                  <Action to="#candidature" variant="filled" arrow>{t('devenirFormateur:hero.ctaApply')}</Action>
+                  <Action to={localizedPath('/contact', locale)} variant="outline" className="!h-auto !min-h-12 [&>span]:!whitespace-normal [&>span]:!py-3 [&>span]:text-center">{t('devenirFormateur:hero.ctaContact')}</Action>
+                </div>
               </div>
-            </div>
-            <div className="relative min-w-0 border-b border-r border-line/[0.08]">
-              <CornerTicks />
-              <Shot src="/assets/media/formateur-portrait.webp" alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[280px] w-full" position="top" corners priority width={900} height={900} />
-              <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
+              <div className="relative min-w-0 lg:pr-4 xl:pr-6">
+                <Shot src={HERO_IMAGE} alt={t('devenirFormateur:hero.imageAlt')} className="h-full min-h-[280px] w-full" position="top" priority width={1000} height={1200} />
+                <Motif color="#D4A018" cols={5} rows={3} className="pointer-events-none absolute bottom-5 left-5 hidden w-[150px] md:grid" />
+              </div>
             </div>
           </div>
         </div>
