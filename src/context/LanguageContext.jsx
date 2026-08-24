@@ -42,10 +42,9 @@ export function LanguageProvider({ locale, children }) {
       navigate(localizedPath(defaultPath, code) + location.search + location.hash)
     }
   }
-  const openOverlay = () => setShowOverlay(true)
   const closeOverlay = () => setShowOverlay(false)
 
-  const value = { locale: locale || DEFAULT_LOCALE, showOverlay, chooseLang, openOverlay, closeOverlay }
+  const value = { locale: locale || DEFAULT_LOCALE, showOverlay, chooseLang, closeOverlay }
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
 }
 

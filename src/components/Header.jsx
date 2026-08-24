@@ -5,7 +5,7 @@ import { Sun, Moon } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { NAV_KEYS, ROUTE_CTA, getRouteConfig, getMarketplaceUrl, localizedPath, toDefaultPath } from '../lib/site'
-import { LOCALE_LABELS } from '../i18n/locales'
+import { LOCALES, LOCALE_LABELS } from '../i18n/locales'
 import { Action } from './ui/Frame'
 import Flag from './ui/Flag'
 import wahmLogo from '../assets/wahm-logo.webp'
@@ -124,10 +124,75 @@ function FaqMenu({ navKey, locale }) {
   )
 }
 
+// Sélecteur de langue du header : petit dropdown ancré au bouton, PAS l'overlay plein
+// écran (LanguageOverlay). Cette dernière reste réservée au premier passage — sans
+// préférence enregistrée, elle s'ouvre automatiquement (LanguageContext) — un visiteur
+// qui revient juste changer de langue ne doit plus se retrouver plein écran.
+// Ferme au clic extérieur (mousedown, capté même si la cible n'est pas focusable),
+// à Échap, ou quand le focus quitte le groupe au clavier.
+function LanguageMenu({ locale, className = '' }) {
+  const { t } = useTranslation('common')
+  const { chooseLang } = useLanguage()
+  const [open, setOpen] = useState(false)
+  const wrapRef = useRef(null)
+  const flagCode = LOCALE_LABELS[locale]?.flag || 'FR'
+
+  useEffect(() => {
+    if (!open) return
+    const onDown = (e) => { if (!wrapRef.current?.contains(e.target)) setOpen(false) }
+    document.addEventListener('mousedown', onDown)
+    return () => document.removeEventListener('mousedown', onDown)
+  }, [open])
+
+  const handleBlur = (e) => {
+    if (!wrapRef.current?.contains(e.relatedTarget)) setOpen(false)
+  }
+
+  return (
+    <div
+      ref={wrapRef}
+      className={`relative ${className}`}
+      onBlur={handleBlur}
+      onKeyDown={(e) => { if (e.key === 'Escape') setOpen(false) }}
+    >
+      <button
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        className="flex items-center gap-2 border border-line/[0.18] px-[13px] py-[9px] font-mono text-[12px] uppercase tracking-[0.1em] text-fg-soft transition-colors hover:border-line/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight"
+        aria-label={t('header.languageAriaLabel')}
+      >
+        <Flag code={flagCode} className="h-[13px] w-[19px]" />
+        {locale.toUpperCase()}
+        <span aria-hidden="true" className={`text-[9px] text-subtle transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>▼</span>
+      </button>
+      <div className={`absolute right-0 top-full z-[210] mt-2 transition-all duration-200 ${open ? 'visible opacity-100' : 'invisible opacity-0'}`}>
+        <div className="min-w-[190px] border border-line/[0.1] bg-surface p-1.5 shadow-[0_28px_60px_-24px_rgba(0,0,0,0.85)]">
+          {LOCALES.map((code) => {
+            const meta = LOCALE_LABELS[code]
+            return (
+              <button
+                key={code}
+                type="button"
+                onClick={() => { chooseLang(code); setOpen(false) }}
+                className={`flex w-full items-center gap-2.5 px-3 py-2.5 font-display text-[12.5px] font-bold uppercase tracking-[0.02em] transition-colors duration-150 hover:bg-wahm-orange hover:text-wahm-navy focus:outline-none focus-visible:bg-wahm-orange focus-visible:text-wahm-navy ${code === locale ? 'text-wahm-goldLight' : 'text-fg-soft'}`}
+              >
+                <Flag code={meta.flag} className="h-[13px] w-[19px]" />
+                {meta.name}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Header() {
   const { t } = useTranslation('common')
   const { pathname } = useLocation()
-  const { locale, openOverlay } = useLanguage()
+  const { locale, chooseLang } = useLanguage()
   const flagCode = LOCALE_LABELS[locale]?.flag || 'FR'
   const defaultPath = toDefaultPath(pathname, locale)
   const { navKey } = getRouteConfig(defaultPath)
@@ -143,6 +208,7 @@ export default function Header() {
   }))
   const [menuOpen, setMenuOpen] = useState(false)
   const [faqOpenMobile, setFaqOpenMobile] = useState(false)
+  const [langOpenMobile, setLangOpenMobile] = useState(false)
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
   useEffect(() => {
@@ -183,16 +249,7 @@ export default function Header() {
           >
             {t('nav.devenir-formateur')}
           </Link>
-          <button
-            type="button"
-            onClick={openOverlay}
-            className="flex items-center gap-2 border border-line/[0.18] px-[13px] py-[9px] font-mono text-[12px] uppercase tracking-[0.1em] text-fg-soft transition-colors hover:border-line/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight"
-            aria-label={t('header.languageAriaLabel')}
-          >
-            <Flag code={flagCode} className="h-[13px] w-[19px]" />
-            {locale.toUpperCase()}
-            <span className="text-[9px] text-subtle" aria-hidden="true">▼</span>
-          </button>
+          <LanguageMenu locale={locale} />
           <ThemeToggle className="px-[11px] py-[9px]" />
         </div>
 
@@ -282,15 +339,36 @@ export default function Header() {
             <div className="flex gap-3">
               <button
                 type="button"
-                onClick={() => { openOverlay(); setMenuOpen(false) }}
+                aria-expanded={langOpenMobile}
+                onClick={() => setLangOpenMobile((v) => !v)}
                 className="flex flex-1 items-center justify-center gap-2 border border-line/[0.18] px-[13px] py-3 font-mono text-[13px] uppercase tracking-[0.1em] text-fg-soft"
               >
                 <Flag code={flagCode} className="h-[14px] w-[20px]" />
                 {locale.toUpperCase()}
-                <span className="text-[10px] text-subtle" aria-hidden="true">▼</span>
+                <span aria-hidden="true" className={`text-[10px] text-subtle transition-transform duration-200 ${langOpenMobile ? 'rotate-180' : ''}`}>▼</span>
               </button>
               <ThemeToggle className="px-4 py-3" />
             </div>
+            {/* Accordéon, pas l'overlay plein écran : celle-ci reste réservée au
+                premier passage (déclenchée automatiquement par LanguageContext). */}
+            {langOpenMobile && (
+              <div className="grid grid-cols-2 gap-2">
+                {LOCALES.map((code) => {
+                  const meta = LOCALE_LABELS[code]
+                  return (
+                    <button
+                      key={code}
+                      type="button"
+                      onClick={() => { chooseLang(code); setLangOpenMobile(false); setMenuOpen(false) }}
+                      className={`flex items-center gap-2 border border-line/[0.12] px-3 py-2.5 font-display text-[12.5px] font-bold uppercase tracking-[0.02em] ${code === locale ? 'border-wahm-orange text-wahm-goldLight' : 'text-fg-soft'}`}
+                    >
+                      <Flag code={meta.flag} className="h-[13px] w-[19px]" />
+                      {meta.name}
+                    </button>
+                  )
+                })}
+              </div>
+            )}
             <Action to={cta.to} size="sm" arrow onClick={() => setMenuOpen(false)}>{cta.label}</Action>
           </div>
         </div>
