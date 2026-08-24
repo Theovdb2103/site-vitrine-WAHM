@@ -192,7 +192,7 @@ function LanguageMenu({ locale, className = '' }) {
 export default function Header() {
   const { t } = useTranslation('common')
   const { pathname } = useLocation()
-  const { locale, chooseLang } = useLanguage()
+  const { locale, openOverlay } = useLanguage()
   const flagCode = LOCALE_LABELS[locale]?.flag || 'FR'
   const defaultPath = toDefaultPath(pathname, locale)
   const { navKey } = getRouteConfig(defaultPath)
@@ -208,7 +208,6 @@ export default function Header() {
   }))
   const [menuOpen, setMenuOpen] = useState(false)
   const [faqOpenMobile, setFaqOpenMobile] = useState(false)
-  const [langOpenMobile, setLangOpenMobile] = useState(false)
 
   useEffect(() => { setMenuOpen(false) }, [pathname])
   useEffect(() => {
@@ -337,38 +336,20 @@ export default function Header() {
           </nav>
           <div className="mt-6 flex flex-col gap-3">
             <div className="flex gap-3">
+              {/* Overlay plein écran (LanguageOverlay) et non un dropdown/accordéon :
+                  sur petit écran, un menu ancré au bouton n'a pas la place d'afficher
+                  les 7 langues lisiblement. */}
               <button
                 type="button"
-                aria-expanded={langOpenMobile}
-                onClick={() => setLangOpenMobile((v) => !v)}
+                onClick={() => { openOverlay(); setMenuOpen(false) }}
                 className="flex flex-1 items-center justify-center gap-2 border border-line/[0.18] px-[13px] py-3 font-mono text-[13px] uppercase tracking-[0.1em] text-fg-soft"
               >
                 <Flag code={flagCode} className="h-[14px] w-[20px]" />
                 {locale.toUpperCase()}
-                <span aria-hidden="true" className={`text-[10px] text-subtle transition-transform duration-200 ${langOpenMobile ? 'rotate-180' : ''}`}>▼</span>
+                <span className="text-[10px] text-subtle" aria-hidden="true">▼</span>
               </button>
               <ThemeToggle className="px-4 py-3" />
             </div>
-            {/* Accordéon, pas l'overlay plein écran : celle-ci reste réservée au
-                premier passage (déclenchée automatiquement par LanguageContext). */}
-            {langOpenMobile && (
-              <div className="grid grid-cols-2 gap-2">
-                {LOCALES.map((code) => {
-                  const meta = LOCALE_LABELS[code]
-                  return (
-                    <button
-                      key={code}
-                      type="button"
-                      onClick={() => { chooseLang(code); setLangOpenMobile(false); setMenuOpen(false) }}
-                      className={`flex items-center gap-2 border border-line/[0.12] px-3 py-2.5 font-display text-[12.5px] font-bold uppercase tracking-[0.02em] ${code === locale ? 'border-wahm-orange text-wahm-goldLight' : 'text-fg-soft'}`}
-                    >
-                      <Flag code={meta.flag} className="h-[13px] w-[19px]" />
-                      {meta.name}
-                    </button>
-                  )
-                })}
-              </div>
-            )}
             <Action to={cta.to} size="sm" arrow onClick={() => setMenuOpen(false)}>{cta.label}</Action>
           </div>
         </div>

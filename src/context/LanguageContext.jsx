@@ -42,9 +42,15 @@ export function LanguageProvider({ locale, children }) {
       navigate(localizedPath(defaultPath, code) + location.search + location.hash)
     }
   }
+  // Réservée au premier passage (déclenchée automatiquement ci-dessus) ET au sélecteur
+  // du menu mobile : sur petit écran, un dropdown ancré au bouton n'a pas la place
+  // d'afficher les 7 langues lisiblement — l'overlay plein écran y reste donc le bon
+  // format. Le header desktop, lui, utilise un dropdown compact (LanguageMenu) et
+  // n'appelle jamais cette fonction.
+  const openOverlay = () => setShowOverlay(true)
   const closeOverlay = () => setShowOverlay(false)
 
-  const value = { locale: locale || DEFAULT_LOCALE, showOverlay, chooseLang, closeOverlay }
+  const value = { locale: locale || DEFAULT_LOCALE, showOverlay, chooseLang, openOverlay, closeOverlay }
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
 }
 
