@@ -24,6 +24,21 @@ function NavLink({ to, active, onClick, children, className = '' }) {
   return <Link to={to} onClick={onClick} className={`${base} ${color} ${className}`}>{children}</Link>
 }
 
+// Numéro à contacter sur WhatsApp — wa.me n'accepte que des chiffres, sans le +.
+const WHATSAPP_URL = `https://wa.me/${'+32 496 15 81 78'.replace(/\D/g, '')}`
+
+// Glyphe WhatsApp officiel (Simple Icons) en SVG inline, comme les réseaux du footer —
+// pas de dépendance à une icônothèque de marques. Vert de la marque et non currentColor :
+// contrairement aux icônes du footer (monochromes, assorties au reste du header), celle-ci
+// doit rester identifiable au premier coup d'œil.
+function WhatsAppIcon({ className = '' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="#25D366" className={className} aria-hidden="true">
+      <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495.001 12.05.001c3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.884.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.982zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.867-2.03-.967-.272-.099-.47-.148-.669.15-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z" />
+    </svg>
+  )
+}
+
 // Bouton de bascule de thème (soleil/lune). Affiche l'icône de la cible :
 // en sombre → soleil (passer en clair) ; en clair → lune (passer en sombre).
 const THEME_BTN = 'flex items-center justify-center border border-line/[0.18] text-fg-soft transition-colors hover:border-line/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight'
@@ -252,21 +267,34 @@ export default function Header() {
           <ThemeToggle className="px-[11px] py-[9px]" />
         </div>
 
-        {/* Burger mobile */}
-        <button
-          type="button"
-          className="flex h-11 w-11 items-center justify-center border border-line/[0.18] text-fg-soft lg:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight"
-          aria-label={menuOpen ? t('header.menu.close') : t('header.menu.open')}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          onClick={() => setMenuOpen((v) => !v)}
-        >
-          <span className="relative block h-[14px] w-[20px]" aria-hidden="true">
-            <span className={`absolute left-0 block h-[2px] w-full bg-current transition-all ${menuOpen ? 'top-[6px] rotate-45' : 'top-0'}`} />
-            <span className={`absolute left-0 top-[6px] block h-[2px] w-full bg-current transition-all ${menuOpen ? 'opacity-0' : 'opacity-100'}`} />
-            <span className={`absolute left-0 block h-[2px] w-full bg-current transition-all ${menuOpen ? 'top-[6px] -rotate-45' : 'top-[12px]'}`} />
-          </span>
-        </button>
+        {/* WhatsApp + burger mobile, regroupés : seuls à rester visibles sous lg, le
+            `justify-between` de la barre les répartirait sinon aux deux extrémités
+            (avec le logo) au lieu de les coller l'un à l'autre. */}
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="flex h-11 w-11 items-center justify-center border border-line/[0.18] transition-colors hover:border-line/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight"
+          >
+            <WhatsAppIcon className="h-[20px] w-[20px]" />
+          </a>
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center border border-line/[0.18] text-fg-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-wahm-goldLight"
+            aria-label={menuOpen ? t('header.menu.close') : t('header.menu.open')}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <span className="relative block h-[14px] w-[20px]" aria-hidden="true">
+              <span className={`absolute left-0 block h-[2px] w-full bg-current transition-all ${menuOpen ? 'top-[6px] rotate-45' : 'top-0'}`} />
+              <span className={`absolute left-0 top-[6px] block h-[2px] w-full bg-current transition-all ${menuOpen ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`absolute left-0 block h-[2px] w-full bg-current transition-all ${menuOpen ? 'top-[6px] -rotate-45' : 'top-[12px]'}`} />
+            </span>
+          </button>
+        </div>
       </div>
 
       {/* CTA plein cadre, accolé au bord droit de l'écran (façon "Get in Touch") —
