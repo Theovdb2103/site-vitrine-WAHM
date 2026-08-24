@@ -50,7 +50,12 @@
   --c-accent: 255 123 44;       /* identique au sombre au départ */
   --c-accent-fg: 255 255 255;
   --c-gold: 154 122 30;         /* #9a7a1e (goldDark) : lisible sur crème */
-  --c-scrim: 10 26 47;          /* scrims d'image : navy dans les 2 thèmes */
+  /* Scrims d'image : noir neutre et non navy. Ces voiles portent du texte blanc, donc
+     ils ne peuvent pas être supprimés en clair sans rendre les titres illisibles sur les
+     photos claires — mais leur dominante bleue jurait avec le fond crème. Le noir
+     assombrit autant, sans teinte. Les voiles purement décoratifs, eux, sont bien
+     supprimés en clair : voir la règle .img-fade plus bas. */
+  --c-scrim: 0 0 0;
 }
 
 @layer base {
