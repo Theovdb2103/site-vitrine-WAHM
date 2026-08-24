@@ -82,9 +82,10 @@ export default function HomeHero() {
       <HeroGuides />
       <RevealStagger eager className="mx-auto grid max-w-[1440px] grid-cols-1 gap-0 px-5 md:px-10 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr] lg:gap-x-4 xl:gap-x-6">
         {/* Colonne texte, rangée 1 : accroche + titre. À partir de lg le texte est mis
-            en retrait des traits de la grille (pl/pr/pt/pb) pour ne jamais les toucher —
-            retrait plus serré à lg, où la colonne est la plus étroite. */}
-        <div className="relative flex flex-col justify-start pb-3 pt-12 lg:col-start-1 lg:row-start-1 lg:pb-14 lg:pl-4 lg:pr-4 lg:pt-14 xl:pl-6 xl:pr-6">
+            en retrait des traits de la grille (même valeur sur les 4 côtés, via p-4/p-6)
+            pour ne jamais les toucher — retrait plus serré à lg, où la colonne est la
+            plus étroite. */}
+        <div className="relative flex flex-col justify-start pb-3 pt-12 lg:col-start-1 lg:row-start-1 lg:p-4 xl:p-6">
           <RevealItem eager><Label>{t('accueil:hero.label')}</Label></RevealItem>
           <RevealItem as="h1" eager className="mt-7 font-display text-[40px] font-extrabold uppercase leading-[0.98] tracking-[-0.02em] text-fg sm:text-[54px] lg:text-[58px]">
             {t('accueil:hero.title1')}<br />{t('accueil:hero.title2')}<br />{t('accueil:hero.title3')}<span className="text-wahm-orange">.</span>
@@ -92,7 +93,7 @@ export default function HomeHero() {
         </div>
 
         {/* Colonne texte, rangée 3 : tagline + texte + boutons */}
-        <div className="relative flex flex-col justify-start pb-12 pt-3 lg:col-start-1 lg:row-start-3 lg:pb-16 lg:pl-4 lg:pr-4 lg:pt-14 xl:pl-6 xl:pr-6">
+        <div className="relative flex flex-col justify-start pb-12 pt-3 lg:col-start-1 lg:row-start-3 lg:p-4 xl:p-6">
           <RevealItem as="p" eager className="max-w-[440px] font-display text-[17px] font-semibold uppercase tracking-[0.01em] text-gold sm:text-[19px]">
             {t('accueil:hero.tagline')}
           </RevealItem>
