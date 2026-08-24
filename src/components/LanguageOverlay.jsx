@@ -35,8 +35,6 @@ export default function LanguageOverlay() {
           aria-label={t('languageOverlay.ariaLabel')}
           className="relative flex min-h-full flex-col items-center justify-center p-10"
         >
-          <div className="pointer-events-none absolute inset-9 border border-[rgba(212,160,24,0.14)]" aria-hidden="true" />
-
           <img src={wahmLogo} alt="WAHM" width="544" height="311" className="block h-[118px] w-auto" />
           <div className="my-[30px] mb-[22px] h-px w-[34px] bg-[rgba(212,160,24,0.5)]" aria-hidden="true" />
           <h2 className="m-0 text-center font-display text-[22px] font-bold text-fg">{t('languageOverlay.title')}</h2>
