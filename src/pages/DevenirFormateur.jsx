@@ -40,11 +40,12 @@ const DISCIPLINES_META = [
 const CRIT_IMAGE = 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1000&h=1000&fit=crop&q=80&auto=format'
 
 // ===== Hero =====
-// Photo Unsplash (nouvelle, hors bibliothèque) : une formatrice accompagne un élève
-// dans son mouvement — remplace l'ancien fichier local
-// /assets/media/formateur-portrait.webp (introuvable en production) et le premier
-// remplacement (portrait posé, jugé raté).
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1000&h=1200&fit=crop&q=80&auto=format'
+// Photo Unsplash (nouvelle, hors bibliothèque) : pose confiante, regard caméra,
+// éclairage sombre et cinématographique — plus de prestance que les deux essais
+// précédents (portrait posé jugé raté, puis scène de coaching jugée pas assez
+// impressionnante). Remplace l'ancien fichier local
+// /assets/media/formateur-portrait.webp (introuvable en production).
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1701481057396-30fddf7775b6?w=1000&h=1200&fit=crop&q=80&auto=format'
 
 const SECTION = 'bg-surface'
 const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
@@ -52,20 +53,26 @@ const WRAP = 'mx-auto max-w-[1440px] px-5 md:px-10'
 // Teinte des traits de repère du hero — même valeur que le reste du site.
 const HERO_RULE = 'bg-line/[0.08]'
 
+// Petit carré orange sur une intersection de la grille (même vocabulaire que les
+// CornerTicks du reste du site — voir Frame.jsx).
+function HeroGuideMark({ className = '' }) {
+  return <span aria-hidden="true" className={`pointer-events-none absolute h-[5px] w-[5px] bg-wahm-orange ${className}`} />
+}
+
 // Écart entre les colonnes texte / photo, et retrait de la photo par rapport au
 // liseré droit — mêmes valeurs que le hero de l'accueil (HomeHero.jsx), pour un
 // vocabulaire visuel cohérent sur tout le site : la photo ne touche jamais
-// directement un trait de la grille, il y a toujours un vide. Reprend aussi le choix
-// de HomeHero de ne poser aucun repère (trait haut/bas, CornerTicks) : ici il n'y a
-// pas de rangée intermédiaire à laquelle les accrocher, donc pas de repère du tout —
-// plutôt que d'en inventer un qui n'existe pas dans la référence.
+// directement un trait de la grille, il y a toujours un vide.
 const HERO_GAP_LEFT = 'left-[calc(50%-0.5rem)] xl:left-[calc(50%-0.75rem)]'
 const HERO_GAP_RIGHT = 'left-[calc(50%+0.5rem)] xl:left-[calc(50%+0.75rem)]'
 const HERO_RIGHT_INNER = 'right-4 xl:right-6'
 
 // Repères verticaux courant sur toute la hauteur de la SECTION (donc jusque sous le
-// header fixe — invisible à cet endroit, recouvert par son fond opaque). Masqués sous
-// lg, où les colonnes sont empilées. Même calque que HeroGuides dans HomeHero.jsx.
+// header fixe — invisible à cet endroit, recouvert par son fond opaque), avec un
+// carré orange au pied de chacun. Pas de carré en haut : ce serait soit caché sous le
+// header (traits de la césure/photo), soit sans repère horizontal auquel s'arrimer
+// (trait de gauche, côté texte) — seul le bas, dégagé, offre un point d'ancrage net.
+// Masqués sous lg, où les colonnes sont empilées.
 function HeroGuides() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block">
@@ -76,6 +83,11 @@ function HeroGuides() {
           <span className={`absolute inset-y-0 w-px ${HERO_GAP_RIGHT} ${HERO_RULE}`} />
           <span className={`absolute inset-y-0 w-px ${HERO_RIGHT_INNER} ${HERO_RULE}`} />
           <span className={`absolute inset-y-0 right-0 w-px ${HERO_RULE}`} />
+          <HeroGuideMark className="bottom-0 left-0 -translate-x-1/2 translate-y-1/2" />
+          <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_GAP_LEFT}`} />
+          <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_GAP_RIGHT}`} />
+          <HeroGuideMark className={`bottom-0 -translate-x-1/2 translate-y-1/2 ${HERO_RIGHT_INNER}`} />
+          <HeroGuideMark className="bottom-0 right-0 translate-x-1/2 translate-y-1/2" />
         </div>
       </div>
     </div>
