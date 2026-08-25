@@ -7,8 +7,8 @@ import Flag from './ui/Flag'
 import wahmLogo from '../assets/wahm-logo.webp'
 
 // Overlay de sélection de langue : accessible (focus trap, Escape, clic extérieur),
-// fondu d'entrée/sortie. Liste des langues = LOCALES (src/i18n/locales.js) — ajouter
-// une langue future suffit à l'y faire apparaître.
+// fondu de sortie seulement. Liste des langues = LOCALES (src/i18n/locales.js) —
+// ajouter une langue future suffit à l'y faire apparaître.
 export default function LanguageOverlay() {
   const { t } = useTranslation('common')
   const { chooseLang, closeOverlay } = useLanguage()
@@ -16,7 +16,11 @@ export default function LanguageOverlay() {
   return (
     <motion.div
       className="fixed inset-0 z-[1000] bg-[radial-gradient(120%_90%_at_50%_-10%,rgb(var(--c-surface-3))_0%,rgb(var(--c-surface))_60%)]"
-      initial={{ opacity: 0 }}
+      // initial={false} : pas de fondu à l'OUVERTURE — sinon, pendant ses 250ms
+      // d'opacité montante, la page en dessous (accueil) reste visible par
+      // transparence, d'où ce flash au tap du sélecteur mobile. La fermeture, elle,
+      // garde son fondu (exit, piloté par AnimatePresence dans Layout.jsx).
+      initial={false}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}

@@ -46,21 +46,31 @@ export function ExpandingCards({ items, defaultActiveIndex = 0, className = '' }
             className="pointer-events-none absolute inset-0"
             style={{ background: 'linear-gradient(to top, rgb(var(--c-scrim) / 0.94), rgb(var(--c-scrim) / 0.5) 45%, rgb(var(--c-scrim) / 0.12))' }}
           />
-          {/* Liseré orange signature sur la carte active */}
-          <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-wahm-orange transition-transform duration-500 ease-out group-data-[active=true]:scale-x-100" />
-
           <article className="absolute inset-0 flex flex-col justify-end gap-2 p-5 md:p-6">
             {/* Titre vertical quand la carte est réduite (desktop) */}
             <h3 className="hidden origin-left translate-y-[-4px] rotate-90 whitespace-nowrap font-mono text-[12px] uppercase tracking-[0.2em] text-white/70 transition-opacity duration-300 ease-out md:block group-data-[active=true]:opacity-0">
               {item.title}
             </h3>
-            <div className="text-gold opacity-0 transition-all delay-75 duration-300 ease-out group-data-[active=true]:opacity-100">
+            {/* Sous md, une carte réduite ne fait que ~67px de haut (1fr d'une pile de
+                600px) : bien trop peu pour icône + titre + description, même invisibles
+                — `opacity-0` les laisse quand même occuper leur place dans le flex, ce
+                qui poussait le titre hors du cadre visible (rogné par l'overflow-hidden
+                du li). `hidden` (display:none) leur retire tout encombrement tant que la
+                carte n'est pas active ; `md:block` restaure le comportement d'origine à
+                partir de md, où la carte réduite garde ses 460px de haut et la place ne
+                manque pas — le fondu (opacity) y reste donc intact. */}
+            <div className="hidden text-gold group-data-[active=true]:block md:block md:opacity-0 md:transition-all md:delay-75 md:duration-300 md:ease-out md:group-data-[active=true]:opacity-100">
               {item.icon}
             </div>
-            <h3 className="font-display text-[20px] font-extrabold uppercase leading-[1.1] tracking-[-0.005em] text-white opacity-0 transition-all delay-150 duration-300 ease-out group-data-[active=true]:opacity-100">
+            {/* Titre horizontal : toujours affiché sous md (accordéon fermé ou ouvert),
+                pour que la carte réduite garde un intitulé visible — sans lui, une carte
+                réduite en ligne n'affichait plus aucun titre, seule la photo désaturée.
+                Le pli habituel « masqué jusqu'à activation » n'est repris qu'à partir de
+                md, où le titre vertical (ci-dessus) prend le relais en carte réduite. */}
+            <h3 className="font-display text-[20px] font-extrabold uppercase leading-[1.1] tracking-[-0.005em] text-white opacity-100 transition-all delay-150 duration-300 ease-out md:opacity-0 md:group-data-[active=true]:opacity-100">
               {item.title}
             </h3>
-            <p className="max-w-xs font-sans text-[14px] leading-[1.55] text-white/80 opacity-0 transition-all duration-300 ease-out group-data-[active=true]:opacity-100" style={{ transitionDelay: '225ms' }}>
+            <p className="hidden max-w-xs font-sans text-[14px] leading-[1.55] text-white/80 group-data-[active=true]:block md:block md:opacity-0 md:transition-all md:duration-300 md:ease-out md:group-data-[active=true]:opacity-100" style={{ transitionDelay: '225ms' }}>
               {item.description}
             </p>
           </article>
