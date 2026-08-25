@@ -286,6 +286,27 @@ export default function Contact() {
                     <Action to={marketplaceUrl} variant="dark" arrow>{t('common:cta.discover')}</Action>
                   </div>
                 </div>
+                {/* Photo, dupliquée UNIQUEMENT pour mobile : vient s'intercaler ici entre le
+                    bloc orange et le paragraphe sombre. Un doublon plutôt qu'une
+                    réorganisation de la grille — éclater la colonne gauche en cellules
+                    séparées aurait fait apparaître des CellTicks inédits à la jointure
+                    orange/sombre, qui n'en a jamais eu. La colonne droite (desktop) reste
+                    la version affichée à partir de lg ; celle-ci s'efface alors. */}
+                <div className="relative h-[280px] border-t border-line/[0.08] lg:hidden">
+                  <div className="absolute inset-0 overflow-hidden">
+                    <img
+                      src="/assets/media/cta-final.webp"
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      width={1400}
+                      height={1600}
+                      className="h-full w-full object-cover grayscale"
+                    />
+                    <span aria-hidden="true" className="img-fade pointer-events-none absolute inset-0" style={{ background: 'linear-gradient(180deg, rgb(var(--c-surface) / 0.1), rgb(var(--c-surface) / 0.32))' }} />
+                  </div>
+                </div>
+
                 <div className="border-t border-line/[0.08] bg-surface-2 px-7 py-10 md:px-12 md:py-12">
                   <p className="max-w-[440px] font-sans text-[15.5px] leading-[1.7] text-muted">
                     {t('contact:final.text')}
@@ -293,10 +314,12 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Colonne droite : photo pleine hauteur. L'image et son voile vivent dans un
-                  calque interne à overflow-hidden — sans quoi CellTicks, qui déborde de
-                  2,5px, serait rogné. */}
-              <div className="relative h-[280px] border-b border-r border-line/[0.08] lg:h-auto">
+              {/* Colonne droite : photo pleine hauteur, à partir de lg seulement — sa
+                  version mobile vit désormais entre les deux blocs de la colonne gauche
+                  (ci-dessus). L'image et son voile vivent dans un calque interne à
+                  overflow-hidden — sans quoi CellTicks, qui déborde de 2,5px, serait
+                  rogné. */}
+              <div className="relative hidden border-b border-r border-line/[0.08] lg:block lg:h-auto">
                 <CellTicks />
                 <div className="absolute inset-0 overflow-hidden">
                   <img
