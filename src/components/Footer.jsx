@@ -114,7 +114,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 border-t border-line/[0.08] px-5 py-6 md:px-10">
         <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-subtle">{t('footer.copyright')}</span>
         <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-subtle">
-          {t('footer.credit')} <a href="https://effiweb.be" target="_blank" rel="noopener noreferrer" className="text-gold no-underline transition-colors hover:text-wahm-orange">Effiweb</a>
+          {t('footer.credit')} <a href="https://efficiencelab.be" target="_blank" rel="noopener noreferrer" className="text-gold no-underline transition-colors hover:text-wahm-orange">Efficience Lab</a>
         </span>
       </div>
 
